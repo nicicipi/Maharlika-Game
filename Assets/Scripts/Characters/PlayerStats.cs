@@ -22,11 +22,11 @@ public class PlayerStats : MonoBehaviour
     public int maxStamina = 100;
     public int currentStamina;
 
-    [SerializeField] int attack;
-    [SerializeField] int defence;
+    public int attack;
+    public int defence;
     [SerializeField] int special;
     [SerializeField] int specialDefence;
-    [SerializeField] int speed;
+    public int dexterity;
 
 
     // Start is called before the first frame update
@@ -62,7 +62,7 @@ public class PlayerStats : MonoBehaviour
             {
                 attack++;
                 special++;
-                speed++;
+                dexterity++;
             }
             else
             {
