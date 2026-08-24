@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq; // for sorting -- player always first
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class GameManager : MonoBehaviour
 
         //If want the players to be automatically put in the gamemanager
         //playerStats = FindObjectsOfType<PlayerStats>();
+
+        // Find all party members and player tag is always first
+        playerStats = FindObjectsOfType<PlayerStats>()
+            .OrderByDescending(p => p.CompareTag("Player"))
+            .ToArray();
     }
 
     // Update is called once per frame
