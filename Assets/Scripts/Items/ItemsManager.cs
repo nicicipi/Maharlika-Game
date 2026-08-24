@@ -29,4 +29,21 @@ public class ItemsManager : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            // print("Triggered " + itemName);
+
+            Inventory.instance.AddItems(this);
+            SelfDestroy();
+        }
+    }
+
+    public void SelfDestroy()
+    {
+        Destroy(gameObject);
+    }
+
 }
