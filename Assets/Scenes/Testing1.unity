@@ -9437,6 +9437,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382490902}
   m_CullTransparentMesh: 1
+--- !u!1 &1385988274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4524752266690434004, guid: c10cb500bbdf2ca43982e1967e4fc260, type: 3}
+  m_PrefabInstance: {fileID: 7410758254331441647}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1385988275 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 300624209003636227, guid: c10cb500bbdf2ca43982e1967e4fc260, type: 3}
@@ -15429,6 +15434,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 917442309}
     - target: {fileID: 6796073154642527833, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: itemsSlotContainer
+      value: 
+      objectReference: {fileID: 1385988274}
+    - target: {fileID: 6796073154642527833, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
       propertyPath: lvlText.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -15548,6 +15557,10 @@ PrefabInstance:
       propertyPath: statsButtons.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6796073154642527833, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: itemsSlotContainerParent
+      value: 
+      objectReference: {fileID: 1696660658}
     - target: {fileID: 6796073154642527833, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
       propertyPath: characterImage.Array.size
       value: 3

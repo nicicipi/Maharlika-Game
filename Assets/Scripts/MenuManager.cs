@@ -22,6 +22,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI statName, statHP, statSP, statDex, statDef, statAttack;
     [SerializeField] Image characterStatImage;
 
+    [SerializeField] GameObject itemsSlotContainer;
+    [SerializeField] Transform itemsSlotContainerParent;
 
     private void Start()
     {
@@ -100,6 +102,11 @@ public class MenuManager : MonoBehaviour
         statDex.text = playerSelected.dexterity.ToString();
         
         characterStatImage.sprite = playerSelected.characterImage;
+    }
+
+    private void UpdateItemsInventory()
+    {
+
     }
 
     public void QuitGame()
