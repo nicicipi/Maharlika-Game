@@ -2502,6 +2502,8 @@ MonoBehaviour:
   affectType: 1
   weaponDexterity: 0
   armorDefence: 0
+  isStackable: 1
+  amount: 1
 --- !u!212 &355828215
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5839,6 +5841,8 @@ MonoBehaviour:
   affectType: 0
   weaponDexterity: 0
   armorDefence: 3
+  isStackable: 0
+  amount: 1
 --- !u!58 &807346312
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8043,6 +8047,8 @@ MonoBehaviour:
   affectType: 0
   weaponDexterity: 0
   armorDefence: 0
+  isStackable: 1
+  amount: 1
 --- !u!212 &1143754328
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8185,6 +8191,8 @@ MonoBehaviour:
   affectType: 0
   weaponDexterity: 0
   armorDefence: 0
+  isStackable: 1
+  amount: 1
 --- !u!212 &1152291568
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10801,6 +10809,8 @@ MonoBehaviour:
   affectType: 0
   weaponDexterity: 0
   armorDefence: 0
+  isStackable: 1
+  amount: 1
 --- !u!212 &1592657926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11739,6 +11749,8 @@ MonoBehaviour:
   affectType: 0
   weaponDexterity: 5
   armorDefence: 0
+  isStackable: 0
+  amount: 1
 --- !u!212 &1779139646
 SpriteRenderer:
   m_ObjectHideFlags: 0

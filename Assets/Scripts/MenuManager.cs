@@ -118,6 +118,11 @@ public class MenuManager : MonoBehaviour
             Image itemImage = itemSlot.Find("Item Image").GetComponent<Image>(); //item image remember this when checking for the sprite of your items in inventory, if you change it, it wont work here
             itemImage.sprite = item.itemsImage;
 
+            TextMeshProUGUI itemsAmountText = itemSlot.Find("Amount Text").GetComponent<TextMeshProUGUI>();
+            if (item.amount > 1)
+                itemsAmountText.text = item.amount.ToString();
+            else
+                itemsAmountText.text = "";
         }
     }
 
