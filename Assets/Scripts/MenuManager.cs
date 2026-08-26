@@ -22,8 +22,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI statName, statHP, statSP, statDex, statDef, statAttack;
     [SerializeField] Image characterStatImage;
 
-    [SerializeField] GameObject itemsSlotContainer;
-    [SerializeField] Transform itemsSlotContainerParent;
+    [SerializeField] GameObject itemSlotContainer;
+    [SerializeField] Transform itemSlotContainerParent;
 
     private void Start()
     {
@@ -104,9 +104,21 @@ public class MenuManager : MonoBehaviour
         characterStatImage.sprite = playerSelected.characterImage;
     }
 
-    private void UpdateItemsInventory()
+    public void UpdateItemsInventory()
     {
+        foreach (Transform itemSlot in itemSlotContainerParent)
+        {
+            Destroy(itemSlot.gameObject);
+        }
 
+        foreach (ItemsManager item in Inventory.instance.GetItemsList())
+        {
+            RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
+
+            Image itemImage = itemSlot.Find("Item Image").GetComponent<Image>(); //item image remember this when checking for the sprite of your items in inventory, if you change it, it wont work here
+            itemImage.sprite = item.itemsImage;
+
+        }
     }
 
     public void QuitGame()
