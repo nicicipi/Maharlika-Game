@@ -6,6 +6,7 @@ using UnityEngine.Experimental.Rendering;
 
 public class PlayerStats : MonoBehaviour
 {
+    public static PlayerStats instance;
     public string playerName;
 
     public Sprite characterImage;
@@ -32,6 +33,7 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         xpForNextLevel = new int[maxLevel];
         xpForNextLevel[1] = baseLevelXP;
         
@@ -74,6 +76,24 @@ public class PlayerStats : MonoBehaviour
             currentHP = maxHP;
 
             maxStamina = Mathf.FloorToInt(maxStamina * 1.06f);
+            currentStamina = maxStamina;
+        }
+    }
+
+    public void AddHP(int amountHPtoAdd)
+    {
+        currentHP += amountHPtoAdd;
+        if(currentHP > maxHP)
+        {
+            currentHP = maxHP;
+        }
+    }
+
+    public void AddSP(int amountSPtoAdd)
+    {
+        currentStamina += amountSPtoAdd;
+        if (currentStamina > maxStamina)
+        {
             currentStamina = maxStamina;
         }
     }

@@ -27,6 +27,11 @@ public class MenuManager : MonoBehaviour
 
     public TextMeshProUGUI itemName, itemDescription;
 
+    public ItemsManager activeItem;
+
+    [SerializeField] GameObject characterChoicePanel;
+    [SerializeField] TextMeshProUGUI[] itemsCharacterChoiceNames;
+
     private void Start()
     {
         instance = this;
@@ -128,6 +133,38 @@ public class MenuManager : MonoBehaviour
 
             itemSlot.GetComponent<ItemButton>().itemOnButton = item;
         }
+    }
+
+    public void DiscardItem()
+    {
+        Inventory.instance.RemoveItem(activeItem);
+        UpdateItemsInventory();
+    }
+
+    public void OpenCharacterChoicePanel()
+    {
+        characterChoicePanel.SetActive(true);
+
+        for(int i = 0; i < playerStats.Length; i++)
+        {
+            PlayerStats activePlayer = GameManager.instance.GetPlayerStats()[i];
+            itemsCharacterChoiceNames[i].text = activePlayer.playerName;
+
+            bool activePlayerAvailable = activePlayer.gameObject.activeInHierarchy;
+            itemsCharacterChoiceNames[i].transform.parent.gameObject.SetActive(activePlayerAvailable);
+        }
+    }
+
+    public void CloseCharacterChoicePanel()
+    {
+        characterChoicePanel.SetActive(false);
+    }
+
+    public void UseItem()
+    {
+        activeItem.UseItem();
+        OpenCharacterChoicePanel();
+        DiscardItem(); // MOVE THIS AFTER
     }
 
     public void QuitGame()
