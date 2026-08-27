@@ -29,6 +29,14 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] int specialDefence;
     public int dexterity;
 
+    public string equippedWeaponName;
+    public string equippedArmorName;
+
+    public int weaponPower;
+    public int armorDefence;
+
+    public ItemsManager equippedWeapon, equippedArmor;
+
 
     // Start is called before the first frame update
     void Start()
@@ -96,5 +104,19 @@ public class PlayerStats : MonoBehaviour
         {
             currentStamina = maxStamina;
         }
+    }
+
+    public void EquipWeapon(ItemsManager weaponToEquip)
+    {
+        equippedWeapon = weaponToEquip;
+        equippedWeaponName = equippedWeapon.itemName; 
+        weaponPower = equippedWeapon.weaponDexterity;
+    }
+
+    public void EquipArmor(ItemsManager armorToEquip)
+    {
+        equippedArmor = armorToEquip;
+        equippedArmorName = equippedArmor.itemName; 
+        armorDefence = equippedArmor.armorDefence;
     }
 }

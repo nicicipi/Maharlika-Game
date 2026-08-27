@@ -21,18 +21,37 @@ public class ItemsManager : MonoBehaviour
     public bool isStackable;
     public int amount;
 
-    public void UseItem()
+    public void UseItem(int characterToUseOn)
     {
+        PlayerStats selectedChracter = GameManager.instance.GetPlayerStats()[characterToUseOn];
+
         if(itemType == ItemType.Item)
         {
             if(affectType == AffectType.HP)
             {
-                PlayerStats.instance.AddHP(amountOfAffect);
+                selectedChracter.AddHP(amountOfAffect);
             }
             else if (affectType == AffectType.SP)
             {
-                PlayerStats.instance.AddSP(amountOfAffect);
+                selectedChracter.AddSP(amountOfAffect);
             }
+        }
+
+        else if(itemType == ItemType.Weapon)
+        {
+            if(selectedChracter.equippedWeaponName != "None")
+            {
+                Inventory.instance.AddItems(selectedChracter.equippedWeapon);
+            }
+            selectedChracter.EquipWeapon(this);
+        }
+        else if(itemType == ItemType.Armor)
+        {
+            if (selectedChracter.equippedArmorName != "None") //double check if Player, Briar, or Adam have "" EMPTY in their player stats scripts in Unity
+            {
+                Inventory.instance.AddItems(selectedChracter.equippedArmor);
+            }
+            selectedChracter.EquipArmor(this);
         }
     }
 

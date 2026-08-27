@@ -19,7 +19,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Image[] characterImage;
     [SerializeField] GameObject[] characterPanel;
 
-    [SerializeField] TextMeshProUGUI statName, statHP, statSP, statDex, statDef, statAttack;
+    [SerializeField] TextMeshProUGUI statName, statHP, statSP, statDex, statDef, statAttack, statEquippedWeapon, statEquippedArmor;
+    [SerializeField] TextMeshProUGUI statWeaponPower, statArmorDefence;
     [SerializeField] Image characterStatImage;
 
     [SerializeField] GameObject itemSlotContainer;
@@ -109,6 +110,12 @@ public class MenuManager : MonoBehaviour
         statDex.text = playerSelected.dexterity.ToString();
         
         characterStatImage.sprite = playerSelected.characterImage;
+
+        statEquippedWeapon.text = playerSelected.equippedWeaponName;
+        statEquippedArmor.text = playerSelected.equippedArmorName;
+
+        statWeaponPower.text = playerSelected.weaponPower.ToString();
+        statArmorDefence.text = playerSelected.armorDefence.ToString();
     }
 
     public void UpdateItemsInventory()
@@ -145,14 +152,18 @@ public class MenuManager : MonoBehaviour
     {
         characterChoicePanel.SetActive(true);
 
-        for(int i = 0; i < playerStats.Length; i++)
+        if (activeItem)
         {
-            PlayerStats activePlayer = GameManager.instance.GetPlayerStats()[i];
-            itemsCharacterChoiceNames[i].text = activePlayer.playerName;
+            for (int i = 0; i < playerStats.Length; i++)
+            {
+                PlayerStats activePlayer = GameManager.instance.GetPlayerStats()[i];
+                itemsCharacterChoiceNames[i].text = activePlayer.playerName;
 
-            bool activePlayerAvailable = activePlayer.gameObject.activeInHierarchy;
-            itemsCharacterChoiceNames[i].transform.parent.gameObject.SetActive(activePlayerAvailable);
+                bool activePlayerAvailable = activePlayer.gameObject.activeInHierarchy;
+                itemsCharacterChoiceNames[i].transform.parent.gameObject.SetActive(activePlayerAvailable);
+            }
         }
+        
     }
 
     public void CloseCharacterChoicePanel()
@@ -160,9 +171,9 @@ public class MenuManager : MonoBehaviour
         characterChoicePanel.SetActive(false);
     }
 
-    public void UseItem()
+    public void UseItem(int selectedCharacter)
     {
-        activeItem.UseItem();
+        activeItem.UseItem(selectedCharacter);
         OpenCharacterChoicePanel();
         DiscardItem(); // MOVE THIS AFTER
     }
