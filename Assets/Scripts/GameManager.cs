@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     public bool gameMenuOpened, dialogueBoxOpened;
 
+    public int currentMoney;
+
     // Start is called before the first frame update
     void Start()
     {
