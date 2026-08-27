@@ -116,6 +116,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageToFade: {fileID: 3104617227070103101}
+  menu: {fileID: 0}
+  statsButtons: []
+  nameText: []
+  hpText: []
+  spText: []
+  lvlText: []
+  xpText: []
+  hpSlider: []
+  spSlider: []
+  xpSlider: []
+  characterImage: []
+  characterPanel: []
+  statName: {fileID: 0}
+  statHP: {fileID: 0}
+  statSP: {fileID: 0}
+  statDex: {fileID: 0}
+  statDef: {fileID: 0}
+  statAttack: {fileID: 0}
+  statEquippedWeapon: {fileID: 0}
+  statEquippedArmor: {fileID: 0}
+  statWeaponPower: {fileID: 0}
+  statArmorDefence: {fileID: 0}
+  characterStatImage: {fileID: 0}
+  itemSlotContainer: {fileID: 0}
+  itemSlotContainerParent: {fileID: 0}
+  itemName: {fileID: 0}
+  itemDescription: {fileID: 0}
+  activeItem: {fileID: 0}
+  characterChoicePanel: {fileID: 0}
+  itemsCharacterChoiceNames: []
 --- !u!1 &6696727008929127156
 GameObject:
   m_ObjectHideFlags: 0
