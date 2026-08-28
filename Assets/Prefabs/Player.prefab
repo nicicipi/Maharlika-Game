@@ -227,8 +227,8 @@ MonoBehaviour:
   special: 3
   specialDefence: 5
   dexterity: 3
-  equippedWeaponName: 
-  equippedArmorName: 
+  equippedWeaponName: None
+  equippedArmorName: None
   weaponPower: 0
   armorDefence: 0
   equippedWeapon: {fileID: 0}

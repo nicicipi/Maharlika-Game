@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestingPath.unity
     guid: cbcabfee805e92d4f9f9934b952c9879
+  - enabled: 1
+    path: Assets/Scenes/ShopKeeper_Test.unity
+    guid: f4d51589508d8bb41888fcc6f19d6cd7
   m_configObjects: {}

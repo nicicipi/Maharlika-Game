@@ -13,8 +13,6 @@ public class Player : MonoBehaviour
 
     public string transitionName;
 
-
-
     public bool deactivateMovement = false;
 
 

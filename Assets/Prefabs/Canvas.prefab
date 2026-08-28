@@ -3330,8 +3330,8 @@ MonoBehaviour:
   statDex: {fileID: 6967601387386572863}
   statDef: {fileID: 6963102239274168734}
   statAttack: {fileID: 7701476893924819078}
-  statEquippedWeapon: {fileID: 0}
-  statEquippedArmor: {fileID: 0}
+  statEquippedWeapon: {fileID: 5268277316958593256}
+  statEquippedArmor: {fileID: 4648725769499710732}
   statWeaponPower: {fileID: 136451446167279964}
   statArmorDefence: {fileID: 9107471509578355483}
   characterStatImage: {fileID: 1527213401855027028}
@@ -6802,7 +6802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &909916197009507267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10820,7 +10820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &813513691900577149
 RectTransform:
   m_ObjectHideFlags: 0
