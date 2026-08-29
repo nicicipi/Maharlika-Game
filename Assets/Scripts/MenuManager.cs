@@ -7,19 +7,21 @@ using TMPro;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] Image imageToFade;
-    [SerializeField] GameObject menu;
+    public GameObject menu;
 
     [SerializeField] GameObject[] statsButtons;
 
     public static MenuManager instance;
 
     private PlayerStats[] playerStats;
+
     [SerializeField] TextMeshProUGUI[] nameText, hpText, spText, lvlText, xpText;
     [SerializeField] Slider[] hpSlider, spSlider, xpSlider;
     [SerializeField] Image[] characterImage;
     [SerializeField] GameObject[] characterPanel;
+    [SerializeField] GameObject characterInfoPanel, itemsPanel, statPanel, savePanel, configPanel, quitPanel;
 
-    [SerializeField] TextMeshProUGUI statName, statHP, statSP, statDex, statDef, statAttack, statEquippedWeapon, statEquippedArmor;
+    [SerializeField] TextMeshProUGUI statLevel, statName, statHP, statSP, statDex, statDef, statAttack, statEquippedWeapon, statEquippedArmor;
     [SerializeField] TextMeshProUGUI statWeaponPower, statArmorDefence;
     [SerializeField] Image characterStatImage;
 
@@ -40,14 +42,17 @@ public class MenuManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.M))
+        UpdateStats();
+
+        if (Input.GetKeyDown(KeyCode.M))
         {
             if(menu.activeInHierarchy)
             {
                 UpdateStats();
+                characterInfoPanel.SetActive(true);
+                CloseEverythingInMenu();
                 menu.SetActive(false);
                 GameManager.instance.gameMenuOpened = false;
-
             } 
             else 
             {
@@ -101,6 +106,7 @@ public class MenuManager : MonoBehaviour
         PlayerStats playerSelected = playerStats[playerSelectedNumber];
 
         statName.text = playerSelected.playerName;
+        statLevel.text = playerSelected.playerLevel + "";
 
         statHP.text = playerSelected.currentHP.ToString() + "/" + playerSelected.maxHP;
         statSP.text = playerSelected.currentStamina.ToString() + "/" + playerSelected.maxStamina;
@@ -192,6 +198,18 @@ public class MenuManager : MonoBehaviour
     public void CloseMenu()
     {
         menu.SetActive(false);
+        CloseEverythingInMenu();
+        characterInfoPanel.SetActive(true);
         GameManager.instance.gameMenuOpened = false;
+    }
+
+    public void CloseEverythingInMenu()
+    {
+        itemsPanel.SetActive(false);
+        statPanel.SetActive(false);
+        savePanel.SetActive(false);
+        configPanel.SetActive(false);
+        quitPanel.SetActive(false);
+
     }
 }

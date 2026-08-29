@@ -19,21 +19,22 @@ public class ShopKeeper : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (canOpenShop && Input.GetButtonDown("Fire1") && !Player.instance.deactivateMovement 
-            && !ShopManager.instance.shopMenu.activeInHierarchy)
-        {
-            ShopManager.instance.itemsForSale = shopKeepersItemsForSale;
-            ShopManager.instance.OpenShopMenu();
-        }
-    }
+    //void Update()
+    //{
+    //    if (canOpenShop && !Player.instance.deactivateMovement 
+    //        && !ShopManager.instance.shopMenu.activeInHierarchy)
+    //    {
+    //        ShopManager.instance.itemsForSale = shopKeepersItemsForSale;
+    //        ShopManager.instance.OpenShopMenu();
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
-            canOpenShop = true;
+            //canOpenShop = true;
+            ShopManager.instance.itemsForSale = shopKeepersItemsForSale;
             //SceneManager.LoadScene(sceneToLoad);
 
             //talkPanel.SetActive(true);
@@ -48,7 +49,7 @@ public class ShopKeeper : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            canOpenShop = false;
+            //canOpenShop = false;
         }
     }
 
