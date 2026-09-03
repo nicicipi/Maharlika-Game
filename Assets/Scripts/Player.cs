@@ -36,8 +36,8 @@ public class Player : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        bottomLeftEdge = tilemap.localBounds.min + new Vector3(0.7f, 1f, 0f);
-        topRightEdge = tilemap.localBounds.max + new Vector3(-0.7f, -1f, 0f);
+        bottomLeftEdge = tilemap.localBounds.min + new Vector3(0.7f, 1.2f, 0f);
+        topRightEdge = tilemap.localBounds.max + new Vector3(-0.7f, -1.2f, 0f);
     }
 
     // Update is called once per frame
