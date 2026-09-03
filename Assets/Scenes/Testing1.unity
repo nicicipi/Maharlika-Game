@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 22110646}
   - component: {fileID: 22110645}
   - component: {fileID: 22110647}
+  - component: {fileID: 22110648}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -260,6 +261,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 749cb641f7973bb43aa2fe4ee30733c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &22110648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22110644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc76a574acf437e48a8a2a9f52318864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questNames:
+  - 
+  - Defeat a robot
+  - Get weapon
+  - Enter area
+  questMarkersCompleted: 
 --- !u!1 &62768798
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +658,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.344707, y: 3.4287958}
   m_EdgeRadius: 0
+--- !u!1001 &346628007
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 268520554528863712, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+      propertyPath: m_Name
+      value: TEMP_COIN
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748636815929546644, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -14.621256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748636815929546644, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.1574783
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748636815929546644, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748636815929546644, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748636815929546644, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748636815929546644, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748636815929546644, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748636815929546644, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748636815929546644, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3748636815929546644, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 268520554528863712, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 346628009}
+  m_SourcePrefab: {fileID: 100100000, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+--- !u!1 &346628008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 268520554528863712, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+  m_PrefabInstance: {fileID: 346628007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &346628009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346628008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe8aacd6686c3d4abd7ef3bf1cae9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToActivate: {fileID: 811711057}
+  questToCheck: Get weapon
+  activateIfComplete: 1
 --- !u!4 &355828213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4248479268440155742, guid: d95c99baf8692184f9f825e290f0e8dc, type: 3}
@@ -741,6 +840,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7811199505574195575, guid: 6baf90930fb68444fb50feab07dfc251, type: 3}
   m_PrefabInstance: {fileID: 1135642354944942362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &811711057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 268520554528863712, guid: 8dabdd5a6f973a34980605a0dd6e7eb6, type: 3}
+  m_PrefabInstance: {fileID: 8131793239716996704}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &965765966 stripped
 Transform:
@@ -19693,6 +19797,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TEMP_SWORD
       objectReference: {fileID: 0}
+    - target: {fileID: 268520554528863712, guid: 8dabdd5a6f973a34980605a0dd6e7eb6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3748636815929546644, guid: 8dabdd5a6f973a34980605a0dd6e7eb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.318407
@@ -20120,3 +20228,4 @@ SceneRoots:
   - {fileID: 1062305326}
   - {fileID: 1844062667}
   - {fileID: 1266532192}
+  - {fileID: 346628007}
