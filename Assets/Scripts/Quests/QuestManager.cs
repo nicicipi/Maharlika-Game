@@ -55,15 +55,32 @@ public class QuestManager : MonoBehaviour
         return false;
     }
 
+    public void UpdateQuestObjects()
+    {
+        QuestObject[] questObjects = FindObjectsOfType<QuestObject>();
+
+        if(questObjects.Length > 0)
+        {
+            foreach(QuestObject questObject in questObjects)
+            {
+                questObject.CheckForCompletion();
+            }
+        }
+    }
+
     public void MarkQuestComplete(string questToMark)
     {
         int questNumberToCheck = GetQuestNumber(questToMark);
         questMarkersCompleted[questNumberToCheck] = true;
+
+        UpdateQuestObjects();
     }
     public void MarkQuestIncomplete(string questToMark)
     {
         int questNumberToCheck = GetQuestNumber(questToMark);
         questMarkersCompleted[questNumberToCheck] = false;
+
+        UpdateQuestObjects();
     }
 
 }
