@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
 {
@@ -19,7 +18,7 @@ public class Player : MonoBehaviour
     private Vector3 bottomLeftEdge;
     private Vector3 topRightEdge;
 
-    [SerializeField] Tilemap tilemap;
+    //[SerializeField] Tilemap tilemap;
 
 
     // Start is called before the first frame update
@@ -36,8 +35,9 @@ public class Player : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        bottomLeftEdge = tilemap.localBounds.min + new Vector3(0.7f, 1.2f, 0f);
-        topRightEdge = tilemap.localBounds.max + new Vector3(-0.7f, -1.2f, 0f);
+        //removed because level manager exists   
+        //bottomLeftEdge = tilemap.localBounds.min + new Vector3(0.7f, 1.2f, 0f);
+        //topRightEdge = tilemap.localBounds.max + new Vector3(-0.7f, -1.2f, 0f);
     }
 
     // Update is called once per frame
@@ -74,6 +74,13 @@ public class Player : MonoBehaviour
             Mathf.Clamp(transform.position.y, bottomLeftEdge.y, topRightEdge.y),
             Mathf.Clamp(transform.position.z, bottomLeftEdge.z, topRightEdge.z)
          );
+
+    }
+
+    public void SetLimit(Vector3 bottomEdgeToSet, Vector3 topEdgeToSet)
+    {
+        bottomLeftEdge = bottomEdgeToSet;
+        topRightEdge = topEdgeToSet;
 
     }
 }

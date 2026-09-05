@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
         bottomLeftEdge = tilemap.localBounds.min + new Vector3(0.5f, 1f, 0f);
         topRightEdge = tilemap.localBounds.max + new Vector3(-0.5f, -1f, 0f);
 
-        //Player.instance.SetLimit(bottomLeftEdge, topRightEdge);
+        Player.instance.SetLimit(bottomLeftEdge, topRightEdge);
     }
 
     // Update is called once per frame

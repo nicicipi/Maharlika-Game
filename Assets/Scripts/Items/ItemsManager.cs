@@ -60,6 +60,7 @@ public class ItemsManager : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             // print("Triggered " + itemName);
+            AudioManager.instance.PlaySFX(17);
 
             Inventory.instance.AddItems(this);
             SelfDestroy();

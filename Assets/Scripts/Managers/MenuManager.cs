@@ -49,15 +49,13 @@ public class MenuManager : MonoBehaviour
             if(menu.activeInHierarchy)
             {
                 UpdateStats();
-                characterInfoPanel.SetActive(true);
-                CloseEverythingInMenu();
-                menu.SetActive(false);
-                GameManager.instance.gameMenuOpened = false;
+                CloseMenu();
             } 
             else 
             {
                 menu.SetActive(true);
                 GameManager.instance.gameMenuOpened = true;
+                AudioManager.instance.PlaySFX(19);
             }
         }
        
@@ -152,6 +150,17 @@ public class MenuManager : MonoBehaviour
     {
         Inventory.instance.RemoveItem(activeItem);
         UpdateItemsInventory();
+        AudioManager.instance.PlaySFX(15);
+    }
+    public void UseItem(int selectedCharacter)
+    {
+        activeItem.UseItem(selectedCharacter);
+        OpenCharacterChoicePanel();
+
+        Inventory.instance.RemoveItem(activeItem);
+        UpdateItemsInventory();
+
+        AudioManager.instance.PlaySFX(16);
     }
 
     public void OpenCharacterChoicePanel()
@@ -177,13 +186,6 @@ public class MenuManager : MonoBehaviour
         characterChoicePanel.SetActive(false);
     }
 
-    public void UseItem(int selectedCharacter)
-    {
-        activeItem.UseItem(selectedCharacter);
-        OpenCharacterChoicePanel();
-        DiscardItem(); // MOVE THIS AFTER
-    }
-
     public void QuitGame()
     {
         Application.Quit();
@@ -197,10 +199,13 @@ public class MenuManager : MonoBehaviour
 
     public void CloseMenu()
     {
-        menu.SetActive(false);
-        CloseEverythingInMenu();
         characterInfoPanel.SetActive(true);
+        CloseEverythingInMenu();
+        menu.SetActive(false);
         GameManager.instance.gameMenuOpened = false;
+        AudioManager.instance.PlaySFX(18);
+
+
     }
 
     public void CloseEverythingInMenu()

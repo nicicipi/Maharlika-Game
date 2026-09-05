@@ -8,6 +8,9 @@ public class CamController : MonoBehaviour
     private Player playerTarget;
     CinemachineVirtualCamera virtualCamera;
 
+    [SerializeField] int musicToPlay;
+    private bool musicAlreadyPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,11 @@ public class CamController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!musicAlreadyPlayer)
+        {
+            musicAlreadyPlayer = true;
+            AudioManager.instance.PlayBackgroundMusic(musicToPlay);
+        }
         
     }
 }
