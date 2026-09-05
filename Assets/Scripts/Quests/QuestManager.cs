@@ -21,6 +21,18 @@ public class QuestManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Debug.Log("Data has been saved");
+            SaveQuestData();
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Debug.Log("Data has been loaded");
+            LoadQuestData();
+        }
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             print(CheckIfComplete("Defeat a robot"));
@@ -81,6 +93,40 @@ public class QuestManager : MonoBehaviour
         questMarkersCompleted[questNumberToCheck] = false;
 
         UpdateQuestObjects();
+    }
+     
+    public void SaveQuestData()
+    {
+        for(int i = 0; i < questNames.Length; i++)
+        {
+            if (questMarkersCompleted[i])
+            {
+                PlayerPrefs.SetInt("QuestMarker_" + questNames[i], 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("QuestMarker_" + questNames[i], 0);
+            }
+        }
+    }
+
+    public void LoadQuestData()
+    {
+        for (int i = 0; i < questNames.Length; i++)
+        {
+            int valueToSet = 0;
+            string keyToUse = "QuestMarker_" + questNames[i];
+
+            if (PlayerPrefs.HasKey(keyToUse))
+            {
+                valueToSet = PlayerPrefs.GetInt(keyToUse);
+            }
+
+            if (valueToSet == 0)
+                questMarkersCompleted[i] = false;
+            else
+                questMarkersCompleted[i] = true;
+        }
     }
 
 }
