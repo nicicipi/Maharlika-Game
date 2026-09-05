@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2365483328481101271
+--- !u!1 &6939704286160997414
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5748592410392679786}
-  - component: {fileID: 4327422762306581880}
-  - component: {fileID: 7771947463421183006}
+  - component: {fileID: 7109942295321668814}
+  - component: {fileID: 6968914415140666992}
+  - component: {fileID: 7362733311433831672}
+  - component: {fileID: 245126882819288121}
+  - component: {fileID: 2874782365534077094}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -18,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5748592410392679786
+--- !u!4 &7109942295321668814
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2365483328481101271}
+  m_GameObject: {fileID: 6939704286160997414}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,13 +35,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4327422762306581880
+--- !u!114 &6968914415140666992
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2365483328481101271}
+  m_GameObject: {fileID: 6939704286160997414}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f20c944b6b8f1e742a491c04b5baa22c, type: 3}
@@ -48,15 +50,53 @@ MonoBehaviour:
   playerStats: []
   gameMenuOpened: 0
   dialogueBoxOpened: 0
---- !u!114 &7771947463421183006
+  shopOpened: 0
+  currentMoney: 0
+--- !u!114 &7362733311433831672
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2365483328481101271}
+  m_GameObject: {fileID: 6939704286160997414}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 749cb641f7973bb43aa2fe4ee30733c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &245126882819288121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939704286160997414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de313d0fe5cbb1744846286f66e31914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsAvailable:
+  - {fileID: 6621584954699507376, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+  - {fileID: 7184134740926826035, guid: 6baf90930fb68444fb50feab07dfc251, type: 3}
+  - {fileID: 183402318249301568, guid: 9d269b9d55e33f64c9369acc635d6a1c, type: 3}
+  - {fileID: 6226294524333637412, guid: d95c99baf8692184f9f825e290f0e8dc, type: 3}
+  - {fileID: 6621584954699507376, guid: 8dabdd5a6f973a34980605a0dd6e7eb6, type: 3}
+--- !u!114 &2874782365534077094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939704286160997414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc76a574acf437e48a8a2a9f52318864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questNames:
+  - 
+  - Defeat a robot
+  - Get weapon
+  - Enter area
+  questMarkersCompleted: 
