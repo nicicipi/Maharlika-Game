@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Linq; // for sorting -- player always first
 
 public class GameManager : MonoBehaviour
@@ -72,6 +73,8 @@ public class GameManager : MonoBehaviour
     {
         SavingPlayerPosition();
         SavingPlayerStats();
+
+        PlayerPrefs.SetString("Current_Scene", SceneManager.GetActiveScene().name);
 
         PlayerPrefs.SetInt("Number_Of_Items", Inventory.instance.GetItemsList().Count);
         for (int i = 0; i < Inventory.instance.GetItemsList().Count; i++)
