@@ -1,4 +1,4 @@
-using System;
+//using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +18,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField] int currentTurn;
     [SerializeField] bool waitingForTurn;
     [SerializeField] GameObject UIButtonHolder;
+
+    [SerializeField] BattleMoves[] battleMovesList;
 
 
     // Start is called before the first frame update
@@ -40,6 +42,12 @@ public class BattleManager : MonoBehaviour
             NextTurn();
         }
 
+        CheckPlayerButtonHolder();
+
+    }
+
+    private void CheckPlayerButtonHolder()
+    {
         if (isBattleActive)
         {
             if (waitingForTurn)
@@ -47,10 +55,12 @@ public class BattleManager : MonoBehaviour
                 if (activeCharacters[currentTurn].IsPlayer())
                     UIButtonHolder.SetActive(true);
                 else
+                {
                     UIButtonHolder.SetActive(false);
+                    StartCoroutine(EnemyMoveCoroutine());
+                }
             }
         }
-
     }
 
     public void StartBattle(string[] enemiesToSpawn)
@@ -146,10 +156,8 @@ public class BattleManager : MonoBehaviour
             transform.position.z
             );
         GameManager.instance.battleIsActive = true;
-
-            
+ 
         battleScene.SetActive(true);
-        
     }
 
     private void NextTurn()
@@ -197,8 +205,50 @@ public class BattleManager : MonoBehaviour
             battleScene.SetActive(false);
             GameManager.instance.battleIsActive = false;
             isBattleActive = false;
-
         }
+    }
 
+    public IEnumerator EnemyMoveCoroutine()
+    {
+        waitingForTurn = false;
+
+        yield return new WaitForSeconds(1f);
+        EnemyAttack();
+
+        yield return new WaitForSeconds(1f);
+        NewTurn();
+    }
+
+    private void NewTurn()
+    {
+        
+    }
+
+    private void EnemyAttack()
+    {
+        List<int> players = new List<int>();
+
+        for(int i = 0; i < activeCharacters.Count; i++)
+        {
+            if (activeCharacters[i].IsPlayer() && activeCharacters[i].currentHP > 0)
+            {
+                players.Add(i);
+            }
+        }
+        int selectedPlayerToAttack = players[Random.Range(0, players.Count)];
+
+        int selectedAttack = Random.Range(0, activeCharacters[currentTurn].AttackMovesAvailable().Length);
+
+        for(int i = 0; i < battleMovesList.Length; i++)
+        {
+            if (battleMovesList[i].moveName == activeCharacters[currentTurn].AttackMovesAvailable()[selectedAttack])
+            {
+                Instantiate(
+                    battleMovesList[i].theEffectToUse,
+                    activeCharacters[selectedPlayerToAttack].transform.position,
+                    activeCharacters[selectedPlayerToAttack].transform.rotation
+                );
+            }
+        }
     }
 }

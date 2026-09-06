@@ -28653,6 +28653,19 @@ MonoBehaviour:
   currentTurn: 0
   waitingForTurn: 0
   UIButtonHolder: {fileID: 2118978353}
+  battleMovesList:
+  - moveName: Slash 3
+    movePower: 15
+    staminaCost: 3
+    theEffectToUse: {fileID: 4501823576280740759, guid: b6cc9089ba41c354888de353ee01d00a, type: 3}
+  - moveName: Slash 2
+    movePower: 10
+    staminaCost: 0
+    theEffectToUse: {fileID: 6093192398697191742, guid: 01e786d9d765006489b5346fe6fc8f29, type: 3}
+  - moveName: Impact
+    movePower: 25
+    staminaCost: 7
+    theEffectToUse: {fileID: 72544525169224807, guid: 31b0291da3973b54980452706ae34a51, type: 3}
 --- !u!4 &1615502553
 Transform:
   m_ObjectHideFlags: 0
