@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] PlayerStats[] playerStats;
 
-    public bool gameMenuOpened, dialogueBoxOpened, shopOpened;
+    public bool gameMenuOpened, dialogueBoxOpened, shopOpened, battleIsActive;
 
     public int currentMoney;
 
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        if (gameMenuOpened || dialogueBoxOpened || shopOpened)
+        if (gameMenuOpened || dialogueBoxOpened || shopOpened || battleIsActive)
         {
             Player.instance.deactivateMovement = true; 
         }
