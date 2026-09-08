@@ -1008,6 +1008,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AD4M
       objectReference: {fileID: 0}
+    - target: {fileID: 518408028913662472, guid: 011dae886d471d14ba3305dc0cc0a4e1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7735691827629872279, guid: 011dae886d471d14ba3305dc0cc0a4e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.059821
@@ -27603,6 +27607,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Briar
       objectReference: {fileID: 0}
+    - target: {fileID: 1975241522543346550, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2641537235915668120, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.56
@@ -27642,6 +27650,14 @@ PrefabInstance:
     - target: {fileID: 2641537235915668120, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6639697718786654838, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
+      propertyPath: maxHP
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6639697718786654838, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
+      propertyPath: currentHP
+      value: 10000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28905,6 +28921,10 @@ MonoBehaviour:
     theEffectToUse: {fileID: 72544525169224807, guid: 31b0291da3973b54980452706ae34a51, type: 3}
   characterAttackEffect: {fileID: 7897531235703030122, guid: cb3282182b4ccfc40882a4156ea6619f, type: 3}
   damageText: {fileID: 587502001441309299, guid: 1595859342ecb9148b0056b8b5a381a8, type: 3}
+  playerBattleStats:
+  - {fileID: 2014431358}
+  - {fileID: 527805629}
+  - {fileID: 1795698786}
   playersNameText:
   - {fileID: 509592848}
   - {fileID: 1399112939}
