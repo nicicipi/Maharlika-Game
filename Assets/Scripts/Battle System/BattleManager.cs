@@ -31,6 +31,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] playerHealth, playerStamina;
     [SerializeField] Slider[] playerHealthSlider, playerStaminaSlider;
 
+    [SerializeField] GameObject enemyTargetPanel;
+    [SerializeField] BattleTargetButtons[] targetButtons;
+
     // --- TOP NOTIFICATION PANEL UI --- NOT YET IMPLEMENTED SEP 9 2026
     [Header("Battle Notice UI")]
     [SerializeField] GameObject battleNoticePanel;
@@ -253,7 +256,7 @@ public class BattleManager : MonoBehaviour
     {
         List<int> players = new List<int>();
 
-        for(int i = 0; i < activeCharacters.Count; i++)
+        for (int i = 0; i < activeCharacters.Count; i++)
         {
             if (activeCharacters[i].IsPlayer() && activeCharacters[i].currentHP > 0)
             {
@@ -265,30 +268,29 @@ public class BattleManager : MonoBehaviour
         int selectedAttack = Random.Range(0, activeCharacters[currentTurn].AttackMovesAvailable().Length);
         int movePower = 0;
 
-        for(int i = 0; i < battleMovesList.Length; i++)
+        for (int i = 0; i < battleMovesList.Length; i++)
         {
             if (battleMovesList[i].moveName == activeCharacters[currentTurn].AttackMovesAvailable()[selectedAttack])
             {
-                Instantiate(
-                    battleMovesList[i].theEffectToUse,
-                    activeCharacters[selectedPlayerToAttack].transform.position,
-                    activeCharacters[selectedPlayerToAttack].transform.rotation
-                );
-
-                movePower = battleMovesList[i].movePower;
+                movePower = GettingMovePowerAndEffectInstanstiation(selectedPlayerToAttack, i);
             }
         }
 
         // instantiating the effect of which character is currently attacking
+        InstantiateEffectOnAttackingCharacter();
+
+        DealDamageToCharacters(selectedPlayerToAttack, movePower);
+
+        UpdatePlayerStats();
+    }
+
+    private void InstantiateEffectOnAttackingCharacter()
+    {
         Instantiate(
             characterAttackEffect,
             activeCharacters[currentTurn].transform.position,
             activeCharacters[currentTurn].transform.rotation
             );
-
-        DealDamageToCharacters(selectedPlayerToAttack, movePower);
-
-        UpdatePlayerStats();
     }
 
     private void DealDamageToCharacters(int selectedCharacterToAttack, int movePower)
@@ -366,4 +368,68 @@ public class BattleManager : MonoBehaviour
         }
     }
 
+    //Player attacking methods
+
+    public void PlayerAttack(string moveName, int selectEnemyTarget)
+    {
+        //int selectEnemyTarget = 3;
+        int movePower = 0;
+
+        for(int i = 0; i < battleMovesList.Length; i++)
+        {
+            if (battleMovesList[i].moveName == moveName)
+            {
+                movePower = GettingMovePowerAndEffectInstanstiation(selectEnemyTarget, i);
+            }
+        }
+
+        InstantiateEffectOnAttackingCharacter();
+
+        DealDamageToCharacters(selectEnemyTarget, movePower);
+
+        NextTurn();
+
+        enemyTargetPanel.SetActive(false);
+    }
+
+    public void OpenTargetMenu(string moveName)
+    {
+        enemyTargetPanel.SetActive(true);
+
+        List<int> Enemies = new List<int>();
+        for(int i = 0; i < activeCharacters.Count; i++)
+        {
+            if (!activeCharacters[i].IsPlayer())
+            {
+                Enemies.Add(i);
+            }
+        }
+
+        //Debug.Log(Enemies.Count);
+
+        for(int i = 0; i < targetButtons.Length; i++)
+        {
+            if(Enemies.Count > i)
+            {
+                targetButtons[i].gameObject.SetActive(true);
+                targetButtons[i].moveName = moveName;
+                targetButtons[i].activeBattleTarget = Enemies[i];
+                targetButtons[i].targetName.text = activeCharacters[Enemies[i]].characterName;
+            }
+        }
+
+    }
+
+    private int GettingMovePowerAndEffectInstanstiation(int selectCharacterTarget, int i)
+    {
+        int movePower;
+        Instantiate(
+            battleMovesList[i].theEffectToUse,
+            activeCharacters[selectCharacterTarget].transform.position,
+            activeCharacters[selectCharacterTarget].transform.rotation
+        );
+
+        movePower = battleMovesList[i].movePower;
+        return movePower;
+    }
 }
