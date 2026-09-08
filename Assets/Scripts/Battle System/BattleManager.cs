@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class BattleManager : MonoBehaviour
@@ -23,8 +24,11 @@ public class BattleManager : MonoBehaviour
     [SerializeField] BattleMoves[] battleMovesList;
 
     [SerializeField] ParticleSystem characterAttackEffect;
-
     [SerializeField] CharacterDamageGUI damageText;
+
+    [SerializeField] TextMeshProUGUI[] playersNameText;
+    [SerializeField] TextMeshProUGUI[] playerHealth, playerStamina;
+    [SerializeField] Slider[] playerHealthSlider, playerStaminaSlider;
 
     // --- TOP NOTIFICATION PANEL UI --- NOT YET IMPLEMENTED SEP 9 2026
     [Header("Battle Notice UI")]
@@ -82,6 +86,7 @@ public class BattleManager : MonoBehaviour
             SettingUpBattle();
             AddingPlayers();
             AddingEnemies(enemiesToSpawn);
+            UpdatePlayerStats();
 
             waitingForTurn = true;
             //currentTurn = Random.Range(0, activeCharacters.Count); 
@@ -180,6 +185,7 @@ public class BattleManager : MonoBehaviour
 
         waitingForTurn = true;
         UpdateBattle();
+        UpdatePlayerStats();
     }
 
     private void UpdateBattle()
@@ -223,7 +229,7 @@ public class BattleManager : MonoBehaviour
     {
         waitingForTurn = false;
 
-        yield return new WaitForSeconds(1.5f    );
+        yield return new WaitForSeconds(1f);
         EnemyAttack();
 
         yield return new WaitForSeconds(1.5f);
@@ -269,8 +275,7 @@ public class BattleManager : MonoBehaviour
 
         DealDamageToCharacters(selectedPlayerToAttack, movePower);
 
-
-
+        UpdatePlayerStats();
     }
 
     private void DealDamageToCharacters(int selectedCharacterToAttack, int movePower)
@@ -310,4 +315,40 @@ public class BattleManager : MonoBehaviour
         return damageToGive;
 
     }
+
+    public void UpdatePlayerStats()
+    {
+        for(int i = 0; i < playersNameText.Length; i++)
+        {
+            if(activeCharacters.Count > i)
+            {
+                if (activeCharacters[i].IsPlayer())
+                {
+                    BattleCharacters playerData = activeCharacters[i];
+
+                    playersNameText[i].text = playerData.characterName;
+
+                    playerHealth[i].text = playerData.currentHP + "/" + playerData.maxHP;
+                    playerStamina[i].text = playerData.currentSP + "/" + playerData.maxSP;
+
+                    playerHealthSlider[i].maxValue = playerData.maxHP;
+                    playerHealthSlider[i].value = playerData.currentHP;
+
+                    playerStaminaSlider[i].maxValue = playerData.maxSP;
+                    playerStaminaSlider[i].value = playerData.currentSP;
+                }
+
+                else
+                {
+                    playersNameText[i].gameObject.SetActive(false);
+
+                }
+            }
+            else
+            {
+                playersNameText[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
 }

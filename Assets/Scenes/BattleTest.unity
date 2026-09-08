@@ -1111,10 +1111,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 08c1d25ba6ec807469b5e05e07adab4b, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -1325,10 +1325,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 04fe66615395d2e49bba9f60337b2f51, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2232,10 +2232,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 04fe66615395d2e49bba9f60337b2f51, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2522,10 +2522,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 04fe66615395d2e49bba9f60337b2f51, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -27839,7 +27839,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HP:'
+  m_text: 'SP:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8fc21479eb579c4bbe660b08d530a4a, type: 2}
   m_sharedMaterial: {fileID: -3933755348417677161, guid: c8fc21479eb579c4bbe660b08d530a4a, type: 2}
@@ -27973,7 +27973,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HP:'
+  m_text: 'SP:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8fc21479eb579c4bbe660b08d530a4a, type: 2}
   m_sharedMaterial: {fileID: -3933755348417677161, guid: c8fc21479eb579c4bbe660b08d530a4a, type: 2}
@@ -28288,10 +28288,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 08c1d25ba6ec807469b5e05e07adab4b, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -28872,9 +28872,9 @@ MonoBehaviour:
   battleScene: {fileID: 1178907123}
   activeCharacters: []
   playerPositions:
-  - {fileID: 1666703872}
-  - {fileID: 1618322127}
   - {fileID: 439160565}
+  - {fileID: 1618322127}
+  - {fileID: 1666703872}
   enemiesPositions:
   - {fileID: 356338659}
   - {fileID: 1609641730}
@@ -28905,6 +28905,26 @@ MonoBehaviour:
     theEffectToUse: {fileID: 72544525169224807, guid: 31b0291da3973b54980452706ae34a51, type: 3}
   characterAttackEffect: {fileID: 7897531235703030122, guid: cb3282182b4ccfc40882a4156ea6619f, type: 3}
   damageText: {fileID: 587502001441309299, guid: 1595859342ecb9148b0056b8b5a381a8, type: 3}
+  playersNameText:
+  - {fileID: 509592848}
+  - {fileID: 1399112939}
+  - {fileID: 465176319}
+  playerHealth:
+  - {fileID: 65725510}
+  - {fileID: 880788831}
+  - {fileID: 985142333}
+  playerStamina:
+  - {fileID: 1778722126}
+  - {fileID: 1277818591}
+  - {fileID: 719871791}
+  playerHealthSlider:
+  - {fileID: 1047168799}
+  - {fileID: 1684342537}
+  - {fileID: 71208865}
+  playerStaminaSlider:
+  - {fileID: 2025221792}
+  - {fileID: 38474298}
+  - {fileID: 41840536}
   battleNoticePanel: {fileID: 876230975}
   battleNoticeText: {fileID: 1144061339}
 --- !u!4 &1615502553
@@ -29013,10 +29033,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 08c1d25ba6ec807469b5e05e07adab4b, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -29419,7 +29439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HP:'
+  m_text: 'SP:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8fc21479eb579c4bbe660b08d530a4a, type: 2}
   m_sharedMaterial: {fileID: -3933755348417677161, guid: c8fc21479eb579c4bbe660b08d530a4a, type: 2}
@@ -29680,9 +29700,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 456111475807769022, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 456111475807769022, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051043345397766591, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051043345397766591, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485997817083400154, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485997817083400154, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2402969584698943631, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453583617486663276, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2453583617486663276, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619819377601095820, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619819377601095820, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5476687473476436592, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
       propertyPath: m_Pivot.x
@@ -29764,6 +29824,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6499770711144522877, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6499770711144522877, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580229466893277152, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580229466893277152, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6796073154642527833, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
       propertyPath: quitPanel
       value: 
@@ -29780,6 +29856,22 @@ PrefabInstance:
       propertyPath: characterInfoPanel
       value: 
       objectReference: {fileID: 1450143727}
+    - target: {fileID: 7047243678181949073, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047243678181949073, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958938427537903299, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958938427537903299, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
