@@ -34,6 +34,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField] GameObject enemyTargetPanel;
     [SerializeField] BattleTargetButtons[] targetButtons;
 
+    public GameObject skillChoicePanel;
+
     // --- TOP NOTIFICATION PANEL UI --- NOT YET IMPLEMENTED SEP 9 2026
     [Header("Battle Notice UI")]
     [SerializeField] GameObject battleNoticePanel;
@@ -431,5 +433,15 @@ public class BattleManager : MonoBehaviour
 
         movePower = battleMovesList[i].movePower;
         return movePower;
+    }
+
+    public void OpenSkillPanel()
+    {
+        skillChoicePanel.SetActive(true);
+    }
+
+    public BattleCharacters GetCurrentActiveCharacter()
+    {
+        return activeCharacters[currentTurn];
     }
 }
