@@ -17,7 +17,14 @@ public class BattleSkillButton : MonoBehaviour
             BattleManager.instance.skillChoicePanel.SetActive(false);
             BattleManager.instance.OpenTargetMenu(skillName);
             BattleManager.instance.GetCurrentActiveCharacter().currentSP -= skillCost;
+        }
 
+        else
+        {
+            BattleManager.instance.battleNotice.SetText("You do not have enough stamina!");
+            BattleManager.instance.battleNotice.Activate();
+
+            BattleManager.instance.skillChoicePanel.SetActive(false);
         }
     }
 }

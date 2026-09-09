@@ -31,10 +31,21 @@ public class GameManager : MonoBehaviour
         //If want the players to be automatically put in the gamemanager
         //playerStats = FindObjectsOfType<PlayerStats>();
 
-        // Find all party members and player tag is always first
+        // Find all party members and player tag is always first --- IN BATTLE UI THIS WONT WORK BC ALL CHARACTERS ARE TAGGED PLAYERS
+        //playerStats = FindObjectsOfType<PlayerStats>()
+        //    .OrderByDescending(p => p.CompareTag("Player"))
+        //    .ToArray();
+
+        // Explicit party member roster order: Lyka (0), Briar (1), AD4M (2)
+        string[] partyOrder = { "Lyka", "Briar", "AD4M" };
+
         playerStats = FindObjectsOfType<PlayerStats>()
-            .OrderByDescending(p => p.CompareTag("Player"))
+            .OrderBy(p => {
+                int index = System.Array.IndexOf(partyOrder, p.playerName);
+                return index >= 0 ? index : int.MaxValue;
+            })
             .ToArray();
+
     }
 
     // Update is called once per frame

@@ -35,12 +35,24 @@ public class BattleManager : MonoBehaviour
     [SerializeField] BattleTargetButtons[] targetButtons;
 
     public GameObject skillChoicePanel;
+    [SerializeField] BattleSkillButton[] skillButtons;
+
+    public BattleNotification battleNotice;
+
+    [SerializeField] float chanceToRunAway = 0.7f;
+
+    public GameObject itemsToUseMenu;
+    [SerializeField] ItemsManager selectedItem;
+    [SerializeField] GameObject itemSlotContainer;
+    [SerializeField] Transform itemSlotContainerParent;
+    [SerializeField] TextMeshProUGUI itemName, itemDescription;
+
 
     // --- TOP NOTIFICATION PANEL UI --- NOT YET IMPLEMENTED SEP 9 2026
-    [Header("Battle Notice UI")]
-    [SerializeField] GameObject battleNoticePanel;
-    [SerializeField] TextMeshProUGUI battleNoticeText;
-    private Coroutine noticeCoroutine;
+    //[Header("Battle Notice UI")]
+    //[SerializeField] GameObject battleNoticePanel;
+    //[SerializeField] TextMeshProUGUI battleNoticeText;
+    //private Coroutine noticeCoroutine;
 
 
     // Start is called before the first frame update
@@ -322,7 +334,7 @@ public class BattleManager : MonoBehaviour
 
     private int CalculateCritical(int damageToGive)
     {
-        if(Random.value <= 0.8f) // needs to be 0.1 so its a lower chance for a crit
+        if(Random.value <= 0.1f) // needs to be 0.1 so its a lower chance for a crit
         {
             Debug.Log("Critical Hit! Instead of " + damageToGive
                 + " points. " + (damageToGive * 2) + " was dealt.");
@@ -438,10 +450,89 @@ public class BattleManager : MonoBehaviour
     public void OpenSkillPanel()
     {
         skillChoicePanel.SetActive(true);
+
+        for (int i = 0; i < skillButtons.Length; i++)
+        {
+            if (activeCharacters[currentTurn].AttackMovesAvailable().Length > i)
+            {
+                skillButtons[i].gameObject.SetActive(true);
+                skillButtons[i].skillName = GetCurrentActiveCharacter().AttackMovesAvailable()[i];
+                skillButtons[i].skillNameText.text = skillButtons[i].skillName;
+
+                for(int j = 0; j < battleMovesList.Length; j++)
+                {
+                    if (battleMovesList[j].moveName == skillButtons[i].skillName)
+                    {
+                        skillButtons[i].skillCost = battleMovesList[j].staminaCost;
+                        skillButtons[i].skillCostText.text = skillButtons[i].skillCost.ToString();
+
+                        skillButtons[i].skillDesc = "" + battleMovesList[j].moveDescription;
+                        skillButtons[i].skillDescText.text = skillButtons[i].skillDesc.ToString();
+
+                    }
+                }
+            }
+            else
+            {
+                skillButtons[i].gameObject.SetActive(false);
+            }
+        }
+
+        
     }
 
     public BattleCharacters GetCurrentActiveCharacter()
     {
         return activeCharacters[currentTurn];
     }
+
+    public void RunAway()
+    {
+        if (Random.value > chanceToRunAway)
+        {
+            isBattleActive = false;
+            battleScene.SetActive(false);
+        }
+        else
+        {
+            NextTurn();
+            battleNotice.SetText("You failed to run away!");
+            battleNotice.Activate();
+
+        }
+    }
+
+    public void UpdateItemsInInventory()
+    {
+        itemsToUseMenu.SetActive(true);
+
+        foreach (Transform itemSlot in itemSlotContainerParent)
+        {
+            Destroy(itemSlot.gameObject);
+        }
+
+        foreach (ItemsManager item in Inventory.instance.GetItemsList())
+        {
+            RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
+
+            Image itemImage = itemSlot.Find("Item Image").GetComponent<Image>(); //item image remember this when checking for the sprite of your items in inventory, if you change it, it wont work here
+            itemImage.sprite = item.itemsImage;
+
+            TextMeshProUGUI itemsAmountText = itemSlot.Find("Amount Text").GetComponent<TextMeshProUGUI>();
+            if (item.amount > 1)
+                itemsAmountText.text = item.amount.ToString();
+            else
+                itemsAmountText.text = "";
+
+            itemSlot.GetComponent<ItemButton>().itemOnButton = item;
+        }
+    }
+
+    public void selectedItemToUse(ItemsManager itemToUse)
+    {
+        selectedItem = itemToUse;
+        itemName.text = itemToUse.itemName;
+        itemDescription.text = itemToUse.itemDescription; 
+    }
+
 }
