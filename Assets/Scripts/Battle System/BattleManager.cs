@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -49,6 +50,8 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] GameObject characterChoicePanel;
     [SerializeField] TextMeshProUGUI[] playerNames;
+
+    [SerializeField] string gameOverScene;
 
 
     // --- TOP NOTIFICATION PANEL UI --- NOT YET IMPLEMENTED SEP 9 2026
@@ -245,13 +248,13 @@ public class BattleManager : MonoBehaviour
         if(allEnemiesAreDead || allPlayerAreDead)
         {
             if (allEnemiesAreDead)
-                print("Players won!");
+                StartCoroutine(EndBattleCoroutine()); //print("Players won!");
             else if (allPlayerAreDead)
-                print("You lost");
+                StartCoroutine(GameOverCoroutine());  //print("You lost");
 
-            battleScene.SetActive(false);
-            GameManager.instance.battleIsActive = false;
-            isBattleActive = false;
+            //battleScene.SetActive(false);
+            //GameManager.instance.battleIsActive = false;
+            //isBattleActive = false;
         }
         else
         {
@@ -506,8 +509,10 @@ public class BattleManager : MonoBehaviour
     {
         if (Random.value > chanceToRunAway)
         {
-            isBattleActive = false;
-            battleScene.SetActive(false);
+            //isBattleActive = false;
+            //battleScene.SetActive(false);
+
+            StartCoroutine(EndBattleCoroutine());
         }
         else
         {
@@ -624,6 +629,53 @@ public class BattleManager : MonoBehaviour
     {
         characterChoicePanel.SetActive(false);
         itemsToUseMenu.SetActive(false);
+    }
+
+    public IEnumerator EndBattleCoroutine()
+    {
+        isBattleActive = false;
+        UIButtonHolder.SetActive(false);
+        enemyTargetPanel.SetActive(false);
+        skillChoicePanel.SetActive(false);
+        //battleNotice.SetText("You won!");
+        //battleNotice.Activate();
+
+        yield return new WaitForSeconds(4f);
+
+        foreach (BattleCharacters playerInBattle in activeCharacters)
+        {
+            if (playerInBattle.IsPlayer())
+            {
+                foreach (PlayerStats playerWishStats in GameManager.instance.GetPlayerStats())
+                {
+                    if (playerInBattle.characterName == playerWishStats.playerName)
+                    {
+                        playerWishStats.currentHP = playerInBattle.currentHP;
+                        playerWishStats.currentStamina = playerInBattle.currentSP;
+                    }
+                }
+            }
+
+            Destroy(playerInBattle.gameObject);
+        }
+
+        battleScene.SetActive(false);
+        activeCharacters.Clear();
+
+        currentTurn = 0;
+
+        GameManager.instance.battleIsActive = false;
+    }
+
+    public IEnumerator GameOverCoroutine()
+    {
+        battleNotice.SetText("Game Over!");
+        battleNotice.Activate();
+
+        yield return new WaitForSeconds(3f);
+
+        isBattleActive = false;
+        SceneManager.LoadScene(gameOverScene);
     }
 
 }

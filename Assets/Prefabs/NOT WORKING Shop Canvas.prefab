@@ -924,7 +924,7 @@ GameObject:
   - component: {fileID: 4513063954660477453}
   - component: {fileID: 7039245246651142788}
   m_Layer: 5
-  m_Name: Shop Canvas
+  m_Name: NOT WORKING Shop Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1072,6 +1072,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  characterInfoPanel: {fileID: 0}
+  itemsPanel: {fileID: 0}
+  statPanel: {fileID: 0}
+  savePanel: {fileID: 0}
+  configPanel: {fileID: 0}
+  quitPanel: {fileID: 0}
+  statLevel: {fileID: 0}
   statName: {fileID: 0}
   statHP: {fileID: 0}
   statSP: {fileID: 0}
@@ -1133,6 +1140,16 @@ MonoBehaviour:
   shopkeeper: {fileID: 0}
   currentMoneyText: {fileID: 1917253870154931876}
   itemsForSale: []
+  itemSlotContainer: {fileID: 0}
+  itemSlotBuyContainerParent: {fileID: 0}
+  itemSlotSellContainerParent: {fileID: 0}
+  selectedItem: {fileID: 0}
+  buyItemName: {fileID: 0}
+  buyItemDescription: {fileID: 0}
+  buyItemValue: {fileID: 0}
+  sellItemName: {fileID: 0}
+  sellItemDescription: {fileID: 0}
+  sellItemValue: {fileID: 0}
 --- !u!1 &2460249332013075720
 GameObject:
   m_ObjectHideFlags: 0
