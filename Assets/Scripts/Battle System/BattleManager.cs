@@ -47,6 +47,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] Transform itemSlotContainerParent;
     [SerializeField] TextMeshProUGUI itemName, itemDescription;
 
+    [SerializeField] GameObject characterChoicePanel;
+    [SerializeField] TextMeshProUGUI[] playerNames;
+
 
     // --- TOP NOTIFICATION PANEL UI --- NOT YET IMPLEMENTED SEP 9 2026
     //[Header("Battle Notice UI")]
@@ -219,6 +222,10 @@ public class BattleManager : MonoBehaviour
             if (activeCharacters[i].currentHP == 0)
             {
                 //kill character
+                if (activeCharacters[i].IsPlayer() && !activeCharacters[i].isDead)
+                {
+                    activeCharacters[i].KillPlayer();
+                }
 
             }
             else
@@ -513,6 +520,10 @@ public class BattleManager : MonoBehaviour
 
         foreach (ItemsManager item in Inventory.instance.GetItemsList())
         {
+            //checks if its a weapon or armor, if it is, it wont show up in the items to use menu since you cant use those in battle
+            if (item.itemType != ItemsManager.ItemType.Item)
+                continue;
+
             RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
 
             Image itemImage = itemSlot.Find("Item Image").GetComponent<Image>(); //item image remember this when checking for the sprite of your items in inventory, if you change it, it wont work here
@@ -530,9 +541,80 @@ public class BattleManager : MonoBehaviour
 
     public void selectedItemToUse(ItemsManager itemToUse)
     {
+        // Prevent selecting equipment for battle use
+        if (itemToUse.itemType != ItemsManager.ItemType.Item)
+        {
+            Debug.Log("Item is equipment, cannot be used in battle.");
+            return;
+        }
+
+        // If the currently open character choice panel is visible and the player
+        // selected a different item, close the character choice panel so it won't
+        // remain open for the newly selected item.
+        if (selectedItem != null && selectedItem != itemToUse && characterChoicePanel != null && characterChoicePanel.activeSelf)
+        {
+            characterChoicePanel.SetActive(false);
+        }
+
         selectedItem = itemToUse;
         itemName.text = itemToUse.itemName;
-        itemDescription.text = itemToUse.itemDescription; 
+        itemDescription.text = itemToUse.itemDescription;
+    }
+
+    public void OpenCharacterMenu()
+    {
+        if (selectedItem)
+        {
+            characterChoicePanel.SetActive(true);
+            for(int i = 0; i < activeCharacters.Count; i++)
+            {
+                if (activeCharacters[i].IsPlayer())
+                {
+                    PlayerStats activePlayer = GameManager.instance.GetPlayerStats()[i];
+
+                    playerNames[i].text = activePlayer.playerName;
+
+                    bool activePlayerInHierarchy = activePlayer.gameObject.activeInHierarchy;
+                    playerNames[i].transform.parent.gameObject.SetActive(activePlayerInHierarchy);
+                }
+            }
+        }
+
+        else
+        {
+            print("No item selected");
+        }
+    }
+
+    public void UseItemButton(int selectedPlayer)
+    {
+        // Validate selection and that it's the current player's turn
+        if (selectedItem == null)
+        {
+            Debug.LogWarning("UseItemButton: no item selected.");
+            return;
+        }
+
+        // Apply item to the selected player
+        activeCharacters[selectedPlayer].UseItemInBattle(selectedItem);
+        Inventory.instance.RemoveItem(selectedItem);
+
+        UpdatePlayerStats();
+
+        // Close UI panels (hides itemsToUseMenu and characterChoicePanel)
+        CloseCharacterChoice();
+
+        // Hide player buttons immediately so player can't act again before turn advances
+        if (UIButtonHolder != null) UIButtonHolder.SetActive(false);
+
+        // Using an item consumes the player's turn — advance to next character
+        NextTurn();
+    }
+
+    public void CloseCharacterChoice()
+    {
+        characterChoicePanel.SetActive(false);
+        itemsToUseMenu.SetActive(false);
     }
 
 }
