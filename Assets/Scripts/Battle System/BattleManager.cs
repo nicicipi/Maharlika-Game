@@ -53,6 +53,10 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] string gameOverScene;
 
+    private bool runningAway;
+    public int xpRewardAmount;
+    public ItemsManager[] itemsReward;
+
 
     // --- TOP NOTIFICATION PANEL UI --- NOT YET IMPLEMENTED SEP 9 2026
     //[Header("Battle Notice UI")]
@@ -512,6 +516,7 @@ public class BattleManager : MonoBehaviour
             //isBattleActive = false;
             //battleScene.SetActive(false);
 
+            runningAway = true;
             StartCoroutine(EndBattleCoroutine());
         }
         else
@@ -637,10 +642,13 @@ public class BattleManager : MonoBehaviour
         UIButtonHolder.SetActive(false);
         enemyTargetPanel.SetActive(false);
         skillChoicePanel.SetActive(false);
-        //battleNotice.SetText("You won!");
-        //battleNotice.Activate();
-
         yield return new WaitForSeconds(4f);
+
+        if (!runningAway)
+        {
+            battleNotice.SetText("You won!");
+            battleNotice.Activate();
+        }
 
         foreach (BattleCharacters playerInBattle in activeCharacters)
         {
@@ -662,9 +670,21 @@ public class BattleManager : MonoBehaviour
         battleScene.SetActive(false);
         activeCharacters.Clear();
 
+        if (runningAway)
+        {
+            GameManager.instance.battleIsActive = false;
+            runningAway = false;
+        }
+
+        else
+        {
+            BattleRewardsHandler.instance.OpenRewardScreen(xpRewardAmount, itemsReward);
+        }
+
         currentTurn = 0;
 
-        GameManager.instance.battleIsActive = false;
+        
+
     }
 
     public IEnumerator GameOverCoroutine()
@@ -672,9 +692,10 @@ public class BattleManager : MonoBehaviour
         battleNotice.SetText("Game Over!");
         battleNotice.Activate();
 
-        yield return new WaitForSeconds(3f);
-
         isBattleActive = false;
+
+        yield return new WaitForSeconds(2f);
+
         SceneManager.LoadScene(gameOverScene);
     }
 
