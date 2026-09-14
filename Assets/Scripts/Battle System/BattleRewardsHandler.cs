@@ -14,6 +14,9 @@ public class BattleRewardsHandler : MonoBehaviour
     [SerializeField] ItemsManager[] rewardItems;
     [SerializeField] int xpReward;
 
+    public bool markQuestComplete;
+    public string questToComplete;
+
     private void Start()
     {
         instance = this;
@@ -38,7 +41,7 @@ public class BattleRewardsHandler : MonoBehaviour
 
         foreach (ItemsManager rewardItemText in rewardItems)
         {
-           lootText.text = rewardItemText.itemName + " ";
+            lootText.text = rewardItemText.itemName + " ";
         }
 
         rewardPanel.SetActive(true);
@@ -63,6 +66,10 @@ public class BattleRewardsHandler : MonoBehaviour
         GameManager.instance.battleIsActive = false;
 
         //rewardPanel.SetActive(false);
+        if (markQuestComplete)
+        {
+            QuestManager.instance.MarkQuestComplete(questToComplete);
+        }
     }
 }
 

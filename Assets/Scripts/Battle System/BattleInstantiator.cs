@@ -13,6 +13,11 @@ public class BattleInstantiator : MonoBehaviour
 
     [SerializeField] bool deactiveAfterStarting;
 
+    [SerializeField] bool canRunAway;
+
+    [SerializeField] bool shouldCompleteQuest;
+    public string questToComplete;
+
     private void Start()
     {
         battleCounter = Random.Range(timeBetweenBattles * 0.5f, timeBetweenBattles * 1.5f);
@@ -45,15 +50,18 @@ public class BattleInstantiator : MonoBehaviour
         BattleManager.instance.itemsReward = availableBattles[selectBattle].rewardItems;
         BattleManager.instance.xpRewardAmount = availableBattles[selectBattle].rewardXP;
 
+        BattleRewardsHandler.instance.markQuestComplete = shouldCompleteQuest;
+
         yield return new WaitForSeconds(1.5f);
 
         MenuManager.instance.FadeOut();
 
-        BattleManager.instance.StartBattle(availableBattles[selectBattle].enemies);
+        BattleManager.instance.StartBattle(availableBattles[selectBattle].enemies, canRunAway);
 
         if(deactiveAfterStarting)
         {
-            Destroy(gameObject);
+            Destroy(gameObject); //this destroys the battle instantiator after starting the battle so that it doesn't start another battle after this one
+            // perfect for bosses but not for random encounters
         }
 
     }

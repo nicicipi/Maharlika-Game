@@ -57,6 +57,8 @@ public class BattleManager : MonoBehaviour
     public int xpRewardAmount;
     public ItemsManager[] itemsReward;
 
+    private bool canRun;
+
 
     // --- TOP NOTIFICATION PANEL UI --- NOT YET IMPLEMENTED SEP 9 2026
     //[Header("Battle Notice UI")]
@@ -77,7 +79,7 @@ public class BattleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            StartBattle(new string[] { "Robbie", "Aaronos", "Robbie" });
+            StartBattle(new string[] { "Robbie", "Aaronos", "Robbie" }, true);
         }
 
         if (Input.GetKeyDown(KeyCode.N))
@@ -106,11 +108,12 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void StartBattle(string[] enemiesToSpawn)
+    public void StartBattle(string[] enemiesToSpawn, bool canRunAway)
     {
 
         if (!isBattleActive)
         {
+            canRun = canRunAway;
             SettingUpBattle();
             AddingPlayers();
             AddingEnemies(enemiesToSpawn);
@@ -511,20 +514,22 @@ public class BattleManager : MonoBehaviour
 
     public void RunAway()
     {
-        if (Random.value > chanceToRunAway)
+        if (canRun)
         {
-            //isBattleActive = false;
-            //battleScene.SetActive(false);
+            if (Random.value > chanceToRunAway)
+            {
+                //isBattleActive = false;
+                //battleScene.SetActive(false);
+                runningAway = true;
+                StartCoroutine(EndBattleCoroutine());
+            }
+            else
+            {
+                NextTurn();
+                battleNotice.SetText("You failed to run away!");
+                battleNotice.Activate();
 
-            runningAway = true;
-            StartCoroutine(EndBattleCoroutine());
-        }
-        else
-        {
-            NextTurn();
-            battleNotice.SetText("You failed to run away!");
-            battleNotice.Activate();
-
+            }
         }
     }
 
