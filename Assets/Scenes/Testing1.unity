@@ -2742,6 +2742,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 467149063673317490, guid: e4ea00f9a54e1df45b94ce0258d4c026, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3906182514413395602, guid: e4ea00f9a54e1df45b94ce0258d4c026, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4535003948218676626, guid: e4ea00f9a54e1df45b94ce0258d4c026, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2781,6 +2789,10 @@ PrefabInstance:
     - target: {fileID: 4535003948218676626, guid: e4ea00f9a54e1df45b94ce0258d4c026, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622751881903111861, guid: e4ea00f9a54e1df45b94ce0258d4c026, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

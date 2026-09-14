@@ -29,6 +29,8 @@ public class BattleRewardsHandler : MonoBehaviour
 
     public void OpenRewardScreen(int xpEarned, ItemsManager[] itemsEarned)
     {
+        MenuManager.instance.FadeImage();
+        MenuManager.instance.FadeOut();
         xpReward = xpEarned;
         rewardItems = itemsEarned;
 
