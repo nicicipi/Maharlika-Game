@@ -18,8 +18,8 @@ public class Player : MonoBehaviour
     private Vector3 bottomLeftEdge;
     private Vector3 topRightEdge;
 
-    //[SerializeField] Tilemap tilemap;
-
+    // new flag to avoid clamping until limits are provided
+    private bool limitsSet = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,10 +34,6 @@ public class Player : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
-
-        //removed because level manager exists   
-        //bottomLeftEdge = tilemap.localBounds.min + new Vector3(0.7f, 1.2f, 0f);
-        //topRightEdge = tilemap.localBounds.max + new Vector3(-0.7f, -1.2f, 0f);
     }
 
     // Update is called once per frame
@@ -55,7 +51,6 @@ public class Player : MonoBehaviour
             playerRigidBody.velocity = new Vector2(horizontalMovement, verticalMovement) * moveSpeed;
         }
 
-
         playerAnimator.SetFloat("movementX", playerRigidBody.velocity.x);
         playerAnimator.SetFloat("movementY", playerRigidBody.velocity.y);
 
@@ -66,21 +61,37 @@ public class Player : MonoBehaviour
                 playerAnimator.SetFloat("lastX", horizontalMovement);
                 playerAnimator.SetFloat("lastY", verticalMovement);
             }
-            
         }
 
-        transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, bottomLeftEdge.x, topRightEdge.x),
-            Mathf.Clamp(transform.position.y, bottomLeftEdge.y, topRightEdge.y),
-            Mathf.Clamp(transform.position.z, bottomLeftEdge.z, topRightEdge.z)
-         );
-
+        // Only clamp position when limits have been set
+        if (limitsSet)
+        {
+            transform.position = new Vector3(
+                Mathf.Clamp(transform.position.x, bottomLeftEdge.x, topRightEdge.x),
+                Mathf.Clamp(transform.position.y, bottomLeftEdge.y, topRightEdge.y),
+                Mathf.Clamp(transform.position.z, bottomLeftEdge.z, topRightEdge.z)
+             );
+        }
     }
 
     public void SetLimit(Vector3 bottomEdgeToSet, Vector3 topEdgeToSet)
     {
         bottomLeftEdge = bottomEdgeToSet;
         topRightEdge = topEdgeToSet;
+        limitsSet = true;
+    }
 
+    // Public helper to move the player safely (uses Rigidbody2D to avoid physics snap issues)
+    public void Teleport(Vector3 worldPosition)
+    {
+        // set transform immediately (visual)
+        transform.position = worldPosition;
+
+        // place rigidbody at same spot to avoid physics correcting later
+        if (playerRigidBody != null)
+        {
+            playerRigidBody.position = new Vector2(worldPosition.x, worldPosition.y);
+            playerRigidBody.velocity = Vector2.zero;
+        }
     }
 }

@@ -1,23 +1,36 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AreaEnter : MonoBehaviour
 {
     public string transitionAreaName;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float spawnYOffset;
+
+    private void Start()
     {
-        if(transitionAreaName == Player.instance.transitionName)
-        {
-            Player.instance.transform.position = transform.position;
-        }
+        StartCoroutine(PlacePlayerAfterSceneSetup());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator PlacePlayerAfterSceneSetup()
     {
-        
+        yield return new WaitForEndOfFrame();
+
+        if (Player.instance == null)
+            yield break;
+
+        // Do not use an AreaEnter during the initial game scene.
+        // The Player's position in that scene is the starting position.
+        if (string.IsNullOrEmpty(Player.instance.transitionName))
+            yield break;
+
+        if (transitionAreaName != Player.instance.transitionName)
+            yield break;
+
+        Vector3 targetPosition = transform.position + Vector3.up * spawnYOffset;
+        Player.instance.Teleport(targetPosition);
+
+        // Prevent this transition name from affecting unrelated future scenes.
+        Player.instance.transitionName = "";
     }
 }
