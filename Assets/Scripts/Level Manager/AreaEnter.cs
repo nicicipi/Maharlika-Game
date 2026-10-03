@@ -19,8 +19,6 @@ public class AreaEnter : MonoBehaviour
         if (Player.instance == null)
             yield break;
 
-        // Do not use an AreaEnter during the initial game scene.
-        // The Player's position in that scene is the starting position.
         if (string.IsNullOrEmpty(Player.instance.transitionName))
             yield break;
 
@@ -28,9 +26,10 @@ public class AreaEnter : MonoBehaviour
             yield break;
 
         Vector3 targetPosition = transform.position + Vector3.up * spawnYOffset;
+
+        Player.instance.StopMovement();
         Player.instance.Teleport(targetPosition);
 
-        // Prevent this transition name from affecting unrelated future scenes.
         Player.instance.transitionName = "";
     }
 }

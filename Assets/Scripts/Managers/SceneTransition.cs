@@ -42,7 +42,7 @@ public class SceneTransition : MonoBehaviour
 
         if (Player.instance != null)
         {
-            Player.instance.deactivateMovement = true;
+            Player.instance.StopMovement();
         }
 
         // Fade completely to black before loading.
@@ -80,7 +80,7 @@ public class SceneTransition : MonoBehaviour
 
         if (Player.instance != null)
         {
-            Player.instance.deactivateMovement = false;
+            Player.instance.ResumeMovement();
         }
 
         isTransitioning = false;

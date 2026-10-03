@@ -36,6 +36,15 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Awake()
+    {
+        if (playerRigidBody != null)
+        {
+            playerRigidBody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            playerRigidBody.interpolation = RigidbodyInterpolation2D.Interpolate;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -93,5 +102,27 @@ public class Player : MonoBehaviour
             playerRigidBody.position = new Vector2(worldPosition.x, worldPosition.y);
             playerRigidBody.velocity = Vector2.zero;
         }
+    }
+
+    public void SetMovementLocked(bool locked)
+    {
+        deactivateMovement = locked;
+
+        if (playerRigidBody != null)
+        {
+            playerRigidBody.velocity = Vector2.zero;
+            playerRigidBody.angularVelocity = 0f;
+            playerRigidBody.simulated = !locked;
+        }
+    }
+
+    public void StopMovement()
+    {
+        SetMovementLocked(true);
+    }
+
+    public void ResumeMovement()
+    {
+        SetMovementLocked(false);
     }
 }

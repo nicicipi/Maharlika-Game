@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4654355974531238463}
+  - component: {fileID: 4260612289579883941}
   m_Layer: 0
   m_Name: SceneTransition
   m_TagString: Untagged
@@ -32,6 +33,21 @@ Transform:
   - {fileID: 4245873474032438589}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4260612289579883941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4527897717393610309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5f5f1808f7628a4687664e4965cab61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeImage: {fileID: 1052114766864131239}
+  fadeDuration: 0.25
+  cameraSettleDelay: 0.2
 --- !u!1 &6118995832835887340
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,7 +60,6 @@ GameObject:
   - component: {fileID: 6395380521114537847}
   - component: {fileID: 8985573658471910892}
   - component: {fileID: 6875118910411833108}
-  - component: {fileID: 9088591669817194493}
   m_Layer: 0
   m_Name: TransitionCanvas
   m_TagString: Untagged
@@ -135,20 +150,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &9088591669817194493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6118995832835887340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5f5f1808f7628a4687664e4965cab61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeImage: {fileID: 1052114766864131239}
-  fadeDuration: 0.25
 --- !u!1 &8167963850868817080
 GameObject:
   m_ObjectHideFlags: 0

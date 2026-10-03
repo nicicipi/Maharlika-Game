@@ -754,7 +754,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2411058584435117294, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.92
+      value: 2.37
       objectReference: {fileID: 0}
     - target: {fileID: 3502358794204116150, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: sceneToLoad
@@ -766,11 +766,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3971062004415571316, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: m_Size.x
-      value: 0.39743423
+      value: 1.6579952
       objectReference: {fileID: 0}
     - target: {fileID: 3971062004415571316, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: m_Offset.x
-      value: 0.024087906
+      value: 0.5574026
       objectReference: {fileID: 0}
     - target: {fileID: 6292557617673198613, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: m_LocalPosition.x
