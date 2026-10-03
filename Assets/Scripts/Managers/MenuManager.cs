@@ -6,7 +6,8 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] Image imageToFade;
+    //[SerializeField] Image imageToFade;
+
     public GameObject menu;
 
     [SerializeField] GameObject[] statsButtons;
@@ -192,15 +193,17 @@ public class MenuManager : MonoBehaviour
         Debug.Log("Quit Game");
     }
 
-    public void FadeImage()
-    {
-        imageToFade.GetComponent<Animator>().SetTrigger("Start Fading");
-    }
+    //removed the fade image functions because they are not used anymore, but they can be used in the future if needed
+    //(scenetransition script already has a fade image function that can be used instead)
+    //public void FadeImage()
+    //{
+    //    imageToFade.GetComponent<Animator>().SetTrigger("Start Fading");
+    //}
 
-    public void FadeOut()
-    {
-        imageToFade.GetComponent<Animator>().SetTrigger("End Fading");
-    }
+    //public void FadeOut()
+    //{
+    //    imageToFade.GetComponent<Animator>().SetTrigger("End Fading");
+    //}
 
     public void CloseMenu()
     {

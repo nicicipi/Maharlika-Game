@@ -32,19 +32,41 @@ public class BattleRewardsHandler : MonoBehaviour
 
     public void OpenRewardScreen(int xpEarned, ItemsManager[] itemsEarned)
     {
-        MenuManager.instance.FadeImage();
-        MenuManager.instance.FadeOut();
+        StartCoroutine(OpenRewardScreenCoroutine(xpEarned, itemsEarned));
+    }
+
+    private IEnumerator OpenRewardScreenCoroutine(int xpEarned, ItemsManager[] itemsEarned)
+    {
+        if (SceneTransition.instance != null)
+        {
+            // Fade completely to black
+            yield return StartCoroutine(SceneTransition.instance.FadeToBlack());
+        }
+
         xpReward = xpEarned;
         rewardItems = itemsEarned;
 
         xpText.text = xpEarned + " xp";
 
+        lootText.text = "";
+
         foreach (ItemsManager rewardItemText in rewardItems)
         {
-            lootText.text = rewardItemText.itemName + " ";
+            lootText.text += rewardItemText.itemName + " ";
         }
 
+        // Open the panel while the screen is still black
         rewardPanel.SetActive(true);
+
+        // Allow the panel to initialize
+        yield return null;
+        yield return new WaitForEndOfFrame();
+
+        if (SceneTransition.instance != null)
+        {
+            // Reveal the reward panel
+            yield return StartCoroutine(SceneTransition.instance.FadeFromBlack());
+        }
     }
 
     public void CloseRewardScreen()

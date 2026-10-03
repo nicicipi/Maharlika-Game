@@ -1,28 +1,20 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AreaExit : MonoBehaviour
 {
     [SerializeField] string sceneToLoad;
     [SerializeField] string transitionAreaName;
 
+    private bool hasTriggered;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            Player.instance.transitionName = transitionAreaName;
+        if (hasTriggered || !collision.CompareTag("Player"))
+            return;
 
-            MenuManager.instance.FadeImage();
+        hasTriggered = true;
+        Player.instance.transitionName = transitionAreaName;
 
-            StartCoroutine(LoadSceneCoroutine());
-        }
-    }
-
-    IEnumerator LoadSceneCoroutine()
-    {
-        yield return new WaitForSeconds(1f);
-
-        SceneManager.LoadScene(sceneToLoad);
+        SceneTransition.instance.TransitionToScene(sceneToLoad);
     }
 }

@@ -42,7 +42,12 @@ public class BattleInstantiator : MonoBehaviour
 
     private IEnumerator StartBattleCoroutine()
     {
-        MenuManager.instance.FadeImage();
+        // Fade completely to black before showing the battle scene
+        if (SceneTransition.instance != null)
+        {
+            yield return StartCoroutine(SceneTransition.instance.FadeToBlack());
+        }
+
         GameManager.instance.battleIsActive = true;
 
         int selectBattle = Random.Range(0, availableBattles.Length);
@@ -52,18 +57,26 @@ public class BattleInstantiator : MonoBehaviour
 
         BattleRewardsHandler.instance.markQuestComplete = shouldCompleteQuest;
 
-        yield return new WaitForSeconds(1.5f);
+        // Start the battle while the screen is fully black
+        BattleManager.instance.StartBattle(
+            availableBattles[selectBattle].enemies,
+            canRunAway
+        );
 
-        MenuManager.instance.FadeOut();
+        // Allow the battle UI and objects to initialize
+        yield return null;
+        yield return new WaitForEndOfFrame();
 
-        BattleManager.instance.StartBattle(availableBattles[selectBattle].enemies, canRunAway);
-
-        if(deactiveAfterStarting)
+        // Reveal the battle after it is ready
+        if (SceneTransition.instance != null)
         {
-            Destroy(gameObject); //this destroys the battle instantiator after starting the battle so that it doesn't start another battle after this one
-            // perfect for bosses but not for random encounters
+            yield return StartCoroutine(SceneTransition.instance.FadeFromBlack());
         }
 
+        if (deactiveAfterStarting)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

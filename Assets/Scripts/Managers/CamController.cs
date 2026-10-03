@@ -6,37 +6,45 @@ using Cinemachine;
 public class CamController : MonoBehaviour
 {
     private Player playerTarget;
-    CinemachineVirtualCamera virtualCamera;
+    private CinemachineVirtualCamera virtualCamera;
 
     [SerializeField] int musicToPlay;
-    private bool musicAlreadyPlayer;
+    private bool musicAlreadyPlayed;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        playerTarget = FindObjectOfType<Player>();
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
+        SnapToPlayer();
 
-        virtualCamera.Follow = playerTarget.transform;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!musicAlreadyPlayer)
+        if (AudioManager.instance != null && !musicAlreadyPlayed)
         {
-            musicAlreadyPlayer = true;
+            musicAlreadyPlayed = true;
             AudioManager.instance.PlayBackgroundMusic(musicToPlay);
         }
+    }
 
-        while(playerTarget == null)
+    public void SnapToPlayer()
+    {
+        if (playerTarget == null)
         {
             playerTarget = FindObjectOfType<Player>();
-            if (virtualCamera)
-            {
-                virtualCamera.Follow = playerTarget.transform;
-            }
         }
 
+        if (playerTarget == null || virtualCamera == null)
+            return;
+
+        virtualCamera.Follow = playerTarget.transform;
+
+        // Forces Cinemachine to ignore its previous scene position
+        // and snap directly to the player.
+        virtualCamera.PreviousStateIsValid = false;
+    }
+
+    private void Update()
+    {
+        if (playerTarget == null)
+        {
+            SnapToPlayer();
+        }
     }
 }
