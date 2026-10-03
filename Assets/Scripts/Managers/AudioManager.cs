@@ -10,34 +10,23 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    // Start is called before the first frame update
-    void Start()
+    private int currentMusicIndex = -1;
+
+    private void Awake()
     {
         if (instance != null && instance != this)
         {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
+            Destroy(gameObject);
+            return;
         }
 
+        instance = this;
         DontDestroyOnLoad(gameObject);
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            PlayBackgroundMusic(2);
-        }   
     }
 
     public void PlaySFX(int soundToPlay)
     {
-        if(soundToPlay < SFX.Length)
+        if (soundToPlay >= 0 && soundToPlay < SFX.Length)
         {
             SFX[soundToPlay].Play();
         }
@@ -45,19 +34,29 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBackgroundMusic(int musicToPlay)
     {
+        if (musicToPlay < 0 || musicToPlay >= backgroundMusic.Length)
+            return;
+
+        AudioSource requestedMusic = backgroundMusic[musicToPlay];
+
+        // Do not restart the same song when changing scenes
+        if (currentMusicIndex == musicToPlay && requestedMusic.isPlaying)
+            return;
+
         StopMusic();
 
-        if (musicToPlay < backgroundMusic.Length)
-        {
-            backgroundMusic[musicToPlay].Play();
-        }
+        requestedMusic.loop = true;
+        requestedMusic.Play();
+        currentMusicIndex = musicToPlay;
     }
 
-    private void StopMusic()
+    public void StopMusic()
     {
-        foreach(AudioSource song in backgroundMusic)
+        foreach (AudioSource song in backgroundMusic)
         {
             song.Stop();
         }
+
+        currentMusicIndex = -1;
     }
 }
