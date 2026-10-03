@@ -86,4 +86,12 @@ public class BattleNotification : MonoBehaviour
         gameObject.SetActive(false);
         currentNoticeRoutine = null;
     }
+
+    public IEnumerator WaitUntilFinished()
+    {
+        while (currentNoticeRoutine != null)
+        {
+            yield return null;
+        }
+    }
 }

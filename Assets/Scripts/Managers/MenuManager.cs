@@ -45,21 +45,23 @@ public class MenuManager : MonoBehaviour
     {
         UpdateStats();
 
+        if (GameManager.instance.battleIsActive)
+            return;
+
         if (Input.GetKeyDown(KeyCode.M))
         {
-            if(menu.activeInHierarchy)
+            if (menu.activeInHierarchy)
             {
                 UpdateStats();
                 CloseMenu();
-            } 
-            else 
+            }
+            else
             {
                 menu.SetActive(true);
                 GameManager.instance.gameMenuOpened = true;
                 AudioManager.instance.PlaySFX(19);
             }
         }
-       
     }
 
     public void UpdateStats()

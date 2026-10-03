@@ -5,7 +5,6 @@ using TMPro;
 
 public class BattleRewardsHandler : MonoBehaviour
 {
-
     public static BattleRewardsHandler instance;
 
     [SerializeField] TextMeshProUGUI xpText, lootText;
@@ -14,20 +13,15 @@ public class BattleRewardsHandler : MonoBehaviour
     [SerializeField] ItemsManager[] rewardItems;
     [SerializeField] int xpReward;
 
+    [Header("Reward Audio")]
+    [SerializeField] int rewardSFXIndex;
+
     public bool markQuestComplete;
     public string questToComplete;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
-    }
-
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            OpenRewardScreen(676767, rewardItems);
-        }
     }
 
     public void OpenRewardScreen(int xpEarned, ItemsManager[] itemsEarned)
@@ -37,9 +31,12 @@ public class BattleRewardsHandler : MonoBehaviour
 
     private IEnumerator OpenRewardScreenCoroutine(int xpEarned, ItemsManager[] itemsEarned)
     {
+        // Hide it immediately so it cannot be seen during the fade.
+        rewardPanel.SetActive(false);
+
+        // Fade completely to black.
         if (SceneTransition.instance != null)
         {
-            // Fade completely to black
             yield return StartCoroutine(SceneTransition.instance.FadeToBlack());
         }
 
@@ -47,25 +44,30 @@ public class BattleRewardsHandler : MonoBehaviour
         rewardItems = itemsEarned;
 
         xpText.text = xpEarned + " xp";
-
         lootText.text = "";
 
-        foreach (ItemsManager rewardItemText in rewardItems)
+        foreach (ItemsManager rewardItem in rewardItems)
         {
-            lootText.text += rewardItemText.itemName + " ";
+            lootText.text += rewardItem.itemName + " ";
         }
 
-        // Open the panel while the screen is still black
+        // Show the panel while the screen is fully black.
         rewardPanel.SetActive(true);
 
-        // Allow the panel to initialize
+        // Allow the panel to initialize.
         yield return null;
         yield return new WaitForEndOfFrame();
 
+        // Reveal the already-open reward panel.
         if (SceneTransition.instance != null)
         {
-            // Reveal the reward panel
             yield return StartCoroutine(SceneTransition.instance.FadeFromBlack());
+        }
+
+        // Play the reward sound when the panel becomes visible.
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlaySFX(rewardSFXIndex);
         }
     }
 
@@ -87,10 +89,39 @@ public class BattleRewardsHandler : MonoBehaviour
         rewardPanel.SetActive(false);
         GameManager.instance.battleIsActive = false;
 
-        //rewardPanel.SetActive(false);
         if (markQuestComplete)
         {
             QuestManager.instance.MarkQuestComplete(questToComplete);
+        }
+
+        // Restore player input and Rigidbody physics after the battle.
+        if (Player.instance != null)
+        {
+            Player.instance.ResumeMovement();
+        }
+    }
+
+    public void PrepareRewardScreen(int xpEarned, ItemsManager[] itemsEarned)
+    {
+        xpReward = xpEarned;
+        rewardItems = itemsEarned;
+
+        xpText.text = xpEarned + " xp";
+        lootText.text = "";
+
+        foreach (ItemsManager rewardItem in rewardItems)
+        {
+            lootText.text += rewardItem.itemName + " ";
+        }
+
+        rewardPanel.SetActive(true);
+    }
+
+    public void PlayRewardSFX()
+    {
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlaySFX(rewardSFXIndex);
         }
     }
 }

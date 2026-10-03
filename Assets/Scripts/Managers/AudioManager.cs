@@ -12,6 +12,9 @@ public class AudioManager : MonoBehaviour
 
     private int currentMusicIndex = -1;
 
+    private AudioSource pausedExplorationMusic;
+    private AudioSource activeBattleMusic;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -58,5 +61,51 @@ public class AudioManager : MonoBehaviour
         }
 
         currentMusicIndex = -1;
+    }
+
+    public void StartBattleMusic(int musicToPlay)
+    {
+        if (musicToPlay < 0 || musicToPlay >= backgroundMusic.Length)
+            return;
+
+        // Prevent restarting the battle music if this is called twice.
+        if (activeBattleMusic == backgroundMusic[musicToPlay] &&
+            activeBattleMusic.isPlaying)
+        {
+            return;
+        }
+
+        // Pause the currently playing exploration music.
+        pausedExplorationMusic = null;
+
+        foreach (AudioSource song in backgroundMusic)
+        {
+            if (song.isPlaying)
+            {
+                song.Pause();
+                pausedExplorationMusic = song;
+                break;
+            }
+        }
+
+        activeBattleMusic = backgroundMusic[musicToPlay];
+        activeBattleMusic.loop = true;
+        activeBattleMusic.Play();
+    }
+
+    public void StopBattleMusic()
+    {
+        if (activeBattleMusic != null)
+        {
+            activeBattleMusic.Stop();
+            activeBattleMusic = null;
+        }
+
+        // Resume exploration music from its previous position.
+        if (pausedExplorationMusic != null)
+        {
+            pausedExplorationMusic.UnPause();
+            pausedExplorationMusic = null;
+        }
     }
 }

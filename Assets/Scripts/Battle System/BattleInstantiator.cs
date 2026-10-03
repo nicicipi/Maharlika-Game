@@ -18,6 +18,8 @@ public class BattleInstantiator : MonoBehaviour
 
     private bool battleStarting;
 
+    [SerializeField] int battleMusicIndex;
+
     private void Start()
     {
         battleCounter = Random.Range(timeBetweenBattles * 0.5f, timeBetweenBattles * 1.5f);
@@ -51,6 +53,11 @@ public class BattleInstantiator : MonoBehaviour
         if (Player.instance != null)
         {
             Player.instance.StopMovement();
+        }
+
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.StartBattleMusic(battleMusicIndex);
         }
 
         if (SceneTransition.instance != null)

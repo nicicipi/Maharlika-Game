@@ -57,7 +57,8 @@ public class Player : MonoBehaviour
         }
         else
         {
-            playerRigidBody.velocity = new Vector2(horizontalMovement, verticalMovement) * moveSpeed;
+            playerRigidBody.velocity =
+                new Vector2(horizontalMovement, verticalMovement) * moveSpeed;
         }
 
         playerAnimator.SetFloat("movementX", playerRigidBody.velocity.x);
@@ -112,7 +113,7 @@ public class Player : MonoBehaviour
         {
             playerRigidBody.velocity = Vector2.zero;
             playerRigidBody.angularVelocity = 0f;
-            playerRigidBody.simulated = !locked;
+            playerRigidBody.simulated = true;
         }
     }
 
@@ -123,6 +124,13 @@ public class Player : MonoBehaviour
 
     public void ResumeMovement()
     {
-        SetMovementLocked(false);
+        deactivateMovement = false;
+
+        if (playerRigidBody != null)
+        {
+            playerRigidBody.simulated = true;
+            playerRigidBody.velocity = Vector2.zero;
+            playerRigidBody.angularVelocity = 0f;
+        }
     }
 }
