@@ -659,6 +659,16 @@ public class BattleManager : MonoBehaviour
         {
             battleNotice.SetText("You won!");
             battleNotice.Activate();
+
+            // Wait for the notification to finish completely before
+            // starting the screen transition to the rewards.
+            yield return StartCoroutine(battleNotice.WaitUntilFinished());
+        }
+
+        // Fade to black only after the battle notification has finished.
+        if (SceneTransition.instance != null)
+        {
+            yield return StartCoroutine(SceneTransition.instance.FadeToBlack());
         }
 
         foreach (BattleCharacters playerInBattle in activeCharacters)
@@ -681,15 +691,39 @@ public class BattleManager : MonoBehaviour
         battleScene.SetActive(false);
         activeCharacters.Clear();
 
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.StopBattleMusic();
+        }
+
         if (runningAway)
         {
             GameManager.instance.battleIsActive = false;
             runningAway = false;
+
+            if (SceneTransition.instance != null)
+            {
+                yield return StartCoroutine(SceneTransition.instance.FadeFromBlack());
+            }
         }
 
         else
         {
-            BattleRewardsHandler.instance.OpenRewardScreen(xpRewardAmount, itemsReward);
+            BattleRewardsHandler.instance.PrepareRewardScreen(
+                xpRewardAmount,
+                itemsReward
+            );
+
+            // Let the rewards panel activate while the screen is black.
+            yield return null;
+            yield return new WaitForEndOfFrame();
+
+            if (SceneTransition.instance != null)
+            {
+                yield return StartCoroutine(SceneTransition.instance.FadeFromBlack());
+            }
+
+            BattleRewardsHandler.instance.PlayRewardSFX();
         }
 
         currentTurn = 0;

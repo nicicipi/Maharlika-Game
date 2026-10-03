@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     private Vector3 bottomLeftEdge;
     private Vector3 topRightEdge;
 
+    private bool transitionMovementLocked;
+
     // new flag to avoid clamping until limits are provided
     private bool limitsSet = false;
 
@@ -46,12 +48,14 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
         float verticalMovement = Input.GetAxisRaw("Vertical");
 
-        if (deactivateMovement)
+        bool movementLocked = deactivateMovement || transitionMovementLocked;
+
+        if (movementLocked)
         {
             playerRigidBody.velocity = Vector2.zero;
         }
@@ -64,23 +68,20 @@ public class Player : MonoBehaviour
         playerAnimator.SetFloat("movementX", playerRigidBody.velocity.x);
         playerAnimator.SetFloat("movementY", playerRigidBody.velocity.y);
 
-        if (horizontalMovement == 1 || horizontalMovement == -1 || verticalMovement == 1 || verticalMovement == -1)
+        if (!movementLocked &&
+            (horizontalMovement != 0 || verticalMovement != 0))
         {
-            if (!deactivateMovement)
-            {
-                playerAnimator.SetFloat("lastX", horizontalMovement);
-                playerAnimator.SetFloat("lastY", verticalMovement);
-            }
+            playerAnimator.SetFloat("lastX", horizontalMovement);
+            playerAnimator.SetFloat("lastY", verticalMovement);
         }
 
-        // Only clamp position when limits have been set
         if (limitsSet)
         {
             transform.position = new Vector3(
                 Mathf.Clamp(transform.position.x, bottomLeftEdge.x, topRightEdge.x),
                 Mathf.Clamp(transform.position.y, bottomLeftEdge.y, topRightEdge.y),
                 Mathf.Clamp(transform.position.z, bottomLeftEdge.z, topRightEdge.z)
-             );
+            );
         }
     }
 
@@ -117,18 +118,32 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void SetTransitionMovementLocked(bool locked)
+    {
+        transitionMovementLocked = locked;
+
+        if (playerRigidBody != null)
+        {
+            playerRigidBody.velocity = Vector2.zero;
+            playerRigidBody.angularVelocity = 0f;
+            playerRigidBody.simulated = true;
+        }
+
+        // Disabling this component stops Player.Update() from reading input.
+        enabled = !locked;
+    }
+
     public void StopMovement()
     {
-        SetMovementLocked(true);
+        SetTransitionMovementLocked(true);
     }
 
     public void ResumeMovement()
     {
-        deactivateMovement = false;
+        SetTransitionMovementLocked(false);
 
         if (playerRigidBody != null)
         {
-            playerRigidBody.simulated = true;
             playerRigidBody.velocity = Vector2.zero;
             playerRigidBody.angularVelocity = 0f;
         }
