@@ -3169,6 +3169,7 @@ MonoBehaviour:
   - {fileID: 2729709706280302605, guid: f574f3a3dcf20fd42bd29d6ff3ca5080, type: 3}
   - {fileID: 5771509724659326297, guid: c618f6ebafb9b4341817a5c881344add, type: 3}
   - {fileID: 508843849017366076, guid: 8bbc12be0d559e84ab4abbfc0e83c2f4, type: 3}
+  - {fileID: 3085018570150093869, guid: a416ff4d4e912d049b66fd3df56676d8, type: 3}
   currentTurn: 0
   waitingForTurn: 0
   UIButtonHolder: {fileID: 2366699705527011713}
@@ -3245,7 +3246,14 @@ MonoBehaviour:
   - {fileID: 4102178847361538218}
   - {fileID: 3223344060950568722}
   - {fileID: 6223848412051272132}
-  gameOverScene: 
+  gameOverScene: GameOverScene
+  xpRewardAmount: 1234
+  itemsReward:
+  - {fileID: 6621584954699507376, guid: 6d8ff8fed33fd8044870ebf51c58e3fa, type: 3}
+  - {fileID: 7184134740926826035, guid: 6baf90930fb68444fb50feab07dfc251, type: 3}
+  - {fileID: 183402318249301568, guid: 9d269b9d55e33f64c9369acc635d6a1c, type: 3}
+  - {fileID: 6226294524333637412, guid: d95c99baf8692184f9f825e290f0e8dc, type: 3}
+  - {fileID: 6621584954699507376, guid: 8dabdd5a6f973a34980605a0dd6e7eb6, type: 3}
 --- !u!1 &1267925850944880146
 GameObject:
   m_ObjectHideFlags: 0

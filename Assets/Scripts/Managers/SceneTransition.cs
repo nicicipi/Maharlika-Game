@@ -121,7 +121,16 @@ public class SceneTransition : MonoBehaviour
 
     public IEnumerator FadeFromBlack()
     {
+        if (fadeImage == null)
+        {
+            Debug.LogError("SceneTransition: fadeImage is not assigned.");
+            yield break;
+        }
+
+        fadeImage.gameObject.SetActive(true);
+
         yield return StartCoroutine(Fade(1f, 0f));
+
         fadeImage.gameObject.SetActive(false);
     }
 }
