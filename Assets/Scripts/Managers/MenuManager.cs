@@ -45,8 +45,20 @@ public class MenuManager : MonoBehaviour
     {
         UpdateStats();
 
-        if (GameManager.instance.battleIsActive)
+        bool dialogueIsActive =
+            GameManager.instance != null &&
+            GameManager.instance.dialogueBoxOpened;
+
+        if (dialogueIsActive)
+        {
+            // Close the regular menu if dialogue starts while it is open.
+            if (menu.activeInHierarchy)
+            {
+                CloseMenu();
+            }
+
             return;
+        }
 
         if (Input.GetKeyDown(KeyCode.M))
         {
