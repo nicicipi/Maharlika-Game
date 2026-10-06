@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 4964876489883146362}
   - component: {fileID: 4521442650561391804}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Dialogue Name Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3003,7 +3003,7 @@ GameObject:
   - component: {fileID: 3668585035368347924}
   - component: {fileID: 2593069351338250306}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: continue button dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3111,7 +3111,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 9000897100646783895}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
         m_MethodName: DisplayNextDialogueLine
         m_Mode: 1
@@ -4405,7 +4405,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2402969584698943631}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc971af4017bfd042ae8244f14fe470f, type: 3}
   m_Name: 
@@ -4460,15 +4460,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec9ef0d3498130419887f2dc78df865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xpText: {fileID: 0}
-  lootText: {fileID: 0}
-  rewardPanel: {fileID: 0}
+  xpText: {fileID: 5099901211226795318}
+  lootText: {fileID: 8621117462589927219}
+  rewardPanel: {fileID: 3769598037637208494}
   rewardItems:
   - {fileID: 183402318249301568, guid: 9d269b9d55e33f64c9369acc635d6a1c, type: 3}
   - {fileID: 6621584954699507376, guid: 8dabdd5a6f973a34980605a0dd6e7eb6, type: 3}
   - {fileID: 6226294524333637412, guid: d95c99baf8692184f9f825e290f0e8dc, type: 3}
   xpReward: 0
-  rewardSFXIndex: 0
+  rewardSFXIndex: 35
   markQuestComplete: 0
   questToComplete: 
 --- !u!1 &2524026693153306907
@@ -9930,7 +9930,7 @@ GameObject:
   - component: {fileID: 1176301097326846359}
   - component: {fileID: 7485071258254563296}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Dialogue Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14430,7 +14430,6 @@ GameObject:
   - component: {fileID: 6849395518397992550}
   - component: {fileID: 1092490840631397505}
   - component: {fileID: 3209339616055723625}
-  - component: {fileID: 5156072765737633640}
   m_Layer: 5
   m_Name: Character Icon
   m_TagString: Untagged
@@ -14454,8 +14453,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -581.33, y: 132}
-  m_SizeDelta: {x: 757.336, y: 890.27}
+  m_AnchoredPosition: {x: -575, y: 67.877}
+  m_SizeDelta: {x: 483.665, y: 568.563}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1092490840631397505
 CanvasRenderer:
@@ -14485,7 +14484,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9a38fb5b7381f5d499bcee62d2d03e8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14495,58 +14494,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!212 &5156072765737633640
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6254711654586479311}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &6378117251963590036
 GameObject:
   m_ObjectHideFlags: 0
@@ -15443,6 +15390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3419331760807636309}
+  - component: {fileID: 9000897100646783895}
   m_Layer: 5
   m_Name: DIALOG
   m_TagString: Untagged
@@ -15470,6 +15418,24 @@ RectTransform:
   m_AnchoredPosition: {x: -0.009979248, y: -102.82004}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &9000897100646783895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6576506827745825542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a09496107db0f498a8546ed03e5986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterIcon: {fileID: 3209339616055723625}
+  characterName: {fileID: 4521442650561391804}
+  dialogueArea: {fileID: 7485071258254563296}
+  isDialogueActive: 0
+  typingSpeed: 0.02
+  animator: {fileID: 4938817488337809250}
 --- !u!1 &6584685004477992749
 GameObject:
   m_ObjectHideFlags: 0
@@ -19324,7 +19290,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 50, y: -1401}
   m_SizeDelta: {x: 1920, y: 1440}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4535404649369044000

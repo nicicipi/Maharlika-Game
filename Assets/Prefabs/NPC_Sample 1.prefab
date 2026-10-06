@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5604137668549444160}
   - component: {fileID: 209917916801937915}
-  - component: {fileID: -5075464568759456537}
   - component: {fileID: 5400124643890274188}
+  - component: {fileID: -5075464568759456537}
   m_Layer: 0
   m_Name: NPC_Sample 1
   m_TagString: Untagged
@@ -86,20 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5075464568759456537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3069987281241897942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb36200979016d44e95cfa4a765ce9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    dialogueLines: []
 --- !u!61 &5400124643890274188
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.047840357, y: -0.01189065}
+  m_Offset: {x: -4.641893, y: -0.69232094}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -143,5 +129,46 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.344707, y: 3.4287958}
+  m_Size: {x: 12.724175, y: 2.0679352}
   m_EdgeRadius: 0
+--- !u!114 &-5075464568759456537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3069987281241897942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb36200979016d44e95cfa4a765ce9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerOnEnter: 1
+  dialogue:
+    dialogueLines:
+    - character:
+        name: ???
+        icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
+      line: We have to burn everything, so the boss could start another business
+        center here!
+    - character:
+        name: ???
+        icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
+      line: Keep destroying! Keep building!
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 9a38fb5b7381f5d499bcee62d2d03e8b, type: 3}
+      line: Hey clankers!
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 9a38fb5b7381f5d499bcee62d2d03e8b, type: 3}
+      line: I won't let you destroy the legacy our ancestors worked so hard for over
+        some petty cash!
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 9a38fb5b7381f5d499bcee62d2d03e8b, type: 3}
+      line: Here I go San Francisco!
+    - character:
+        name: ???
+        icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
+      line: It's just a brat, get her!

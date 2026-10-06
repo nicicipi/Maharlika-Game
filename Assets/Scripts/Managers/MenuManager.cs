@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] Slider[] hpSlider, spSlider, xpSlider;
     [SerializeField] Image[] characterImage;
     [SerializeField] GameObject[] characterPanel;
-    [SerializeField] GameObject characterInfoPanel, itemsPanel, statPanel, savePanel, configPanel, quitPanel;
+    [SerializeField] GameObject characterInfoPanel, itemsPanel, statPanel, savePanel, gameSavedPanel, configPanel, quitPanel;
 
     [SerializeField] TextMeshProUGUI statLevel, statName, statHP, statSP, statDex, statDef, statAttack, statEquippedWeapon, statEquippedArmor;
     [SerializeField] TextMeshProUGUI statWeaponPower, statArmorDefence;
@@ -203,7 +204,8 @@ public class MenuManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        //Application.Quit();
+        SceneManager.LoadScene("MainMenu");
         Debug.Log("Quit Game");
     }
 
@@ -235,8 +237,33 @@ public class MenuManager : MonoBehaviour
         itemsPanel.SetActive(false);
         statPanel.SetActive(false);
         savePanel.SetActive(false);
+        gameSavedPanel.SetActive(false);
         configPanel.SetActive(false);
         quitPanel.SetActive(false);
 
+    }
+
+    public void OpenSavePanel()
+    {
+        savePanel.SetActive(true);
+        gameSavedPanel.SetActive(false);
+    }
+
+    public void ConfirmSave()
+    {
+        GameManager.instance.SaveData();
+
+        savePanel.SetActive(false);
+        gameSavedPanel.SetActive(true);
+    }
+
+    public void CloseSavePanel()
+    {
+        savePanel.SetActive(false);
+    }
+
+    public void CloseGameSavedPanel()
+    {
+        gameSavedPanel.SetActive(false);
     }
 }

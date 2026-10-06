@@ -11,6 +11,10 @@ public class BattleManager : MonoBehaviour
     public static BattleManager instance;
     private bool isBattleActive;
 
+    private GameObject overworldEnemy;
+
+    private BattleInstantiator currentBattleTrigger;
+
     [SerializeField] GameObject battleScene;
     [SerializeField] List<BattleCharacters> activeCharacters = new List<BattleCharacters>();
 
@@ -95,6 +99,10 @@ public class BattleManager : MonoBehaviour
 
         CheckPlayerButtonHolder();
 
+    }
+    public void SetOverworldEnemy(GameObject enemy)
+    {
+        overworldEnemy = enemy;
     }
 
     private void CheckPlayerButtonHolder()
@@ -203,14 +211,16 @@ public class BattleManager : MonoBehaviour
     private void SettingUpBattle()
     {
         isBattleActive = true;
-        transform.position = new Vector3(
-            Camera.main.transform.position.x,
-            Camera.main.transform.position.y,
-            transform.position.z
-            );
         GameManager.instance.battleIsActive = true;
- 
-        battleScene.SetActive(true);
+
+        transform.position = Vector3.zero;
+
+        if (battleScene != null)
+        {
+            battleScene.transform.position = Vector3.zero;
+            battleScene.transform.rotation = Quaternion.identity;
+            battleScene.SetActive(true);
+        }
     }
 
     private void NextTurn()
@@ -691,6 +701,12 @@ public class BattleManager : MonoBehaviour
         battleScene.SetActive(false);
         activeCharacters.Clear();
 
+        if (!runningAway && overworldEnemy != null)
+        {
+            Destroy(overworldEnemy);
+            overworldEnemy = null;
+        }
+
         if (AudioManager.instance != null)
         {
             AudioManager.instance.StopBattleMusic();
@@ -698,12 +714,25 @@ public class BattleManager : MonoBehaviour
 
         if (runningAway)
         {
+            if (currentBattleTrigger != null)
+            {
+                currentBattleTrigger.MoveEnemyAwayFromPlayer();
+                currentBattleTrigger = null;
+            }
+
+            if (Player.instance != null)
+            {
+                Player.instance.ResumeMovement();
+            }
+
             GameManager.instance.battleIsActive = false;
             runningAway = false;
 
             if (SceneTransition.instance != null)
             {
-                yield return StartCoroutine(SceneTransition.instance.FadeFromBlack());
+                yield return StartCoroutine(
+                    SceneTransition.instance.FadeFromBlack()
+                );
             }
         }
 
@@ -742,6 +771,11 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         SceneManager.LoadScene(gameOverScene);
+    }
+
+    public void SetBattleTrigger(BattleInstantiator battleTrigger)
+    {
+        currentBattleTrigger = battleTrigger;
     }
 
 }

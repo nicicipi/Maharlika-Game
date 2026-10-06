@@ -12,6 +12,7 @@ public class DialogueCharacter
 public class DialogueLine
 {
     public DialogueCharacter character;
+
     [TextArea(3, 10)]
     public string line;
 }
@@ -24,16 +25,36 @@ public class Dialogue
 
 public class DialogueTrigger : MonoBehaviour
 {
+    [SerializeField] bool triggerOnEnter = true;
+
     public Dialogue dialogue;
 
     public void TriggerDialogue()
     {
+        if (DialogueManager.Instance == null)
+        {
+            Debug.LogError("DialogueTrigger: DialogueManager is missing.", this);
+            return;
+        }
+
+        if (dialogue == null)
+        {
+            Debug.LogError("DialogueTrigger: Dialogue is not assigned.", this);
+            return;
+        }
+
+        if (DialogueManager.Instance.isDialogueActive)
+            return;
+
         DialogueManager.Instance.StartDialogue(dialogue);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (!triggerOnEnter)
+            return;
+
+        if (collision.CompareTag("Player"))
         {
             TriggerDialogue();
         }

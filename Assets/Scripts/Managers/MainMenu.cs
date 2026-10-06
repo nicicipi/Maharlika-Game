@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] string newGameScene;
     [SerializeField] GameObject continueButton;
+    [SerializeField] float waitToLoadTime;
 
     // Start is called before the first frame update
     void Start()
@@ -37,5 +38,15 @@ public class MainMenu : MonoBehaviour
     public void ContinueButton()
     {
         SceneManager.LoadScene("LoadingScene");
+        //StartCoroutine(ContinueGame());
     }
+
+    //private IEnumerator ContinueGame()
+    //{
+    //    yield return new WaitForSeconds(waitToLoadTime);
+
+    //    SceneManager.LoadScene(PlayerPrefs.GetString("Current_Scene"));
+    //    GameManager.instance.LoadData();
+    //    QuestManager.instance.LoadQuestData();
+    //}
 }

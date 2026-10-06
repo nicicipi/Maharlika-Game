@@ -85,19 +85,37 @@ public class GameManager : MonoBehaviour
         SavingPlayerPosition();
         SavingPlayerStats();
 
-        PlayerPrefs.SetString("Current_Scene", SceneManager.GetActiveScene().name);
+        PlayerPrefs.SetString(
+            "Current_Scene",
+            SceneManager.GetActiveScene().name
+        );
 
-        PlayerPrefs.SetInt("Number_Of_Items", Inventory.instance.GetItemsList().Count);
+        PlayerPrefs.SetInt(
+            "Number_Of_Items",
+            Inventory.instance.GetItemsList().Count
+        );
+
         for (int i = 0; i < Inventory.instance.GetItemsList().Count; i++)
         {
-            ItemsManager itemInInventory = Inventory.instance.GetItemsList()[i];
-            PlayerPrefs.SetString("Item_" + i + "_Name", itemInInventory.itemName);
+            ItemsManager itemInInventory =
+                Inventory.instance.GetItemsList()[i];
+
+            PlayerPrefs.SetString(
+                "Item_" + i + "_Name",
+                itemInInventory.itemName
+            );
 
             if (itemInInventory.isStackable)
             {
-                PlayerPrefs.SetInt("Item_" + i + "_Amount", itemInInventory.amount);
+                PlayerPrefs.SetInt(
+                    "Item_" + i + "_Amount",
+                    itemInInventory.amount
+                );
             }
         }
+
+        PlayerPrefs.Save();
+        Debug.Log("Data has been saved.");
     }
 
     private static void SavingPlayerPosition()

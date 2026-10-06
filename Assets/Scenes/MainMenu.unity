@@ -2860,8 +2860,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c056f36421881ef4393dbd722d0e3c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGameScene: Scene 1 Lyka House
+  newGameScene: Scene 0 Lyka Interior
   continueButton: {fileID: 447159561}
+  waitToLoadTime: 3
 --- !u!1 &2027871799
 GameObject:
   m_ObjectHideFlags: 0

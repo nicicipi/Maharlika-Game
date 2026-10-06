@@ -39,4 +39,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MAP OF MAHARLIKA FINALIZED/Stage 1 Forest/Scene 3 Village.unity
     guid: 3053dcd0447102f44aa05bf025076b1c
+  - enabled: 1
+    path: Assets/Scenes/MAP OF MAHARLIKA FINALIZED/Stage 1 Forest/Interior/Scene
+      0 Lyka Interior/Scene 0 Lyka Interior.unity
+    guid: 0bfdaf40c0b6d104db81170434b352f7
   m_configObjects: {}

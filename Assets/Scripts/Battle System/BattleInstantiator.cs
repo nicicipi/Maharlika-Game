@@ -3,47 +3,57 @@ using UnityEngine;
 
 public class BattleInstantiator : MonoBehaviour
 {
-    [SerializeField] BattleTypeManager[] availableBattles;
-    [SerializeField] bool activateOnEnter;
-    private bool inArea;
+    [Header("Battle Tutorial")]
+    [SerializeField]
+    private BattleTutorialManager battleTutorialManager;
 
-    [SerializeField] float timeBetweenBattles;
-    private float battleCounter;
+    [SerializeField]
+    private bool startTutorialOnFirstBattle = true;
 
-    [SerializeField] bool deactiveAfterStarting;
-    [SerializeField] bool canRunAway;
+    private bool tutorialHasStarted;
 
-    [SerializeField] bool shouldCompleteQuest;
+    [SerializeField]
+    private BattleTypeManager[] availableBattles;
+
+    [SerializeField]
+    private bool canRunAway;
+
+    [SerializeField]
+    private float runAwayDistance = 2f;
+
+    [SerializeField]
+    private float battleTriggerCooldown = 2f;
+
+    private Collider2D battleTrigger;
+
+    [SerializeField]
+    private bool shouldCompleteQuest;
+
+    [SerializeField]
+    private bool deactivateAfterStarting;
+
+    [SerializeField]
+    private int battleMusicIndex;
+
     public string questToComplete;
 
     private bool battleStarting;
 
-    [SerializeField] int battleMusicIndex;
-
-    private void Start()
+    private void Awake()
     {
-        battleCounter = Random.Range(timeBetweenBattles * 0.5f, timeBetweenBattles * 1.5f);
+        battleTrigger = GetComponent<Collider2D>();
     }
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (battleStarting)
+        if (battleStarting ||
+            !collision.CompareTag("Player") ||
+            GameManager.instance.battleIsActive)
+        {
             return;
-
-        if (inArea && !Player.instance.deactivateMovement)
-        {
-            if (Input.GetAxisRaw("Horizontal") != 0 ||
-                Input.GetAxisRaw("Vertical") != 0)
-            {
-                battleCounter -= Time.deltaTime;
-            }
         }
 
-        if (battleCounter <= 0f)
-        {
-            battleCounter = Random.Range(timeBetweenBattles * 0.5f, timeBetweenBattles * 1.5f);
-            StartCoroutine(StartBattleCoroutine());
-        }
+        StartCoroutine(StartBattleCoroutine());
     }
 
     private IEnumerator StartBattleCoroutine()
@@ -62,33 +72,50 @@ public class BattleInstantiator : MonoBehaviour
 
         if (SceneTransition.instance != null)
         {
-            yield return StartCoroutine(SceneTransition.instance.FadeToBlack());
+            yield return StartCoroutine(
+                SceneTransition.instance.FadeToBlack()
+            );
         }
 
-        int selectBattle = Random.Range(0, availableBattles.Length);
+        int selectedBattle =
+            Random.Range(0, availableBattles.Length);
 
-        BattleManager.instance.itemsReward = availableBattles[selectBattle].rewardItems;
-        BattleManager.instance.xpRewardAmount = availableBattles[selectBattle].rewardXP;
+        BattleManager.instance.itemsReward =
+            availableBattles[selectedBattle].rewardItems;
+
+        BattleManager.instance.xpRewardAmount =
+            availableBattles[selectedBattle].rewardXP;
 
         GameManager.instance.battleIsActive = true;
 
-        // This activates the battle scene.
+        BattleManager.instance.SetOverworldEnemy(
+            transform.root.gameObject
+        );
+
+        BattleManager.instance.SetBattleTrigger(this);
         BattleManager.instance.StartBattle(
-            availableBattles[selectBattle].enemies,
+            availableBattles[selectedBattle].enemies,
             canRunAway
         );
 
-        // Allow battleScene objects to initialize.
+        if (startTutorialOnFirstBattle &&
+            !tutorialHasStarted &&
+            battleTutorialManager != null)
+        {
+            tutorialHasStarted = true;
+            battleTutorialManager.StartTutorial();
+        }
+        
+
         yield return null;
 
         if (BattleRewardsHandler.instance != null)
         {
-            BattleRewardsHandler.instance.markQuestComplete = shouldCompleteQuest;
-            BattleRewardsHandler.instance.questToComplete = questToComplete;
-        }
-        else
-        {
-            Debug.LogWarning("BattleRewardsHandler instance was not found.");
+            BattleRewardsHandler.instance.markQuestComplete =
+                shouldCompleteQuest;
+
+            BattleRewardsHandler.instance.questToComplete =
+                questToComplete;
         }
 
         yield return new WaitForEndOfFrame();
@@ -96,27 +123,71 @@ public class BattleInstantiator : MonoBehaviour
 
         if (SceneTransition.instance != null)
         {
-            yield return StartCoroutine(SceneTransition.instance.FadeFromBlack());
+            yield return StartCoroutine(
+                SceneTransition.instance.FadeFromBlack()
+            );
         }
 
-        if (deactiveAfterStarting)
+        if (deactivateAfterStarting)
         {
-            Destroy(gameObject);
+            Destroy(transform.root.gameObject);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.CompareTag("Player") || battleStarting)
-            return;
 
-        if (activateOnEnter)
+    public void MoveEnemyAwayFromPlayer()
+    {
+        if (Player.instance == null)
         {
-            StartCoroutine(StartBattleCoroutine());
+            return;
+        }
+
+        Transform enemy = transform.root;
+
+        Vector2 directionAwayFromPlayer =
+            (enemy.position - Player.instance.transform.position).normalized;
+
+        if (directionAwayFromPlayer == Vector2.zero)
+        {
+            directionAwayFromPlayer = Vector2.right;
+        }
+
+        Vector2 newPosition =
+            (Vector2)Player.instance.transform.position +
+            directionAwayFromPlayer * runAwayDistance;
+
+        Rigidbody2D enemyRigidbody =
+            enemy.GetComponent<Rigidbody2D>();
+
+        if (enemyRigidbody != null)
+        {
+            enemyRigidbody.position = newPosition;
+            enemyRigidbody.velocity = Vector2.zero;
         }
         else
         {
-            inArea = true;
+            enemy.position = newPosition;
+        }
+
+        // Allow this enemy to start another battle later.
+        battleStarting = false;
+
+        if (battleTrigger != null)
+        {
+            battleTrigger.enabled = false;
+
+            Invoke(
+                nameof(EnableBattleTrigger),
+                battleTriggerCooldown
+            );
+        }
+    }
+
+    private void EnableBattleTrigger()
+    {
+        if (battleTrigger != null)
+        {
+            battleTrigger.enabled = true;
         }
     }
 }
