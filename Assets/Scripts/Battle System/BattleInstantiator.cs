@@ -3,6 +3,20 @@ using UnityEngine;
 
 public class BattleInstantiator : MonoBehaviour
 {
+
+    [Header("Tutorial Enemy Persistence")]
+    [SerializeField]
+    private string enemyId = "RobotTutorialEnemy";
+
+    [SerializeField]
+    private ItemsManager tutorialRewardItem;
+
+    private string EnemyDefeatedKey =>
+        "EnemyDefeated_" + enemyId;
+
+    private string TutorialRewardKey =>
+        "TutorialRewardGiven_" + enemyId;
+
     [Header("Battle Tutorial")]
     [SerializeField]
     private BattleTutorialManager battleTutorialManager;
@@ -38,6 +52,14 @@ public class BattleInstantiator : MonoBehaviour
     public string questToComplete;
 
     private bool battleStarting;
+
+    private void Start()
+    {
+        if (PlayerPrefs.GetInt(EnemyDefeatedKey, 0) == 1)
+        {
+            Destroy(transform.root.gameObject);
+        }
+    }
 
     private void Awake()
     {
@@ -88,9 +110,7 @@ public class BattleInstantiator : MonoBehaviour
 
         GameManager.instance.battleIsActive = true;
 
-        BattleManager.instance.SetOverworldEnemy(
-            transform.root.gameObject
-        );
+        GiveTutorialReward();
 
         BattleManager.instance.SetBattleTrigger(this);
         BattleManager.instance.StartBattle(
@@ -190,4 +210,38 @@ public class BattleInstantiator : MonoBehaviour
             battleTrigger.enabled = true;
         }
     }
+
+    public void GiveTutorialReward()
+    {
+        if (tutorialRewardItem == null ||
+            Inventory.instance == null)
+        {
+            return;
+        }
+
+        if (PlayerPrefs.GetInt(TutorialRewardKey, 0) == 1)
+        {
+            return;
+        }
+
+        Inventory.instance.AddItems(tutorialRewardItem);
+
+        PlayerPrefs.SetInt(TutorialRewardKey, 1);
+        PlayerPrefs.Save();
+
+        Debug.Log(
+            tutorialRewardItem.itemName +
+            " was added to the inventory."
+        );
+    }
+
+    public void MarkEnemyDefeated()
+    {
+        PlayerPrefs.SetInt(EnemyDefeatedKey, 1);
+        PlayerPrefs.Save();
+
+        Destroy(transform.root.gameObject);
+    }
+
+
 }

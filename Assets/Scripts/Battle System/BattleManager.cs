@@ -11,8 +11,6 @@ public class BattleManager : MonoBehaviour
     public static BattleManager instance;
     private bool isBattleActive;
 
-    private GameObject overworldEnemy;
-
     private BattleInstantiator currentBattleTrigger;
 
     [SerializeField] GameObject battleScene;
@@ -64,6 +62,8 @@ public class BattleManager : MonoBehaviour
     private bool canRun;
 
 
+
+
     // --- TOP NOTIFICATION PANEL UI --- NOT YET IMPLEMENTED SEP 9 2026
     //[Header("Battle Notice UI")]
     //[SerializeField] GameObject battleNoticePanel;
@@ -99,10 +99,6 @@ public class BattleManager : MonoBehaviour
 
         CheckPlayerButtonHolder();
 
-    }
-    public void SetOverworldEnemy(GameObject enemy)
-    {
-        overworldEnemy = enemy;
     }
 
     private void CheckPlayerButtonHolder()
@@ -673,6 +669,12 @@ public class BattleManager : MonoBehaviour
             // Wait for the notification to finish completely before
             // starting the screen transition to the rewards.
             yield return StartCoroutine(battleNotice.WaitUntilFinished());
+
+            if (!runningAway && currentBattleTrigger != null)
+            {
+                currentBattleTrigger.MarkEnemyDefeated();
+                currentBattleTrigger = null;
+            }
         }
 
         // Fade to black only after the battle notification has finished.
@@ -701,11 +703,18 @@ public class BattleManager : MonoBehaviour
         battleScene.SetActive(false);
         activeCharacters.Clear();
 
-        if (!runningAway && overworldEnemy != null)
+        //if (!runningAway && overworldEnemy != null)
+        //{
+        //    Destroy(overworldEnemy);
+        //    overworldEnemy = null;
+        //}
+
+        if (!runningAway && currentBattleTrigger != null)
         {
-            Destroy(overworldEnemy);
-            overworldEnemy = null;
+            currentBattleTrigger.MarkEnemyDefeated();
+            currentBattleTrigger = null;
         }
+
 
         if (AudioManager.instance != null)
         {

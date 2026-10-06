@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 1041912717
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 494244013, guid: e9d4fb1efc0ebf84b8dffc1cf037dcdd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b428e835f980fdc4aaf1c862c5d26ecc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,3 +112,11 @@ MonoBehaviour:
   isDead: 0
   deadSprites: {fileID: 21300000, guid: e727c037f076fab4f9ad3658c17c3b4e, type: 3}
   deathParticles: {fileID: 7311508617442252241, guid: ea3fc8ba311e285429d1aff5a935a5ff, type: 3}
+  preDeathDelay: 0.5
+  jitterDuration: 0.6
+  jitterFrequency: 20
+  jitterMagnitudeX: 0.2
+  jitterMagnitudeY: 0.12
+  colorFlashFrequency: 10
+  fadeDuration: 0.8
+  fallDistance: 0.5
