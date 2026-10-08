@@ -53,6 +53,8 @@ public class BattleInstantiator : MonoBehaviour
 
     private bool battleStarting;
 
+    private bool tutorialRewardGivenThisSession;
+
     private void Start()
     {
         if (PlayerPrefs.GetInt(EnemyDefeatedKey, 0) == 1)
@@ -113,6 +115,7 @@ public class BattleInstantiator : MonoBehaviour
         GiveTutorialReward();
 
         BattleManager.instance.SetBattleTrigger(this);
+
         BattleManager.instance.StartBattle(
             availableBattles[selectedBattle].enemies,
             canRunAway
@@ -213,35 +216,67 @@ public class BattleInstantiator : MonoBehaviour
 
     public void GiveTutorialReward()
     {
-        if (tutorialRewardItem == null ||
-            Inventory.instance == null)
+        if (tutorialRewardGivenThisSession)
         {
             return;
         }
 
-        if (PlayerPrefs.GetInt(TutorialRewardKey, 0) == 1)
+        if (tutorialRewardItem == null)
         {
+            Debug.LogError(
+                "BattleInstantiator: Tutorial Reward Item is not assigned.",
+                this
+            );
+
             return;
+        }
+
+        if (Inventory.instance == null)
+        {
+            Debug.LogError(
+                "BattleInstantiator: Inventory instance was not found.",
+                this
+            );
+
+            return;
+        }
+
+        if (tutorialRewardItem.isStackable &&
+            tutorialRewardItem.amount <= 0)
+        {
+            tutorialRewardItem.amount = 1;
         }
 
         Inventory.instance.AddItems(tutorialRewardItem);
-
-        PlayerPrefs.SetInt(TutorialRewardKey, 1);
-        PlayerPrefs.Save();
+        tutorialRewardGivenThisSession = true;
 
         Debug.Log(
-            tutorialRewardItem.itemName +
-            " was added to the inventory."
+            "Tutorial reward added: " +
+            tutorialRewardItem.itemName
         );
     }
 
     public void MarkEnemyDefeated()
     {
-        PlayerPrefs.SetInt(EnemyDefeatedKey, 1);
-        PlayerPrefs.Save();
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.RegisterDefeatedEnemy(enemyId);
+        }
 
         Destroy(transform.root.gameObject);
     }
 
+    [ContextMenu("Reset Tutorial Progress")]
+    private void ResetTutorialProgress()
+    {
+        PlayerPrefs.DeleteKey(TutorialRewardKey);
+        PlayerPrefs.DeleteKey(EnemyDefeatedKey);
+        PlayerPrefs.Save();
+
+        Debug.Log(
+            "Reset tutorial progress for enemy ID: " +
+            enemyId
+        );
+    }
 
 }

@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
 
     public int currentMoney;
 
+    private readonly HashSet<string> defeatedEnemyIds =
+        new HashSet<string>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -112,6 +115,14 @@ public class GameManager : MonoBehaviour
                     itemInInventory.amount
                 );
             }
+        }
+
+        foreach (string defeatedEnemyId in defeatedEnemyIds)
+        {
+            PlayerPrefs.SetInt(
+                "EnemyDefeated_" + defeatedEnemyId,
+                1
+            );
         }
 
         PlayerPrefs.Save();
@@ -223,6 +234,14 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.GetFloat("Player_Pos_Y"),
             PlayerPrefs.GetFloat("Player_Pos_Z")
             );
+    }
+
+    public void RegisterDefeatedEnemy(string enemyId)
+    {
+        if (!string.IsNullOrEmpty(enemyId))
+        {
+            defeatedEnemyIds.Add(enemyId);
+        }
     }
 }
 
