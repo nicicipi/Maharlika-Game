@@ -226,10 +226,10 @@ public class MenuManager : MonoBehaviour
         characterInfoPanel.SetActive(true);
         CloseEverythingInMenu();
         menu.SetActive(false);
+
         GameManager.instance.gameMenuOpened = false;
+
         AudioManager.instance.PlaySFX(18);
-
-
     }
 
     public void CloseEverythingInMenu()

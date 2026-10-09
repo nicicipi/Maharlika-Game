@@ -8,4 +8,5 @@ public class BattleTypeManager
     public string[] enemies;
     public int rewardXP;
     public ItemsManager[] rewardItems;
+    public int scrapsReward;
 }

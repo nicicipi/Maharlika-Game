@@ -59,10 +59,9 @@ public class BattleManager : MonoBehaviour
     public int xpRewardAmount;
     public ItemsManager[] itemsReward;
 
+    public int scrapsReward;
+
     private bool canRun;
-
-
-
 
     // --- TOP NOTIFICATION PANEL UI --- NOT YET IMPLEMENTED SEP 9 2026
     //[Header("Battle Notice UI")]
@@ -599,26 +598,52 @@ public class BattleManager : MonoBehaviour
 
     public void OpenCharacterMenu()
     {
-        if (selectedItem)
+        if (selectedItem == null)
         {
-            characterChoicePanel.SetActive(true);
-            for(int i = 0; i < activeCharacters.Count; i++)
+            Debug.LogWarning(
+                "BattleManager: No item has been selected."
+            );
+
+            return;
+        }
+
+        characterChoicePanel.SetActive(true);
+
+        // Hide every character option first.
+        for (int i = 0; i < playerNames.Length; i++)
+        {
+            if (playerNames[i] != null &&
+                playerNames[i].transform.parent != null)
             {
-                if (activeCharacters[i].IsPlayer())
-                {
-                    PlayerStats activePlayer = GameManager.instance.GetPlayerStats()[i];
-
-                    playerNames[i].text = activePlayer.playerName;
-
-                    bool activePlayerInHierarchy = activePlayer.gameObject.activeInHierarchy;
-                    playerNames[i].transform.parent.gameObject.SetActive(activePlayerInHierarchy);
-                }
+                playerNames[i].transform.parent.gameObject.SetActive(false);
             }
         }
 
-        else
+        int playerButtonIndex = 0;
+
+        // Only display players that were actually added to this battle.
+        foreach (BattleCharacters character in activeCharacters)
         {
-            print("No item selected");
+            if (!character.IsPlayer())
+            {
+                continue;
+            }
+
+            if (playerButtonIndex >= playerNames.Length)
+            {
+                break;
+            }
+
+            playerNames[playerButtonIndex].text =
+                character.characterName;
+
+            playerNames[playerButtonIndex]
+                .transform
+                .parent
+                .gameObject
+                .SetActive(true);
+
+            playerButtonIndex++;
         }
     }
 
@@ -749,7 +774,8 @@ public class BattleManager : MonoBehaviour
         {
             BattleRewardsHandler.instance.PrepareRewardScreen(
                 xpRewardAmount,
-                itemsReward
+                itemsReward,
+                scrapsReward
             );
 
             // Let the rewards panel activate while the screen is black.

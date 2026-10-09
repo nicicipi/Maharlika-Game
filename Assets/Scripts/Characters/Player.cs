@@ -85,6 +85,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void SetIdleAnimation()
+    {
+        if (playerAnimator == null)
+        {
+            return;
+        }
+
+        playerAnimator.SetFloat("movementX", 0f);
+        playerAnimator.SetFloat("movementY", 0f);
+    }
+
     public void SetLimit(Vector3 bottomEdgeToSet, Vector3 topEdgeToSet)
     {
         bottomLeftEdge = bottomEdgeToSet;
@@ -114,7 +125,11 @@ public class Player : MonoBehaviour
         {
             playerRigidBody.velocity = Vector2.zero;
             playerRigidBody.angularVelocity = 0f;
-            playerRigidBody.simulated = true;
+        }
+
+        if (locked)
+        {
+            SetIdleAnimation();
         }
     }
 
@@ -135,6 +150,7 @@ public class Player : MonoBehaviour
 
     public void StopMovement()
     {
+        SetIdleAnimation();
         SetTransitionMovementLocked(true);
     }
 

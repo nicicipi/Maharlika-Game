@@ -44,12 +44,20 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance != null &&
+            (GameManager.instance.dialogueBoxOpened ||
+             GameManager.instance.gameMenuOpened ||
+             GameManager.instance.shopOpened ||
+             GameManager.instance.battleIsActive))
+        {
+            OnMovementInput?.Invoke(Vector2.zero);
+            return;
+        }
+
         if (aiData.targets == null ||
             aiData.targets.Count == 0)
         {
             aiData.currentTarget = null;
-
-            // Immediately stop the enemy when the player is not visible.
             OnMovementInput?.Invoke(Vector2.zero);
             return;
         }

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class DialogueCharacter
@@ -15,6 +17,8 @@ public class DialogueLine
 
     [TextArea(3, 10)]
     public string line;
+
+    public UnityEvent onLineStarted;
 }
 
 [System.Serializable]

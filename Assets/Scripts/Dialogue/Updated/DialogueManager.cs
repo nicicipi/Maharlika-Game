@@ -101,6 +101,8 @@ public class DialogueManager : MonoBehaviour
         characterIcon.sprite = currentLine.character.icon;
         characterName.text = currentLine.character.name;
 
+        currentLine.onLineStarted?.Invoke();
+
         typingCoroutine = StartCoroutine(TypeSentence(currentLine));
     }
 

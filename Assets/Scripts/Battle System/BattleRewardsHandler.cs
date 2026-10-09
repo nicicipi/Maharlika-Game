@@ -7,114 +7,271 @@ public class BattleRewardsHandler : MonoBehaviour
 {
     public static BattleRewardsHandler instance;
 
-    [SerializeField] TextMeshProUGUI xpText, lootText;
-    [SerializeField] GameObject rewardPanel;
+    [Header("Reward UI")]
+    [SerializeField]
+    private GameObject rewardPanel;
 
-    [SerializeField] ItemsManager[] rewardItems;
-    [SerializeField] int xpReward;
+    [SerializeField]
+    private TextMeshProUGUI dialogueText;
+
+    [Header("Typing")]
+    [SerializeField]
+    private float typingSpeed = 0.03f;
 
     [Header("Reward Audio")]
-    [SerializeField] int rewardSFXIndex;
+    [SerializeField]
+    private int rewardSFXIndex;
 
     public bool markQuestComplete;
     public string questToComplete;
+
+    private readonly List<string> messages = new List<string>();
+
+    private int currentMessageIndex;
+    private Coroutine typingCoroutine;
+    private bool isTyping;
+
+    private int xpReward;
+    private ItemsManager[] rewardItems;
+    private int scrapsReward;
 
     private void Awake()
     {
         instance = this;
     }
 
-    public void OpenRewardScreen(int xpEarned, ItemsManager[] itemsEarned)
+    public void PrepareRewardScreen(
+        int xpEarned,
+        ItemsManager[] itemsEarned,
+        int scrapsEarned
+    )
     {
-        StartCoroutine(OpenRewardScreenCoroutine(xpEarned, itemsEarned));
-    }
-
-    private IEnumerator OpenRewardScreenCoroutine(int xpEarned, ItemsManager[] itemsEarned)
-    {
-        // Hide it immediately so it cannot be seen during the fade.
-        rewardPanel.SetActive(false);
-
-        // Fade completely to black.
-        if (SceneTransition.instance != null)
-        {
-            yield return StartCoroutine(SceneTransition.instance.FadeToBlack());
-        }
-
         xpReward = xpEarned;
         rewardItems = itemsEarned;
+        scrapsReward = scrapsEarned;
 
-        xpText.text = xpEarned + " xp";
-        lootText.text = "";
+        ApplyRewards();
+        BuildRewardMessages();
 
-        foreach (ItemsManager rewardItem in rewardItems)
-        {
-            lootText.text += rewardItem.itemName + " ";
-        }
+        currentMessageIndex = 0;
 
-        // Show the panel while the screen is fully black.
         rewardPanel.SetActive(true);
+        DisplayCurrentMessage();
 
-        // Allow the panel to initialize.
-        yield return null;
-        yield return new WaitForEndOfFrame();
+        PlayRewardSFX();
+    }
 
-        // Reveal the already-open reward panel.
-        if (SceneTransition.instance != null)
+    public void DisplayNextMessage()
+    {
+        if (!rewardPanel.activeInHierarchy)
         {
-            yield return StartCoroutine(SceneTransition.instance.FadeFromBlack());
+            return;
         }
 
-        // Play the reward sound when the panel becomes visible.
-        if (AudioManager.instance != null)
+        if (isTyping)
         {
-            AudioManager.instance.PlaySFX(rewardSFXIndex);
+            FinishTyping();
+            return;
         }
+
+        currentMessageIndex++;
+
+        if (currentMessageIndex >= messages.Count)
+        {
+            CloseRewardScreen();
+            return;
+        }
+
+        DisplayCurrentMessage();
+    }
+
+    private void DisplayCurrentMessage()
+    {
+        if (currentMessageIndex < 0 ||
+            currentMessageIndex >= messages.Count)
+        {
+            return;
+        }
+
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        typingCoroutine = StartCoroutine(
+            TypeMessage(messages[currentMessageIndex])
+        );
+    }
+
+    private IEnumerator TypeMessage(string message)
+    {
+        isTyping = true;
+        dialogueText.text = string.Empty;
+
+        foreach (char character in message)
+        {
+            dialogueText.text += character;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+
+        isTyping = false;
+        typingCoroutine = null;
+    }
+
+    private void FinishTyping()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
+
+        dialogueText.text = messages[currentMessageIndex];
+        isTyping = false;
+    }
+
+    private void ApplyRewards()
+    {
+        PlayerStats[] playerStats =
+            GameManager.instance.GetPlayerStats();
+
+        foreach (PlayerStats player in playerStats)
+        {
+            if (player.gameObject.activeInHierarchy)
+            {
+                player.AddXP(xpReward);
+            }
+        }
+
+        if (rewardItems != null && Inventory.instance != null)
+        {
+            foreach (ItemsManager item in rewardItems)
+            {
+                if (item != null)
+                {
+                    Inventory.instance.AddItems(item);
+                }
+            }
+        }
+
+        GameManager.instance.currentMoney += scrapsReward;
+    }
+
+    private void BuildRewardMessages()
+    {
+        messages.Clear();
+
+        PlayerStats[] playerStats =
+            GameManager.instance.GetPlayerStats();
+
+        foreach (PlayerStats player in playerStats)
+        {
+            if (!player.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
+
+            if (player.playerLevel > 1)
+            {
+                AddMessage(
+                    player.playerName +
+                    " has gained " +
+                    xpReward +
+                    " XP and reached Level " +
+                    player.playerLevel +
+                    "!"
+                );
+            }
+            else
+            {
+                AddMessage(
+                    player.playerName +
+                    " has gained " +
+                    xpReward +
+                    " XP."
+                );
+            }
+        }
+
+        AddMessage(BuildLootMessage());
+
+        AddMessage(
+            "You picked up " +
+            scrapsReward +
+            " scraps."
+        );
+    }
+
+    private string BuildLootMessage()
+    {
+        if (rewardItems == null || rewardItems.Length == 0)
+        {
+            return "You did not receive any items.";
+        }
+
+        Dictionary<string, int> itemCounts =
+            new Dictionary<string, int>();
+
+        foreach (ItemsManager item in rewardItems)
+        {
+            if (item == null)
+            {
+                continue;
+            }
+
+            if (!itemCounts.ContainsKey(item.itemName))
+            {
+                itemCounts[item.itemName] = 0;
+            }
+
+            itemCounts[item.itemName]++;
+        }
+
+        List<string> itemMessages = new List<string>();
+
+        foreach (KeyValuePair<string, int> item in itemCounts)
+        {
+            itemMessages.Add(
+                "You got " +
+                item.Value +
+                " " +
+                item.Key +
+                "."
+            );
+        }
+
+        return string.Join("\n", itemMessages);
+    }
+
+    private void AddMessage(string message)
+    {
+        messages.Add(message);
     }
 
     public void CloseRewardScreen()
     {
-        foreach (PlayerStats activePlayer in GameManager.instance.GetPlayerStats())
+        if (typingCoroutine != null)
         {
-            if (activePlayer.gameObject.activeInHierarchy)
-            {
-                activePlayer.AddXP(xpReward);
-            }
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
         }
 
-        foreach (ItemsManager itemRewarded in rewardItems)
-        {
-            Inventory.instance.AddItems(itemRewarded);
-        }
-
+        isTyping = false;
         rewardPanel.SetActive(false);
+
         GameManager.instance.battleIsActive = false;
 
         if (markQuestComplete)
         {
-            QuestManager.instance.MarkQuestComplete(questToComplete);
+            QuestManager.instance.MarkQuestComplete(
+                questToComplete
+            );
         }
 
-        // Restore player input and Rigidbody physics after the battle.
         if (Player.instance != null)
         {
             Player.instance.ResumeMovement();
         }
-    }
-
-    public void PrepareRewardScreen(int xpEarned, ItemsManager[] itemsEarned)
-    {
-        xpReward = xpEarned;
-        rewardItems = itemsEarned;
-
-        xpText.text = xpEarned + " xp";
-        lootText.text = "";
-
-        foreach (ItemsManager rewardItem in rewardItems)
-        {
-            lootText.text += rewardItem.itemName + " ";
-        }
-
-        rewardPanel.SetActive(true);
     }
 
     public void PlayRewardSFX()

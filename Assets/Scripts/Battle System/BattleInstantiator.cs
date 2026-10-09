@@ -110,6 +110,9 @@ public class BattleInstantiator : MonoBehaviour
         BattleManager.instance.xpRewardAmount =
             availableBattles[selectedBattle].rewardXP;
 
+        BattleManager.instance.scrapsReward =
+            availableBattles[selectedBattle].scrapsReward;
+
         GameManager.instance.battleIsActive = true;
 
         GiveTutorialReward();
