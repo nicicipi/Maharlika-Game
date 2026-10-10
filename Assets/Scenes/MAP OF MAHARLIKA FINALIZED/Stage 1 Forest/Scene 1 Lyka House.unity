@@ -814,6 +814,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3419331760807636309, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3419331760807636309, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 5476687473476436592, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -893,6 +901,22 @@ PrefabInstance:
     - target: {fileID: 5476687473476436592, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5943755455563602085, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5943755455563602085, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 640
+      objectReference: {fileID: 0}
+    - target: {fileID: 5943755455563602085, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 480
+      objectReference: {fileID: 0}
+    - target: {fileID: 5943755455563602085, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

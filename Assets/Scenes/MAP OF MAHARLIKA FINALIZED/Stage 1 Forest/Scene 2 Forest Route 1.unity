@@ -3353,6 +3353,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 884467908329650031, guid: 0a43b86248128e5439332e2cd8dc0540, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 640
+      objectReference: {fileID: 0}
+    - target: {fileID: 884467908329650031, guid: 0a43b86248128e5439332e2cd8dc0540, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 480
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315301903844012705, guid: 0a43b86248128e5439332e2cd8dc0540, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315301903844012705, guid: 0a43b86248128e5439332e2cd8dc0540, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 6646984213274841761, guid: 0a43b86248128e5439332e2cd8dc0540, type: 3}
       propertyPath: m_Name
       value: Canvas
