@@ -22,6 +22,9 @@ public class DialogueManager : MonoBehaviour
     public float typingSpeed = 0.2f;
     public Animator animator;
 
+    [SerializeField]
+    private DialogueTextAnimator textAnimator;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -32,6 +35,13 @@ public class DialogueManager : MonoBehaviour
 
         Instance = this;
         lines = new Queue<DialogueLine>();
+
+        if (textAnimator == null &&
+            dialogueArea != null)
+        {
+            textAnimator =
+                dialogueArea.GetComponent<DialogueTextAnimator>();
+        }
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -101,6 +111,15 @@ public class DialogueManager : MonoBehaviour
         characterIcon.sprite = currentLine.character.icon;
         characterName.text = currentLine.character.name;
 
+        if (textAnimator != null)
+        {
+            textAnimator.SetEffect(
+                currentLine.textEffect,
+                currentLine.effectStrength,
+                currentLine.effectSpeed
+            );
+        }
+
         currentLine.onLineStarted?.Invoke();
 
         typingCoroutine = StartCoroutine(TypeSentence(currentLine));
@@ -109,12 +128,29 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator TypeSentence(DialogueLine dialogueLine)
     {
         isTyping = true;
-        dialogueArea.text = "";
+        dialogueArea.text = string.Empty;
+
+        float currentTypingSpeed = typingSpeed;
+
+        if (dialogueLine.useCustomTypingSpeed)
+        {
+            currentTypingSpeed = dialogueLine.typingSpeed;
+        }
+
+        if (currentTypingSpeed <= 0f)
+        {
+            dialogueArea.text = dialogueLine.line;
+            isTyping = false;
+            typingCoroutine = null;
+            yield break;
+        }
 
         foreach (char letter in dialogueLine.line)
         {
             dialogueArea.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            yield return new WaitForSeconds(
+                currentTypingSpeed
+            );
         }
 
         isTyping = false;
@@ -138,6 +174,11 @@ public class DialogueManager : MonoBehaviour
         if (animator != null)
         {
             animator.Play("Hide");
+        }
+
+        if (textAnimator != null)
+        {
+            textAnimator.ClearEffect();
         }
     }
 }

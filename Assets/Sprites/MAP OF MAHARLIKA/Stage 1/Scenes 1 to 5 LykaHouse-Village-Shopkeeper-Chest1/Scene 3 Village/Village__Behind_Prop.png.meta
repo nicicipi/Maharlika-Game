@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,679 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Village__Behind_Prop_0
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 656
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba2bcd80a3f86854bb863626bfb6dc5b
+      internalID: 981221081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_1
+      rect:
+        serializedVersion: 2
+        x: 553
+        y: 512
+        width: 46
+        height: 159
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 16, z: 7, w: 15}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 220b018ab1837ab499a74d4d193c57f8
+      internalID: -206331851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_2
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 640
+        width: 62
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ce6a6898a37ea74bb4c7d2f3e57d04f
+      internalID: -627150370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_3
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 640
+        width: 78
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c9f6b88ce430e549b1ebf7055ebade7
+      internalID: 509314265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_4
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 640
+        width: 78
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d5b5a1d0ccea84493931aedd64513d
+      internalID: 1426652777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_5
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 560
+        width: 47
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd87bb67051c74f448c6be2723976d7f
+      internalID: -124969227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_6
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 608
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b90a81fd928ac39429628b6c7950f51b
+      internalID: 1139714795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_7
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 576
+        width: 16
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 733781e0fdfe9d04192d8be0bc109c36
+      internalID: 922789722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_8
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 544
+        width: 62
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3416d02fe02dc0c479c954711976f1df
+      internalID: -725042101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_9
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 481
+        width: 82
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c78d9ad3739c5314c993ecba867a2117
+      internalID: -69880017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_10
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 481
+        width: 82
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f6f0b8b1809be44a5d2512c84fc223
+      internalID: -272240030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_11
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 544
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 484dc299fc1c55f48b3876cc9b2d04a3
+      internalID: 912576610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_12
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 464
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c05797cf8d274804ea1fe41562c6780c
+      internalID: -937438924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_13
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 432
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c2b382a653dbde4bbe6a2ed15af8d95
+      internalID: -1607533631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_14
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 416
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c74b50d160d3a84990378ad87ea4ead
+      internalID: -1731521526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_15
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 416
+        width: 62
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a864d1e0118f2943a116747518500ff
+      internalID: -2095836648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_16
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 416
+        width: 62
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9f8e5a374dbc4745a1e71da7be69412
+      internalID: -490963053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_17
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 416
+        width: 31
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 305e20b409149f141b165c9c8c94aef0
+      internalID: 870687354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_18
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 416
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8481e70cc71e06642a54aec43e0051b3
+      internalID: 985109965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_19
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 336
+        width: 62
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebdf34fc024b9f74fa8ed21906962b4a
+      internalID: 562232589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_20
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 336
+        width: 62
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bfdc04114af35f45a7bd23601cb693e
+      internalID: -77491480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_21
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 257
+        width: 38
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e00bdbbc86a39b44d9d4ccc949511d59
+      internalID: -673516533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_22
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 257
+        width: 38
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67123b1688b0d9245b938b69ccd92fbd
+      internalID: 1764692611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_23
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 208
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4c152004dfe0a24b926efced91fd820
+      internalID: -1194949843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_24
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 208
+        width: 29
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 372c9fe356e14374e9baf8c6aebb814b
+      internalID: -811192082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_25
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 208
+        width: 30
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb995da165b89c84582f2de383299eb5
+      internalID: 1374887404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_26
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 192
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 367949050e8a582469949212ad47bb04
+      internalID: 270408467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_27
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 192
+        width: 78
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 549cc90c5cb6bbe48951c4ab1a95dc33
+      internalID: 2144849885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_28
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 112
+        width: 62
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a99dbc07305c9344c94e5c8ebbc95b41
+      internalID: 1078618806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_29
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 49
+        width: 38
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a1348e5da1d2044195f2834ce0b2a67
+      internalID: 2059388212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_30
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 49
+        width: 38
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d43d8cb22f9f8e1499e15145cc624026
+      internalID: 1513722562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Village__Behind_Prop_31
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 112
+        width: 62
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0eb6469c49abf641a112d14403680c9
+      internalID: 749789945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +804,39 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Village__Behind_Prop_0: 981221081
+      Village__Behind_Prop_1: -206331851
+      Village__Behind_Prop_10: -272240030
+      Village__Behind_Prop_11: 912576610
+      Village__Behind_Prop_12: -937438924
+      Village__Behind_Prop_13: -1607533631
+      Village__Behind_Prop_14: -1731521526
+      Village__Behind_Prop_15: -2095836648
+      Village__Behind_Prop_16: -490963053
+      Village__Behind_Prop_17: 870687354
+      Village__Behind_Prop_18: 985109965
+      Village__Behind_Prop_19: 562232589
+      Village__Behind_Prop_2: -627150370
+      Village__Behind_Prop_20: -77491480
+      Village__Behind_Prop_21: -673516533
+      Village__Behind_Prop_22: 1764692611
+      Village__Behind_Prop_23: -1194949843
+      Village__Behind_Prop_24: -811192082
+      Village__Behind_Prop_25: 1374887404
+      Village__Behind_Prop_26: 270408467
+      Village__Behind_Prop_27: 2144849885
+      Village__Behind_Prop_28: 1078618806
+      Village__Behind_Prop_29: 2059388212
+      Village__Behind_Prop_3: 509314265
+      Village__Behind_Prop_30: 1513722562
+      Village__Behind_Prop_31: 749789945
+      Village__Behind_Prop_4: 1426652777
+      Village__Behind_Prop_5: -124969227
+      Village__Behind_Prop_6: 1139714795
+      Village__Behind_Prop_7: 922789722
+      Village__Behind_Prop_8: -725042101
+      Village__Behind_Prop_9: -69880017
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

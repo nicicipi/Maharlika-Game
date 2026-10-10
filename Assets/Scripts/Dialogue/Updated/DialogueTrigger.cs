@@ -19,6 +19,21 @@ public class DialogueLine
     public string line;
 
     public UnityEvent onLineStarted;
+
+    [Header("Text Effect")]
+    public DialogueTextEffect textEffect;
+
+    [Min(0f)]
+    public float effectStrength = 1f;
+
+    [Min(0f)]
+    public float effectSpeed = 5f;
+
+    [Header("Typing Speed")]
+    public bool useCustomTypingSpeed;
+
+    [Min(0f)]
+    public float typingSpeed = 0.03f;
 }
 
 [System.Serializable]

@@ -118,7 +118,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -4.1811204, y: -1.2308227}
+  m_Offset: {x: -0.07098675, y: -1.2308226}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.362241, y: 4.7290277}
+  m_Size: {x: 17.582506, y: 4.7290277}
   m_EdgeRadius: 0
 --- !u!114 &8714750893319820589
 MonoBehaviour:
@@ -150,67 +150,207 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: RB-02, what's the status over there?
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: RB-02
         icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
       line: Good so far, Boss. We're almost done with Operation Red Grass!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: Keep up the good work. Finally, this land will be mine.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: Lyka
         icon: {fileID: 21300000, guid: 9a38fb5b7381f5d499bcee62d2d03e8b, type: 3}
       line: (What are they talking about?)
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: RB-02
         icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
       line: Are there tasks left you'd like to remind, Boss? Before I disconnect?
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: Make sure...
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: To burn everything into crisps!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: Lyka
         icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
       line: (What?! How could he say that?!)
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: RB-02
         icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
       line: If we do, should we evacuate the residents?
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: HAHAHA... Funny robot
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: I couldn't care less about the residents, burn them as well!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: Lyka
         icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
       line: Hey clanker!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 2968849010343016926}
+            m_TargetAssemblyTypeName: EnemyNoticeEffect, Assembly-CSharp
+            m_MethodName: ShowNotice
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: RB-02
         icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
       line: Who goes here?!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: Lyka
         icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
       line: I won't let you destroy the legacy our ancestors worked so hard for over
         some petty cash!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: RB-02, it's just a brat, get her!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
     - character:
         name: Lyka
         icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
       line: I'll destroy you!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.03
 --- !u!114 &4962710322523938890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +386,132 @@ MonoBehaviour:
   onTriggerExit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &4724498646723132559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1069325337392273284}
+  - component: {fileID: 6022346519748114489}
+  - component: {fileID: 5262874728054139260}
+  - component: {fileID: 2968849010343016926}
+  m_Layer: 8
+  m_Name: NoticeEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1069325337392273284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724498646723132559}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.08, y: 3.22, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1647494310855884349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &6022346519748114489
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724498646723132559}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1340522733
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.4375, y: 0.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!95 &5262874728054139260
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724498646723132559}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82cb0f1947fcd6743b4bacfa36b2f496, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2968849010343016926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724498646723132559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43276df7af2d9774fa065185c46d3596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noticePopup: {fileID: 4724498646723132559}
+  noticeAnimator: {fileID: 5262874728054139260}
+  audioSource: {fileID: 4489294706810838442}
+  noticeSound: {fileID: 8300000, guid: 3290cffe53dcaed4ca345912474c2e4a, type: 3}
+  displayDuration: 2
+  showTrigger: showTrigger
+  hideTrigger: hideTrigger
 --- !u!1 &4829015032231721720
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +555,8 @@ Transform:
   - {fileID: 7461973523635899305}
   - {fileID: 6941972558752943528}
   - {fileID: 2628982662451533500}
+  - {fileID: 1069325337392273284}
+  - {fileID: 5417417107845485978}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3688965971562171685
@@ -463,6 +731,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdcf4b24a6f9c44795d7c11e1a66e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visualTransform: {fileID: 0}
+  initialYRotation: 180
+  facingLeftYRotation: 0
+  facingRightYRotation: 180
 --- !u!114 &5536963819000332735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,12 +917,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df38b6aa6c8d6494a9c2731dd973b091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyId: RobotTutorialEnemy
+  tutorialRewardItem: {fileID: 183402318249301568, guid: 9d269b9d55e33f64c9369acc635d6a1c, type: 3}
+  battleTutorialManager: {fileID: 0}
+  startTutorialOnFirstBattle: 1
   availableBattles:
   - enemies:
     - Robbie
     rewardXP: 20
     rewardItems: []
-  canRunAway: 1
+    scrapsReward: 0
+  canRunAway: 0
   runAwayDistance: 3
   battleTriggerCooldown: 4
   shouldCompleteQuest: 0
@@ -868,3 +1145,131 @@ Transform:
   - {fileID: 7266002160873369932}
   m_Father: {fileID: 1647494310855884349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9200017125583656852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5417417107845485978}
+  - component: {fileID: 4489294706810838442}
+  m_Layer: 8
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5417417107845485978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9200017125583656852}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1647494310855884349}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &4489294706810838442
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9200017125583656852}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
