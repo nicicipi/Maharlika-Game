@@ -25068,6 +25068,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df38b6aa6c8d6494a9c2731dd973b091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyId: RobotTutorialEnemy
+  tutorialRewardItem: {fileID: 0}
+  battleTutorialManager: {fileID: 0}
+  startTutorialOnFirstBattle: 1
   availableBattles:
   - enemies:
     - City Commander
@@ -25078,13 +25082,14 @@ MonoBehaviour:
     - {fileID: 7184134740926826035, guid: 6baf90930fb68444fb50feab07dfc251, type: 3}
     - {fileID: 6621584954699507376, guid: 8dabdd5a6f973a34980605a0dd6e7eb6, type: 3}
     - {fileID: 6621584954699507376, guid: 8dabdd5a6f973a34980605a0dd6e7eb6, type: 3}
-  activateOnEnter: 0
-  timeBetweenBattles: 2
-  deactiveAfterStarting: 1
+    scrapsReward: 0
   canRunAway: 0
+  runAwayDistance: 2
+  battleTriggerCooldown: 2
   shouldCompleteQuest: 1
-  questToComplete: Kill Commander Boss
+  deactivateAfterStarting: 0
   battleMusicIndex: 0
+  questToComplete: Kill Commander Boss
 --- !u!61 &1287484790
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25278,6 +25283,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2453583617486663276, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
       propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334046275014606834, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4619819377601095820, guid: 0d913660cea02bb4b89ca29b80cafc4e, type: 3}
@@ -25898,6 +25907,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 417801414120020843, guid: 86e8fb4ffd7835a47be41edef2300ed8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1063054708354507279, guid: 86e8fb4ffd7835a47be41edef2300ed8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -25941,6 +25954,22 @@ PrefabInstance:
     - target: {fileID: 1220536264367515277, guid: 86e8fb4ffd7835a47be41edef2300ed8, type: 3}
       propertyPath: m_Name
       value: Battle Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1344492629219695741, guid: 86e8fb4ffd7835a47be41edef2300ed8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672982183760676639, guid: 86e8fb4ffd7835a47be41edef2300ed8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917515847020950221, guid: 86e8fb4ffd7835a47be41edef2300ed8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791316139150819637, guid: 86e8fb4ffd7835a47be41edef2300ed8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -34,6 +34,12 @@ public class DialogueLine
 
     [Min(0f)]
     public float typingSpeed = 0.03f;
+
+    [Header("Item Reward")]
+    public string itemRewardName;
+
+    [Min(1)]
+    public int itemRewardAmount = 1;
 }
 
 [System.Serializable]

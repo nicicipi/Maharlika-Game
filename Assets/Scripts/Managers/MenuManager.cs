@@ -37,6 +37,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject characterChoicePanel;
     [SerializeField] TextMeshProUGUI[] itemsCharacterChoiceNames;
 
+    [SerializeField] TextMeshProUGUI currentMoneyText;
+
     private void Start()
     {
         instance = this;
@@ -45,6 +47,8 @@ public class MenuManager : MonoBehaviour
     private void Update()
     {
         UpdateStats();
+
+        currentMoneyText.text = "" + GameManager.instance.currentMoney;
 
         bool dialogueIsActive =
             GameManager.instance != null &&

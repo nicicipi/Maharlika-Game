@@ -41,6 +41,12 @@ public class DialogueManager : MonoBehaviour
         {
             textAnimator =
                 dialogueArea.GetComponent<DialogueTextAnimator>();
+
+            if (textAnimator == null)
+            {
+                textAnimator =
+                    dialogueArea.gameObject.AddComponent<DialogueTextAnimator>();
+            }
         }
     }
 
@@ -108,6 +114,8 @@ public class DialogueManager : MonoBehaviour
 
         currentLine = lines.Dequeue();
 
+        GiveItemReward(currentLine);
+
         characterIcon.sprite = currentLine.character.icon;
         characterName.text = currentLine.character.name;
 
@@ -123,6 +131,56 @@ public class DialogueManager : MonoBehaviour
         currentLine.onLineStarted?.Invoke();
 
         typingCoroutine = StartCoroutine(TypeSentence(currentLine));
+    }
+
+    private void GiveItemReward(DialogueLine dialogueLine)
+    {
+        if (dialogueLine == null ||
+            string.IsNullOrWhiteSpace(dialogueLine.itemRewardName))
+        {
+            return;
+        }
+
+        if (ItemsAssets.instance == null)
+        {
+            Debug.LogError(
+                "DialogueManager: ItemsAssets instance is missing; cannot give item reward."
+            );
+            return;
+        }
+
+        if (Inventory.instance == null)
+        {
+            Debug.LogError(
+                "DialogueManager: Inventory instance is missing; cannot give item reward."
+            );
+            return;
+        }
+
+        ItemsManager item =
+            ItemsAssets.instance.GetItemAsset(dialogueLine.itemRewardName);
+
+        if (item == null)
+        {
+            Debug.LogError(
+                "DialogueManager: Item reward was not found: " +
+                dialogueLine.itemRewardName
+            );
+            return;
+        }
+
+        for (int i = 0; i < dialogueLine.itemRewardAmount; i++)
+        {
+            Inventory.instance.AddItems(item);
+        }
+
+        Debug.Log(
+            "DialogueManager: Added " +
+            dialogueLine.itemRewardAmount +
+            " x " +
+            item.itemName +
+            " to the inventory."
+        );
     }
 
     private IEnumerator TypeSentence(DialogueLine dialogueLine)

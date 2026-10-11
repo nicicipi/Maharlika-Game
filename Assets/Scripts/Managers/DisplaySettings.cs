@@ -6,8 +6,8 @@ public static class DisplaySettings
 {
     private const int DisplayWidth = 640;
     private const int DisplayHeight = 480;
-    private const int UiReferenceWidth = 1920;
-    private const int UiReferenceHeight = 1080;
+    private const int UiReferenceWidth = 640;
+    private const int UiReferenceHeight = 480;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Initialize()
@@ -46,12 +46,14 @@ public static class DisplaySettings
             CanvasScaler canvasScaler = canvas.GetComponent<CanvasScaler>();
 
             if (canvasScaler == null)
+            {
                 canvasScaler = canvas.gameObject.AddComponent<CanvasScaler>();
 
-            canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            canvasScaler.referenceResolution = new Vector2(UiReferenceWidth, UiReferenceHeight);
-            canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-            canvasScaler.matchWidthOrHeight = 0.5f;
+                canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+                canvasScaler.referenceResolution = new Vector2(UiReferenceWidth, UiReferenceHeight);
+                canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+                canvasScaler.matchWidthOrHeight = 0.5f;
+            }
         }
     }
 }

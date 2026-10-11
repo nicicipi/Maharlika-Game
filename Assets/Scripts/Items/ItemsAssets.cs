@@ -9,8 +9,7 @@ public class ItemsAssets : MonoBehaviour
     public static ItemsAssets instance;
     [SerializeField] ItemsManager[] itemsAvailable;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         if(instance != null && instance != this)
         {
@@ -24,9 +23,20 @@ public class ItemsAssets : MonoBehaviour
 
     public ItemsManager GetItemAsset(string itemToGetName)
     {
+        if (string.IsNullOrWhiteSpace(itemToGetName))
+            return null;
+
+        string requestedItemName = itemToGetName.Trim();
+    
         foreach(ItemsManager item in itemsAvailable)
         {
-            if(item.itemName == itemToGetName)
+            if (item != null &&
+                !string.IsNullOrWhiteSpace(item.itemName) &&
+                string.Equals(
+                    item.itemName.Trim(),
+                    requestedItemName,
+                    System.StringComparison.OrdinalIgnoreCase
+                ))
             {
                 return item;
             }
