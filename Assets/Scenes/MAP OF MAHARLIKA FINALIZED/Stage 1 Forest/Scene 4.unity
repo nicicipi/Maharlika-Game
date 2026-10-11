@@ -364,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4829015032231721720, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4962710322523938890, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: destroyAfterTrigger
@@ -4362,46 +4362,245 @@ MonoBehaviour:
   dialogue:
     dialogueLines:
     - character:
-        name: Johanna
+        name: Chief
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
-      line: They burned everything, Lyka...
+      line: Oh Lyka! Thank you for destroying that robot!
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
-      textEffect: 1
+      textEffect: 0
       effectStrength: 3
       effectSpeed: 3
-      useCustomTypingSpeed: 1
+      useCustomTypingSpeed: 0
       typingSpeed: 0.06
       itemRewardName: 
       itemRewardAmount: 1
     - character:
-        name: Johanna
+        name: Chief
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
-      line: What did we do to deserve this?
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 1
-      effectStrength: 3
-      effectSpeed: 3
-      useCustomTypingSpeed: 1
-      typingSpeed: 0.06
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: Lyka
-        icon: {fileID: 21300000, guid: 9a38fb5b7381f5d499bcee62d2d03e8b, type: 3}
-      line: Johanna...
+      line: I'm so glad you're safe! But...
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
       textEffect: 0
       effectStrength: 1
       effectSpeed: 5
-      useCustomTypingSpeed: 1
+      useCustomTypingSpeed: 0
       typingSpeed: 0.06
-      itemRewardName: Toy Sword
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Chief
+        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
+      line: They won't stop bothering us until all of us are gone, Lyka...
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+      line: I'm going to put a stop on all of this mess!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Chief
+        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
+      line: But how?
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+      line: I will talk to the their boss and see if there could be a solution other
+        than... this.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Chief
+        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
+      line: If they're willing to burn the forest including us, would they even listen
+        to you?
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+      line: Don't worry about a thing, Chief! It's me, I never fail!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Chief
+        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
+      line: Well... if you're that sure...
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Chief
+        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
+      line: I will hand you my prized possesion.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Chief
+        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
+      line: My Itak.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 2
+      effectStrength: 3
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+      line: Oh, Chief, there's no need to-
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Chief
+        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
+      line: I insist. Use it when you need to protect yourself, Lyka.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+      line: I... I will take care of it. Thank you so much for trusting me to wield
+        your Itak, Chief.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Chief
+        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
+      line: Of course, Lyka.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Chief
+        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
+      line: Now go! Tell them they will never scare us off our ancestor's land!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
+      itemRewardAmount: 1
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+      line: Will do, Chief! Help our people and protect them while I'm away!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 1
+      effectSpeed: 5
+      useCustomTypingSpeed: 0
+      typingSpeed: 0.06
+      itemRewardName: 
       itemRewardAmount: 1
   oneShot: 0
 --- !u!61 &826506765
