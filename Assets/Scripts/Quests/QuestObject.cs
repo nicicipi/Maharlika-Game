@@ -8,19 +8,19 @@ public class QuestObject : MonoBehaviour
     [SerializeField] string questToCheck;
     [SerializeField] bool activateIfComplete;
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            CheckForCompletion();
-        }
+        CheckForCompletion();
     }
 
     public void CheckForCompletion()
     {
-        if (QuestManager.instance.CheckIfComplete(questToCheck))
+        if (QuestManager.instance == null || objectToActivate == null)
         {
-            objectToActivate.SetActive(activateIfComplete);
+            return;
         }
+
+        bool questComplete = QuestManager.instance.CheckIfComplete(questToCheck);
+        objectToActivate.SetActive(questComplete == activateIfComplete);
     }
 }

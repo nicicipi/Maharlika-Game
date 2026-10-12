@@ -8,6 +8,12 @@ public class AreaExit : MonoBehaviour
     [SerializeField] string sceneToLoad;
     [SerializeField] string transitionAreaName;
 
+    [Header("Main Quest Requirement")]
+    [SerializeField] string mainQuestToUnlock;
+
+    [Header("Additional Quest Requirement")]
+    [SerializeField] string requiredQuestToUnlock;
+
     [Header("Scene Transition")]
     [SerializeField] float fadeToBlackDelay = 0.35f;
 
@@ -32,6 +38,16 @@ public class AreaExit : MonoBehaviour
         if (SceneTransition.instance == null)
         {
             Debug.LogError("AreaExit: SceneTransition instance is missing.");
+            return;
+        }
+
+        if (!CanEnterArea())
+        {
+            return;
+        }
+
+        if (!CanLeaveArea())
+        {
             return;
         }
 
@@ -65,5 +81,53 @@ public class AreaExit : MonoBehaviour
     private bool IsPlayerCollider(Collider2D collision)
     {
         return collision.CompareTag("Player") || collision.transform.root.CompareTag("Player");
+    }
+
+    private bool CanEnterArea()
+    {
+        if (string.IsNullOrWhiteSpace(mainQuestToUnlock))
+        {
+            return true;
+        }
+
+        if (QuestManager.instance == null)
+        {
+            Debug.LogError("AreaExit: QuestManager instance is missing.");
+            return false;
+        }
+
+        if (QuestManager.instance.ArePreviousMainQuestsComplete(mainQuestToUnlock))
+        {
+            return true;
+        }
+
+        Debug.Log("AreaExit: Complete the previous main quests first.", this);
+        return false;
+    }
+
+    private bool CanLeaveArea()
+    {
+        if (string.IsNullOrWhiteSpace(requiredQuestToUnlock))
+        {
+            return true;
+        }
+
+        if (QuestManager.instance == null)
+        {
+            Debug.LogError("AreaExit: QuestManager instance is missing.");
+            return false;
+        }
+
+        if (QuestManager.instance.CheckIfComplete(requiredQuestToUnlock))
+        {
+            return true;
+        }
+
+        Debug.Log(
+            "AreaExit: Complete the required quest before leaving.",
+            this
+        );
+
+        return false;
     }
 }

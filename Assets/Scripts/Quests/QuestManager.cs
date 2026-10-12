@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
@@ -9,35 +5,26 @@ public class QuestManager : MonoBehaviour
     [SerializeField] string[] questNames;
     [SerializeField] bool[] questMarkersCompleted;
 
+    [Header("Main Quest Order")]
+    [SerializeField] string[] mainQuestNames;
+
     public static QuestManager instance;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         instance = this;
-        questMarkersCompleted = new bool[questNames.Length];
-    }
+        DontDestroyOnLoad(gameObject);
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (questMarkersCompleted == null ||
+            questMarkersCompleted.Length != questNames.Length)
         {
-            Debug.Log("Data has been saved");
-            SaveQuestData();
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            Debug.Log("Data has been loaded");
-            LoadQuestData();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            print(CheckIfComplete("Defeat a robot"));
-            MarkQuestComplete("Get weapon");
-            MarkQuestIncomplete("Enter area");
+            questMarkersCompleted = new bool[questNames.Length];
         }
     }
 
@@ -51,20 +38,37 @@ public class QuestManager : MonoBehaviour
             }
         }
 
-        Debug.LogWarning("Quest: " + questToFind + " does not exist");
-        return 0;
+        Debug.LogWarning("Quest: " + questToFind + " does not exist", this);
+        return -1;
     }
 
     public bool CheckIfComplete(string questToCheck)
     {
         int questNumberToCheck = GetQuestNumber(questToCheck);
 
-        if(questNumberToCheck != 0)
+        return questNumberToCheck >= 0 &&
+               questNumberToCheck < questMarkersCompleted.Length &&
+               questMarkersCompleted[questNumberToCheck];
+    }
+
+    public bool ArePreviousMainQuestsComplete(string mainQuestToUnlock)
+    {
+        int mainQuestNumber = GetMainQuestNumber(mainQuestToUnlock);
+
+        if (mainQuestNumber < 0)
         {
-            return questMarkersCompleted[questNumberToCheck];
+            return false;
         }
 
-        return false;
+        for (int i = 0; i < mainQuestNumber; i++)
+        {
+            if (!CheckIfComplete(mainQuestNames[i]))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void UpdateQuestObjects()
@@ -83,6 +87,12 @@ public class QuestManager : MonoBehaviour
     public void MarkQuestComplete(string questToMark)
     {
         int questNumberToCheck = GetQuestNumber(questToMark);
+
+        if (questNumberToCheck < 0)
+        {
+            return;
+        }
+
         questMarkersCompleted[questNumberToCheck] = true;
 
         UpdateQuestObjects();
@@ -90,9 +100,38 @@ public class QuestManager : MonoBehaviour
     public void MarkQuestIncomplete(string questToMark)
     {
         int questNumberToCheck = GetQuestNumber(questToMark);
+
+        if (questNumberToCheck < 0)
+        {
+            return;
+        }
+
         questMarkersCompleted[questNumberToCheck] = false;
 
         UpdateQuestObjects();
+    }
+
+    private int GetMainQuestNumber(string mainQuestToFind)
+    {
+        if (mainQuestNames == null)
+        {
+            return -1;
+        }
+
+        for (int i = 0; i < mainQuestNames.Length; i++)
+        {
+            if (mainQuestNames[i] == mainQuestToFind)
+            {
+                return i;
+            }
+        }
+
+        Debug.LogWarning(
+            "Main quest: " + mainQuestToFind + " does not exist",
+            this
+        );
+
+        return -1;
     }
      
     public void SaveQuestData()
@@ -108,6 +147,8 @@ public class QuestManager : MonoBehaviour
                 PlayerPrefs.SetInt("QuestMarker_" + questNames[i], 0);
             }
         }
+
+        PlayerPrefs.Save();
     }
 
     public void LoadQuestData()
@@ -127,6 +168,8 @@ public class QuestManager : MonoBehaviour
             else
                 questMarkersCompleted[i] = true;
         }
+
+        UpdateQuestObjects();
     }
 
 }
