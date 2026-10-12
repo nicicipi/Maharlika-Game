@@ -1180,7 +1180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8020906624423874151, guid: b1548eec85a10d54e89848c762ed7c94, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.71
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 8020906624423874151, guid: b1548eec85a10d54e89848c762ed7c94, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1878,11 +1878,11 @@ PrefabInstance:
       objectReference: {fileID: 529228233}
     - target: {fileID: 3551588217510995013, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4615388
+      value: 1.5012145
       objectReference: {fileID: 0}
     - target: {fileID: 3551588217510995013, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.2408403
+      value: -1.2360681
       objectReference: {fileID: 0}
     - target: {fileID: 3551588217510995013, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1908,6 +1908,10 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 766838416}
+    - target: {fileID: 6808316149661138015, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5012145
+      objectReference: {fileID: 0}
     - target: {fileID: 6911702927901629699, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_BoundingShape2D
       value: 
@@ -3465,6 +3469,10 @@ PrefabInstance:
     - target: {fileID: 4829015032231721720, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: m_Name
       value: NPC_Sample 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829015032231721720, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: battleTutorialManager

@@ -8,12 +8,18 @@ public class ClickDialogueTrigger : MonoBehaviour
     [SerializeField]
     private bool oneShot;
 
-    private Collider2D clickableCollider;
+    [SerializeField]
+    private Animator talkIndicatorAnimator;
+
+    [SerializeField]
+    private string playerInRangeParameter = "PlayerInRange";
+
     private bool dialogueStarted;
+    private bool playerInTrigger;
 
     private void Awake()
     {
-        clickableCollider = GetComponent<Collider2D>();
+        SetTalkIndicatorVisible(false);
     }
 
     private void Update()
@@ -23,33 +29,9 @@ public class ClickDialogueTrigger : MonoBehaviour
             return;
         }
 
-        if (Camera.main == null)
+        if (playerInTrigger)
         {
-            Debug.LogError(
-                "ClickDialogueTrigger: Camera.main was not found.",
-                this
-            );
-
-            return;
-        }
-
-        Vector2 mousePosition =
-            Camera.main.ScreenToWorldPoint(
-                Input.mousePosition
-            );
-
-        Collider2D[] clickedColliders =
-            Physics2D.OverlapPointAll(mousePosition);
-
-        foreach (Collider2D clickedCollider in clickedColliders)
-        {
-            if (clickedCollider != clickableCollider)
-            {
-                continue;
-            }
-
             StartDialogue();
-            return;
         }
     }
 
@@ -88,6 +70,38 @@ public class ClickDialogueTrigger : MonoBehaviour
         dialogueStarted = true;
 
         DialogueManager.Instance.StartDialogue(dialogue);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Player"))
+        {
+            return;
+        }
+
+        playerInTrigger = true;
+        SetTalkIndicatorVisible(true);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Player"))
+        {
+            return;
+        }
+
+        playerInTrigger = false;
+        SetTalkIndicatorVisible(false);
+    }
+
+    private void SetTalkIndicatorVisible(bool visible)
+    {
+        if (talkIndicatorAnimator == null)
+        {
+            return;
+        }
+
+        talkIndicatorAnimator.SetBool(playerInRangeParameter, visible);
     }
 }
 

@@ -243,8 +243,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6006698530314747824}
-  - component: {fileID: 4841275258687136369}
   - component: {fileID: 2748096605608239302}
+  - component: {fileID: 4841275258687136369}
   m_Layer: 0
   m_Name: InteractIndication
   m_TagString: Untagged
@@ -267,27 +267,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8020906624423874151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4841275258687136369
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4246517846259467808}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 82cb0f1947fcd6743b4bacfa36b2f496, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &2748096605608239302
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -340,3 +319,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4841275258687136369
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246517846259467808}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82cb0f1947fcd6743b4bacfa36b2f496, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
