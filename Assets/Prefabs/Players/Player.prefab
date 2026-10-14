@@ -215,10 +215,10 @@ MonoBehaviour:
   playerName: Lyka
   characterImage: {fileID: 85620453, guid: b3d3cb35da0832149b123bb00ba7b42c, type: 3}
   maxLevel: 20
-  playerLevel: 0
+  playerLevel: 1
   currentXP: 0
   xpForNextLevel: 000000003200000078000000d2000000400100001c0200005802000002030000c003000092040000780500007206000080070000a2080000d8090000220b0000800c0000f20d0000780f000012110000
-  baseLevelXP: 100
+  baseLevelXP: 50
   maxHP: 100
   currentHP: 100
   maxStamina: 30

@@ -100,15 +100,15 @@ public class BattleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            StartBattle(new string[] { "Robbie", "Aaronos", "Robbie" }, true);
-        }
+        //if (Input.GetKeyDown(KeyCode.B))
+        //{
+        //    StartBattle(new string[] { "Robbie", "Aaronos", "Robbie" }, true);
+        //}
 
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            NextTurn();
-        }
+        //if (Input.GetKeyDown(KeyCode.N))
+        //{
+        //    NextTurn();
+        //}
 
         CheckPlayerButtonHolder();
 
@@ -661,7 +661,19 @@ public class BattleManager : MonoBehaviour
 
     public void UpdateItemsInInventory()
     {
-        itemsToUseMenu.SetActive(true);
+        if (Inventory.instance == null)
+        {
+            Debug.LogError(
+                "BattleManager: Inventory instance is missing."
+            );
+
+            return;
+        }
+
+        if (itemsToUseMenu != null)
+        {
+            itemsToUseMenu.SetActive(true);
+        }
 
         foreach (Transform itemSlot in itemSlotContainerParent)
         {
@@ -670,23 +682,59 @@ public class BattleManager : MonoBehaviour
 
         foreach (ItemsManager item in Inventory.instance.GetItemsList())
         {
-            //checks if its a weapon or armor, if it is, it wont show up in the items to use menu since you cant use those in battle
-            if (item.itemType != ItemsManager.ItemType.Item)
+            if (item == null ||
+                item.itemType != ItemsManager.ItemType.Item)
+            {
                 continue;
+            }
 
-            RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
+            RectTransform itemSlot =
+                Instantiate(
+                    itemSlotContainer,
+                    itemSlotContainerParent
+                ).GetComponent<RectTransform>();
 
-            Image itemImage = itemSlot.Find("Item Image").GetComponent<Image>(); //item image remember this when checking for the sprite of your items in inventory, if you change it, it wont work here
+            Image itemImage =
+                itemSlot.Find("Item Image").GetComponent<Image>();
+
             itemImage.sprite = item.itemsImage;
 
-            TextMeshProUGUI itemsAmountText = itemSlot.Find("Amount Text").GetComponent<TextMeshProUGUI>();
-            if (item.amount > 1)
-                itemsAmountText.text = item.amount.ToString();
-            else
-                itemsAmountText.text = "";
+            TextMeshProUGUI amountText =
+                itemSlot.Find("Amount Text")
+                    .GetComponent<TextMeshProUGUI>();
+
+            amountText.text =
+                item.amount > 1
+                    ? item.amount.ToString()
+                    : string.Empty;
 
             itemSlot.GetComponent<ItemButton>().itemOnButton = item;
         }
+    }
+
+    private static Transform ResolveItemContentParent(Transform configuredParent)
+    {
+        if (configuredParent == null)
+        {
+            return null;
+        }
+
+        Transform[] descendants =
+            configuredParent.GetComponentsInChildren<Transform>(true);
+
+        foreach (Transform descendant in descendants)
+        {
+            if (descendant != configuredParent &&
+                descendant.name.IndexOf(
+                    "Content",
+                    System.StringComparison.OrdinalIgnoreCase
+                ) >= 0)
+            {
+                return descendant;
+            }
+        }
+
+        return configuredParent;
     }
 
     public void selectedItemToUse(ItemsManager itemToUse)

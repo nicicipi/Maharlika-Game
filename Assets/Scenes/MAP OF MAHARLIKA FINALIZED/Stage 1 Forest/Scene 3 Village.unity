@@ -11763,6 +11763,18 @@ PrefabInstance:
       propertyPath: dialogue.dialogueLines.Array.data[2].character.name
       value: Lyka
       objectReference: {fileID: 0}
+    - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: triggerId
+      value: Scene3_Event
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: destroyAfterTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: rememberDestroyedState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7872733703216788565, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.73

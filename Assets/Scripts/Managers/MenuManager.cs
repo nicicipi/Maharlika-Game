@@ -37,6 +37,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject characterChoicePanel;
     [SerializeField] TextMeshProUGUI[] itemsCharacterChoiceNames;
 
+    private readonly Dictionary<Button, UnityEngine.Events.UnityAction>
+        characterChoiceHandlers =
+            new Dictionary<Button, UnityEngine.Events.UnityAction>();
+
     [SerializeField] TextMeshProUGUI currentMoneyText;
 
     private void Start()
@@ -144,13 +148,40 @@ public class MenuManager : MonoBehaviour
 
     public void UpdateItemsInventory()
     {
+        itemSlotContainerParent = ResolveItemContentParent(
+            itemSlotContainerParent
+        );
+
+        if (itemSlotContainerParent == null)
+        {
+            Debug.LogError(
+                "MenuManager: Item slot content parent is not assigned."
+            );
+
+            return;
+        }
+
         foreach (Transform itemSlot in itemSlotContainerParent)
         {
-            Destroy(itemSlot.gameObject);
+            if (itemSlot.GetComponent<ItemButton>() != null)
+            {
+                Destroy(itemSlot.gameObject);
+            }
+        }
+
+        if (Inventory.instance == null)
+        {
+            Debug.LogError("MenuManager: Inventory instance is missing.");
+            return;
         }
 
         foreach (ItemsManager item in Inventory.instance.GetItemsList())
         {
+            if (item == null)
+            {
+                continue;
+            }
+
             RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
 
             Image itemImage = itemSlot.Find("Item Image").GetComponent<Image>(); //item image remember this when checking for the sprite of your items in inventory, if you change it, it wont work here
@@ -166,6 +197,31 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    private static Transform ResolveItemContentParent(Transform configuredParent)
+    {
+        if (configuredParent == null)
+        {
+            return null;
+        }
+
+        Transform[] descendants =
+            configuredParent.GetComponentsInChildren<Transform>(true);
+
+        foreach (Transform descendant in descendants)
+        {
+            if (descendant != configuredParent &&
+                descendant.name.IndexOf(
+                    "Content",
+                    System.StringComparison.OrdinalIgnoreCase
+                ) >= 0)
+            {
+                return descendant;
+            }
+        }
+
+        return configuredParent;
+    }
+
     public void DiscardItem()
     {
         Inventory.instance.RemoveItem(activeItem);
@@ -174,31 +230,235 @@ public class MenuManager : MonoBehaviour
     }
     public void UseItem(int selectedCharacter)
     {
+        PlayerStats[] party = GameManager.instance.GetPlayerStats();
+
+        if (activeItem == null)
+        {
+            return;
+        }
+
+        if (party == null ||
+            selectedCharacter < 0 ||
+            selectedCharacter >= party.Length ||
+            party[selectedCharacter] == null ||
+            !party[selectedCharacter].gameObject.activeInHierarchy)
+        {
+            Debug.LogWarning(
+                "MenuManager: Cannot use the selected item on that character."
+            );
+
+            return;
+        }
+
         activeItem.UseItem(selectedCharacter);
-        OpenCharacterChoicePanel();
 
         Inventory.instance.RemoveItem(activeItem);
         UpdateItemsInventory();
+        CloseCharacterChoicePanel();
+        activeItem = null;
 
-        AudioManager.instance.PlaySFX(16);
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlaySFX(16);
+        }
+    }
+
+    private void UseItemOnPlayer(PlayerStats selectedPlayer)
+    {
+        if (activeItem == null)
+        {
+            return;
+        }
+
+        if (GameManager.instance == null || selectedPlayer == null)
+        {
+            Debug.LogWarning(
+                "MenuManager: The selected player is no longer available."
+            );
+
+            return;
+        }
+
+        PlayerStats[] party = GameManager.instance.GetPlayerStats();
+        int playerIndex = System.Array.IndexOf(party, selectedPlayer);
+
+        if (playerIndex < 0 || !selectedPlayer.gameObject.activeInHierarchy)
+        {
+            Debug.LogWarning(
+                "MenuManager: The selected player is not in the active party."
+            );
+
+            return;
+        }
+
+        UseItem(playerIndex);
     }
 
     public void OpenCharacterChoicePanel()
     {
-        characterChoicePanel.SetActive(true);
-
-        if (activeItem)
+        if (activeItem == null)
         {
-            for (int i = 0; i < playerStats.Length; i++)
-            {
-                PlayerStats activePlayer = GameManager.instance.GetPlayerStats()[i];
-                itemsCharacterChoiceNames[i].text = activePlayer.playerName;
+            Debug.LogWarning(
+                "MenuManager: Select an item before choosing a character."
+            );
 
-                bool activePlayerAvailable = activePlayer.gameObject.activeInHierarchy;
-                itemsCharacterChoiceNames[i].transform.parent.gameObject.SetActive(activePlayerAvailable);
+            return;
+        }
+
+        if (GameManager.instance == null || characterChoicePanel == null)
+        {
+            Debug.LogError(
+                "MenuManager: GameManager or character choice panel is missing."
+            );
+
+            return;
+        }
+
+        GameManager.instance.RefreshPlayerStats();
+        playerStats = GameManager.instance.GetPlayerStats();
+
+        if (playerStats == null || playerStats.Length == 0)
+        {
+            Debug.LogError(
+                "MenuManager: Cannot show character choices because the party roster is empty."
+            );
+
+            return;
+        }
+
+        List<int> availablePlayerIndices = new List<int>();
+
+        for (int i = 0; i < playerStats.Length; i++)
+        {
+            if (playerStats[i] != null &&
+                playerStats[i].gameObject.activeInHierarchy)
+            {
+                availablePlayerIndices.Add(i);
             }
         }
-        
+
+        if (availablePlayerIndices.Count == 0)
+        {
+            Debug.LogError(
+                "MenuManager: No active PlayerStats objects are registered. " +
+                "Check the GameManager roster and active party members."
+            );
+
+            return;
+        }
+
+        foreach (KeyValuePair<Button, UnityEngine.Events.UnityAction> handler
+            in characterChoiceHandlers)
+        {
+            if (handler.Key != null)
+            {
+                handler.Key.onClick.RemoveListener(handler.Value);
+            }
+        }
+
+        characterChoiceHandlers.Clear();
+
+        List<Button> optionButtons = new List<Button>();
+        Button[] panelButtons =
+            characterChoicePanel.GetComponentsInChildren<Button>(true);
+
+        foreach (Button button in panelButtons)
+        {
+            if (button == null ||
+                button.transform == characterChoicePanel.transform ||
+                button.GetComponentInChildren<TextMeshProUGUI>(true) == null)
+            {
+                continue;
+            }
+
+            optionButtons.Add(button);
+        }
+
+        if (optionButtons.Count == 0)
+        {
+            Debug.LogError(
+                "MenuManager: No character option Buttons with text were found " +
+                "inside Character Choice Panel."
+            );
+
+            return;
+        }
+
+        for (int i = 0; i < optionButtons.Count; i++)
+        {
+            Button optionButton = optionButtons[i];
+            Transform optionRoot = GetCharacterChoiceOptionRoot(
+                optionButton.GetComponentInChildren<TextMeshProUGUI>(true)
+            );
+
+            if (optionRoot == null)
+            {
+                continue;
+            }
+
+            if (i >= availablePlayerIndices.Count)
+            {
+                optionRoot.gameObject.SetActive(false);
+                continue;
+            }
+
+            int playerIndex = availablePlayerIndices[i];
+            PlayerStats selectedPlayer = playerStats[playerIndex];
+            TextMeshProUGUI characterName =
+                optionButton.GetComponentInChildren<TextMeshProUGUI>(true);
+
+            characterName.text = selectedPlayer.playerName;
+            optionRoot.gameObject.SetActive(true);
+            optionButton.interactable = true;
+
+            UnityEngine.Events.UnityAction action =
+                () => UseItemOnPlayer(selectedPlayer);
+
+            if (!HasPersistentUseItemListener(optionButton))
+            {
+                optionButton.onClick.AddListener(action);
+                characterChoiceHandlers.Add(optionButton, action);
+            }
+        }
+
+        characterChoicePanel.SetActive(true);
+    }
+
+    private bool HasPersistentUseItemListener(Button button)
+    {
+        for (int i = 0; i < button.onClick.GetPersistentEventCount(); i++)
+        {
+            if (button.onClick.GetPersistentTarget(i) == this &&
+                button.onClick.GetPersistentMethodName(i) == nameof(UseItem))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private Transform GetCharacterChoiceOptionRoot(
+        TextMeshProUGUI characterName
+    )
+    {
+        if (characterName == null || characterChoicePanel == null)
+        {
+            return null;
+        }
+
+        Transform optionRoot = characterName.transform;
+        Transform panelTransform = characterChoicePanel.transform;
+
+        while (optionRoot.parent != null &&
+               optionRoot.parent != panelTransform)
+        {
+            optionRoot = optionRoot.parent;
+        }
+
+        return optionRoot.parent == panelTransform
+            ? optionRoot
+            : characterName.transform;
     }
 
     public void CloseCharacterChoicePanel()
@@ -269,5 +529,11 @@ public class MenuManager : MonoBehaviour
     public void CloseGameSavedPanel()
     {
         gameSavedPanel.SetActive(false);
+    }
+
+    public void OpenInventory()
+    {
+        itemsPanel.SetActive(true);
+        UpdateItemsInventory();
     }
 }

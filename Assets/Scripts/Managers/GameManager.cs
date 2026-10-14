@@ -30,6 +30,13 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         RefreshPlayerStats();
+
+        if (PlayerPrefs.GetInt("NewGamePending", 0) == 1)
+        {
+            ResetForNewGame();
+            PlayerPrefs.DeleteKey("NewGamePending");
+            PlayerPrefs.Save();
+        }
     }
 
     // Update is called once per frame
@@ -50,13 +57,13 @@ public class GameManager : MonoBehaviour
 
         if (gameMenuOpened || dialogueBoxOpened || shopOpened || battleIsActive)
         {
-            Player.instance.deactivateMovement = true; 
+            Player.instance.deactivateMovement = true;
         }
-        else 
+        else
         {
-            Player.instance.deactivateMovement = false; 
+            Player.instance.deactivateMovement = false;
         }
-        
+
     }
 
     public PlayerStats[] GetPlayerStats()
@@ -242,7 +249,7 @@ public class GameManager : MonoBehaviour
 
             player.playerLevel =
                 PlayerPrefs.GetInt(playerKey + "Level");
-            
+
             player.currentXP =
                 PlayerPrefs.GetInt(playerKey + "CurrentXP");
 
@@ -290,16 +297,17 @@ public class GameManager : MonoBehaviour
 
     public void RefreshPlayerStats()
     {
-        if (playerStats == null ||
-            playerStats.Length == 0)
+        PlayerStats[] discoveredPlayers =
+            FindObjectsOfType<PlayerStats>(true);
+
+        if (discoveredPlayers.Length > 0)
         {
-            playerStats = FindObjectsOfType<PlayerStats>(true)
+            playerStats = discoveredPlayers
                 .OrderBy(player => player.playerName)
                 .ToArray();
         }
 
-        if (playerStats == null ||
-            playerStats.Length == 0)
+        if (playerStats == null || playerStats.Length == 0)
         {
             Debug.LogError(
                 "GameManager: No PlayerStats objects were found."
@@ -337,5 +345,27 @@ public class GameManager : MonoBehaviour
             instance = null;
         }
     }
-}
 
+    public void ResetForNewGame()
+    {
+        RefreshPlayerStats();
+
+        if (playerStats != null)
+        {
+            foreach (PlayerStats player in playerStats)
+            {
+                if (player != null)
+                {
+                    player.ResetToNewGameDefaults();
+                }
+            }
+        }
+
+        currentMoney = 0;
+        battleIsActive = false;
+        gameMenuOpened = false;
+        dialogueBoxOpened = false;
+        shopOpened = false;
+        defeatedEnemyIds.Clear();
+    }
+}

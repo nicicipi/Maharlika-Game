@@ -107,7 +107,7 @@ MonoBehaviour:
   currentSP: 20
   maxSP: 20
   dexterity: 2
-  defence: 6
+  defence: 3
   wpnPower: 2
   armorDefence: 0
   isDead: 0

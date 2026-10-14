@@ -37,28 +37,25 @@ public class PlayerStats : MonoBehaviour
 
     public ItemsManager equippedWeapon, equippedArmor;
 
+    [Header("New Game Defaults")]
+    [SerializeField] private int startingLevel = 1;
+    [SerializeField] private int startingXP = 0;
+    [SerializeField] private int startingMaxHP = 100;
+    [SerializeField] private int startingMaxStamina = 30;
+    [SerializeField] private int startingAttack = 10;
+    [SerializeField] private int startingDefence = 9;
+    [SerializeField] private int startingSpecial = 3;
+    [SerializeField] private int startingSpecialDefence = 5;
+    [SerializeField] private int startingDexterity = 3;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         instance = this;
-        InitializeExperienceRequirements();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            AddXP(100);
-        }
-    }
-
-    private void InitializeExperienceRequirements()
-    {
         xpForNextLevel = new int[maxLevel + 1];
 
-        xpForNextLevel[1] = 50;
+        xpForNextLevel[1] = baseLevelXP;
 
         for (int level = 2; level <= maxLevel; level++)
         {
@@ -67,6 +64,15 @@ public class PlayerStats : MonoBehaviour
                 20 +
                 level * 20;
         }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    AddXP(100);
+        //}
     }
 
     public void AddXP(int amountOfXP)
@@ -129,5 +135,39 @@ public class PlayerStats : MonoBehaviour
         equippedArmor = armorToEquip;
         equippedArmorName = equippedArmor.itemName; 
         armorDefence = equippedArmor.armorDefence;
+    }
+
+    public void ResetToNewGameDefaults()
+    {
+        playerLevel = startingLevel;
+        currentXP = startingXP;
+
+        maxHP = startingMaxHP;
+        currentHP = startingMaxHP;
+
+        maxStamina = startingMaxStamina;
+        currentStamina = startingMaxStamina;
+
+        attack = startingAttack;
+        defence = startingDefence;
+        special = startingSpecial;
+        specialDefence = startingSpecialDefence;
+        dexterity = startingDexterity;
+
+        equippedWeaponName = "None";
+        equippedArmorName = "None";
+        equippedWeapon = null;
+        equippedArmor = null;
+
+        weaponPower = 0;
+        armorDefence = 0;
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
     }
 }

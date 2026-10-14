@@ -4636,7 +4636,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     questToCompleteOnEnd: SaveChief
-  questToCompleteOnDialogueEnd: 
+  questToCompleteOnDialogueEnd: SaveChief
   npcWalkAway: {fileID: 226888666}
   followUpDialogues:
   - dialogueLines:

@@ -11,14 +11,18 @@ public class MainMenu : MonoBehaviour
     [SerializeField] float waitToLoadTime;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        CleanupPersistentGameObjects();
+        DestroyPersistentGameObjects();
 
         if (PlayerPrefs.HasKey("Player_Pos_X"))
+        {
             continueButton.SetActive(true);
+        }
         else
+        {
             continueButton.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -179,10 +183,23 @@ public class MainMenu : MonoBehaviour
 
     public void NewGameButton()
     {
-        DestroyPersistentBattleManager();
+        StartCoroutine(StartNewGame());
+    }
+
+    private IEnumerator StartNewGame()
+    {
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.ResetForNewGame();
+        }
+
+        DestroyPersistentGameObjects();
 
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("NewGamePending", 1);
         PlayerPrefs.Save();
+
+        yield return null;
 
         SceneManager.LoadScene(newGameScene);
     }

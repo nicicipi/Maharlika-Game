@@ -16,6 +16,7 @@ public class ItemButton : MonoBehaviour
             MenuManager.instance.itemDescription.text = itemOnButton.itemDescription;
 
             MenuManager.instance.activeItem = itemOnButton;
+            MenuManager.instance.OpenCharacterChoicePanel();
         }
 
         if (ShopManager.instance.shopMenu.activeInHierarchy)

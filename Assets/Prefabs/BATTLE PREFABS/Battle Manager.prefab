@@ -10983,7 +10983,7 @@ RectTransform:
   m_Father: {fileID: 515543609661722377}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 4.6688995, y: -2.664402}
   m_SizeDelta: {x: 13.4644, y: 1.8709}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12148,7 +12148,7 @@ RectTransform:
   m_Father: {fileID: 5291726963403558395}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 4.6688995, y: -2.664402}
   m_SizeDelta: {x: 13.4644, y: 1.8709}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -17307,7 +17307,7 @@ RectTransform:
   m_Father: {fileID: 3464542824120367636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 4.6688995, y: -2.664402}
   m_SizeDelta: {x: 13.4644, y: 1.8709}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -18081,8 +18081,7 @@ MonoBehaviour:
         m_Calls: []
     waitForAction: 1
   - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
-    dialogueText: Let's eat the fried fish I made yesterday to heal! Using items
-      skips our turn, so use it wisely!
+    dialogueText: Let's heal! Using items skips our turn, so use it wisely!
     objectsToShow:
     - {fileID: 0}
     objectsToHide:
@@ -20006,7 +20005,7 @@ RectTransform:
   m_Father: {fileID: 2014978757612472060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 4.6688995, y: -2.664402}
   m_SizeDelta: {x: 13.4644, y: 1.8709}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -20483,7 +20482,7 @@ RectTransform:
   m_Father: {fileID: 4115549247803406948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 4.6688995, y: -2.664402}
   m_SizeDelta: {x: 13.4644, y: 1.8709}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -20692,7 +20691,7 @@ RectTransform:
   m_Father: {fileID: 7805928428695304887}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 4.6688995, y: -2.664402}
   m_SizeDelta: {x: 13.4644, y: 1.8709}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -23222,7 +23221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070820418226674410, guid: 5571472a7f47e454bae1b2b8c7027bff, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2070820418226674410, guid: 5571472a7f47e454bae1b2b8c7027bff, type: 3}
       propertyPath: m_AnchorMin.x
@@ -23230,15 +23229,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070820418226674410, guid: 5571472a7f47e454bae1b2b8c7027bff, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2070820418226674410, guid: 5571472a7f47e454bae1b2b8c7027bff, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 2070820418226674410, guid: 5571472a7f47e454bae1b2b8c7027bff, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 170
       objectReference: {fileID: 0}
     - target: {fileID: 2070820418226674410, guid: 5571472a7f47e454bae1b2b8c7027bff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -23270,11 +23269,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2070820418226674410, guid: 5571472a7f47e454bae1b2b8c7027bff, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 129
       objectReference: {fileID: 0}
     - target: {fileID: 2070820418226674410, guid: 5571472a7f47e454bae1b2b8c7027bff, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -85
       objectReference: {fileID: 0}
     - target: {fileID: 2070820418226674410, guid: 5571472a7f47e454bae1b2b8c7027bff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
