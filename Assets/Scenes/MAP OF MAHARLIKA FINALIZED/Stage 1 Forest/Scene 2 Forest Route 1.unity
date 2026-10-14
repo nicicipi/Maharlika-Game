@@ -3541,7 +3541,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4244304153565597372, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: m_Name
-      value: TutorialTrigger
+      value: TriggerBox
       objectReference: {fileID: 0}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: triggerId
