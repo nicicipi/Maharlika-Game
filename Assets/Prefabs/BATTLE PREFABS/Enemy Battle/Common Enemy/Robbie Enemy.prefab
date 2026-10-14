@@ -102,12 +102,23 @@ MonoBehaviour:
   - Slash 3
   - Impact
   characterName: Robbie
-  currentHP: 40
-  maxHP: 40
+  currentHP: 90
+  maxHP: 90
   currentSP: 20
   maxSP: 20
-  dexterity: 5
-  defence: 5
-  wpnPower: 5
+  dexterity: 2
+  defence: 6
+  wpnPower: 2
   armorDefence: 0
   isDead: 0
+  deadSprites: {fileID: 0}
+  deathParticles: {fileID: 0}
+  questToCompleteOnDeath: 
+  preDeathDelay: 0.5
+  jitterDuration: 0.6
+  jitterFrequency: 20
+  jitterMagnitudeX: 0.2
+  jitterMagnitudeY: 0.12
+  colorFlashFrequency: 10
+  fadeDuration: 0.8
+  fallDistance: 0.5

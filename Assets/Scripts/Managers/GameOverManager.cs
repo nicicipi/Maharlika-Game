@@ -7,12 +7,27 @@ public class GameOverManager : MonoBehaviour
 {
     [SerializeField] GameObject quitConfirmationPanel;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        AudioManager.instance.PlayBackgroundMusic(4);
-        Player.instance.gameObject.SetActive(false);
-        MenuManager.instance.gameObject.SetActive(false);
-        BattleManager.instance.gameObject.SetActive(false);
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlayBackgroundMusic(4);
+        }
+
+        if (Player.instance != null)
+        {
+            Player.instance.gameObject.SetActive(false);
+        }
+
+        if (MenuManager.instance != null)
+        {
+            MenuManager.instance.gameObject.SetActive(false);
+        }
+
+        if (BattleManager.instance != null)
+        {
+            BattleManager.instance.gameObject.SetActive(false);
+        }
     }
 
     public void QuitToMainMenu()
@@ -29,10 +44,33 @@ public class GameOverManager : MonoBehaviour
 
     private static void DestroyGameSession()
     {
-        Destroy(GameManager.instance.gameObject);
-        Destroy(Player.instance.gameObject);
-        Destroy(MenuManager.instance.gameObject);
-        Destroy(BattleManager.instance.gameObject);
+        if (GameManager.instance != null)
+        {
+            GameManager manager = GameManager.instance;
+            GameManager.instance = null;
+            Destroy(manager.gameObject);
+        }
+
+        if (Player.instance != null)
+        {
+            Player player = Player.instance;
+            Player.instance = null;
+            Destroy(player.gameObject);
+        }
+
+        if (MenuManager.instance != null)
+        {
+            MenuManager menuManager = MenuManager.instance;
+            MenuManager.instance = null;
+            Destroy(menuManager.gameObject);
+        }
+
+        if (BattleManager.instance != null)
+        {
+            BattleManager battleManager = BattleManager.instance;
+            BattleManager.instance = null;
+            Destroy(battleManager.gameObject);
+        }
     }
 
     public void OpenQuitConfirmation()

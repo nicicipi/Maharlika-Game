@@ -132,29 +132,63 @@ public class BattleRewardsHandler : MonoBehaviour
 
     private void ApplyRewards()
     {
+        if (GameManager.instance == null)
+        {
+            Debug.LogError(
+                "BattleRewardsHandler: GameManager is missing."
+            );
+
+            return;
+        }
+
         PlayerStats[] playerStats =
             GameManager.instance.GetPlayerStats();
 
-        foreach (PlayerStats player in playerStats)
+        if (playerStats != null)
         {
-            if (player.gameObject.activeInHierarchy)
+            foreach (PlayerStats player in playerStats)
             {
-                player.AddXP(xpReward);
+                if (player != null &&
+                    player.gameObject.activeInHierarchy)
+                {
+                    player.AddXP(xpReward);
+                }
             }
         }
 
-        if (rewardItems != null && Inventory.instance != null)
+        if (rewardItems != null)
         {
-            foreach (ItemsManager item in rewardItems)
+            if (Inventory.instance == null)
             {
-                if (item != null)
+                Debug.LogError(
+                    "BattleRewardsHandler: Inventory is missing."
+                );
+            }
+            else
+            {
+                foreach (ItemsManager item in rewardItems)
                 {
+                    if (item == null)
+                    {
+                        continue;
+                    }
+
                     Inventory.instance.AddItems(item);
+
+                    Debug.Log(
+                        "BattleRewardsHandler: Added reward item: " +
+                        item.itemName
+                    );
                 }
             }
         }
 
         GameManager.instance.currentMoney += scrapsReward;
+
+        if (MenuManager.instance != null)
+        {
+            MenuManager.instance.UpdateItemsInventory();
+        }
     }
 
     private void BuildRewardMessages()

@@ -2,19 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
     private List<ItemsManager> itemsList;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        instance = this;
+    // Add this line to define the newGameScene variable
+    [SerializeField]
+    private string newGameScene = "Scene 0 Lyka Interior"; // Set this to your actual new game scene name
 
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
         itemsList = new List<ItemsManager>();
-        
     }
 
     // Update is called once per frame
@@ -83,5 +91,42 @@ public class Inventory : MonoBehaviour
     public List<ItemsManager> GetItemsList()
     {
         return itemsList;
+    }
+
+    public void NewGameButton()
+    {
+        StartCoroutine(StartNewGame());
+    }
+
+    private IEnumerator StartNewGame()
+    {
+        DestroyPersistentGameObjects();
+
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
+        // Allow Destroy() to finish before loading the new-game scene.
+        yield return null;
+
+        SceneManager.LoadScene(newGameScene);
+    }
+
+    private void OnDestroy()
+    {
+    if (instance == this)
+    {
+        instance = null;
+    }
+    }
+
+    // Add this method to the Inventory class
+    private void DestroyPersistentGameObjects()
+    {
+        // Example: Destroy all GameObjects tagged as "Persistent"
+        GameObject[] persistentObjects = GameObject.FindGameObjectsWithTag("Persistent");
+        foreach (GameObject obj in persistentObjects)
+        {
+            Destroy(obj);
+        }
     }
 }

@@ -42,13 +42,7 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         instance = this;
-        xpForNextLevel = new int[maxLevel];
-        xpForNextLevel[1] = baseLevelXP;
-        
-        for(int i = 2; i < xpForNextLevel.Length; i++)
-        {
-            xpForNextLevel[i] = (int)(0.02f * i * i * i + 3.06f * i * i + 105.6f * i);
-        }
+        InitializeExperienceRequirements();
     }
 
     // Update is called once per frame
@@ -60,30 +54,47 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    private void InitializeExperienceRequirements()
+    {
+        xpForNextLevel = new int[maxLevel + 1];
+
+        xpForNextLevel[1] = 50;
+
+        for (int level = 2; level <= maxLevel; level++)
+        {
+            xpForNextLevel[level] =
+                xpForNextLevel[level - 1] +
+                20 +
+                level * 20;
+        }
+    }
+
     public void AddXP(int amountOfXP)
     {
         currentXP += amountOfXP;
-        if (currentXP > xpForNextLevel[playerLevel])
+
+        while (playerLevel < maxLevel &&
+               currentXP >= xpForNextLevel[playerLevel])
         {
-            currentHP -= xpForNextLevel[playerLevel];
+            currentXP -= xpForNextLevel[playerLevel];
             playerLevel++;
 
             if (playerLevel % 2 == 0)
             {
                 attack++;
                 special++;
-                dexterity++;
+                dexterity += 2;
             }
             else
             {
-                defence++;
+                defence += 2;
                 specialDefence++;
             }
 
-            maxHP = Mathf.FloorToInt(maxHP * 1.18f);
+            maxHP += 15;
             currentHP = maxHP;
 
-            maxStamina = Mathf.FloorToInt(maxStamina * 1.06f);
+            maxStamina += 4;
             currentStamina = maxStamina;
         }
     }

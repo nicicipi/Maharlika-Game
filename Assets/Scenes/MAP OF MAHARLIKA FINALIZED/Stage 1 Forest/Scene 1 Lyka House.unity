@@ -543,8 +543,12 @@ PrefabInstance:
       value: TriggerBox
       objectReference: {fileID: 0}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].line
-      value: Why does it smell like something is burning?
+      value: I have a bad feeling about this...
       objectReference: {fileID: 0}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].line
@@ -560,7 +564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: rememberDestroyedState
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7872733703216788565, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -916,163 +920,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba53f7e9eaabab24385d4ce714e2db25, type: 3}
---- !u!1001 &908165775
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1988047837229722877, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988047837229722877, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -7.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988047837229722877, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988047837229722877, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988047837229722877, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988047837229722877, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988047837229722877, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988047837229722877, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988047837229722877, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988047837229722877, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: battleMusicIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[0].rewardXP
-      value: 67
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[1].rewardXP
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[2].rewardXP
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[0].enemies.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[1].enemies.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[2].enemies.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[0].enemies.Array.data[1]
-      value: Rovin
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[0].enemies.Array.data[2]
-      value: Aaronos
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[1].enemies.Array.data[0]
-      value: Rovin
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[1].enemies.Array.data[1]
-      value: Rovin
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[2].enemies.Array.data[0]
-      value: Rovin
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[2].enemies.Array.data[1]
-      value: Rovin
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[0].rewardItems.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[1].rewardItems.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[2].rewardItems.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[0].rewardItems.Array.data[0]
-      value: 
-      objectReference: {fileID: 6226294524333637412, guid: d95c99baf8692184f9f825e290f0e8dc, type: 3}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[1].rewardItems.Array.data[0]
-      value: 
-      objectReference: {fileID: 6621584954699507376, guid: 8dabdd5a6f973a34980605a0dd6e7eb6, type: 3}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[1].rewardItems.Array.data[1]
-      value: 
-      objectReference: {fileID: 7184134740926826035, guid: 6baf90930fb68444fb50feab07dfc251, type: 3}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[1].rewardItems.Array.data[2]
-      value: 
-      objectReference: {fileID: 183402318249301568, guid: 9d269b9d55e33f64c9369acc635d6a1c, type: 3}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[2].rewardItems.Array.data[0]
-      value: 
-      objectReference: {fileID: 6621584954699507376, guid: 8dabdd5a6f973a34980605a0dd6e7eb6, type: 3}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[2].rewardItems.Array.data[1]
-      value: 
-      objectReference: {fileID: 7184134740926826035, guid: 6baf90930fb68444fb50feab07dfc251, type: 3}
-    - target: {fileID: 8142037898299307762, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: availableBattles.Array.data[2].rewardItems.Array.data[2]
-      value: 
-      objectReference: {fileID: 183402318249301568, guid: 9d269b9d55e33f64c9369acc635d6a1c, type: 3}
-    - target: {fileID: 8888426906396577533, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: m_Name
-      value: BattleZone
-      objectReference: {fileID: 0}
-    - target: {fileID: 8888426906396577533, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 52932ceccf7650e44ad65c241487e2c7, type: 3}
 --- !u!1 &975382181
 GameObject:
   m_ObjectHideFlags: 0
@@ -4961,7 +4808,6 @@ SceneRoots:
   - {fileID: 619428093}
   - {fileID: 232823491}
   - {fileID: 1520114584}
-  - {fileID: 908165775}
   - {fileID: 1868870182}
   - {fileID: 775286436}
   - {fileID: 594553524}

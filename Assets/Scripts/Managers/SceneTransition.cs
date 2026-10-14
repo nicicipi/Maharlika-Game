@@ -57,9 +57,8 @@ public class SceneTransition : MonoBehaviour
             yield return null;
         }
 
-        // Allow the new scene's Start methods and AreaEnter to run.
-        yield return null;
-        yield return new WaitForEndOfFrame();
+        // Wait for the destination scene to initialize and place the persistent player.
+        yield return StartCoroutine(PlacePlayerAtAreaEnter());
 
         CamController cameraController = FindObjectOfType<CamController>();
 
@@ -84,6 +83,19 @@ public class SceneTransition : MonoBehaviour
         }
 
         isTransitioning = false;
+    }
+
+    private IEnumerator PlacePlayerAtAreaEnter()
+    {
+        for (int frame = 0; frame < 120; frame++)
+        {
+            if (AreaEnter.TryPlacePlayerAtMatchingArea())
+                yield break;
+
+            yield return null;
+        }
+
+        Debug.LogWarning("SceneTransition: No matching AreaEnter was found for the player transition.");
     }
 
     private IEnumerator Fade(float startAlpha, float targetAlpha)

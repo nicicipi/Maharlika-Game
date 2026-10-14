@@ -14,6 +14,9 @@ public class BattleCharacters : MonoBehaviour
     public Sprite deadSprites;
     public GameObject deathParticles;
 
+    [Header("Quest Completion")]
+    [SerializeField] private string questToCompleteOnDeath;
+
     [Header("Death VFX (enemy)")]
     [SerializeField] float preDeathDelay = 0.5f;
     [SerializeField] float jitterDuration = 0.6f;
@@ -136,6 +139,24 @@ public class BattleCharacters : MonoBehaviour
         if (!isDead)
         {
             isDead = true;
+
+            if (!string.IsNullOrWhiteSpace(questToCompleteOnDeath))
+            {
+                if (QuestManager.instance != null)
+                {
+                    QuestManager.instance.MarkQuestComplete(
+                        questToCompleteOnDeath
+                    );
+                }
+                else
+                {
+                    Debug.LogError(
+                        "BattleCharacters: QuestManager instance is missing.",
+                        this
+                    );
+                }
+            }
+
             StartCoroutine(EnemyDeathSequence());
         }
     }

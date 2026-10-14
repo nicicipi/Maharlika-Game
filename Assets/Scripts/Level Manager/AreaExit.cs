@@ -14,11 +14,18 @@ public class AreaExit : MonoBehaviour
     [Header("Additional Quest Requirement")]
     [SerializeField] string requiredQuestToUnlock;
 
+    [Header("Enemies Blocking Exit")]
+    [SerializeField] string[] blockingEnemyIds;
+
+    [Header("Blocked Exit Dialogue")]
+    [SerializeField] Dialogue blockedExitDialogue;
+
     [Header("Scene Transition")]
     [SerializeField] float fadeToBlackDelay = 0.35f;
 
     private bool isLoading;
     private bool hasTriggered;
+    private bool blockedDialogueShown;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,6 +35,14 @@ public class AreaExit : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         TryStartTransition(collision);
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (IsPlayerCollider(collision))
+        {
+            blockedDialogueShown = false;
+        }
     }
 
     private void TryStartTransition(Collider2D collision)
@@ -43,11 +58,13 @@ public class AreaExit : MonoBehaviour
 
         if (!CanEnterArea())
         {
+            ShowBlockedExitDialogue();
             return;
         }
 
         if (!CanLeaveArea())
         {
+            ShowBlockedExitDialogue();
             return;
         }
 
@@ -107,6 +124,17 @@ public class AreaExit : MonoBehaviour
 
     private bool CanLeaveArea()
     {
+        if (HasBlockingEnemiesRemaining())
+        {
+            Debug.Log("AreaExit: Defeat all blocking enemies before leaving.", this);
+            return false;
+        }
+
+        if (blockingEnemyIds != null && blockingEnemyIds.Length > 0)
+        {
+            return true;
+        }
+
         if (string.IsNullOrWhiteSpace(requiredQuestToUnlock))
         {
             return true;
@@ -129,5 +157,61 @@ public class AreaExit : MonoBehaviour
         );
 
         return false;
+    }
+
+    private bool HasBlockingEnemiesRemaining()
+    {
+        if (blockingEnemyIds == null || blockingEnemyIds.Length == 0)
+        {
+            return false;
+        }
+
+        foreach (string enemyId in blockingEnemyIds)
+        {
+            if (string.IsNullOrWhiteSpace(enemyId))
+            {
+                continue;
+            }
+
+            if (PlayerPrefs.GetInt("EnemyDefeated_" + enemyId, 0) == 1)
+            {
+                continue;
+            }
+
+            BattleInstantiator[] enemies =
+                FindObjectsOfType<BattleInstantiator>();
+
+            foreach (BattleInstantiator enemy in enemies)
+            {
+                if (enemy != null && enemy.EnemyId == enemyId)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private void ShowBlockedExitDialogue()
+    {
+        if (blockedDialogueShown || blockedExitDialogue == null)
+        {
+            return;
+        }
+
+        if (DialogueManager.Instance == null)
+        {
+            Debug.LogError("AreaExit: DialogueManager instance is missing.");
+            return;
+        }
+
+        if (DialogueManager.Instance.isDialogueActive)
+        {
+            return;
+        }
+
+        blockedDialogueShown = true;
+        DialogueManager.Instance.StartDialogue(blockedExitDialogue);
     }
 }

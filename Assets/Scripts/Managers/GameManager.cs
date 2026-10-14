@@ -18,37 +18,18 @@ public class GameManager : MonoBehaviour
         new HashSet<string>();
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         if (instance != null && instance != this)
         {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
+            Destroy(gameObject);
+            return;
         }
 
+        instance = this;
         DontDestroyOnLoad(gameObject);
 
-        //If want the players to be automatically put in the gamemanager
-        //playerStats = FindObjectsOfType<PlayerStats>();
-
-        // Find all party members and player tag is always first --- IN BATTLE UI THIS WONT WORK BC ALL CHARACTERS ARE TAGGED PLAYERS
-        //playerStats = FindObjectsOfType<PlayerStats>()
-        //    .OrderByDescending(p => p.CompareTag("Player"))
-        //    .ToArray();
-
-        // Explicit party member roster order: Lyka (0), Briar (1), AD4M (2)
-        string[] partyOrder = { "Lyka", "Briar", "AD4M" };
-
-        playerStats = FindObjectsOfType<PlayerStats>()
-            .OrderBy(p => {
-                int index = System.Array.IndexOf(partyOrder, p.playerName);
-                return index >= 0 ? index : int.MaxValue;
-            })
-            .ToArray();
-
+        RefreshPlayerStats();
     }
 
     // Update is called once per frame
@@ -81,6 +62,15 @@ public class GameManager : MonoBehaviour
     public PlayerStats[] GetPlayerStats()
     {
         return playerStats;
+    }
+
+    public void ResetRuntimeState()
+    {
+        gameMenuOpened = false;
+        dialogueBoxOpened = false;
+        shopOpened = false;
+        battleIsActive = false;
+        defeatedEnemyIds.Clear();
     }
 
     public void SaveData()
@@ -167,68 +157,71 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Player_" + playerStats[i].playerName + "_WeaponPower", playerStats[i].weaponPower);
             PlayerPrefs.SetInt("Player_" + playerStats[i].playerName + "_ArmorDefence", playerStats[i].armorDefence);
 
+            PlayerPrefs.SetInt("Player_" + playerStats[i].playerName + "_Attack", playerStats[i].attack);
         }
     }
 
     public void LoadData()
     {
-        LoadingPlayerPosition();
+        if (playerStats == null ||
+            playerStats.Length == 0)
+        {
+            Debug.LogError(
+                "GameManager: Player roster is empty while loading data."
+            );
+
+            return;
+        }
+
+        if (Player.instance != null &&
+            string.IsNullOrEmpty(Player.instance.transitionName))
+        {
+            LoadingPlayerPosition();
+        }
+
         LoadingPlayerStats();
 
+        // Keep the existing inventory-loading code below.
         for (int i = 0; i < PlayerPrefs.GetInt("Number_Of_Items"); i++)
         {
             string itemName = PlayerPrefs.GetString("Item_" + i + "_Name");
-            ItemsManager itemToAdd = ItemsAssets.instance.GetItemAsset(itemName);
+            ItemsManager itemToAdd =
+                ItemsAssets.instance.GetItemAsset(itemName);
 
-            int itemAmount = 0;
-            if(PlayerPrefs.HasKey("Items_" + i + "_Amount"))
+            if (itemToAdd == null)
             {
-                itemAmount = PlayerPrefs.GetInt("Items_" + i + "_Amount");
+                Debug.LogWarning(
+                    "GameManager: Could not find saved item: " +
+                    itemName
+                );
+
+                continue;
             }
 
             Inventory.instance.AddItems(itemToAdd);
-            if(itemToAdd.isStackable && itemAmount > 1)
+
+            string amountKey = "Item_" + i + "_Amount";
+
+            if (itemToAdd.isStackable &&
+                PlayerPrefs.HasKey(amountKey))
             {
-                itemToAdd.amount = itemAmount;
+                itemToAdd.amount =
+                    PlayerPrefs.GetInt(amountKey);
             }
-        }
-    }
-
-    private void LoadingPlayerStats()
-    {
-        for (int i = 0; i < playerStats.Length; i++)
-        {
-            if (PlayerPrefs.GetInt("Player_" + playerStats[i].playerName + "_active") == 0)
-            {
-                playerStats[i].gameObject.SetActive(false);
-            }
-            else
-            {
-                playerStats[i].gameObject.SetActive(true);
-            }
-
-            playerStats[i].playerLevel = PlayerPrefs.GetInt("Player_" + playerStats[i].playerName + "_Level");
-            playerStats[i].currentXP = PlayerPrefs.GetInt("Player_" + playerStats[i].playerName + "_CurrentXP");
-
-            playerStats[i].maxHP = PlayerPrefs.GetInt("Player_" + playerStats[i].playerName + "_MaxHP");
-            playerStats[i].currentHP = PlayerPrefs.GetInt("Player_" + playerStats[i].playerName + "_CurrentHP");
-
-            playerStats[i].maxStamina = PlayerPrefs.GetInt("Player_" + playerStats[i].playerName + "_MaxSP");
-            playerStats[i].currentStamina = PlayerPrefs.GetInt("Player_" + playerStats[i].playerName + "_CurrentSP");
-
-            playerStats[i].dexterity = PlayerPrefs.GetInt("Player_" + playerStats[i].playerName + "_Dexterity");
-            playerStats[i].defence = PlayerPrefs.GetInt("Player_" + playerStats[i].playerName + "_Defence");
-
-            playerStats[i].equippedWeaponName = PlayerPrefs.GetString("Player_" + playerStats[i].playerName + "_EquippedWeapon");
-            playerStats[i].equippedArmorName = PlayerPrefs.GetString("Player_" + playerStats[i].playerName + "_EquippedArmor");
-
-            playerStats[i].weaponPower = PlayerPrefs.GetInt("Player_" + playerStats[i].playerName + "_WeaponPower");
-            playerStats[i].armorDefence = PlayerPrefs.GetInt("Player_" + playerStats[i].playerName + "_ArmorDefence");
         }
     }
 
     private static void LoadingPlayerPosition()
     {
+        if (Player.instance == null)
+        {
+            Debug.LogWarning(
+                "GameManager: Cannot load player position because Player.instance is missing."
+            );
+
+            return;
+        }
+
         Player.instance.transform.position = new Vector3(
             PlayerPrefs.GetFloat("Player_Pos_X"),
             PlayerPrefs.GetFloat("Player_Pos_Y"),
@@ -236,11 +229,112 @@ public class GameManager : MonoBehaviour
             );
     }
 
+    private void LoadingPlayerStats()
+    {
+        for (int i = 0; i < playerStats.Length; i++)
+        {
+            PlayerStats player = playerStats[i];
+            string playerKey = "Player_" + player.playerName + "_";
+
+            player.gameObject.SetActive(
+                PlayerPrefs.GetInt(playerKey + "active", 1) == 1
+            );
+
+            player.playerLevel =
+                PlayerPrefs.GetInt(playerKey + "Level");
+            
+            player.currentXP =
+                PlayerPrefs.GetInt(playerKey + "CurrentXP");
+
+            player.maxHP =
+                PlayerPrefs.GetInt(playerKey + "MaxHP");
+
+            player.currentHP =
+                PlayerPrefs.GetInt(playerKey + "CurrentHP");
+
+            player.maxStamina =
+                PlayerPrefs.GetInt(playerKey + "MaxSP");
+
+            player.currentStamina =
+                PlayerPrefs.GetInt(playerKey + "CurrentSP");
+
+            player.dexterity =
+                PlayerPrefs.GetInt(playerKey + "Dexterity");
+
+            player.defence =
+                PlayerPrefs.GetInt(playerKey + "Defence");
+
+            player.equippedWeaponName =
+                PlayerPrefs.GetString(playerKey + "EquippedWeapon");
+
+            player.equippedArmorName =
+                PlayerPrefs.GetString(playerKey + "EquippedArmor");
+
+            player.weaponPower =
+                PlayerPrefs.GetInt(playerKey + "WeaponPower");
+
+            player.armorDefence =
+                PlayerPrefs.GetInt(playerKey + "ArmorDefence");
+        }
+    }
+
     public void RegisterDefeatedEnemy(string enemyId)
     {
         if (!string.IsNullOrEmpty(enemyId))
         {
             defeatedEnemyIds.Add(enemyId);
+            PlayerPrefs.SetInt("EnemyDefeated_" + enemyId, 1);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public void RefreshPlayerStats()
+    {
+        if (playerStats == null ||
+            playerStats.Length == 0)
+        {
+            playerStats = FindObjectsOfType<PlayerStats>(true)
+                .OrderBy(player => player.playerName)
+                .ToArray();
+        }
+
+        if (playerStats == null ||
+            playerStats.Length == 0)
+        {
+            Debug.LogError(
+                "GameManager: No PlayerStats objects were found."
+            );
+
+            return;
+        }
+
+        foreach (PlayerStats player in playerStats)
+        {
+            if (player == null)
+            {
+                continue;
+            }
+
+            // Move the data objects under the persistent GameManager.
+            // This prevents them from being destroyed during scene changes.
+            if (player.transform.parent != transform)
+            {
+                player.transform.SetParent(transform, true);
+            }
+        }
+
+        Debug.Log(
+            "GameManager: Persistent player roster contains " +
+            playerStats.Length +
+            " player(s)."
+        );
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
         }
     }
 }

@@ -8,6 +8,8 @@ public class BattleInstantiator : MonoBehaviour
     [SerializeField]
     private string enemyId = "RobotTutorialEnemy";
 
+    public string EnemyId => enemyId;
+
     [SerializeField]
     private ItemsManager tutorialRewardItem;
 
@@ -55,17 +57,19 @@ public class BattleInstantiator : MonoBehaviour
 
     private bool tutorialRewardGivenThisSession;
 
-    private void Start()
-    {
-        if (PlayerPrefs.GetInt(EnemyDefeatedKey, 0) == 1)
-        {
-            Destroy(transform.root.gameObject);
-        }
-    }
-
     private void Awake()
     {
         battleTrigger = GetComponent<Collider2D>();
+
+        if (PlayerPrefs.GetInt(EnemyDefeatedKey, 0) == 1)
+        {
+            Destroy(transform.root.gameObject);
+            return;
+        }
+    }
+
+    private void Start()
+    {
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -125,13 +129,21 @@ public class BattleInstantiator : MonoBehaviour
         );
 
         if (startTutorialOnFirstBattle &&
-            !tutorialHasStarted &&
-            battleTutorialManager != null)
+            !tutorialHasStarted)
         {
-            tutorialHasStarted = true;
-            battleTutorialManager.StartTutorial();
+            FindTutorialManager();
+
+            if (battleTutorialManager != null)
+            {
+                tutorialHasStarted = true;
+                battleTutorialManager.StartTutorial();
+
+                Debug.Log(
+                    "BattleInstantiator: Tutorial started."
+                );
+            }
         }
-        
+
 
         yield return null;
 
@@ -282,4 +294,31 @@ public class BattleInstantiator : MonoBehaviour
         );
     }
 
+    private void FindTutorialManager()
+    {
+        if (battleTutorialManager != null)
+        {
+            return;
+        }
+
+        BattleTutorialManager[] tutorialManagers =
+            FindObjectsOfType<BattleTutorialManager>(true);
+
+        if (tutorialManagers.Length == 0)
+        {
+            Debug.LogError(
+                "BattleInstantiator: No BattleTutorialManager was found. " +
+                "Make sure the tutorial manager exists under the battle UI."
+            );
+
+            return;
+        }
+
+        battleTutorialManager = tutorialManagers[0];
+
+        Debug.Log(
+            "BattleInstantiator: Tutorial manager found on " +
+            battleTutorialManager.gameObject.name
+        );
+    }
 }

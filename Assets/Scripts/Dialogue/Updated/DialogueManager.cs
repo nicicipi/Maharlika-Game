@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<DialogueLine> lines;
     private DialogueLine currentLine;
+    private Dialogue currentDialogue;
     private Coroutine typingCoroutine;
     private bool isTyping;
 
@@ -59,6 +60,9 @@ public class DialogueManager : MonoBehaviour
         }
 
         isDialogueActive = true;
+        currentDialogue = dialogue;
+
+        currentDialogue.onDialogueStarted?.Invoke();
 
         if (GameManager.instance != null)
         {
@@ -218,6 +222,20 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         isDialogueActive = false;
+
+        if (currentDialogue != null)
+        {
+            currentDialogue.onDialogueEnded?.Invoke();
+
+            if (!string.IsNullOrWhiteSpace(currentDialogue.questToCompleteOnEnd) &&
+                QuestManager.instance != null)
+            {
+                QuestManager.instance.MarkQuestComplete(currentDialogue.questToCompleteOnEnd);
+                Debug.Log("DialogueManager: Quest completed: " + currentDialogue.questToCompleteOnEnd);
+            }
+
+            currentDialogue = null;
+        }
 
         if (GameManager.instance != null)
         {

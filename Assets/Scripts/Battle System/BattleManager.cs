@@ -75,12 +75,26 @@ public class BattleManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
+            Debug.LogWarning(
+                "BattleManager: Duplicate instance destroyed on " +
+                gameObject.name,
+                this
+            );
+
             Destroy(gameObject);
             return;
         }
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
     }
 
     // Update is called once per frame
@@ -162,45 +176,98 @@ public class BattleManager : MonoBehaviour
 
     private void AddingPlayers()
     {
-        for (int i = 0; i < GameManager.instance.GetPlayerStats().Length; i++)
+        if (GameManager.instance == null)
         {
-            if (GameManager.instance.GetPlayerStats()[i].gameObject.activeInHierarchy)
+            Debug.LogError(
+                "BattleManager: GameManager instance is missing."
+            );
+
+            return;
+        }
+
+        PlayerStats[] savedPlayerStats =
+            GameManager.instance.GetPlayerStats();
+
+        if (savedPlayerStats == null ||
+            savedPlayerStats.Length == 0)
+        {
+            Debug.LogError(
+                "BattleManager: No persistent PlayerStats were found."
+            );
+
+            return;
+        }
+
+        int battlePlayerIndex = 0;
+
+        foreach (PlayerStats playerStats in savedPlayerStats)
+        {
+            if (playerStats == null ||
+                !playerStats.gameObject.activeSelf)
             {
-                for (int j = 0; j < playerPrefabs.Length; j++)
-                {
-                    if (playerPrefabs[j].characterName == GameManager.instance.GetPlayerStats()[i].playerName)
-                    {
-                        BattleCharacters newPlayer = Instantiate(
-                            playerPrefabs[j],
-                            playerPositions[i].position,
-                            playerPositions[i].rotation,
-                            playerPositions[i]
-                        );
-
-                        activeCharacters.Add(newPlayer);
-
-                        ImportPlayerStats(i);
-                    }
-                }
+                continue;
             }
+
+            if (battlePlayerIndex >= playerPositions.Length)
+            {
+                Debug.LogError(
+                    "BattleManager: Not enough player positions."
+                );
+
+                break;
+            }
+
+            for (int i = 0; i < playerPrefabs.Length; i++)
+            {
+                if (playerPrefabs[i] == null ||
+                    playerPrefabs[i].characterName !=
+                    playerStats.playerName)
+                {
+                    continue;
+                }
+
+                BattleCharacters newPlayer = Instantiate(
+                    playerPrefabs[i],
+                    playerPositions[battlePlayerIndex].position,
+                    playerPositions[battlePlayerIndex].rotation,
+                    playerPositions[battlePlayerIndex]
+                );
+
+                activeCharacters.Add(newPlayer);
+
+                ImportPlayerStats(
+                    activeCharacters.Count - 1,
+                    playerStats
+                );
+
+                battlePlayerIndex++;
+                break;
+            }
+        }
+
+        if (battlePlayerIndex == 0)
+        {
+            Debug.LogError(
+                "BattleManager: No active players were registered for battle."
+            );
         }
     }
 
-    private void ImportPlayerStats(int i)
+    private void ImportPlayerStats(
+    int battlePlayerIndex,
+    PlayerStats player)
     {
-        PlayerStats player = GameManager.instance.GetPlayerStats()[i];
+        BattleCharacters battleCharacter =
+            activeCharacters[battlePlayerIndex];
 
-        activeCharacters[i].currentHP = player.currentHP;
-        activeCharacters[i].maxHP = player.maxHP;
-
-        activeCharacters[i].currentSP = player.currentStamina;
-        activeCharacters[i].maxSP = player.maxStamina;
-
-        activeCharacters[i].dexterity = player.dexterity;
-        activeCharacters[i].defence = player.defence;
-
-        activeCharacters[i].wpnPower = player.weaponPower;
-        activeCharacters[i].armorDefence = player.armorDefence;
+        battleCharacter.currentHP = player.currentHP;
+        battleCharacter.maxHP = player.maxHP;
+        battleCharacter.currentSP = player.currentStamina;
+        battleCharacter.maxSP = player.maxStamina;
+        battleCharacter.dexterity = player.dexterity;
+        battleCharacter.defence = player.defence;
+        battleCharacter.wpnPower = player.weaponPower;
+        battleCharacter.armorDefence = player.armorDefence;
     }
 
     private void SettingUpBattle()
@@ -293,9 +360,25 @@ public class BattleManager : MonoBehaviour
         waitingForTurn = false;
 
         yield return new WaitForSeconds(1f);
+
+        if (!isBattleActive || activeCharacters.Count == 0 ||
+            currentTurn < 0 || currentTurn >= activeCharacters.Count ||
+            activeCharacters[currentTurn] == null ||
+            activeCharacters[currentTurn].currentHP <= 0 ||
+            activeCharacters[currentTurn].IsPlayer())
+        {
+            yield break;
+        }
+
         EnemyAttack();
 
         yield return new WaitForSeconds(1.5f);
+
+        if (!isBattleActive || activeCharacters.Count == 0)
+        {
+            yield break;
+        }
+
         NextTurn();
     }
 
@@ -310,16 +393,48 @@ public class BattleManager : MonoBehaviour
                 players.Add(i);
             }
         }
-        int selectedPlayerToAttack = players[Random.Range(0, players.Count)];
 
-        int selectedAttack = Random.Range(0, activeCharacters[currentTurn].AttackMovesAvailable().Length);
+        if (players.Count == 0)
+        {
+            Debug.LogError(
+                "BattleManager: EnemyAttack cancelled because no player characters are active."
+            );
+
+            isBattleActive = false;
+
+            if (GameManager.instance != null)
+            {
+                GameManager.instance.battleIsActive = false;
+            }
+
+            return;
+        }
+
+        int selectedPlayerToAttack =
+            players[Random.Range(0, players.Count)];
+
+        string[] availableAttacks =
+            activeCharacters[currentTurn].AttackMovesAvailable();
+
+        if (availableAttacks == null ||
+            availableAttacks.Length == 0)
+        {
+            Debug.LogError(
+                "BattleManager: Current enemy has no available attacks."
+            );
+
+            return;
+        }
+
+        int selectedAttack =
+            Random.Range(0, availableAttacks.Length);
         int movePower = 0;
 
         for (int i = 0; i < battleMovesList.Length; i++)
         {
-            if (battleMovesList[i].moveName == activeCharacters[currentTurn].AttackMovesAvailable()[selectedAttack])
+            if (battleMovesList[i].moveName == availableAttacks[selectedAttack])
             {
-                movePower = GettingMovePowerAndEffectInstanstiation(selectedPlayerToAttack, i);
+                movePower = GettingMovePowerAndEffectInstanstiation(selectedPlayerToAttack,i);
             }
         }
 
@@ -681,6 +796,7 @@ public class BattleManager : MonoBehaviour
     public IEnumerator EndBattleCoroutine()
     {
         isBattleActive = false;
+        GameManager.instance.battleIsActive = false;
         UIButtonHolder.SetActive(false);
         enemyTargetPanel.SetActive(false);
         skillChoicePanel.SetActive(false);
@@ -811,6 +927,35 @@ public class BattleManager : MonoBehaviour
     public void SetBattleTrigger(BattleInstantiator battleTrigger)
     {
         currentBattleTrigger = battleTrigger;
+    }
+
+    public void ResetBattleState()
+    {
+        StopAllCoroutines();
+
+        foreach (BattleCharacters character in activeCharacters)
+        {
+            if (character != null)
+            {
+                Destroy(character.gameObject);
+            }
+        }
+
+        activeCharacters.Clear();
+        isBattleActive = false;
+        waitingForTurn = false;
+        currentTurn = 0;
+        currentBattleTrigger = null;
+        runningAway = false;
+
+        if (battleScene != null)
+        {
+            battleScene.SetActive(false);
+        }
+
+        if (UIButtonHolder != null) UIButtonHolder.SetActive(false);
+        if (enemyTargetPanel != null) enemyTargetPanel.SetActive(false);
+        if (skillChoicePanel != null) skillChoicePanel.SetActive(false);
     }
 
 }

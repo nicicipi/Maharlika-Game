@@ -164,4 +164,12 @@ public class Player : MonoBehaviour
             playerRigidBody.angularVelocity = 0f;
         }
     }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
 }

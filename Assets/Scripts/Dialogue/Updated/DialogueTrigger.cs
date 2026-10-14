@@ -46,13 +46,27 @@ public class DialogueLine
 public class Dialogue
 {
     public List<DialogueLine> dialogueLines = new List<DialogueLine>();
+
+    public UnityEvent onDialogueStarted;
+    public UnityEvent onDialogueEnded;
+
+    [SerializeField]
+    [Tooltip("Optional: If set, this quest will be completed when the dialogue ends.")]
+    public string questToCompleteOnEnd;
 }
 
 public class DialogueTrigger : MonoBehaviour
 {
     [SerializeField] bool triggerOnEnter = true;
 
+    [Header("Dialogue Variants")]
     public Dialogue dialogue;
+
+    [SerializeField]
+    private Dialogue followUpDialogue;
+
+    [SerializeField]
+    private string followUpQuestToCheck;
 
     public void TriggerDialogue()
     {
@@ -71,7 +85,17 @@ public class DialogueTrigger : MonoBehaviour
         if (DialogueManager.Instance.isDialogueActive)
             return;
 
-        DialogueManager.Instance.StartDialogue(dialogue);
+        Dialogue dialogueToStart = dialogue;
+
+        if (followUpDialogue != null &&
+            !string.IsNullOrWhiteSpace(followUpQuestToCheck) &&
+            QuestManager.instance != null &&
+            QuestManager.instance.CheckIfComplete(followUpQuestToCheck))
+        {
+            dialogueToStart = followUpDialogue;
+        }
+
+        DialogueManager.Instance.StartDialogue(dialogueToStart);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
