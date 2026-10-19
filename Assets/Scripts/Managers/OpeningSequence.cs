@@ -45,6 +45,7 @@ public class OpeningSequence : MonoBehaviour
 
             yield break;
         }
+        GameManager.instance.dialogueBoxOpened = true;
 
         blackScreen.alpha = 1f;
         blackScreen.blocksRaycasts = true;
@@ -57,10 +58,11 @@ public class OpeningSequence : MonoBehaviour
 
         float waitTime = blackScreenDuration;
 
-        if (explosionSound != null)
-        {
-            waitTime = Mathf.Max(waitTime, explosionSound.length);
-        }
+        // this is what's making the fade long
+        // if (explosionSound != null)
+        //{
+        //    waitTime = Mathf.Max(waitTime, explosionSound.length);
+        //}
 
         yield return new WaitForSecondsRealtime(waitTime);
 
@@ -70,11 +72,8 @@ public class OpeningSequence : MonoBehaviour
         {
             elapsed += Time.unscaledDeltaTime;
 
-            float fadeProgress = Mathf.Clamp01(
-                elapsed / fadeDuration
-            );
 
-            blackScreen.alpha = 1f - fadeProgress;
+            blackScreen.alpha = Mathf.Lerp(fadeDuration, 0, elapsed);
 
             yield return null;
         }

@@ -29,16 +29,22 @@ public class AreaExit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (DialogueManager.Instance.isDialogueActive)
+            return;
         TryStartTransition(collision);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        if (DialogueManager.Instance.isDialogueActive)
+            return;
         TryStartTransition(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (DialogueManager.Instance.isDialogueActive)
+            return;
         if (IsPlayerCollider(collision))
         {
             blockedDialogueShown = false;

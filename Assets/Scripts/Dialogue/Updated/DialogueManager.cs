@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using static GameManager;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -58,6 +59,8 @@ public class DialogueManager : MonoBehaviour
             Debug.LogError("DialogueManager: Dialogue data is missing.");
             return;
         }
+
+        GameManager.instance.SetGameState(GameState.Dialogue);
 
         isDialogueActive = true;
         currentDialogue = dialogue;
