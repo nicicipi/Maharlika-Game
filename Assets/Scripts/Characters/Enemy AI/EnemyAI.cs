@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,16 +20,17 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private float detectionDelay = 0.05f;
 
-    public UnityEvent<Vector2> OnMovementInput;
-    public UnityEvent<Vector2> OnPointerInput;
+    public UnityEvent<Vector2> OnMovementInput = new();
+    public UnityEvent<Vector2> OnPointerInput = new();
 
-    private void Start()
+   
+    private void OnEnable()
     {
-        InvokeRepeating(
-            nameof(PerformDetection),
-            0f,
-            detectionDelay
-        );
+        StartCoroutine(AIBehaviour());
+    }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 
     private void PerformDetection()
@@ -44,37 +46,69 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance != null &&
-            (GameManager.instance.dialogueBoxOpened ||
-             GameManager.instance.gameMenuOpened ||
-             GameManager.instance.shopOpened ||
-             GameManager.instance.battleIsActive))
+        
+    }
+    IEnumerator AIBehaviour()
+    {
+        while (true)
         {
-            OnMovementInput?.Invoke(Vector2.zero);
-            return;
-        }
+            yield return null;
+            if (aiData == null)
+            {
+                continue;
+            }
 
-        if (aiData.targets == null ||
-            aiData.targets.Count == 0)
+            // every second only
+            if(Time.frameCount % 60 == 0)
+                PerformDetection();
+
+            if (GameManager.instance != null &&
+                (GameManager.instance.dialogueBoxOpened ||
+                 GameManager.instance.gameMenuOpened ||
+                 GameManager.instance.shopOpened ||
+                 GameManager.instance.battleIsActive))
+            {
+                StopAIBehavior();
+                continue;
+            }
+
+            if (aiData.targets == null || aiData.targets.Count == 0)
+            {
+                StopAIBehavior();
+                continue;
+            }
+
+
+            if (aiData.currentTarget == null)
+            {
+                if (TryGetTarget(out Transform target))
+                    aiData.currentTarget = target;
+            }
+
+            Vector2 movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aiData);
+            if (aiData != null && aiData.currentTarget != null && OnPointerInput != null && aiData.currentTarget.position != null)
+            {
+                OnPointerInput?.Invoke(aiData.currentTarget.position);
+                OnMovementInput?.Invoke(movementInput);
+            }
+        }
+    }
+    private bool TryGetTarget(out Transform targetTransform)
+    {
+        targetTransform = null;
+        foreach (var target in aiData.targets)
         {
-            aiData.currentTarget = null;
-            OnMovementInput?.Invoke(Vector2.zero);
-            return;
+            if (target != null)
+            {
+                targetTransform = target;
+                break;
+            }
         }
-
-        if (aiData.currentTarget == null ||
-            !aiData.targets.Contains(aiData.currentTarget))
-        {
-            aiData.currentTarget = aiData.targets[0];
-        }
-
-        Vector2 movementInput =
-            movementDirectionSolver.GetDirectionToMove(
-                steeringBehaviours,
-                aiData
-            );
-
-        OnPointerInput?.Invoke(aiData.currentTarget.position);
-        OnMovementInput?.Invoke(movementInput);
+        return targetTransform != null;
+    }
+    private void StopAIBehavior()
+    {
+        aiData.currentTarget = null;
+        OnMovementInput?.Invoke(Vector2.zero);
     }
 }
