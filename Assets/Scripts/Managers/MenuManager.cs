@@ -43,43 +43,37 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI currentMoneyText;
 
-    private void Start()
+    private void Awake()
     {
+        if(instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
     {
-        UpdateStats();
-
-        currentMoneyText.text = "" + GameManager.instance.currentMoney;
-
-        bool dialogueIsActive =
-            GameManager.instance != null &&
-            GameManager.instance.dialogueBoxOpened;
-
-        if (dialogueIsActive)
-        {
-            // Close the regular menu if dialogue starts while it is open.
-            if (menu.activeInHierarchy)
-            {
-                CloseMenu();
-            }
-
+        if (GameManager.instance.CurrentPlayingState == GameManager.PlayState.MainMenu || GameManager.instance.CurrentPlayingState == GameManager.PlayState.GameOver)
             return;
-        }
 
         if (Input.GetKeyDown(KeyCode.M))
         {
-            if (menu.activeInHierarchy)
+            if (GameManager.instance.CurrentPlayingState == (GameManager.PlayState.Menus))
             {
+                GameManager.instance.SetPlayState(GameManager.PlayState.Gameplay);
                 UpdateStats();
                 CloseMenu();
             }
             else
             {
+                GameManager.instance.SetPlayState(GameManager.PlayState.Menus);
+                currentMoneyText.text = GameManager.instance.currentMoney.ToString();
+                UpdateStats();
+
                 menu.SetActive(true);
-                GameManager.instance.gameMenuOpened = true;
                 AudioManager.instance.PlaySFX(19);
             }
         }
@@ -125,6 +119,11 @@ public class MenuManager : MonoBehaviour
 
     public void StatsMenuUpdate(int playerSelectedNumber)
     {
+        if(playerStats.Length == 0)
+        {
+            Debug.LogWarning("NO player stats to update");
+            return;
+        }
         PlayerStats playerSelected = playerStats[playerSelectedNumber];
 
         statName.text = playerSelected.playerName;
@@ -491,7 +490,6 @@ public class MenuManager : MonoBehaviour
         CloseEverythingInMenu();
         menu.SetActive(false);
 
-        GameManager.instance.gameMenuOpened = false;
 
         AudioManager.instance.PlaySFX(18);
     }

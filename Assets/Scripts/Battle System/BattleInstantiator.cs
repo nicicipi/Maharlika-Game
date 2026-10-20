@@ -74,13 +74,17 @@ public class BattleInstantiator : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (battleStarting ||
-            !collision.CompareTag("Player") ||
-            GameManager.instance.battleIsActive)
+        if (battleStarting || !collision.CompareTag("Player"))
         {
             return;
         }
-
+        StartBattle();
+    }
+    private void StartBattle()
+    {
+        if (GameManager.instance.CurrentGameState == GameManager.GameState.Battle)
+            return;
+        GameManager.instance.SetGameState(GameManager.GameState.Battle);
         StartCoroutine(StartBattleCoroutine());
     }
 
@@ -117,7 +121,6 @@ public class BattleInstantiator : MonoBehaviour
         BattleManager.instance.scrapsReward =
             availableBattles[selectedBattle].scrapsReward;
 
-        GameManager.instance.battleIsActive = true;
 
         GiveTutorialReward();
 

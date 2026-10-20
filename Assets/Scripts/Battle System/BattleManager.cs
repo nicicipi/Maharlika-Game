@@ -12,62 +12,75 @@ public class BattleManager : MonoBehaviour
     public static BattleManager instance;
     private bool isBattleActive;
 
+    [Header("Battle Trigger")]
     private BattleInstantiator currentBattleTrigger;
+    [SerializeField] private GameObject battleScene;
 
-    [SerializeField] GameObject battleScene;
-    [SerializeField] List<BattleCharacters> activeCharacters = new List<BattleCharacters>();
+    [Header("Characters")]
+    [SerializeField] private List<BattleCharacters> activeCharacters = new List<BattleCharacters>();
+    [SerializeField] private Transform[] playerPositions, enemiesPositions;
+    [SerializeField] private BattleCharacters[] playerPrefabs, enemiesPrefabs;
 
-    [SerializeField] Transform[] playerPositions, enemiesPositions;
+    [Header("Turn Management")]
+    [SerializeField] private int currentTurn;
+    [SerializeField] private bool waitingForTurn;
+    private bool canRun;
 
-    [SerializeField] BattleCharacters[] playerPrefabs, enemiesPrefabs;
+    [Header("Battle UI")]
+    [SerializeField] private GameObject UIButtonHolder;
+    [SerializeField] private GameObject[] playerBattleStats;
+    [SerializeField] private TextMeshProUGUI[] playersNameText;
+    [SerializeField] private TextMeshProUGUI[] playerHealth, playerStamina;
+    [SerializeField] private Slider[] playerHealthSlider, playerStaminaSlider;
 
-    [SerializeField] int currentTurn;
-    [SerializeField] bool waitingForTurn;
-    [SerializeField] GameObject UIButtonHolder;
-
-    [SerializeField] BattleMoves[] battleMovesList;
-
-    [SerializeField] ParticleSystem characterAttackEffect;
-    [SerializeField] CharacterDamageGUI damageText;
-
-    [SerializeField] GameObject[] playerBattleStats;
-    [SerializeField] TextMeshProUGUI[] playersNameText;
-    [SerializeField] TextMeshProUGUI[] playerHealth, playerStamina;
-    [SerializeField] Slider[] playerHealthSlider, playerStaminaSlider;
-
-    [SerializeField] GameObject enemyTargetPanel;
-    [SerializeField] BattleTargetButtons[] targetButtons;
-
+    [Header("Battle Moves")]
+    [SerializeField] private BattleMoves[] battleMovesList;
+    [SerializeField] private BattleSkillButton[] skillButtons;
     public GameObject skillChoicePanel;
-    [SerializeField] BattleSkillButton[] skillButtons;
 
+
+
+    [Header("Enemy Targeting")]
+    [SerializeField] private GameObject enemyTargetPanel;
+    [SerializeField] private BattleTargetButtons[] targetButtons;
+
+    [Header("Battle Effects")]
+    [SerializeField] private ParticleSystem characterAttackEffect;
+    [SerializeField] private CharacterDamageGUI damageText;
+
+
+
+    [Header("Notifications")]
     public BattleNotification battleNotice;
 
-    [SerializeField] float chanceToRunAway = 0.7f;
-
-    public GameObject itemsToUseMenu;
-    [SerializeField] ItemsManager selectedItem;
-    [SerializeField] GameObject itemSlotContainer;
-    [SerializeField] Transform itemSlotContainerParent;
-    [SerializeField] TextMeshProUGUI itemName, itemDescription;
-
-    [SerializeField] GameObject characterChoicePanel;
-    [SerializeField] TextMeshProUGUI[] playerNames;
-
-    [SerializeField] string gameOverScene;
-
+    [Header("Escape")]
+    [SerializeField] private float chanceToRunAway = 0.7f;
     private bool runningAway;
+
+    [Header("Items")]
+    public GameObject itemsToUseMenu;
+    [SerializeField] private ItemsManager selectedItem;
+    [SerializeField] private GameObject itemSlotContainer;
+    [SerializeField] private Transform itemSlotContainerParent;
+    [SerializeField] private TextMeshProUGUI itemName, itemDescription;
+
+    [Header("Character Selection")]
+    [SerializeField] private GameObject characterChoicePanel;
+    [SerializeField] private TextMeshProUGUI[] playerNames;
+
+    [Header("Rewards")]
     public int xpRewardAmount;
     public ItemsManager[] itemsReward;
-
     public int scrapsReward;
 
-    private bool canRun;
+    [Header("Scene Management")]
+    [SerializeField] private string gameOverScene;
+
 
     // --- TOP NOTIFICATION PANEL UI --- NOT YET IMPLEMENTED SEP 9 2026
     //[Header("Battle Notice UI")]
-    //[SerializeField] GameObject battleNoticePanel;
-    //[SerializeField] TextMeshProUGUI battleNoticeText;
+    //[SerializeField] private GameObject battleNoticePanel;
+    //[SerializeField] private TextMeshProUGUI battleNoticeText;
     //private Coroutine noticeCoroutine;
 
 
@@ -274,8 +287,6 @@ public class BattleManager : MonoBehaviour
     private void SettingUpBattle()
     {
         isBattleActive = true;
-        GameManager.instance.battleIsActive = true;
-
         GameManager.instance.SetGameState(GameState.Battle);
         transform.position = Vector3.zero;
 
@@ -403,11 +414,6 @@ public class BattleManager : MonoBehaviour
             );
 
             isBattleActive = false;
-
-            if (GameManager.instance != null)
-            {
-                GameManager.instance.battleIsActive = false;
-            }
 
             return;
         }
@@ -853,11 +859,10 @@ public class BattleManager : MonoBehaviour
     public IEnumerator EndBattleCoroutine()
     {
         isBattleActive = false;
-        GameManager.instance.battleIsActive = false;
         UIButtonHolder.SetActive(false);
         enemyTargetPanel.SetActive(false);
         skillChoicePanel.SetActive(false);
-        yield return new WaitForSeconds(4f);
+        //yield return new WaitForSeconds(4f);
 
         if (!runningAway)
         {
@@ -932,7 +937,6 @@ public class BattleManager : MonoBehaviour
                 Player.instance.ResumeMovement();
             }
 
-            GameManager.instance.battleIsActive = false;
             runningAway = false;
 
             if (SceneTransition.instance != null)
@@ -965,12 +969,13 @@ public class BattleManager : MonoBehaviour
 
         currentTurn = 0;
 
-        
 
+        GameManager.instance.SetGameState(GameState.Roaming);
     }
 
     public IEnumerator GameOverCoroutine()
     {
+        GameManager.instance.SetPlayState(PlayState.GameOver);
         battleNotice.SetText("Game Over!");
         battleNotice.Activate();
 

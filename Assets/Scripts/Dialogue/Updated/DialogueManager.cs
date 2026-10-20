@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using static GameManager;
 
@@ -27,6 +28,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private DialogueTextAnimator textAnimator;
 
+    private UnityAction _onDialogueEnd;
+    private GameState _onEndGameState;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -52,30 +55,21 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, UnityAction OnDialogueEnd = null, GameManager.GameState onEndState = GameManager.GameState.Roaming)
     {
         if (dialogue == null || dialogue.dialogueLines == null)
         {
             Debug.LogError("DialogueManager: Dialogue data is missing.");
             return;
         }
-
+        _onDialogueEnd = OnDialogueEnd;
+        _onEndGameState = onEndState;
         GameManager.instance.SetGameState(GameState.Dialogue);
 
         isDialogueActive = true;
         currentDialogue = dialogue;
 
         currentDialogue.onDialogueStarted?.Invoke();
-
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.dialogueBoxOpened = true;
-        }
-
-        if (Player.instance != null)
-        {
-            Player.instance.StopMovement();
-        }
 
         if (animator != null)
         {
@@ -115,6 +109,7 @@ public class DialogueManager : MonoBehaviour
         // Second click: move to the next sentence.
         if (lines.Count == 0)
         {
+            Debug.Log("EndingDialogue");
             EndDialogue();
             return;
         }
@@ -240,16 +235,6 @@ public class DialogueManager : MonoBehaviour
             currentDialogue = null;
         }
 
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.dialogueBoxOpened = false;
-        }
-
-        if (Player.instance != null)
-        {
-            Player.instance.ResumeMovement();
-        }
-
         if (animator != null)
         {
             animator.Play("Hide");
@@ -259,5 +244,8 @@ public class DialogueManager : MonoBehaviour
         {
             textAnimator.ClearEffect();
         }
+
+        _onDialogueEnd?.Invoke();
+        GameManager.instance.SetGameState(_onEndGameState);
     }
 }

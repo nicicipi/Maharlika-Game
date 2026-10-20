@@ -45,7 +45,7 @@ public class OpeningSequence : MonoBehaviour
 
             yield break;
         }
-        GameManager.instance.dialogueBoxOpened = true;
+        GameManager.instance.SetGameState(GameManager.GameState.Cutscene);
 
         blackScreen.alpha = 1f;
         blackScreen.blocksRaycasts = true;

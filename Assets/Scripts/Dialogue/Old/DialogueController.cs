@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.Events;
 
 public class DialogueController : MonoBehaviour
 {
@@ -71,6 +72,7 @@ public class DialogueController : MonoBehaviour
     //UPDATED TO shorten dialogue WHEN CLICKING
     void Update()
     {
+        return;
         if (dialogueBox.activeInHierarchy)
         {
             if (Input.GetButtonUp("Fire1"))
@@ -92,8 +94,6 @@ public class DialogueController : MonoBehaviour
                         if (currentSentence >= dialogueSentences.Length)
                         {
                             dialogueBox.SetActive(false);
-                            GameManager.instance.dialogueBoxOpened = false;
-
                             if (shouldMarkQuest)
                             {
                                 shouldMarkQuest = false;
@@ -145,7 +145,7 @@ public class DialogueController : MonoBehaviour
         dialogueBox.SetActive(true);
 
         dialogueJustStarted = true;
-        GameManager.instance.dialogueBoxOpened = true; 
+        GameManager.instance.SetGameState(GameManager.GameState.Dialogue);
     }
 
     void CheckForName()

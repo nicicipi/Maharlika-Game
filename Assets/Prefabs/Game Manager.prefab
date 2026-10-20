@@ -47,8 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20c944b6b8f1e742a491c04b5baa22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats:
-  - {fileID: 246087941310310446, guid: b1548eec85a10d54e89848c762ed7c94, type: 3}
+  playerStats: []
   gameMenuOpened: 0
   dialogueBoxOpened: 0
   shopOpened: 0
@@ -66,6 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 749cb641f7973bb43aa2fe4ee30733c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newGameScene: Scene 0 Lyka Interior
 --- !u!114 &245126882819288121
 MonoBehaviour:
   m_ObjectHideFlags: 0

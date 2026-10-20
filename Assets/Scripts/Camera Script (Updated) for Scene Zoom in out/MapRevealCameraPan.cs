@@ -57,6 +57,11 @@ public class MapRevealCameraPan : MonoBehaviour
 
     public void StartPan()
     {
+        if (Player.instance != null)
+        {
+            Player.instance.StopMovement();
+        }
+        GameManager.instance.SetGameState(GameManager.GameState.Cutscene);
         StartCoroutine(PanAcrossMap());
     }
 
@@ -73,16 +78,6 @@ public class MapRevealCameraPan : MonoBehaviour
             );
 
             yield break;
-        }
-
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.gameMenuOpened = true;
-        }
-
-        if (Player.instance != null)
-        {
-            Player.instance.StopMovement();
         }
 
         panCamera.Follow = null;
@@ -125,16 +120,6 @@ public class MapRevealCameraPan : MonoBehaviour
         panCamera.Priority = 10;
         playerCamera.Priority = 20;
 
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.gameMenuOpened = false;
-        }
-
-        if (Player.instance != null)
-        {
-            Player.instance.ResumeMovement();
-        }
-
         panCamera.transform.position = endPosition;
 
         PlayerPrefs.SetInt(RevealKey, 1);
@@ -142,6 +127,8 @@ public class MapRevealCameraPan : MonoBehaviour
 
         panCamera.Priority = 10;
         playerCamera.Priority = 20;
+
+        EndPan();
     }
 
     private void SkipPan()
@@ -158,16 +145,7 @@ public class MapRevealCameraPan : MonoBehaviour
         Vector3 endPosition = bottomPosition.position;
         endPosition.z = panCamera.transform.position.z;
         panCamera.transform.position = endPosition;
-
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.gameMenuOpened = false;
-        }
-
-        if (Player.instance != null)
-        {
-            Player.instance.ResumeMovement();
-        }
+        EndPan();
     }
 
     [ContextMenu("Reset Map Reveal")]
@@ -181,4 +159,14 @@ public class MapRevealCameraPan : MonoBehaviour
             RevealKey
         );
     }
+
+    public void EndPan()
+    {
+        if (Player.instance != null)
+        {
+            Player.instance.ResumeMovement();
+        }
+        GameManager.instance.SetGameState(GameManager.GameState.Roaming);
+    }
+         
 }

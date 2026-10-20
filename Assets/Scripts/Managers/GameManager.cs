@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq; // for sorting -- player always first
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Linq; // for sorting -- player always first
 
 public class GameManager : MonoBehaviour
 {
@@ -10,25 +10,46 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] PlayerStats[] playerStats;
 
-    public bool gameMenuOpened, dialogueBoxOpened, shopOpened, battleIsActive;
-
     public int currentMoney;
-
+    public enum GameState
+    {
+        Dialogue,
+        Battle,
+        Shop,
+        Cutscene,
+        Roaming
+    }
+    public enum PlayState
+    {
+        MainMenu,
+        Menus,
+        GameOver,
+        Gameplay,
+    }
+    private PlayState _currentPlayingState;
+    public PlayState CurrentPlayingState => _currentPlayingState;
+    private GameState _currentGameState;
+    public GameState CurrentGameState => _currentGameState;
     private readonly HashSet<string> defeatedEnemyIds =
         new HashSet<string>();
 
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
-        if (instance != null && instance != this)
+        if (instance != null)
         {
+            Debug.Log("GM Destroying self");
             Destroy(gameObject);
             return;
         }
 
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
+        SetPlayState(PlayState.MainMenu);
 
+    }
+    private void Start()
+    {
         RefreshPlayerStats();
 
         if (PlayerPrefs.GetInt("NewGamePending", 0) == 1)
@@ -53,31 +74,20 @@ public class GameManager : MonoBehaviour
             Debug.Log("Data has been loaded");
             LoadData();
         }
-
-
-        if (gameMenuOpened || dialogueBoxOpened || shopOpened || battleIsActive)
-        {
-            Player.instance.deactivateMovement = true;
-        }
-        else
-        {
-            Player.instance.deactivateMovement = false;
-        }
-
     }
-
+    public void SetGameState(GameState state)
+    {
+        Debug.Log($"Current game state: {state}");
+        _currentGameState = state;
+    }
+    public void SetPlayState(PlayState state)
+    {
+        Debug.Log($"Current playing state: {state}");
+        _currentPlayingState = state;
+    }
     public PlayerStats[] GetPlayerStats()
     {
         return playerStats;
-    }
-
-    public void ResetRuntimeState()
-    {
-        gameMenuOpened = false;
-        dialogueBoxOpened = false;
-        shopOpened = false;
-        battleIsActive = false;
-        defeatedEnemyIds.Clear();
     }
 
     public void SaveData()
@@ -297,8 +307,7 @@ public class GameManager : MonoBehaviour
 
     public void RefreshPlayerStats()
     {
-        PlayerStats[] discoveredPlayers =
-            FindObjectsOfType<PlayerStats>(true);
+        PlayerStats[] discoveredPlayers = FindObjectsOfType<PlayerStats>(true);
 
         if (discoveredPlayers.Length > 0)
         {
@@ -309,16 +318,14 @@ public class GameManager : MonoBehaviour
 
         if (playerStats == null || playerStats.Length == 0)
         {
-            Debug.LogError(
-                "GameManager: No PlayerStats objects were found."
-            );
+            Debug.LogWarning("GameManager: No PlayerStats objects were found, presumably nothing is found.");
 
             return;
         }
 
         foreach (PlayerStats player in playerStats)
         {
-            if (player == null)
+            if (player == null || player.transform == null)
             {
                 continue;
             }
@@ -362,10 +369,6 @@ public class GameManager : MonoBehaviour
         }
 
         currentMoney = 0;
-        battleIsActive = false;
-        gameMenuOpened = false;
-        dialogueBoxOpened = false;
-        shopOpened = false;
         defeatedEnemyIds.Clear();
     }
 }

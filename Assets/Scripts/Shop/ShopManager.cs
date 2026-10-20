@@ -21,6 +21,15 @@ public class ShopManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI buyItemName, buyItemDescription, buyItemValue;
     [SerializeField] TextMeshProUGUI sellItemName, sellItemDescription, sellItemValue;
 
+    public enum ShopStates
+    {
+        Buy,
+        Sell,
+        Talk,
+        Quit
+    }
+    [SerializeField] private ShopStates _currentState;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -46,41 +55,42 @@ public class ShopManager : MonoBehaviour
     {
 
     }
-
-    public void OpenShopMenu()
+    public void SetShopState(ShopStates state)
     {
-        shopMenu.SetActive(true);
-        talkPanel.SetActive(true);
-        GameManager.instance.shopOpened = true;
-        currentMoneyText.text = "" + GameManager.instance.currentMoney;
-    }
-    public void CloseShopMenu()
-    {
-        shopMenu.SetActive(false);
-        quitPanel.SetActive(false);
-        talkPanel.SetActive(true);
-        GameManager.instance.shopOpened = false;
-    }
-
-    public void OpenBuyPanel()
-    {
-        buyPanel.SetActive(true);
+        buyPanel.SetActive(false);
         sellPanel.SetActive(false);
         quitPanel.SetActive(false);
         talkPanel.SetActive(false);
-        GameManager.instance.shopOpened = true;
 
-        UpdateItemsInShop(itemSlotBuyContainerParent, itemsForSale);
+        switch (state)
+        {
+            case ShopStates.Talk:
+                talkPanel.SetActive(true);
+                break;
+            case ShopStates.Buy:
+                buyPanel.SetActive(true);
+                UpdateItemsInShop(itemSlotBuyContainerParent, itemsForSale);
+                break;
+            case ShopStates.Sell:
+                sellPanel.SetActive(true);
+                UpdateItemsInShop(itemSlotSellContainerParent, Inventory.instance.GetItemsList());
+                break;
+            case ShopStates.Quit:
+                quitPanel.SetActive(true);
+                break;
+        }
     }
-    public void OpenSellPanel()
+    public void OpenShopMenu()
     {
-        buyPanel.SetActive(false);
-        sellPanel.SetActive(true);
-        quitPanel.SetActive(false);
-        talkPanel.SetActive(false);
-        GameManager.instance.shopOpened = true;
-         
-        UpdateItemsInShop(itemSlotSellContainerParent, Inventory.instance.GetItemsList());
+        GameManager.instance.SetGameState(GameManager.GameState.Shop);
+        currentMoneyText.text = "" + GameManager.instance.currentMoney;
+        
+        shopMenu.SetActive(true);
+        SetShopState(ShopStates.Talk);
+    }
+    public void CloseShopMenu()
+    {
+        GameManager.instance.SetGameState(GameManager.GameState.Roaming);
     }
 
     private void UpdateItemsInShop(Transform itemSlotContainerParent, List<ItemsManager> itemsToLookThrough)
@@ -127,23 +137,6 @@ public class ShopManager : MonoBehaviour
         sellItemValue.text = "" + (int)(selectedItem.valueInCoins*0.75f);
     }
 
-    public void OpenQuitPanel()
-    {
-        buyPanel.SetActive(false);
-        sellPanel.SetActive(false);
-        quitPanel.SetActive(true);
-        talkPanel.SetActive(false);
-        GameManager.instance.shopOpened = true;
-    }
-
-    public void OpenTalkPanel()
-    {
-        talkPanel.SetActive(true);
-        buyPanel.SetActive(false);
-        sellPanel.SetActive(false);
-        quitPanel.SetActive(false);
-        GameManager.instance.shopOpened = true;
-    }
 
     public void BuyItem()
     {
@@ -155,20 +148,6 @@ public class ShopManager : MonoBehaviour
             currentMoneyText.text = "" + GameManager.instance.currentMoney;
         }
     }
-
-    //public void SellItem()
-    //{
-    //    if (selectedItem)
-    //    {
-    //        GameManager.instance.currentMoney += (int)(selectedItem.valueInCoins * 0.75f);
-    //        Inventory.instance.RemoveItem(selectedItem);
-
-    //        currentMoneyText.text = "" + GameManager.instance.currentMoney;
-    //        selectedItem = null;
-
-    //        OpenSellPanel();
-    //    }
-    //}
 
     public void SellItem()
     {
@@ -193,8 +172,6 @@ public class ShopManager : MonoBehaviour
                 //sellItemName.text = "";
                 //sellItemDescription.text = "";
                 //sellItemValue.text = "";
-
-                OpenSellPanel();
             }
         }
     }

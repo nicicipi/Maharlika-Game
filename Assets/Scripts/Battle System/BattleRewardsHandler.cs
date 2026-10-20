@@ -56,6 +56,7 @@ public class BattleRewardsHandler : MonoBehaviour
         currentMessageIndex = 0;
 
         rewardPanel.SetActive(true);
+
         DisplayCurrentMessage();
 
         PlayRewardSFX();
@@ -293,18 +294,11 @@ public class BattleRewardsHandler : MonoBehaviour
         isTyping = false;
         rewardPanel.SetActive(false);
 
-        GameManager.instance.battleIsActive = false;
-
         if (markQuestComplete)
         {
             QuestManager.instance.MarkQuestComplete(
                 questToComplete
             );
-        }
-
-        if (Player.instance != null)
-        {
-            Player.instance.ResumeMovement();
         }
     }
 
