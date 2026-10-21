@@ -410,7 +410,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.50114787, y: 0.53737587}
     oldSize: {x: 29, y: 19}
     newSize: {x: 29, y: 19}
     adaptiveTilingThreshold: 0.5
@@ -672,7 +672,7 @@ SpriteRenderer:
   m_Size: {x: 29, y: 19}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &1630171042040979511
@@ -830,6 +830,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6418967442656782753}
+  - component: {fileID: 5374271288541129022}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -855,6 +856,19 @@ Transform:
   - {fileID: 4178048669222736407}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5374271288541129022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019268443387411468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadc2c0542939514c8319bd4ad500acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapRenderer: {fileID: 0}
 --- !u!1 &7193696902708201901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,7 +1053,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.50383586, y: 0.81420135}
     oldSize: {x: 29, y: 19}
     newSize: {x: 29, y: 19}
     adaptiveTilingThreshold: 0.5
@@ -1543,7 +1557,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.080616295, y: 0.12139727}
     oldSize: {x: 29, y: 19}
     newSize: {x: 29, y: 19}
     adaptiveTilingThreshold: 0.5

@@ -158,6 +158,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: RB-02
         icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
@@ -170,6 +172,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
@@ -182,6 +186,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: Lyka
         icon: {fileID: 21300000, guid: 9a38fb5b7381f5d499bcee62d2d03e8b, type: 3}
@@ -194,6 +200,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: RB-02
         icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
@@ -206,6 +214,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
@@ -218,6 +228,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
@@ -230,6 +242,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: Lyka
         icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
@@ -242,6 +256,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: RB-02
         icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
@@ -254,6 +270,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
@@ -266,6 +284,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
@@ -278,6 +298,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: Lyka
         icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
@@ -302,6 +324,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: RB-02
         icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
@@ -314,6 +338,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: Lyka
         icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
@@ -327,6 +353,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
@@ -339,6 +367,8 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
     - character:
         name: Lyka
         icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
@@ -351,6 +381,25 @@ MonoBehaviour:
       effectSpeed: 5
       useCustomTypingSpeed: 0
       typingSpeed: 0.03
+      itemRewardName: 
+      itemRewardAmount: 1
+    onDialogueStarted:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueEnded:
+      m_PersistentCalls:
+        m_Calls: []
+    questToCompleteOnEnd: 
+  followUpDialogue:
+    dialogueLines: []
+    onDialogueStarted:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueEnded:
+      m_PersistentCalls:
+        m_Calls: []
+    questToCompleteOnEnd: 
+  followUpQuestToCheck: 
 --- !u!114 &4962710322523938890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,7 +581,7 @@ GameObject:
   - component: {fileID: 6762651762555859714}
   - component: {fileID: 6599951232873752345}
   m_Layer: 8
-  m_Name: NPC_Sample 1 1
+  m_Name: NPC_Robbie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

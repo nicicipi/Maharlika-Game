@@ -1983,6 +1983,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828477877}
   m_CullTransparentMesh: 1
+--- !u!1 &988548454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 988548455}
+  m_Layer: 0
+  m_Name: PlayerDataHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &988548455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988548454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1634739074}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1023055508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3447,9 +3478,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7109942295321668814, guid: 01bcd3f79a94370448758df58a5606ca, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 988548455}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01bcd3f79a94370448758df58a5606ca, type: 3}
+--- !u!4 &1634739074 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7109942295321668814, guid: 01bcd3f79a94370448758df58a5606ca, type: 3}
+  m_PrefabInstance: {fileID: 1634739073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1636987528
 GameObject:
   m_ObjectHideFlags: 0
@@ -4035,11 +4074,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1077506340846341990, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.99895513
+      value: 0.99999994
       objectReference: {fileID: 0}
     - target: {fileID: 1077506340846341990, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 1
+      value: 0.9988636
       objectReference: {fileID: 0}
     - target: {fileID: 3034803371216388563, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
       propertyPath: m_LocalPosition.x
