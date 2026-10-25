@@ -151,7 +151,7 @@ public class GameMenuManager : MonoBehaviour
             return;
         }
 
-        foreach (ItemData item in Inventory.Singleton.GetItemsList())
+        foreach (var item in Inventory.Singleton.GetItemsList())
         {
             if (item == null)
             {
@@ -161,15 +161,15 @@ public class GameMenuManager : MonoBehaviour
             RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
 
             Image itemImage = itemSlot.Find("Item Image").GetComponent<Image>(); //item image remember this when checking for the sprite of your items in inventory, if you change it, it wont work here
-            itemImage.sprite = item.itemsImage;
+            itemImage.sprite = item.itemData.itemsImage;
 
             TextMeshProUGUI itemsAmountText = itemSlot.Find("Amount Text").GetComponent<TextMeshProUGUI>();
-            if (item.amount > 1)
-                itemsAmountText.text = item.amount.ToString();
-            else
+            //if (item.amount > 1)
+            //    itemsAmountText.text = item.amount.ToString();
+            //else
                 itemsAmountText.text = "";
 
-            itemSlot.GetComponent<ItemButton>().itemOnButton = item;
+            itemSlot.GetComponent<ItemButton>().itemOnButton = item.itemData;
         }
     }
 

@@ -253,10 +253,14 @@ public class BattleManager : MonoBehaviour
             UIButtonHolder.SetActive(true);
             //Player chooses their move on the uibuttonHolder
         }
-        else
+        else if (!GetCurrentActiveCharacter().isDead )
         {
             UIButtonHolder.SetActive(false);
             StartCoroutine(EnemyMoveCoroutine());
+        }
+        else
+        {
+            NextTurn();
         }
     }
     public void UpdatePlayerCharacterStatView()
@@ -501,10 +505,10 @@ public class BattleManager : MonoBehaviour
             Destroy(itemSlot.gameObject);
         }
 
-        foreach (ItemData item in Inventory.Singleton.GetItemsList())
+        foreach (var item in Inventory.Singleton.GetItemsList())
         {
             if (item == null ||
-                item.itemType != ItemData.ItemType.Item)
+                item.itemData.itemType != ItemData.ItemType.Item)
             {
                 continue;
             }
@@ -515,21 +519,8 @@ public class BattleManager : MonoBehaviour
                     itemSlotContainerParent
                 ).GetComponent<RectTransform>();
 
-            Image itemImage =
-                itemSlot.Find("Item Image").GetComponent<Image>();
-
-            itemImage.sprite = item.itemsImage;
-
-            TextMeshProUGUI amountText =
-                itemSlot.Find("Amount Text")
-                    .GetComponent<TextMeshProUGUI>();
-
-            amountText.text =
-                item.amount > 1
-                    ? item.amount.ToString()
-                    : string.Empty;
-
-            itemSlot.GetComponent<ItemButton>().itemOnButton = item;
+            Debug.Log("AMOUNT " + item.amount);
+            itemSlot.GetComponent<ItemButton>().SetupItem(item.itemData, item.amount);
         }
     }
 

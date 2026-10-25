@@ -58,6 +58,10 @@ namespace SaveSystem
         #endregion
 
         #region  Player Data Updates
+        public void AddCharacter(Character character)
+        {
+            currentPlayerData.characters.Add(character);
+        }
         public void FullRefresh()
         {
             foreach(var character in currentPlayerData.characters)

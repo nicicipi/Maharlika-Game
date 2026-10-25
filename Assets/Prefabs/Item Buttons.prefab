@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemOnButton: {fileID: 0}
+  image: {fileID: 2309544963126570863}
+  amountText: {fileID: 7295495267783159940}
 --- !u!1 &4947119597345496642
 GameObject:
   m_ObjectHideFlags: 0

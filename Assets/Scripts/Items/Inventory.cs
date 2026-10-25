@@ -67,9 +67,9 @@ public class Inventory : MonoBehaviour
 
 
     }
-    public List<ItemData> GetItemsList()
+    public List<ItemDataWrapper> GetItemsList()
     {
-        return itemsList.ConvertAll(x => x.itemData);
+        return itemsList;
     }
     public void SaveData(PlayerData data)
     {

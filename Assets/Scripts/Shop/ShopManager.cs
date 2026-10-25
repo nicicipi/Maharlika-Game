@@ -1,35 +1,33 @@
+using SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using SaveSystem;
 
 public class ShopManager : MonoBehaviour
 {
     public static ShopManager instance;
-    public GameObject shopMenu, buyPanel, sellPanel, talkPanel, quitPanel, shopkeeper;
-
+    public GameObject shopMenu;
     [SerializeField] TextMeshProUGUI currentMoneyText;
 
+    [Header("Items")]
     public List<ItemData> itemsForSale;
+    public List<ItemData> itemsForBuying;
+    [SerializeField] private List<ItemButton> itemSlotPool = new();
 
-    [SerializeField] GameObject itemSlotContainer;
-    [SerializeField] Transform itemSlotBuyContainerParent;
-    [SerializeField] Transform itemSlotSellContainerParent;
-
+    [SerializeField] ItemButton itemSlot;
+    [SerializeField] Transform ItemContainer;
     [SerializeField] ItemData selectedItem;
-    [SerializeField] TextMeshProUGUI buyItemName, buyItemDescription, buyItemValue;
-    [SerializeField] TextMeshProUGUI sellItemName, sellItemDescription, sellItemValue;
+    [SerializeField] TextMeshProUGUI ItemName;
+    [SerializeField] TextMeshProUGUI ItemDescription;
 
-    public enum ShopStates
-    {
-        Buy,
-        Sell,
-        Talk,
-        Quit
-    }
-    [SerializeField] private ShopStates _currentState;
+    [Header("Shop buttons")]
+    public GameObject buyPanel;
+    public TextMeshProUGUI buyValueText;
+    public GameObject sellPanel;
+    public TextMeshProUGUI sellValueText;
 
     private void Awake()
     {
@@ -47,134 +45,142 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        
-
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OpenShopMenu(List<ItemData> itemsForBuying)
     {
+        this.itemsForBuying = itemsForBuying;
+        GameManager.Singleton.SetGameState(GameManager.GameState.Shop);
+        currentMoneyText.text = "" + PlayerDataHandler.Singleton.currentPlayerData.money;
 
+        shopMenu.SetActive(true);
+        SetShopState(1);
     }
-    public void SetShopState(ShopStates state)
+
+    private void Refresh()
+    {
+        itemsForSale.Clear();
+        foreach(var item in Inventory.Singleton.itemsList)
+        {
+            //Todo dont show stuff if the playere is wearing it.
+            foreach (int i in Enumerable.Range(0, item.amount))
+            {
+                itemsForSale.Add(item.itemData);
+            }
+        }
+    }
+    public void SetShopState(int state)
     {
         buyPanel.SetActive(false);
         sellPanel.SetActive(false);
-        quitPanel.SetActive(false);
-        talkPanel.SetActive(false);
-
+        Refresh();
         switch (state)
         {
-            case ShopStates.Talk:
-                talkPanel.SetActive(true);
+            case 1:
+                ItemName.text = "Shopkeeper";
+                ItemDescription.text = "You looking for something?";
+
+                buyValueText.text = "";
+                sellValueText.text = "";
+                ItemContainer.gameObject.SetActive(false);
                 break;
-            case ShopStates.Buy:
+            case 2:
+                ItemName.text = "ShopKeeper";
+                ItemDescription.text = "What'cha buying?";
+
+                buyValueText.text = "";
+                sellValueText.text = "";
+                PopulateItemSlot(itemsForBuying);
+                ItemContainer.gameObject.SetActive(true);
                 buyPanel.SetActive(true);
-                UpdateItemsInShop(itemSlotBuyContainerParent, itemsForSale);
                 break;
-            case ShopStates.Sell:
+            case 3:
+                ItemName.text = "ShopKeeper";
+                ItemDescription.text = "What'cha selling?";
+
+                buyValueText.text = "";
+                sellValueText.text = "";
+                PopulateItemSlot(itemsForSale);
+                ItemContainer.gameObject.SetActive(true);
                 sellPanel.SetActive(true);
-                UpdateItemsInShop(itemSlotSellContainerParent, Inventory.Singleton.GetItemsList());
-                break;
-            case ShopStates.Quit:
-                quitPanel.SetActive(true);
                 break;
         }
     }
-    public void OpenShopMenu()
+    private void PopulateItemSlot(List<ItemData> items)
     {
-        GameManager.Singleton.SetGameState(GameManager.GameState.Shop);
-        currentMoneyText.text = "" + PlayerDataHandler.Singleton.currentPlayerData.money;
-        
-        shopMenu.SetActive(true);
-        SetShopState(ShopStates.Talk);
+        while (items.Count > itemSlotPool.Count)
+        {
+            itemSlotPool.Add(Instantiate(itemSlot, ItemContainer));
+        }
+        foreach (var item in itemSlotPool)
+        {
+            item.gameObject.SetActive(false);
+        }
+
+        for(int i = 0; i < items.Count; i++ )
+        {
+            itemSlotPool[i].SetupItem(items[i]);
+            itemSlotPool[i].gameObject.SetActive(true);
+        }
     }
     public void CloseShopMenu()
     {
         GameManager.Singleton.SetGameState(GameManager.GameState.Roaming);
+        SetShopState(1);
+        shopMenu.gameObject.SetActive(false);
     }
 
-    private void UpdateItemsInShop(Transform itemSlotContainerParent, List<ItemData> itemsToLookThrough)
+    public void SelectItem(ItemData item)
     {
-        foreach (Transform itemSlot in itemSlotContainerParent)
+        if(item == null)
         {
-            Destroy(itemSlot.gameObject);
+            ItemName.text = "ShopKeeper";
+            ItemDescription.text = "You looking for something?";
+
+            buyValueText.text = "";
+            sellValueText.text = "";
+
+            return;
         }
+        selectedItem = item;
+        ItemName.text = selectedItem.itemName;
+        ItemDescription.text = selectedItem.itemDescription;
 
-        foreach (ItemData item in itemsToLookThrough)
-        {
-            RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
-
-            Image itemImage = itemSlot.Find("Item Image").GetComponent<Image>(); //item image remember this when checking for the sprite of your items in inventory, if you change it, it wont work here
-            itemImage.sprite = item.itemsImage;
-
-            TextMeshProUGUI itemsAmountText = itemSlot.Find("Amount Text").GetComponent<TextMeshProUGUI>();
-            //if (item.amount > 1)
-            //    itemsAmountText.text = ""; //item.amount.ToString(); -- makes it infinite amount of shopkeeper selling an item
-            //else
-            //    itemsAmountText.text = "";
-
-            if (itemSlotContainerParent == itemSlotSellContainerParent && item.amount > 1)
-                itemsAmountText.text = item.amount.ToString();
-            else
-                itemsAmountText.text = ""; // Infinite/hidden count for merchant stock
-
-            itemSlot.GetComponent<ItemButton>().itemOnButton = item;
-        }
+        buyValueText.text = selectedItem.buyValue.ToString();
+        sellValueText.text = selectedItem.sellValue.ToString();
     }
-
-    public void SelectedBuyItem(ItemData itemToBuy)
-    {
-        selectedItem = itemToBuy;
-        buyItemName.text = selectedItem.itemName;
-        buyItemDescription.text = selectedItem.itemDescription;
-        buyItemValue.text = "" + selectedItem.valueInCoins;
-    }
-    public void SelectedSellItem(ItemData itemToSell)
-    {
-        selectedItem = itemToSell;
-        sellItemName.text = selectedItem.itemName;
-        sellItemDescription.text = selectedItem.itemDescription;
-        sellItemValue.text = "" + (int)(selectedItem.valueInCoins*0.75f);
-    }
-
-
     public void BuyItem()
     {
-        if(PlayerDataHandler.Singleton.currentPlayerData.money >= selectedItem.valueInCoins)
+        if (selectedItem == null)
+            return;
+        if(PlayerDataHandler.Singleton.currentPlayerData.money >= selectedItem.buyValue)
         {
-            PlayerDataHandler.Singleton.currentPlayerData.money -= selectedItem.valueInCoins;
+            PlayerDataHandler.Singleton.currentPlayerData.money -= selectedItem.buyValue;
             Inventory.Singleton.AddItem(selectedItem);
-
             currentMoneyText.text = "" + PlayerDataHandler.Singleton.currentPlayerData.money;
+
+            AudioManager.instance.PlaySFX(17);
+            SetShopState(2);
+            SelectItem(null);
+        }
+        else
+        {
+            SetShopState(1);
+            ItemName.text = "ShopKeeper";
+            ItemDescription.text = "Not Enough Money!";
         }
     }
 
     public void SellItem()
     {
-        if (selectedItem != null)
-        {
-            PlayerDataHandler.Singleton.currentPlayerData.money += (int)(selectedItem.valueInCoins * 0.75f);
-            Inventory.Singleton.RemoveItem(selectedItem);
+        if (selectedItem == null)
+            return;
+        PlayerDataHandler.Singleton.currentPlayerData.money += (int)(selectedItem.sellValue * 0.75f);
+        Inventory.Singleton.RemoveItem(selectedItem);
+        AudioManager.instance.PlaySFX(15);
 
-            currentMoneyText.text = "" + PlayerDataHandler.Singleton.currentPlayerData.money;
-
-            // Check if the item is still present in the player's inventory
-            if (Inventory.Singleton.GetItemsList().Contains(selectedItem))
-            {
-                // Refresh the item slots while keeping this item highlighted
-                UpdateItemsInShop(itemSlotSellContainerParent, Inventory.Singleton.GetItemsList());
-                SelectedSellItem(selectedItem);
-            }
-            else
-            {
-                // No more copies left in inventory: clear selection and reset details
-                selectedItem = null;
-                //sellItemName.text = "";
-                //sellItemDescription.text = "";
-                //sellItemValue.text = "";
-            }
-        }
+        currentMoneyText.text = "" + PlayerDataHandler.Singleton.currentPlayerData.money;
+        SetShopState(3);
+        SelectItem(null);
     }
 
 

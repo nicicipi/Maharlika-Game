@@ -100,10 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopKeepersItemsForSale:
-  - {fileID: 7184134740926826035, guid: 6baf90930fb68444fb50feab07dfc251, type: 3}
-  - {fileID: 183402318249301568, guid: 9d269b9d55e33f64c9369acc635d6a1c, type: 3}
-  - {fileID: 6226294524333637412, guid: d95c99baf8692184f9f825e290f0e8dc, type: 3}
-  - {fileID: 6621584954699507376, guid: 8dabdd5a6f973a34980605a0dd6e7eb6, type: 3}
+  - {fileID: 11400000, guid: 91bed03c488e35b4eb2409e3341ebc1f, type: 2}
+  - {fileID: 11400000, guid: 6dfec6893b324c447a763b8b60a5e6f6, type: 2}
   shopMenu: {fileID: 0}
   talkPanel: {fileID: 0}
 --- !u!61 &688045243939470608

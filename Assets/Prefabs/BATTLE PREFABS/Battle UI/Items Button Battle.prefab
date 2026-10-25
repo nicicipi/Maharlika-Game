@@ -357,3 +357,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemOnButton: {fileID: 0}
+  image: {fileID: 1811434655874871261}
+  amountText: {fileID: 9007293099432879296}

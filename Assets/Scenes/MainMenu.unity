@@ -3011,7 +3011,6 @@ MonoBehaviour:
     onDialogueEnded:
       m_PersistentCalls:
         m_Calls: []
-    questToCompleteOnEnd: 
 --- !u!82 &1290591046
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3108,74 +3107,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1293239445
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1293239448}
-  - component: {fileID: 1293239447}
-  - component: {fileID: 1293239446}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1293239446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293239445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1293239447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293239445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1293239448
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293239445}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1392725679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3690,6 +3621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b385f56d3f9e0b48ab3b65152b9990a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPlayer: 0
   musicToPlay: 5
 --- !u!1001 &1548915106
 PrefabInstance:
@@ -4509,37 +4441,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027871799}
   m_CullTransparentMesh: 1
---- !u!1 &2029006683
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2029006684}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2029006684
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029006683}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5455095, y: 1.0265223, z: -0.062022418}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2045838067
 GameObject:
   m_ObjectHideFlags: 0
@@ -4779,19 +4680,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1077506340846341990, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0
+      value: 0.12482066
       objectReference: {fileID: 0}
     - target: {fileID: 1077506340846341990, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.42086333
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1077506340846341990, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 1
+      value: 0.7498805
       objectReference: {fileID: 0}
     - target: {fileID: 1077506340846341990, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.15647483
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3034803371216388563, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4873,10 +4774,8 @@ SceneRoots:
   - {fileID: 99682589}
   - {fileID: 647308010}
   - {fileID: 1548915106}
-  - {fileID: 1293239448}
   - {fileID: 2131785303}
   - {fileID: 1275863068}
   - {fileID: 1634739073}
   - {fileID: 1537313131}
   - {fileID: 1431409135}
-  - {fileID: 2029006684}

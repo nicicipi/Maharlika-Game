@@ -8,7 +8,8 @@ public class ItemData : ScriptableObject
     public ItemType itemType;
 
     public string itemName, itemDescription;
-    public int valueInCoins;
+    public int sellValue;
+    public int buyValue;
     public Sprite itemsImage;
 
     public enum AffectType { HP, SP }
@@ -19,5 +20,4 @@ public class ItemData : ScriptableObject
     public int armorDefence;
 
     public bool isStackable;
-    public int amount;
 }
