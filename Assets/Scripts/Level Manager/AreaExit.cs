@@ -17,7 +17,7 @@ public class AreaExit : MonoBehaviour
 
     [Header("Enemy Blocking Exit")]
     [SerializeField] string[] blockingEnemyIds;
-
+     
     [Header("Blocked Exit Dialogue")]
     [SerializeField] Dialogue blockedExitDialogue;
 
