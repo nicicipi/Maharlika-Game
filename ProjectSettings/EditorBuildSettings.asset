@@ -49,4 +49,56 @@ EditorBuildSettings:
     path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 4/Scene
       4.unity
     guid: 635f38963f35e524899f638535ed6f4d
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 5/Scene
+      5 Exit Village.unity
+    guid: d92dbcac5470a2543b97a145343cc91e
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 5 Chest/Scene
+      5 Chest.unity
+    guid: 02fb05752c3733c44b89f06af7999e7f
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 7/Scene
+      7.unity
+    guid: c996401b5ec145b44b21d2c49a735c49
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 8/Scene
+      8.unity
+    guid: 96548749aa8049b4b928a3fa77368bc7
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 8 Chest/Scene
+      8 Chest.unity
+    guid: ece26d2337c573d4080cd11ee64efbec
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 9/Scene
+      9.unity
+    guid: da52789eda694f041bb8fa73675f5808
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 10/Scene
+      10.unity
+    guid: f704e52828660384d90c7ee65d787e06
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 11/Scene
+      11.unity
+    guid: 144512b6d9745144e984c8878d65a025
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 12/Scene
+      12.unity
+    guid: 349c9ddd01397b8479d425a0a2a8d508
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 13/Scene
+      13.unity
+    guid: a6c8fa09589412f46a00bad70205deea
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 14/Scene
+      14.unity
+    guid: 8ad97e67642190345833d639ae20e85e
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 15/Scene
+      15.unity
+    guid: e77c1c4f56cc506498bb551903c31950
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 1 Village & Stage 2 Forest/Scene 16/Scene
+      16.unity
+    guid: d80abe1482c41f146a137f37fbfd778b
   m_configObjects: {}

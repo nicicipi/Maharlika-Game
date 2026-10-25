@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
 
     public void SetGameState(GameState state)
     {
+        Debug.Log("SettingGamestate: " + state);
         GameStateText.text = "GameState: " + state;
         _currentGameState = state;
     }
@@ -109,7 +110,7 @@ public class GameManager : MonoBehaviour
         GameManager.Singleton.SetPlayState(GameManager.PlayState.Loading);
         GameManager.Singleton.SetGameState(GameManager.GameState.Roaming);
         PlayerDataHandler.Singleton.LoadData(data);
-
+        Inventory.Singleton.LoadData(PlayerDataHandler.Singleton.currentPlayerData);
         yield return new WaitForEndOfFrame();
         if(data.lastPosition != Vector2.zero)
         {

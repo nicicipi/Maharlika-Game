@@ -20,9 +20,6 @@ public class DialogueManager : MonoBehaviour
     private Dialogue currentDialogue;
     private Coroutine typingCoroutine;
     private bool isTyping;
-
-    public bool isDialogueActive = false;
-
     public float typingSpeed = 0.2f;
     public Animator animator;
 
@@ -31,6 +28,7 @@ public class DialogueManager : MonoBehaviour
 
     private UnityAction _onDialogueEnd;
     private GameState _onEndGameState;
+    private Coroutine endDialogueRoutine;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -59,6 +57,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (GameManager.Singleton.CurrentGameState != GameState.Dialogue)
             return;
+        if (endDialogueRoutine != null)
+            return;
 
         if(Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
@@ -80,7 +80,6 @@ public class DialogueManager : MonoBehaviour
         _onEndGameState = onEndState;
         GameManager.Singleton.SetGameState(GameState.Dialogue);
 
-        isDialogueActive = true;
         currentDialogue = dialogue;
 
         currentDialogue.onDialogueStarted?.Invoke();
@@ -233,20 +232,9 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        isDialogueActive = false;
-        GameManager.Singleton.SetGameState(GameState.Roaming);
-
         if (currentDialogue != null)
         {
             currentDialogue.onDialogueEnded?.Invoke();
-
-            if (!string.IsNullOrWhiteSpace(currentDialogue.questToCompleteOnEnd) &&
-                QuestManager.instance != null)
-            {
-                QuestManager.instance.MarkQuestComplete(currentDialogue.questToCompleteOnEnd);
-                Debug.Log("DialogueManager: Quest completed: " + currentDialogue.questToCompleteOnEnd);
-            }
-
             currentDialogue = null;
         }
 
@@ -259,7 +247,15 @@ public class DialogueManager : MonoBehaviour
         {
             textAnimator.ClearEffect();
         }
+        endDialogueRoutine = StartCoroutine(EndDialogueRoutine());
+    }
 
+    private IEnumerator EndDialogueRoutine()
+    {
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
+        GameManager.Singleton.SetGameState(_onEndGameState);
         _onDialogueEnd?.Invoke();
+        endDialogueRoutine = null;
+
     }
 }

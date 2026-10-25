@@ -6,11 +6,6 @@ using UnityEngine.Events;
 
 public class BattleInstantiator : MonoBehaviour
 {
-
-    [Header("Tutorial Enemy Persistence")]
-    [SerializeField] private string enemyId = "RobotTutorialEnemy";
-    public string EnemyId => enemyId;
-
     [SerializeField] private EnemyData[] enemyDatas;
     [SerializeField] private bool canRunAway;
     [SerializeField] private float runAwayDistance = 2f;
@@ -103,7 +98,6 @@ public class BattleInstantiator : MonoBehaviour
 
     public void MarkEnemyDefeated()
     {
-        PlayerDataHandler.Singleton.AddDefeatedEnemies(enemyId);
         OnDefeat?.Invoke();
     }
 

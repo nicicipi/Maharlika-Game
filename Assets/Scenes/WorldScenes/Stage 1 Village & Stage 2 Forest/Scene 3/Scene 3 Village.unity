@@ -626,8 +626,6 @@ MonoBehaviour:
     onDialogueEnded:
       m_PersistentCalls:
         m_Calls: []
-    questToCompleteOnEnd: 
-  questToCompleteOnDialogueEnd: 
   npcWalkAway: {fileID: 0}
   followUpDialogues:
   - dialogueLines:
@@ -665,8 +663,6 @@ MonoBehaviour:
     onDialogueEnded:
       m_PersistentCalls:
         m_Calls: []
-    questToCompleteOnEnd: 
-  followUpQuest: SaveChief
   oneShot: 0
   talkIndicatorAnimator: {fileID: 1072231741}
   playerInRangeParameter: PlayerInRange
@@ -1948,7 +1944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6292557617673198613, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.1
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 6292557617673198613, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3621,7 +3617,7 @@ MonoBehaviour:
   playerCamera: {fileID: 1833856221}
   topPosition: {fileID: 1701743078}
   bottomPosition: {fileID: 306912100}
-  panDuration: 9
+  panDuration: 3
   panCurve:
     serializedVersion: 2
     m_Curve:
@@ -3966,8 +3962,6 @@ MonoBehaviour:
     onDialogueEnded:
       m_PersistentCalls:
         m_Calls: []
-    questToCompleteOnEnd: 
-  questToCompleteOnDialogueEnd: 
   npcWalkAway: {fileID: 0}
   followUpDialogues:
   - dialogueLines:
@@ -3991,8 +3985,6 @@ MonoBehaviour:
     onDialogueEnded:
       m_PersistentCalls:
         m_Calls: []
-    questToCompleteOnEnd: 
-  followUpQuest: SaveChief
   oneShot: 0
   talkIndicatorAnimator: {fileID: 1397368403}
   playerInRangeParameter: PlayerInRange
@@ -6188,6 +6180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b385f56d3f9e0b48ab3b65152b9990a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPlayer: 0
   musicToPlay: 6
 --- !u!114 &747167691
 MonoBehaviour:
@@ -7955,8 +7948,6 @@ MonoBehaviour:
     onDialogueEnded:
       m_PersistentCalls:
         m_Calls: []
-    questToCompleteOnEnd: 
-  questToCompleteOnDialogueEnd: 
   npcWalkAway: {fileID: 0}
   followUpDialogues:
   - dialogueLines:
@@ -8009,8 +8000,6 @@ MonoBehaviour:
     onDialogueEnded:
       m_PersistentCalls:
         m_Calls: []
-    questToCompleteOnEnd: 
-  followUpQuest: SaveChief
   oneShot: 0
   talkIndicatorAnimator: {fileID: 1480652382}
   playerInRangeParameter: PlayerInRange
@@ -11096,13 +11085,58 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4244304153565597372, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1260284504}
   m_SourcePrefab: {fileID: 100100000, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
 --- !u!4 &1260284502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7872733703216788565, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
   m_PrefabInstance: {fileID: 1260284501}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1260284503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4244304153565597372, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+  m_PrefabInstance: {fileID: 1260284501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1260284504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260284503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddee4d352f13134b911fbfd81274d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveID: Scene3Enemy
+  checkOnAwake: 1
+  checkOnStart: 0
+  checkOnEnable: 0
+  OnAlreadyTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1260284503}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnNotYetTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRuntimeTrigger:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1270312302
 GameObject:
   m_ObjectHideFlags: 0
@@ -12353,7 +12387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: orthographic size
-      value: 15
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -12361,7 +12395,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.3511628
+      value: 0.05935252
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
@@ -12369,7 +12403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.2982558
+      value: 0.8794964
       objectReference: {fileID: 0}
     - target: {fileID: 1057408949745242136, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_Enabled
@@ -12469,11 +12503,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3551588217510995013, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8412144
+      value: -9.129635
       objectReference: {fileID: 0}
     - target: {fileID: 3551588217510995013, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.51606804
+      value: 12.103931
       objectReference: {fileID: 0}
     - target: {fileID: 3551588217510995013, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12592,28 +12626,6 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
---- !u!114 &1463851819 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8233265170037393659, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
-  m_PrefabInstance: {fileID: 1463851816}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1463851824 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8901279120811752672, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
-  m_PrefabInstance: {fileID: 1463851816}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4761a602ae988dc42b8a10b59dc09f75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1472927873
 GameObject:
   m_ObjectHideFlags: 0
@@ -17776,9 +17788,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1707129764}
     m_Modifications:
-    - target: {fileID: 654683277631643057, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: moveSpeed
-      value: 12
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: saveID
+      value: Scene3Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1647494310855884349, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17820,177 +17832,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4320973247429513415, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: m_Size.y
-      value: 8.092724
-      objectReference: {fileID: 0}
-    - target: {fileID: 4320973247429513415, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: m_Offset.y
-      value: 1.0235708
-      objectReference: {fileID: 0}
     - target: {fileID: 4829015032231721720, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: m_Name
       value: NPC_Robbie
-      objectReference: {fileID: 0}
-    - target: {fileID: 4962710322523938890, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4962710322523938890, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: triggerId
-      value: Area 3 Convo 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4962710322523938890, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: saveTriggerId
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4962710322523938890, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: destroyAfterTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4962710322523938890, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: disableAfterTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4962710322523938890, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: rememberDestroyedState
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: enemyId
-      value: Scene3_Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: questToComplete
-      value: SaveVillagers
-      objectReference: {fileID: 0}
-    - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: battleMusicIndex
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: tutorialRewardItem
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: shouldCompleteQuest
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: startTutorialOnFirstBattle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: availableBattles.Array.data[0].scrapsReward
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: availableBattles.Array.data[0].rewardItems.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: availableBattles.Array.data[0].rewardItems.Array.data[0]
-      value: 
-      objectReference: {fileID: 183402318249301568, guid: 9d269b9d55e33f64c9369acc635d6a1c, type: 3}
-    - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: availableBattles.Array.data[0].rewardItems.Array.data[1]
-      value: 
-      objectReference: {fileID: 6226294524333637412, guid: d95c99baf8692184f9f825e290f0e8dc, type: 3}
-    - target: {fileID: 7148085646188165763, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: showGizmos
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7148085646188165763, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: targetDetectionRange
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1463851824}
-    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1463851824}
-    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 1833856221}
-    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 1463851819}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: triggerOnEnter
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[0].line
-      value: Help me!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[1].line
-      value: 'Person detected... '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[2].line
-      value: Initiating execution...
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[0].textEffect
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[1].textEffect
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[2].textEffect
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[0].typingSpeed
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[1].typingSpeed
-      value: 0.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[2].typingSpeed
-      value: 0.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[0].character.name
-      value: Mina
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
-      value: 
-      objectReference: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[1].character.name
-      value: RB-03
-      objectReference: {fileID: 0}
-    - target: {fileID: 8714750893319820589, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: dialogue.dialogueLines.Array.data[2].character.name
-      value: RB-03
-      objectReference: {fileID: 0}
-    - target: {fileID: 9119732411906864853, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: initialYRotation
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9119732411906864853, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: facingLeftYRotation
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 9119732411906864853, guid: dc03846df944e484a905edd5de556715, type: 3}
-      propertyPath: facingRightYRotation
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19068,8 +18912,6 @@ MonoBehaviour:
     onDialogueEnded:
       m_PersistentCalls:
         m_Calls: []
-    questToCompleteOnEnd: 
-  questToCompleteOnDialogueEnd: 
   npcWalkAway: {fileID: 0}
   followUpDialogues:
   - dialogueLines:
@@ -19107,8 +18949,6 @@ MonoBehaviour:
     onDialogueEnded:
       m_PersistentCalls:
         m_Calls: []
-    questToCompleteOnEnd: 
-  followUpQuest: SaveChief
   oneShot: 0
   talkIndicatorAnimator: {fileID: 1628906956}
   playerInRangeParameter: PlayerInRange

@@ -5,19 +5,11 @@ public class ClickDialogueTrigger : MonoBehaviour
     [SerializeField]
     private Dialogue dialogue;
 
-    [Header("Quest Completion")]
-    [SerializeField]
-    private string questToCompleteOnDialogueEnd;
-
     [SerializeField]
     private NpcWalkAway npcWalkAway;
 
     [SerializeField]
     private Dialogue[] followUpDialogues;
-
-    [Header("Quest-Based Dialogue")]
-    [SerializeField]
-    private string followUpQuest;
 
     [SerializeField]
     private bool oneShot;
@@ -69,11 +61,6 @@ public class ClickDialogueTrigger : MonoBehaviour
             return;
         }
 
-        if (DialogueManager.Instance.isDialogueActive)
-        {
-            return;
-        }
-
         Dialogue dialogueToStart = GetDialogueForConversation();
 
         if (npcWalkAway != null)
@@ -97,51 +84,11 @@ public class ClickDialogueTrigger : MonoBehaviour
         DialogueManager.Instance.StartDialogue(dialogueToStart);
     }
 
-    public void CompleteQuestOnDialogueEnd()
-    {
-        if (string.IsNullOrWhiteSpace(questToCompleteOnDialogueEnd))
-        {
-            return;
-        }
-
-        if (QuestManager.instance == null)
-        {
-            Debug.LogError(
-                "ClickDialogueTrigger: QuestManager Singleton is missing.",
-                this
-            );
-
-            return;
-        }
-
-        QuestManager.instance.MarkQuestComplete(questToCompleteOnDialogueEnd);
-
-        Debug.Log(
-            "ClickDialogueTrigger: Quest completed: " +
-            questToCompleteOnDialogueEnd,
-            this
-        );
-    }
-
     private Dialogue GetDialogueForConversation()
     {
-        bool followUpQuestCompleted =
-            !string.IsNullOrWhiteSpace(followUpQuest) &&
-            QuestManager.instance != null &&
-            QuestManager.instance.CheckIfComplete(followUpQuest);
-
-        if (!followUpQuestCompleted ||
-            followUpDialogues == null ||
-            followUpDialogues.Length == 0)
-        {
+        if (conversationCount == 0)
             return dialogue;
-        }
-
-        int followUpIndex = Mathf.Min(
-            conversationCount,
-            followUpDialogues.Length - 1
-        );
-
+        int followUpIndex = Mathf.Min(conversationCount,followUpDialogues.Length - 1);
         return followUpDialogues[followUpIndex];
     }
 

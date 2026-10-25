@@ -7,7 +7,7 @@ using UnityEngine;
 public class CamController : MonoBehaviour
 {
     private CinemachineVirtualCamera virtualCamera;
-    private bool snapToPlayer;
+    public bool snapToPlayer = false;
     [SerializeField] int musicToPlay;
     private bool musicAlreadyPlayed;
 
@@ -22,7 +22,8 @@ public class CamController : MonoBehaviour
     }
     private void Start()
     {
-        SnapToPlayer();
+        if(snapToPlayer)
+            SnapToPlayer();
     }
 
     public void SnapToPlayer()
@@ -38,4 +39,5 @@ public class CamController : MonoBehaviour
         virtualCamera.Follow = GameManager.Singleton.currentPlayer.transform;
         virtualCamera.PreviousStateIsValid = false;
     }
+
 }

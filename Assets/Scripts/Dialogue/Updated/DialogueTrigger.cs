@@ -49,10 +49,6 @@ public class Dialogue
 
     public UnityEvent onDialogueStarted;
     public UnityEvent onDialogueEnded;
-
-    [SerializeField]
-    [Tooltip("Optional: If set, this quest will be completed when the dialogue ends.")]
-    public string questToCompleteOnEnd;
 }
 
 public class DialogueTrigger : MonoBehaviour
@@ -82,7 +78,7 @@ public class DialogueTrigger : MonoBehaviour
             return;
         }
 
-        if (DialogueManager.Instance.isDialogueActive)
+        if (GameManager.Singleton.CurrentGameState == GameManager.GameState.Dialogue)
             return;
 
         Dialogue dialogueToStart = dialogue;

@@ -11,7 +11,27 @@ public class GameMenuManager : MonoBehaviour
     //[SerializeField] Image imageToFade;
 
     public GameObject menu;
+    public GameObject DemoObject;
+    public void EndDemo()
+    {
+        StartCoroutine(DemoEndRoutine());
+    }
+    private IEnumerator DemoEndRoutine()
+    {
+        GameManager.Singleton.SetGameState(GameManager.GameState.Cutscene);
+        yield return SceneTransition.instance.FadeToBlack();
+        DemoObject.SetActive(true);
+        yield return SceneTransition.instance.FadeFromBlack();
 
+        yield return new WaitForSeconds(10f);
+
+        yield return SceneTransition.instance.FadeToBlack();
+        DemoObject.SetActive(false);
+
+        QuitGame();
+        yield return SceneTransition.instance.FadeFromBlack();
+        GameManager.Singleton.SetGameState(GameManager.GameState.Roaming);
+    }
     [Header("CharacterData")]
     public CharacterInfo[] characterInfos;
     private List<Character> characters;
@@ -435,6 +455,7 @@ public class GameMenuManager : MonoBehaviour
     }
     public void CloseMenu()
     {
+        GameManager.Singleton.SetPlayState(GameManager.PlayState.Gameplay);
         characterInfoPanel.SetActive(true);
         CloseEverythingInMenu();
         menu.SetActive(false);

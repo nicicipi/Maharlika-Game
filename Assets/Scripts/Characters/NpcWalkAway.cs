@@ -12,23 +12,10 @@ public class NpcWalkAway : MonoBehaviour
     [SerializeField] private Animator npcAnimator;
     [SerializeField] private string walkingTrigger = "walkAway";
 
-    [Header("Persistence")]
-    [SerializeField] private string walkAwayId = "ChiefSaved";
-    [SerializeField] private bool destroyAfterWalkingAway = true;
-
     [Header("Collision")]
     [SerializeField] private Collider2D[] collidersToDisableWhileWalking;
 
     private Coroutine walkCoroutine;
-
-    private void Awake()
-    {
-        if (!string.IsNullOrWhiteSpace(walkAwayId) &&
-            PlayerPrefs.GetInt("NpcWalkAway_" + walkAwayId, 0) == 1)
-        {
-            Destroy(transform.root.gameObject);
-        }
-    }
 
     public void WalkAway()
     {
@@ -46,12 +33,6 @@ public class NpcWalkAway : MonoBehaviour
 
         SetPhysicalCollidersEnabled(false);
         SetWalkingAnimation();
-
-        if (!string.IsNullOrWhiteSpace(walkAwayId))
-        {
-            PlayerPrefs.SetInt("NpcWalkAway_" + walkAwayId, 1);
-            PlayerPrefs.Save();
-        }
 
         walkCoroutine = StartCoroutine(WalkCoroutine(direction));
     }
@@ -76,10 +57,6 @@ public class NpcWalkAway : MonoBehaviour
         transform.position = targetPosition;
         walkCoroutine = null;
 
-        if (destroyAfterWalkingAway)
-        {
-            Destroy(transform.root.gameObject);
-        }
     }
 
     private void SetWalkingAnimation()

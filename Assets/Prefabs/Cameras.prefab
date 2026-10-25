@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1608576437782023635}
+  - component: {fileID: 8557144710587837101}
   m_Layer: 0
   m_Name: Cameras
   m_TagString: Untagged
@@ -36,6 +37,21 @@ Transform:
   - {fileID: 2303353305871963011}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8557144710587837101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365347493422747111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01eadc78a84aef48abff4fc9f65c1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameras:
+  - {fileID: 3224683150074499699}
+  - {fileID: 2714863442798319102}
 --- !u!1 &3353867610474884863
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +243,7 @@ GameObject:
   - component: {fileID: 2645023723230727492}
   - component: {fileID: 2179735888111606642}
   m_Layer: 0
-  m_Name: Show Enemy Camera
+  m_Name: SubCamera1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,6 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b385f56d3f9e0b48ab3b65152b9990a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPlayer: 0
   musicToPlay: 6
 --- !u!114 &2645023723230727492
 MonoBehaviour:
@@ -357,7 +374,7 @@ GameObject:
   - component: {fileID: 6670623422192269409}
   - component: {fileID: 4760447421094547538}
   m_Layer: 0
-  m_Name: Virtual Camera
+  m_Name: Player Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -447,6 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b385f56d3f9e0b48ab3b65152b9990a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPlayer: 1
   musicToPlay: 6
 --- !u!114 &6670623422192269409
 MonoBehaviour:
@@ -664,6 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b385f56d3f9e0b48ab3b65152b9990a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPlayer: 0
   musicToPlay: 6
 --- !u!114 &93824327897162517
 MonoBehaviour:
@@ -741,10 +760,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.6670747
+    x: 0
     y: 0
-    width: 0.46348432
-    height: 0.46329528
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -987,11 +1006,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7893518154269381875}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b385f56d3f9e0b48ab3b65152b9990a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  snapToPlayer: 0
   musicToPlay: 6
 --- !u!114 &7571107842734387381
 MonoBehaviour:

@@ -29,6 +29,7 @@ public class DialogueController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(instance == null)
         instance = this;
         // dialogueText.text = dialogueSentences[currentSentence]; ----- (Optional: left handled dynamically on activation)
     }

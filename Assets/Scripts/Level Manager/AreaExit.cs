@@ -1,7 +1,7 @@
-using UnityEngine;
-
 using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 using Utilities;
 
 public class AreaExit : MonoBehaviour
@@ -9,14 +9,8 @@ public class AreaExit : MonoBehaviour
     [SerializeField] SceneEnum sceneToLoad;
     [SerializeField] int positionIndex = 0;
 
-    [Header("Main Quest Requirement")]
-    [SerializeField] string mainQuestToUnlock;
-
-    [Header("Additional Quest Requirement")]
-    [SerializeField] string requiredQuestToUnlock;
-
     [Header("Enemy Blocking Exit")]
-    [SerializeField] string[] blockingEnemyIds;
+    [SerializeField] GameObject[] blockingEnemy;
      
     [Header("Blocked Exit Dialogue")]
     [SerializeField] Dialogue blockedExitDialogue;
@@ -30,21 +24,21 @@ public class AreaExit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (DialogueManager.Instance.isDialogueActive)
+        if (GameManager.Singleton.CurrentGameState != GameManager.GameState.Roaming)
             return;
         TryStartTransition(collision);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (DialogueManager.Instance.isDialogueActive)
+        if (GameManager.Singleton.CurrentGameState != GameManager.GameState.Roaming)
             return;
         TryStartTransition(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (DialogueManager.Instance.isDialogueActive)
+        if (GameManager.Singleton.CurrentGameState != GameManager.GameState.Roaming)
             return;
         if (IsPlayerCollider(collision))
         {
@@ -63,12 +57,6 @@ public class AreaExit : MonoBehaviour
             return;
         }
 
-        if (!CanEnterArea())
-        {
-            ShowBlockedExitDialogue();
-            return;
-        }
-
         if (!CanLeaveArea())
         {
             ShowBlockedExitDialogue();
@@ -77,7 +65,6 @@ public class AreaExit : MonoBehaviour
 
         isLoading = true;
         hasTriggered = true;
-
         SceneTransition.instance.TransitionToScene(sceneToLoad.GetReference(), positionIndex);
     }
 
@@ -86,99 +73,13 @@ public class AreaExit : MonoBehaviour
         return collision.CompareTag("Player") || collision.transform.root.CompareTag("Player");
     }
 
-    private bool CanEnterArea()
-    {
-        if (string.IsNullOrWhiteSpace(mainQuestToUnlock))
-        {
-            return true;
-        }
-
-        if (QuestManager.instance == null)
-        {
-            Debug.LogError("AreaExit: QuestManager Singleton is missing.");
-            return false;
-        }
-
-        if (QuestManager.instance.ArePreviousMainQuestsComplete(mainQuestToUnlock))
-        {
-            return true;
-        }
-
-        Debug.Log("AreaExit: Complete the previous main quests first.", this);
-        return false;
-    }
-
     private bool CanLeaveArea()
     {
-        if (HasBlockingEnemiesRemaining())
-        {
-            Debug.Log("AreaExit: Defeat all blocking enemies before leaving.", this);
-            return false;
-        }
-
-        if (blockingEnemyIds != null && blockingEnemyIds.Length > 0)
-        {
-            return true;
-        }
-
-        if (string.IsNullOrWhiteSpace(requiredQuestToUnlock))
-        {
-            return true;
-        }
-
-        if (QuestManager.instance == null)
-        {
-            Debug.LogError("AreaExit: QuestManager Singleton is missing.");
-            return false;
-        }
-
-        if (QuestManager.instance.CheckIfComplete(requiredQuestToUnlock))
-        {
-            return true;
-        }
-
-        Debug.Log(
-            "AreaExit: Complete the required quest before leaving.",
-            this
-        );
-
-        return false;
+        foreach (var item in blockingEnemy)
+            if (item.activeSelf)
+                return false;
+        return true;
     }
-
-    private bool HasBlockingEnemiesRemaining()
-    {
-        if (blockingEnemyIds == null || blockingEnemyIds.Length == 0)
-        {
-            return false;
-        }
-
-        foreach (string enemyId in blockingEnemyIds)
-        {
-            if (string.IsNullOrWhiteSpace(enemyId))
-            {
-                continue;
-            }
-
-            if (PlayerPrefs.GetInt("EnemyDefeated_" + enemyId, 0) == 1)
-            {
-                continue;
-            }
-
-            BattleInstantiator[] enemies =
-                FindObjectsOfType<BattleInstantiator>();
-
-            foreach (BattleInstantiator enemy in enemies)
-            {
-                if (enemy != null && enemy.EnemyId == enemyId)
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
     private void ShowBlockedExitDialogue()
     {
         if (blockedDialogueShown || blockedExitDialogue == null)
@@ -192,12 +93,24 @@ public class AreaExit : MonoBehaviour
             return;
         }
 
-        if (DialogueManager.Instance.isDialogueActive)
+        if (GameManager.Singleton.CurrentGameState != GameManager.GameState.Roaming)
         {
             return;
         }
 
         blockedDialogueShown = true;
         DialogueManager.Instance.StartDialogue(blockedExitDialogue);
+    }
+    private BoxCollider2D _collider;
+    public void OnDrawGizmos()
+    {
+
+        if (_collider == null)
+        {
+            _collider = GetComponent<BoxCollider2D>();
+        }
+        Gizmos.color = Color.red;
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.DrawCube(_collider.offset, _collider.size);
     }
 }

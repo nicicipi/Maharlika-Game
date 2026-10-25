@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
             Debug.LogError("LevelManager: mapRenderer is not assigned!" + gameObject.GetInstanceID());
             return;
         }
-
+        FindAnyObjectByType<SceneCameraManager>().ConfineToMap(mapRenderer.GetComponent<PolygonCollider2D>());
         StartCoroutine(WaitForPlayerSpawn());
     }
 
