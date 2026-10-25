@@ -52,10 +52,12 @@ public class ClickDialogueTrigger : MonoBehaviour
 
     private void StartDialogue()
     {
-        if (oneShot && dialogueStarted)
+        if (oneShot && dialogueStarted )
         {
             return;
         }
+        if (GameManager.Singleton.CurrentGameState == GameManager.GameState.Dialogue)
+            return;
 
         if (DialogueManager.Instance == null)
         {

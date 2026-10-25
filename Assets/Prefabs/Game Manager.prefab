@@ -381,7 +381,7 @@ MonoBehaviour:
   cachedPlayerData:
     playerSaveName: save1
     lastSceneName: Scene 0 Lyka Interior
-    lastPositionIndex: 0
+    lastPosition: {x: 0, y: 0}
     defeatedEnemies: 0
     money: 0
     triggeredFlags: []
@@ -414,7 +414,7 @@ MonoBehaviour:
   currentPlayerData:
     playerSaveName: save1
     lastSceneName: Scene 0 Lyka Interior
-    lastPositionIndex: 0
+    lastPosition: {x: 0, y: 0}
     defeatedEnemies: 0
     money: 0
     triggeredFlags: []
@@ -645,6 +645,34 @@ MonoBehaviour:
     target: {fileID: 102900000, guid: 3053dcd0447102f44aa05bf025076b1c, type: 3}
   - sceneId: 4
     target: {fileID: 102900000, guid: 635f38963f35e524899f638535ed6f4d, type: 3}
+  - sceneId: 5
+    target: {fileID: 102900000, guid: d92dbcac5470a2543b97a145343cc91e, type: 3}
+  - sceneId: 6
+    target: {fileID: 102900000, guid: 02fb05752c3733c44b89f06af7999e7f, type: 3}
+  - sceneId: 7
+    target: {fileID: 102900000, guid: 434ffa1c1e6c9784288b8dcf264e1f7f, type: 3}
+  - sceneId: 8
+    target: {fileID: 102900000, guid: c996401b5ec145b44b21d2c49a735c49, type: 3}
+  - sceneId: 9
+    target: {fileID: 102900000, guid: 96548749aa8049b4b928a3fa77368bc7, type: 3}
+  - sceneId: 10
+    target: {fileID: 102900000, guid: ece26d2337c573d4080cd11ee64efbec, type: 3}
+  - sceneId: 11
+    target: {fileID: 102900000, guid: da52789eda694f041bb8fa73675f5808, type: 3}
+  - sceneId: 12
+    target: {fileID: 102900000, guid: f704e52828660384d90c7ee65d787e06, type: 3}
+  - sceneId: 13
+    target: {fileID: 102900000, guid: 144512b6d9745144e984c8878d65a025, type: 3}
+  - sceneId: 14
+    target: {fileID: 102900000, guid: 349c9ddd01397b8479d425a0a2a8d508, type: 3}
+  - sceneId: 15
+    target: {fileID: 102900000, guid: a6c8fa09589412f46a00bad70205deea, type: 3}
+  - sceneId: 16
+    target: {fileID: 102900000, guid: 8ad97e67642190345833d639ae20e85e, type: 3}
+  - sceneId: 17
+    target: {fileID: 102900000, guid: e77c1c4f56cc506498bb551903c31950, type: 3}
+  - sceneId: 18
+    target: {fileID: 102900000, guid: d80abe1482c41f146a137f37fbfd778b, type: 3}
 --- !u!1 &6939704286160997414
 GameObject:
   m_ObjectHideFlags: 0

@@ -58,10 +58,10 @@ public class GameMenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Singleton.CurrentPlayingState != GameManager.PlayState.Gameplay )
+        if (GameManager.Singleton.CurrentPlayingState == GameManager.PlayState.MainMenu || GameManager.Singleton.CurrentPlayingState == GameManager.PlayState.GameOver)
             return;
-        if (GameManager.Singleton.CurrentGameState != GameManager.GameState.Roaming)
-            return;
+
+
         if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameManager.Singleton.CurrentPlayingState == (GameManager.PlayState.Menus))
@@ -72,6 +72,10 @@ public class GameMenuManager : MonoBehaviour
             }
             else
             {
+
+                if (GameManager.Singleton.CurrentGameState != GameManager.GameState.Roaming)
+                    return;
+
                 GameManager.Singleton.SetPlayState(GameManager.PlayState.Menus);
                 currentMoneyText.text = PlayerDataHandler.Singleton.currentPlayerData.money.ToString();
                 UpdateStats();

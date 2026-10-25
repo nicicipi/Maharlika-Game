@@ -68,6 +68,9 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, UnityAction OnDialogueEnd = null, GameManager.GameState onEndState = GameManager.GameState.Roaming)
     {
+        if (GameManager.Singleton.CurrentGameState == GameState.Dialogue)
+            return;
+
         if (dialogue == null || dialogue.dialogueLines == null)
         {
             Debug.LogError("DialogueManager: Dialogue data is missing.");
@@ -231,6 +234,7 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         isDialogueActive = false;
+        GameManager.Singleton.SetGameState(GameState.Roaming);
 
         if (currentDialogue != null)
         {
@@ -257,6 +261,5 @@ public class DialogueManager : MonoBehaviour
         }
 
         _onDialogueEnd?.Invoke();
-        GameManager.Singleton.SetGameState(_onEndGameState);
     }
 }
