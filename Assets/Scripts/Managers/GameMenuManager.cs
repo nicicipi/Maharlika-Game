@@ -23,7 +23,7 @@ public class GameMenuManager : MonoBehaviour
     [SerializeField] Slider[] hpSlider, spSlider, xpSlider;
     [SerializeField] Image[] characterImage;
     [SerializeField] GameObject[] characterPanel;
-    [SerializeField] GameObject characterInfoPanel, itemsPanel, statPanel, savePanel, gameSavedPanel, configPanel, quitPanel;
+    [SerializeField] GameObject characterInfoPanel, itemsPanel, statPanel, configPanel, quitPanel;
 
     [SerializeField] TextMeshProUGUI statLevel, statName, statHP, statSP, statDex, statDef, statAttack, statEquippedWeapon, statEquippedArmor;
     [SerializeField] TextMeshProUGUI statWeaponPower, statArmorDefence;
@@ -442,34 +442,8 @@ public class GameMenuManager : MonoBehaviour
     {
         itemsPanel.SetActive(false);
         statPanel.SetActive(false);
-        savePanel.SetActive(false);
-        gameSavedPanel.SetActive(false);
         configPanel.SetActive(false);
         quitPanel.SetActive(false);
-    }
-
-    public void OpenSavePanel()
-    {
-        savePanel.SetActive(true);
-        gameSavedPanel.SetActive(false);
-    }
-
-    public void ConfirmSave()
-    {
-        GameManager.Singleton.DebugSave();
-
-        savePanel.SetActive(false);
-        gameSavedPanel.SetActive(true);
-    }
-
-    public void CloseSavePanel()
-    {
-        savePanel.SetActive(false);
-    }
-
-    public void CloseGameSavedPanel()
-    {
-        gameSavedPanel.SetActive(false);
     }
 
     public void OpenInventory()
