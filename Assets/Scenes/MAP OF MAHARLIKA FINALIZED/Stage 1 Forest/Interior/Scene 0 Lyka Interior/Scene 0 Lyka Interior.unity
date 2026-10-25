@@ -911,12 +911,12 @@ PrefabInstance:
       value: Cameras
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
-      propertyPath: orthographic size
-      value: 7.5
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0.0829646
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
-      propertyPath: m_NormalizedViewPortRect.x
-      value: 0
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 0.8333334
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
@@ -961,30 +961,6 @@ PrefabInstance:
     - target: {fileID: 1608576437782023635, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2558401368626139415, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2558401368626139415, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
-      propertyPath: m_AssetsPPU
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2558401368626139415, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
-      propertyPath: m_CropFrame
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2558401368626139415, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
-      propertyPath: m_GridSnapping
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2558401368626139415, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
-      propertyPath: m_RefResolutionX
-      value: 640
-      objectReference: {fileID: 0}
-    - target: {fileID: 2558401368626139415, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
-      propertyPath: m_RefResolutionY
-      value: 480
       objectReference: {fileID: 0}
     - target: {fileID: 3224683150074499699, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_Follow

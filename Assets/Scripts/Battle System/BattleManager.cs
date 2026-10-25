@@ -1,10 +1,11 @@
 //using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
+using static GameManager;
 
 public class BattleManager : MonoBehaviour
 {
@@ -275,6 +276,7 @@ public class BattleManager : MonoBehaviour
         isBattleActive = true;
         GameManager.instance.battleIsActive = true;
 
+        GameManager.instance.SetGameState(GameState.Battle);
         transform.position = Vector3.zero;
 
         if (battleScene != null)
@@ -758,6 +760,12 @@ public class BattleManager : MonoBehaviour
         itemName.text = itemToUse.itemName;
         itemDescription.text = itemToUse.itemDescription;
     }
+    private void ResetItemSelection()
+    {
+        selectedItem = null;
+        itemName.text = "";
+        itemDescription.text = "";
+    }
 
     public void OpenCharacterMenu()
     {
@@ -839,6 +847,7 @@ public class BattleManager : MonoBehaviour
     {
         characterChoicePanel.SetActive(false);
         itemsToUseMenu.SetActive(false);
+        ResetItemSelection();
     }
 
     public IEnumerator EndBattleCoroutine()
