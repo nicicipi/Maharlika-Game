@@ -2423,7 +2423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name
+  m_text: Briar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8fc21479eb579c4bbe660b08d530a4a, type: 2}
   m_sharedMaterial: {fileID: -3933755348417677161, guid: c8fc21479eb579c4bbe660b08d530a4a, type: 2}
@@ -4693,7 +4693,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 4.3799896, y: 0.0005187988}
-  m_SizeDelta: {x: -4.3799, y: -220.4471}
+  m_SizeDelta: {x: -4.3799, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &6986446786671350470
 MonoBehaviour:
@@ -6124,7 +6124,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name
+  m_text: Lyka
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8fc21479eb579c4bbe660b08d530a4a, type: 2}
   m_sharedMaterial: {fileID: -3933755348417677161, guid: c8fc21479eb579c4bbe660b08d530a4a, type: 2}
@@ -6872,6 +6872,9 @@ MonoBehaviour:
   - {fileID: 1340776856477887570}
   - {fileID: 2973781631209310655}
   currentMoneyText: {fileID: 304314751511422621}
+  LykaButton: {fileID: 2818489587586974478}
+  BriarButton: {fileID: 1589796132667405033}
+  AdamButton: {fileID: 7470139862624655999}
 --- !u!114 &7880225392492279719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10676,7 +10679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6800552893236463137
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10802,7 +10805,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name
+  m_text: Adam
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8fc21479eb579c4bbe660b08d530a4a, type: 2}
   m_sharedMaterial: {fileID: -3933755348417677161, guid: c8fc21479eb579c4bbe660b08d530a4a, type: 2}
@@ -10886,7 +10889,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8819417559517973515
 RectTransform:
   m_ObjectHideFlags: 0
