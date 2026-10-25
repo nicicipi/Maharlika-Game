@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class ItemButton : MonoBehaviour
 {
-    public ItemsManager itemOnButton;
+    public ItemData itemOnButton;
 
 
     public void Press()
     {
-        if (MenuManager.instance.menu.activeInHierarchy)
+        if (GameMenuManager.instance.menu.activeInHierarchy)
         {
             //this is not great, bc its better to send the name and desc to the menu manager script
-            MenuManager.instance.itemName.text = itemOnButton.itemName;
-            MenuManager.instance.itemDescription.text = itemOnButton.itemDescription;
+            GameMenuManager.instance.itemName.text = itemOnButton.itemName;
+            GameMenuManager.instance.itemDescription.text = itemOnButton.itemDescription;
 
-            MenuManager.instance.activeItem = itemOnButton;
-            MenuManager.instance.OpenCharacterChoicePanel();
+            GameMenuManager.instance.activeItem = itemOnButton;
+            GameMenuManager.instance.OpenCharacterChoicePanel();
         }
 
         if (ShopManager.instance.shopMenu.activeInHierarchy)
@@ -33,7 +33,7 @@ public class ItemButton : MonoBehaviour
 
         if (BattleManager.instance.itemsToUseMenu.activeInHierarchy)
         {
-            BattleManager.instance.selectedItemToUse(itemOnButton);
+            BattleManager.instance.SelectItem(itemOnButton);
         }
 
 

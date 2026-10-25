@@ -12,13 +12,12 @@ public class BattleSkillButton : MonoBehaviour
 
     public void Press()
     {
-        if(BattleManager.instance.GetCurrentActiveCharacter().currentSP >= skillCost)
+        if(BattleManager.instance.GetCurrentActiveCharacter().CharacterData.stats.currentStamina >= skillCost)
         {
             BattleManager.instance.skillChoicePanel.SetActive(false);
             BattleManager.instance.OpenTargetMenu(skillName);
-            BattleManager.instance.GetCurrentActiveCharacter().currentSP -= skillCost;
+            BattleManager.instance.GetCurrentActiveCharacter().CharacterData.stats.currentStamina -= skillCost;
         }
-
         else
         {
             BattleManager.instance.battleNotice.SetText("You do not have enough stamina!");

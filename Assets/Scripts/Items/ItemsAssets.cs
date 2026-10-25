@@ -6,42 +6,39 @@ using UnityEngine;
 public class ItemsAssets : MonoBehaviour
 {
 
-    public static ItemsAssets instance;
-    [SerializeField] ItemsManager[] itemsAvailable;
-
+    public static ItemsAssets Singleton;
+    [SerializeField] ItemData[] itemsAvailable;
+    private Dictionary<string, ItemData> _itemMap = new();
     private void Awake()
     {
-        if(instance != null && instance != this)
+        if(Singleton != null && Singleton != this)
         {
             Destroy(this.gameObject);
         }
         else
         {
-            instance = this;
+            Singleton = this;
+        }
+    }
+    private void Start()
+    {
+        foreach(var item in itemsAvailable)
+        {
+            _itemMap[item.itemName] = item; 
         }
     }
 
-    public ItemsManager GetItemAsset(string itemToGetName)
+    public ItemData GetItemData(string itemID)
     {
-        if (string.IsNullOrWhiteSpace(itemToGetName))
+        if (string.IsNullOrWhiteSpace(itemID))
             return null;
 
-        string requestedItemName = itemToGetName.Trim();
-    
-        foreach(ItemsManager item in itemsAvailable)
-        {
-            if (item != null &&
-                !string.IsNullOrWhiteSpace(item.itemName) &&
-                string.Equals(
-                    item.itemName.Trim(),
-                    requestedItemName,
-                    System.StringComparison.OrdinalIgnoreCase
-                ))
-            {
-                return item;
-            }
-        }
+        string requestedItemName = itemID.Trim();
 
+        if(_itemMap.TryGetValue(requestedItemName, out ItemData value))
+        {
+            return value;
+        }
         return null;
     }
 }

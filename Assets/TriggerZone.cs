@@ -1,56 +1,22 @@
+using SaveSystem;
+using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class TriggerZone : MonoBehaviour
 {
     [Header("Trigger Settings")]
-    [SerializeField]
-    private bool oneShot = true;
+    [SerializeField] private bool oneShot = true;
+    [SerializeField] private bool disableAfterTrigger = true;
 
-    [SerializeField]
-    private string collisionTag = "Player";
-
-    [Header("Destroy Settings")]
-    [SerializeField]
-    private bool destroyAfterTrigger;
-
-    [SerializeField]
-    private bool rememberDestroyedState;
-
-    [SerializeField]
-    private string triggerId;
+    [SerializeField] private string collisionTag = "Player";
 
     public UnityEvent onTriggerEnter;
     public UnityEvent onTriggerExit;
 
-    private bool alreadyEntered;
-
-    private string DestroyedKey =>
-        "TriggerZone_Destroyed_" + triggerId;
-
-    private void Start()
-    {
-        if (!rememberDestroyedState)
-        {
-            return;
-        }
-
-        if (string.IsNullOrEmpty(triggerId))
-        {
-            Debug.LogWarning(
-                "TriggerZone requires a Trigger ID when remember state is enabled.",
-                this
-            );
-
-            return;
-        }
-
-        if (PlayerPrefs.GetInt(DestroyedKey, 0) == 1)
-        {
-            Destroy(gameObject);
-        }
-    }
-
+    private bool _alreadyEntered = false;
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!IsCorrectCollision(collision))
@@ -58,24 +24,17 @@ public class TriggerZone : MonoBehaviour
             return;
         }
 
-        if (oneShot && alreadyEntered)
+        if (oneShot && _alreadyEntered)
         {
             return;
         }
 
-        alreadyEntered = true;
+        _alreadyEntered = true;
         onTriggerEnter?.Invoke();
 
-        if (rememberDestroyedState &&
-            !string.IsNullOrEmpty(triggerId))
+        if (disableAfterTrigger)
         {
-            PlayerPrefs.SetInt(DestroyedKey, 1);
-            PlayerPrefs.Save();
-        }
-
-        if (destroyAfterTrigger)
-        {
-            Destroy(gameObject);
+            enabled = false;
         }
     }
 
@@ -90,13 +49,12 @@ public class TriggerZone : MonoBehaviour
 
         if (!oneShot)
         {
-            alreadyEntered = false;
+            _alreadyEntered = false;
         }
     }
 
     private bool IsCorrectCollision(Collider2D collision)
     {
-        return string.IsNullOrEmpty(collisionTag) ||
-               collision.CompareTag(collisionTag);
+        return string.IsNullOrEmpty(collisionTag) || collision.CompareTag(collisionTag);
     }
 }

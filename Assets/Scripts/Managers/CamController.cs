@@ -1,50 +1,41 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using Cinemachine;
 
 public class CamController : MonoBehaviour
 {
-    private Player playerTarget;
     private CinemachineVirtualCamera virtualCamera;
-
+    private bool snapToPlayer;
     [SerializeField] int musicToPlay;
     private bool musicAlreadyPlayed;
 
-    private void Start()
+    private void Awake()
     {
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        SnapToPlayer();
-
         if (AudioManager.instance != null && !musicAlreadyPlayed)
         {
             musicAlreadyPlayed = true;
             AudioManager.instance.PlayBackgroundMusic(musicToPlay);
         }
     }
+    private void Start()
+    {
+        SnapToPlayer();
+    }
 
     public void SnapToPlayer()
     {
-        if (playerTarget == null)
-        {
-            playerTarget = FindObjectOfType<Player>();
-        }
-
-        if (playerTarget == null || virtualCamera == null)
-            return;
-
-        virtualCamera.Follow = playerTarget.transform;
-
-        // Forces Cinemachine to ignore its previous scene position
-        // and snap directly to the player.
-        virtualCamera.PreviousStateIsValid = false;
+        StartCoroutine(SnapRoutine());
     }
 
-    private void Update()
+    private IEnumerator SnapRoutine()
     {
-        if (playerTarget == null)
-        {
-            SnapToPlayer();
-        }
+        while (GameManager.Singleton.currentPlayer == null)
+            yield return null;
+        yield return new WaitForEndOfFrame();
+        virtualCamera.Follow = GameManager.Singleton.currentPlayer.transform;
+        virtualCamera.PreviousStateIsValid = false;
     }
 }

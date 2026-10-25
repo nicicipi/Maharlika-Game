@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using SaveSystem;
 
 public class ShopManager : MonoBehaviour
 {
@@ -11,15 +12,24 @@ public class ShopManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI currentMoneyText;
 
-    public List<ItemsManager> itemsForSale;
+    public List<ItemData> itemsForSale;
 
     [SerializeField] GameObject itemSlotContainer;
     [SerializeField] Transform itemSlotBuyContainerParent;
     [SerializeField] Transform itemSlotSellContainerParent;
 
-    [SerializeField] ItemsManager selectedItem;
+    [SerializeField] ItemData selectedItem;
     [SerializeField] TextMeshProUGUI buyItemName, buyItemDescription, buyItemValue;
     [SerializeField] TextMeshProUGUI sellItemName, sellItemDescription, sellItemValue;
+
+    public enum ShopStates
+    {
+        Buy,
+        Sell,
+        Talk,
+        Quit
+    }
+    [SerializeField] private ShopStates _currentState;
 
     private void Awake()
     {
@@ -46,51 +56,52 @@ public class ShopManager : MonoBehaviour
     {
 
     }
-
-    public void OpenShopMenu()
+    public void SetShopState(ShopStates state)
     {
-        shopMenu.SetActive(true);
-        talkPanel.SetActive(true);
-        GameManager.instance.shopOpened = true;
-        currentMoneyText.text = "" + GameManager.instance.currentMoney;
-    }
-    public void CloseShopMenu()
-    {
-        shopMenu.SetActive(false);
-        quitPanel.SetActive(false);
-        talkPanel.SetActive(true);
-        GameManager.instance.shopOpened = false;
-    }
-
-    public void OpenBuyPanel()
-    {
-        buyPanel.SetActive(true);
+        buyPanel.SetActive(false);
         sellPanel.SetActive(false);
         quitPanel.SetActive(false);
         talkPanel.SetActive(false);
-        GameManager.instance.shopOpened = true;
 
-        UpdateItemsInShop(itemSlotBuyContainerParent, itemsForSale);
+        switch (state)
+        {
+            case ShopStates.Talk:
+                talkPanel.SetActive(true);
+                break;
+            case ShopStates.Buy:
+                buyPanel.SetActive(true);
+                UpdateItemsInShop(itemSlotBuyContainerParent, itemsForSale);
+                break;
+            case ShopStates.Sell:
+                sellPanel.SetActive(true);
+                UpdateItemsInShop(itemSlotSellContainerParent, Inventory.Singleton.GetItemsList());
+                break;
+            case ShopStates.Quit:
+                quitPanel.SetActive(true);
+                break;
+        }
     }
-    public void OpenSellPanel()
+    public void OpenShopMenu()
     {
-        buyPanel.SetActive(false);
-        sellPanel.SetActive(true);
-        quitPanel.SetActive(false);
-        talkPanel.SetActive(false);
-        GameManager.instance.shopOpened = true;
-         
-        UpdateItemsInShop(itemSlotSellContainerParent, Inventory.instance.GetItemsList());
+        GameManager.Singleton.SetGameState(GameManager.GameState.Shop);
+        currentMoneyText.text = "" + PlayerDataHandler.Singleton.currentPlayerData.money;
+        
+        shopMenu.SetActive(true);
+        SetShopState(ShopStates.Talk);
+    }
+    public void CloseShopMenu()
+    {
+        GameManager.Singleton.SetGameState(GameManager.GameState.Roaming);
     }
 
-    private void UpdateItemsInShop(Transform itemSlotContainerParent, List<ItemsManager> itemsToLookThrough)
+    private void UpdateItemsInShop(Transform itemSlotContainerParent, List<ItemData> itemsToLookThrough)
     {
         foreach (Transform itemSlot in itemSlotContainerParent)
         {
             Destroy(itemSlot.gameObject);
         }
 
-        foreach (ItemsManager item in itemsToLookThrough)
+        foreach (ItemData item in itemsToLookThrough)
         {
             RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
 
@@ -112,14 +123,14 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void SelectedBuyItem(ItemsManager itemToBuy)
+    public void SelectedBuyItem(ItemData itemToBuy)
     {
         selectedItem = itemToBuy;
         buyItemName.text = selectedItem.itemName;
         buyItemDescription.text = selectedItem.itemDescription;
         buyItemValue.text = "" + selectedItem.valueInCoins;
     }
-    public void SelectedSellItem(ItemsManager itemToSell)
+    public void SelectedSellItem(ItemData itemToSell)
     {
         selectedItem = itemToSell;
         sellItemName.text = selectedItem.itemName;
@@ -127,63 +138,32 @@ public class ShopManager : MonoBehaviour
         sellItemValue.text = "" + (int)(selectedItem.valueInCoins*0.75f);
     }
 
-    public void OpenQuitPanel()
-    {
-        buyPanel.SetActive(false);
-        sellPanel.SetActive(false);
-        quitPanel.SetActive(true);
-        talkPanel.SetActive(false);
-        GameManager.instance.shopOpened = true;
-    }
-
-    public void OpenTalkPanel()
-    {
-        talkPanel.SetActive(true);
-        buyPanel.SetActive(false);
-        sellPanel.SetActive(false);
-        quitPanel.SetActive(false);
-        GameManager.instance.shopOpened = true;
-    }
 
     public void BuyItem()
     {
-        if(GameManager.instance.currentMoney >= selectedItem.valueInCoins)
+        if(PlayerDataHandler.Singleton.currentPlayerData.money >= selectedItem.valueInCoins)
         {
-            GameManager.instance.currentMoney -= selectedItem.valueInCoins;
-            Inventory.instance.AddItems(selectedItem);
+            PlayerDataHandler.Singleton.currentPlayerData.money -= selectedItem.valueInCoins;
+            Inventory.Singleton.AddItem(selectedItem);
 
-            currentMoneyText.text = "" + GameManager.instance.currentMoney;
+            currentMoneyText.text = "" + PlayerDataHandler.Singleton.currentPlayerData.money;
         }
     }
-
-    //public void SellItem()
-    //{
-    //    if (selectedItem)
-    //    {
-    //        GameManager.instance.currentMoney += (int)(selectedItem.valueInCoins * 0.75f);
-    //        Inventory.instance.RemoveItem(selectedItem);
-
-    //        currentMoneyText.text = "" + GameManager.instance.currentMoney;
-    //        selectedItem = null;
-
-    //        OpenSellPanel();
-    //    }
-    //}
 
     public void SellItem()
     {
         if (selectedItem != null)
         {
-            GameManager.instance.currentMoney += (int)(selectedItem.valueInCoins * 0.75f);
-            Inventory.instance.RemoveItem(selectedItem);
+            PlayerDataHandler.Singleton.currentPlayerData.money += (int)(selectedItem.valueInCoins * 0.75f);
+            Inventory.Singleton.RemoveItem(selectedItem);
 
-            currentMoneyText.text = "" + GameManager.instance.currentMoney;
+            currentMoneyText.text = "" + PlayerDataHandler.Singleton.currentPlayerData.money;
 
             // Check if the item is still present in the player's inventory
-            if (Inventory.instance.GetItemsList().Contains(selectedItem))
+            if (Inventory.Singleton.GetItemsList().Contains(selectedItem))
             {
                 // Refresh the item slots while keeping this item highlighted
-                UpdateItemsInShop(itemSlotSellContainerParent, Inventory.instance.GetItemsList());
+                UpdateItemsInShop(itemSlotSellContainerParent, Inventory.Singleton.GetItemsList());
                 SelectedSellItem(selectedItem);
             }
             else
@@ -193,8 +173,6 @@ public class ShopManager : MonoBehaviour
                 //sellItemName.text = "";
                 //sellItemDescription.text = "";
                 //sellItemValue.text = "";
-
-                OpenSellPanel();
             }
         }
     }

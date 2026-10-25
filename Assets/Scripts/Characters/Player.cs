@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Player instance;
-
     [SerializeField] int moveSpeed = 1;
 
     [SerializeField] Rigidbody2D playerRigidBody;
@@ -13,30 +11,15 @@ public class Player : MonoBehaviour
 
     public string transitionName;
 
-    public bool deactivateMovement = false;
-
+    private bool _movementDisabled => GameManager.Singleton.CurrentPlayingState != GameManager.PlayState.Gameplay || GameManager.Singleton.CurrentGameState != GameManager.GameState.Roaming;
+    private bool deactivateMovement;
     private Vector3 bottomLeftEdge;
     private Vector3 topRightEdge;
 
     private bool transitionMovementLocked;
 
-    // new flag to avoid clamping until limits are provided
     private bool limitsSet = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        if(instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
-
-        DontDestroyOnLoad(gameObject);
-    }
 
     private void Awake()
     {
@@ -50,26 +33,25 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (_movementDisabled)
+        {
+            if (!deactivateMovement)
+            {
+                LockMovement();
+            }
+            playerRigidBody.velocity = Vector2.zero;
+            return;
+        }
+        deactivateMovement = false;
         float horizontalMovement = Input.GetAxisRaw("Horizontal");
         float verticalMovement = Input.GetAxisRaw("Vertical");
 
-        bool movementLocked = deactivateMovement || transitionMovementLocked;
-
-        if (movementLocked)
-        {
-            playerRigidBody.velocity = Vector2.zero;
-        }
-        else
-        {
-            playerRigidBody.velocity =
-                new Vector2(horizontalMovement, verticalMovement) * moveSpeed;
-        }
+        playerRigidBody.velocity = new Vector2(horizontalMovement, verticalMovement) * moveSpeed;
 
         playerAnimator.SetFloat("movementX", playerRigidBody.velocity.x);
         playerAnimator.SetFloat("movementY", playerRigidBody.velocity.y);
 
-        if (!movementLocked &&
-            (horizontalMovement != 0 || verticalMovement != 0))
+        if ((horizontalMovement != 0 || verticalMovement != 0))
         {
             playerAnimator.SetFloat("lastX", horizontalMovement);
             playerAnimator.SetFloat("lastY", verticalMovement);
@@ -117,20 +99,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SetMovementLocked(bool locked)
+    public void LockMovement()
     {
-        deactivateMovement = locked;
+        deactivateMovement = true;
 
         if (playerRigidBody != null)
         {
             playerRigidBody.velocity = Vector2.zero;
             playerRigidBody.angularVelocity = 0f;
         }
-
-        if (locked)
-        {
-            SetIdleAnimation();
-        }
+        SetIdleAnimation();
     }
 
     public void SetTransitionMovementLocked(bool locked)
@@ -162,14 +140,6 @@ public class Player : MonoBehaviour
         {
             playerRigidBody.velocity = Vector2.zero;
             playerRigidBody.angularVelocity = 0f;
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (instance == this)
-        {
-            instance = null;
         }
     }
 }

@@ -2,11 +2,12 @@ using UnityEngine;
 
 using System.Collections;
 using UnityEngine.SceneManagement;
+using Utilities;
 
 public class AreaExit : MonoBehaviour
 {
-    [SerializeField] string sceneToLoad;
-    [SerializeField] string transitionAreaName;
+    [SerializeField] SceneEnum sceneToLoad;
+    [SerializeField] int positionIndex = 0;
 
     [Header("Main Quest Requirement")]
     [SerializeField] string mainQuestToUnlock;
@@ -14,7 +15,7 @@ public class AreaExit : MonoBehaviour
     [Header("Additional Quest Requirement")]
     [SerializeField] string requiredQuestToUnlock;
 
-    [Header("Enemies Blocking Exit")]
+    [Header("Enemy Blocking Exit")]
     [SerializeField] string[] blockingEnemyIds;
 
     [Header("Blocked Exit Dialogue")]
@@ -58,7 +59,7 @@ public class AreaExit : MonoBehaviour
 
         if (SceneTransition.instance == null)
         {
-            Debug.LogError("AreaExit: SceneTransition instance is missing.");
+            Debug.LogError("AreaExit: SceneTransition Singleton is missing.");
             return;
         }
 
@@ -74,31 +75,10 @@ public class AreaExit : MonoBehaviour
             return;
         }
 
-        if (Player.instance == null)
-        {
-            Debug.LogError("AreaExit: Player instance is missing.");
-            return;
-        }
-
-        if (string.IsNullOrWhiteSpace(sceneToLoad))
-        {
-            Debug.LogError("AreaExit: Scene to load is not assigned.");
-            return;
-        }
-
-        if (!Application.CanStreamedLevelBeLoaded(sceneToLoad))
-        {
-            Debug.LogError("AreaExit: Scene is not in the build settings: " + sceneToLoad);
-            return;
-        }
-
         isLoading = true;
         hasTriggered = true;
 
-        Player.instance.StopMovement();
-        Player.instance.transitionName = transitionAreaName;
-
-        SceneTransition.instance.TransitionToScene(sceneToLoad);
+        SceneTransition.instance.TransitionToScene(sceneToLoad.GetReference(), positionIndex);
     }
 
     private bool IsPlayerCollider(Collider2D collision)
@@ -115,7 +95,7 @@ public class AreaExit : MonoBehaviour
 
         if (QuestManager.instance == null)
         {
-            Debug.LogError("AreaExit: QuestManager instance is missing.");
+            Debug.LogError("AreaExit: QuestManager Singleton is missing.");
             return false;
         }
 
@@ -148,7 +128,7 @@ public class AreaExit : MonoBehaviour
 
         if (QuestManager.instance == null)
         {
-            Debug.LogError("AreaExit: QuestManager instance is missing.");
+            Debug.LogError("AreaExit: QuestManager Singleton is missing.");
             return false;
         }
 
@@ -208,7 +188,7 @@ public class AreaExit : MonoBehaviour
 
         if (DialogueManager.Instance == null)
         {
-            Debug.LogError("AreaExit: DialogueManager instance is missing.");
+            Debug.LogError("AreaExit: DialogueManager Singleton is missing.");
             return;
         }
 

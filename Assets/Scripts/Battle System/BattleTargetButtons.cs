@@ -6,7 +6,7 @@ using TMPro;
 public class BattleTargetButtons : MonoBehaviour
 {
     public string moveName;
-    public int activeBattleTarget;
+    public BattleCharacters activeBattleTarget;
     public TextMeshProUGUI targetName;
 
     // Start is called before the first frame update

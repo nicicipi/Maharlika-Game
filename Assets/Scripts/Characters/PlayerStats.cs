@@ -35,7 +35,7 @@ public class PlayerStats : MonoBehaviour
     public int weaponPower;
     public int armorDefence;
 
-    public ItemsManager equippedWeapon, equippedArmor;
+    public ItemData equippedWeapon, equippedArmor;
 
     [Header("New Game Defaults")]
     [SerializeField] private int startingLevel = 1;
@@ -123,14 +123,14 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void EquipWeapon(ItemsManager weaponToEquip)
+    public void EquipWeapon(ItemData weaponToEquip)
     {
         equippedWeapon = weaponToEquip;
         equippedWeaponName = equippedWeapon.itemName; 
-        weaponPower = equippedWeapon.weaponDexterity;
+        weaponPower = equippedWeapon.weaponPower;
     }
 
-    public void EquipArmor(ItemsManager armorToEquip)
+    public void EquipArmor(ItemData armorToEquip)
     {
         equippedArmor = armorToEquip;
         equippedArmorName = equippedArmor.itemName; 

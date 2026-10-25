@@ -30,20 +30,18 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOverScene.unity
     guid: c83ebd809ec67c345b9177dc07b083dc
   - enabled: 1
-    path: Assets/Scenes/MAP OF MAHARLIKA FINALIZED/Stage 1 Forest/Scene 2 Forest
-      Route 1.unity
+    path: Assets/Scenes/WorldScenes/Stage 1 Forest/Scene 2/Scene 2 Forest Route 1.unity
     guid: bb83e59b1b889504c994b9a1a13b686b
   - enabled: 1
-    path: Assets/Scenes/MAP OF MAHARLIKA FINALIZED/Stage 1 Forest/Scene 1 Lyka House.unity
+    path: Assets/Scenes/WorldScenes/Stage 1 Forest/Scene 1/Scene 1 Lyka House.unity
     guid: 247d87398a03c01478eb27963f0f1871
   - enabled: 1
-    path: Assets/Scenes/MAP OF MAHARLIKA FINALIZED/Stage 1 Forest/Scene 3 Village.unity
+    path: Assets/Scenes/WorldScenes/Stage 1 Forest/Scene 3/Scene 3 Village.unity
     guid: 3053dcd0447102f44aa05bf025076b1c
   - enabled: 1
-    path: Assets/Scenes/MAP OF MAHARLIKA FINALIZED/Stage 1 Forest/Interior/Scene
-      0 Lyka Interior/Scene 0 Lyka Interior.unity
+    path: Assets/Scenes/WorldScenes/Stage 1 Forest/Scene 1/Scene 1 Lyka Interior.unity
     guid: 0bfdaf40c0b6d104db81170434b352f7
   - enabled: 1
-    path: Assets/Scenes/MAP OF MAHARLIKA FINALIZED/Stage 1 Forest/Scene 4.unity
+    path: Assets/Scenes/WorldScenes/Stage 1 Forest/Scene 4/Scene 4.unity
     guid: 635f38963f35e524899f638535ed6f4d
   m_configObjects: {}

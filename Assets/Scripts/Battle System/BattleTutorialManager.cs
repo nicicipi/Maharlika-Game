@@ -106,11 +106,6 @@ public class BattleTutorialManager : MonoBehaviour
         currentStepIndex = -1;
         waitingForAction = false;
 
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.dialogueBoxOpened = true;
-        }
-
         if (tutorialPanel != null)
         {
             tutorialPanel.SetActive(true);
@@ -265,11 +260,6 @@ public class BattleTutorialManager : MonoBehaviour
 
         IsTutorialActive = false;
         waitingForAction = false;
-
-        if (GameManager.instance != null)
-        {
-            GameManager.instance.dialogueBoxOpened = false;
-        }
 
         if (tutorialPanel != null)
         {
