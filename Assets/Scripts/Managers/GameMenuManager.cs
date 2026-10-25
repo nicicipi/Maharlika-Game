@@ -12,11 +12,12 @@ public class GameMenuManager : MonoBehaviour
 
     public GameObject menu;
 
+    [Header("CharacterData")]
+    public CharacterInfo[] characterInfos;
+    private List<Character> characters;
     [SerializeField] GameObject[] statsButtons;
 
     public static GameMenuManager instance;
-
-    private PlayerStats[] playerStats;
 
     [SerializeField] TextMeshProUGUI[] nameText, hpText, spText, lvlText, xpText;
     [SerializeField] Slider[] hpSlider, spSlider, xpSlider;
@@ -82,68 +83,18 @@ public class GameMenuManager : MonoBehaviour
 
     public void UpdateStats()
     {
-        //playerStats = GameManager.Singleton.GetPlayerStats();
-
-        //for(int i = 0; i < playerStats.Length; i++)
-        //{
-        //    characterPanel[i].SetActive(true);
-        //    nameText[i].text = playerStats[i].playerName;
-        //    hpText[i].text = playerStats[i].currentHP + "/" + playerStats[i].maxHP;
-        //    spText[i].text = playerStats[i].currentStamina + "/" + playerStats[i].maxStamina;
-        //    lvlText[i].text = playerStats[i].playerLevel + "" ;
-
-        //    characterImage[i].sprite = playerStats[i].characterImage;
-
-        //    hpSlider[i].maxValue = playerStats[i].maxHP;
-        //    hpSlider[i].value = playerStats[i].currentHP;
-
-        //    spSlider[i].maxValue = playerStats[i].maxStamina;
-        //    spSlider[i].value = playerStats[i].currentStamina;
-
-        //    xpText[i].text = playerStats[i].currentXP.ToString() + "/" + playerStats[i].xpForNextLevel[playerStats[i].playerLevel];
-        //    xpSlider[i].maxValue = playerStats[i].xpForNextLevel[playerStats[i].playerLevel];
-        //    xpSlider[i].value = playerStats[i].currentXP;
-        //}
-    }
-
-    public void StatsMenu()
-    {
-        for(int i = 0; i < playerStats.Length; i++)
-        {
-            statsButtons[i].SetActive(true);
-
-            statsButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = playerStats[i].playerName;
-        }
-
-        StatsMenuUpdate(0);
-    }
-
-    public void StatsMenuUpdate(int playerSelectedNumber)
-    {
-        if(playerStats.Length == 0)
-        {
-            Debug.LogWarning("NO player stats to update");
-            return;
-        }
-        PlayerStats playerSelected = playerStats[playerSelectedNumber];
-
-        statName.text = playerSelected.playerName;
-        statLevel.text = playerSelected.playerLevel + "";
-
-        statHP.text = playerSelected.currentHP.ToString() + "/" + playerSelected.maxHP;
-        statSP.text = playerSelected.currentStamina.ToString() + "/" + playerSelected.maxStamina;
-
-        statAttack.text = playerSelected.attack.ToString();
-        statDef.text = playerSelected.defence.ToString();
-        statDex.text = playerSelected.dexterity.ToString();
+        characters = PlayerDataHandler.Singleton.currentPlayerData.characters;
         
-        characterStatImage.sprite = playerSelected.characterImage;
-
-        statEquippedWeapon.text = playerSelected.equippedWeaponName;
-        statEquippedArmor.text = playerSelected.equippedArmorName;
-
-        statWeaponPower.text = playerSelected.weaponPower.ToString();
-        statArmorDefence.text = playerSelected.armorDefence.ToString();
+        foreach(var info in characterInfos)
+        {
+            info.gameObject.SetActive(false);
+        }
+        
+        for (int i = 0; i < characters.Count; i++)
+        {
+            characterInfos[i].gameObject.SetActive(true);
+            characterInfos[i].UpdateInfo(characters[i]);
+        }
     }
 
     public void UpdateItemsInventory()
@@ -295,135 +246,135 @@ public class GameMenuManager : MonoBehaviour
         //UseItem(playerIndex);
     }
 
-    public void OpenCharacterChoicePanel()
-    {
-        if (activeItem == null)
-        {
-            Debug.LogWarning(
-                "GameMenuManager: Select an item before choosing a character."
-            );
+    //public void OpenCharacterChoicePanel()
+    //{
+    //    if (activeItem == null)
+    //    {
+    //        Debug.LogWarning(
+    //            "GameMenuManager: Select an item before choosing a character."
+    //        );
 
-            return;
-        }
+    //        return;
+    //    }
 
-        if (GameManager.Singleton == null || characterChoicePanel == null)
-        {
-            Debug.LogError(
-                "GameMenuManager: GameManager or character choice panel is missing."
-            );
+    //    if (GameManager.Singleton == null || characterChoicePanel == null)
+    //    {
+    //        Debug.LogError(
+    //            "GameMenuManager: GameManager or character choice panel is missing."
+    //        );
 
-            return;
-        }
+    //        return;
+    //    }
 
-        //GameManager.Singleton.RefreshPlayerStats();
-        //playerStats = GameManager.Singleton.GetPlayerStats();
+    //    //GameManager.Singleton.RefreshPlayerStats();
+    //    //playerStats = GameManager.Singleton.GetPlayerStats();
 
-        if (playerStats == null || playerStats.Length == 0)
-        {
-            Debug.LogError(
-                "GameMenuManager: Cannot show character choices because the party roster is empty."
-            );
+    //    //if (playerStats == null || playerStats.Length == 0)
+    //    //{
+    //    //    Debug.LogError(
+    //    //        "GameMenuManager: Cannot show character choices because the party roster is empty."
+    //    //    );
 
-            return;
-        }
+    //    //    return;
+    //    //}
 
-        List<int> availablePlayerIndices = new List<int>();
+    //    //List<int> availablePlayerIndices = new List<int>();
 
-        for (int i = 0; i < playerStats.Length; i++)
-        {
-            if (playerStats[i] != null &&
-                playerStats[i].gameObject.activeInHierarchy)
-            {
-                availablePlayerIndices.Add(i);
-            }
-        }
+    //    //for (int i = 0; i < playerStats.Length; i++)
+    //    //{
+    //    //    if (playerStats[i] != null &&
+    //    //        playerStats[i].gameObject.activeInHierarchy)
+    //    //    {
+    //    //        availablePlayerIndices.Add(i);
+    //    //    }
+    //    //}
 
-        if (availablePlayerIndices.Count == 0)
-        {
-            Debug.LogError(
-                "GameMenuManager: No active PlayerStats objects are registered. " +
-                "Check the GameManager roster and active party members."
-            );
+    //    //if (availablePlayerIndices.Count == 0)
+    //    //{
+    //    //    Debug.LogError(
+    //    //        "GameMenuManager: No active PlayerStats objects are registered. " +
+    //    //        "Check the GameManager roster and active party members."
+    //    //    );
 
-            return;
-        }
+    //    //    return;
+    //    //}
 
-        foreach (KeyValuePair<Button, UnityEngine.Events.UnityAction> handler
-            in characterChoiceHandlers)
-        {
-            if (handler.Key != null)
-            {
-                handler.Key.onClick.RemoveListener(handler.Value);
-            }
-        }
+    //    foreach (KeyValuePair<Button, UnityEngine.Events.UnityAction> handler
+    //        in characterChoiceHandlers)
+    //    {
+    //        if (handler.Key != null)
+    //        {
+    //            handler.Key.onClick.RemoveListener(handler.Value);
+    //        }
+    //    }
 
-        characterChoiceHandlers.Clear();
+    //    characterChoiceHandlers.Clear();
 
-        List<Button> optionButtons = new List<Button>();
-        Button[] panelButtons =
-            characterChoicePanel.GetComponentsInChildren<Button>(true);
+    //    List<Button> optionButtons = new List<Button>();
+    //    Button[] panelButtons =
+    //        characterChoicePanel.GetComponentsInChildren<Button>(true);
 
-        foreach (Button button in panelButtons)
-        {
-            if (button == null ||
-                button.transform == characterChoicePanel.transform ||
-                button.GetComponentInChildren<TextMeshProUGUI>(true) == null)
-            {
-                continue;
-            }
+    //    foreach (Button button in panelButtons)
+    //    {
+    //        if (button == null ||
+    //            button.transform == characterChoicePanel.transform ||
+    //            button.GetComponentInChildren<TextMeshProUGUI>(true) == null)
+    //        {
+    //            continue;
+    //        }
 
-            optionButtons.Add(button);
-        }
+    //        optionButtons.Add(button);
+    //    }
 
-        if (optionButtons.Count == 0)
-        {
-            Debug.LogError(
-                "GameMenuManager: No character option Buttons with text were found " +
-                "inside Character Choice Panel."
-            );
+    //    if (optionButtons.Count == 0)
+    //    {
+    //        Debug.LogError(
+    //            "GameMenuManager: No character option Buttons with text were found " +
+    //            "inside Character Choice Panel."
+    //        );
 
-            return;
-        }
+    //        return;
+    //    }
 
-        for (int i = 0; i < optionButtons.Count; i++)
-        {
-            Button optionButton = optionButtons[i];
-            Transform optionRoot = GetCharacterChoiceOptionRoot(
-                optionButton.GetComponentInChildren<TextMeshProUGUI>(true)
-            );
+    //    for (int i = 0; i < optionButtons.Count; i++)
+    //    {
+    //        Button optionButton = optionButtons[i];
+    //        Transform optionRoot = GetCharacterChoiceOptionRoot(
+    //            optionButton.GetComponentInChildren<TextMeshProUGUI>(true)
+    //        );
 
-            if (optionRoot == null)
-            {
-                continue;
-            }
+    //        if (optionRoot == null)
+    //        {
+    //            continue;
+    //        }
 
-            if (i >= availablePlayerIndices.Count)
-            {
-                optionRoot.gameObject.SetActive(false);
-                continue;
-            }
+    //        if (i >= availablePlayerIndices.Count)
+    //        {
+    //            optionRoot.gameObject.SetActive(false);
+    //            continue;
+    //        }
 
-            int playerIndex = availablePlayerIndices[i];
-            PlayerStats selectedPlayer = playerStats[playerIndex];
-            TextMeshProUGUI characterName =
-                optionButton.GetComponentInChildren<TextMeshProUGUI>(true);
+    //        int playerIndex = availablePlayerIndices[i];
+    //        PlayerStats selectedPlayer = playerStats[playerIndex];
+    //        TextMeshProUGUI characterName =
+    //            optionButton.GetComponentInChildren<TextMeshProUGUI>(true);
 
-            characterName.text = selectedPlayer.playerName;
-            optionRoot.gameObject.SetActive(true);
-            optionButton.interactable = true;
+    //        characterName.text = selectedPlayer.playerName;
+    //        optionRoot.gameObject.SetActive(true);
+    //        optionButton.interactable = true;
 
-            UnityEngine.Events.UnityAction action =
-                () => UseItemOnPlayer("selectedPlayer");
+    //        UnityEngine.Events.UnityAction action =
+    //            () => UseItemOnPlayer("selectedPlayer");
 
-            if (!HasPersistentUseItemListener(optionButton))
-            {
-                optionButton.onClick.AddListener(action);
-                characterChoiceHandlers.Add(optionButton, action);
-            }
-        }
+    //        if (!HasPersistentUseItemListener(optionButton))
+    //        {
+    //            optionButton.onClick.AddListener(action);
+    //            characterChoiceHandlers.Add(optionButton, action);
+    //        }
+    //    }
 
-        characterChoicePanel.SetActive(true);
-    }
+    //    characterChoicePanel.SetActive(true);
+    //}
 
     private bool HasPersistentUseItemListener(Button button)
     {

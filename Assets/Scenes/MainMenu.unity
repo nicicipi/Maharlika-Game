@@ -2418,6 +2418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Universal Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7996304409136137614, guid: 85be01bf2100d57489677872902c3652, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3997,19 +4001,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1077506340846341990, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.079229124
-      objectReference: {fileID: 0}
-    - target: {fileID: 1077506340846341990, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
-      propertyPath: m_NormalizedViewPortRect.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1077506340846341990, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
+      propertyPath: m_NormalizedViewPortRect.y
+      value: 0.08008658
+      objectReference: {fileID: 0}
+    - target: {fileID: 1077506340846341990, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.84225553
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1077506340846341990, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 1
+      value: 0.83928573
       objectReference: {fileID: 0}
     - target: {fileID: 3034803371216388563, guid: eb150ecb415a8484c9c3c3735d2e4432, type: 3}
       propertyPath: m_LocalPosition.x

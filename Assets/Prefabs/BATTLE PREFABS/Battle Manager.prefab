@@ -15918,6 +15918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialPanel: {fileID: 5581374716222204478}
+  tutorialButtons: {fileID: 8165938136047294604}
   characterIcon: {fileID: 6802319632889627485}
   dialogueText: {fileID: 3467760147178674103}
   nextButton: {fileID: 4403273187921609503}

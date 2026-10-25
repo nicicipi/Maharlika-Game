@@ -32,8 +32,8 @@ public class TutorialStep
 public class BattleTutorialManager : MonoBehaviour
 {
     [Header("Tutorial UI")]
-    [SerializeField]
-    private GameObject tutorialPanel;
+    [SerializeField] private GameObject tutorialPanel;
+    [SerializeField] private GameObject tutorialButtons;
 
     [SerializeField]
     private Image characterIcon;
@@ -101,7 +101,7 @@ public class BattleTutorialManager : MonoBehaviour
         }
 
         StopTyping();
-
+        tutorialButtons.SetActive(true);
         IsTutorialActive = true;
         currentStepIndex = -1;
         waitingForAction = false;

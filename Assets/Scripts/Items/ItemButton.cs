@@ -16,7 +16,7 @@ public class ItemButton : MonoBehaviour
             GameMenuManager.instance.itemDescription.text = itemOnButton.itemDescription;
 
             GameMenuManager.instance.activeItem = itemOnButton;
-            GameMenuManager.instance.OpenCharacterChoicePanel();
+            //GameMenuManager.instance.OpenCharacterChoicePanel();
         }
 
         if (ShopManager.instance.shopMenu.activeInHierarchy)

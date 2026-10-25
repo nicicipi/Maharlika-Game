@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -52,6 +53,16 @@ public class DialogueManager : MonoBehaviour
                 textAnimator =
                     dialogueArea.gameObject.AddComponent<DialogueTextAnimator>();
             }
+        }
+    }
+    private void Update()
+    {
+        if (GameManager.Singleton.CurrentGameState != GameState.Dialogue)
+            return;
+
+        if(Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        {
+            DisplayNextDialogueLine();
         }
     }
 

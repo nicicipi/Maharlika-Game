@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 0
   alignment: 9
@@ -121,7 +121,28 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Stats4_0
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 324
+        width: 290
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b331499bb2a3b9459a47175aa8f7c85
+      internalID: 88373732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline:
     - - {x: -38, y: 82}
       - {x: -38, y: 169}
@@ -136,7 +157,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stats4_0: 88373732
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
