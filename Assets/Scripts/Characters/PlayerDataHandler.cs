@@ -34,7 +34,7 @@ namespace SaveSystem
             LoadData(currentPlayerData);
             SaveGame(currentPlayerData);
         }
-
+        #region File Saving
         private string GetSavePath(string fileName) => Path.Combine(Application.persistentDataPath, fileName + ".json");
         public void SaveGame(PlayerData data) => File.WriteAllText(GetSavePath(data.playerSaveName), JsonUtility.ToJson(data, true));
         public void LoadGame(string fileName)
@@ -51,6 +51,9 @@ namespace SaveSystem
 
         }
         #endregion
+
+        #endregion
+
         #region  Player Data Updates
 
         public void SavePosition(string asset, int position)

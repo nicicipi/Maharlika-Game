@@ -84,9 +84,9 @@ public class GameManager : MonoBehaviour
     {
         SaveGame(SceneManager.GetActiveScene().name, 0);
     }
-    public void SaveGame(string asset, int scenePos)
+    public void SaveGame(string SceneName, int BootupHandlerIndexPosition)
     {
-        PlayerDataHandler.Singleton.SavePosition(asset, scenePos);
+        PlayerDataHandler.Singleton.SavePosition(SceneName, BootupHandlerIndexPosition);
         Inventory.Singleton.SaveData(PlayerDataHandler.Singleton.currentPlayerData);
         PlayerDataHandler.Singleton.SaveData();
     }

@@ -3,15 +3,10 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.SceneManagement;
 using SaveSystem;
+using UnityEngine.Events;
 
 public class MapRevealCameraPan : MonoBehaviour
 {
-    [Header("Reveal Persistence")]
-    [SerializeField]
-    private string revealId = "VillageMapReveal";
-
-    private string RevealKey => "MapRevealShown_" + revealId;
-
     [Header("Cameras")]
     [SerializeField]
     private CinemachineVirtualCamera panCamera;
@@ -34,28 +29,13 @@ public class MapRevealCameraPan : MonoBehaviour
     private AnimationCurve panCurve =
         AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
-    [SerializeField]
-    private bool playOnStart = true;
+    [SerializeField]private bool playOnStart = true;
+
+    public UnityEvent OnFinish;
     private void Start()
     {
-        if (HasAlreadyPlayed())
-        {
-            SkipPan();
-            return;
-        }
-
-        if (playOnStart)
-        {
-            PlayerDataHandler.Singleton.AddToTriggeredFlag(RevealKey);
-            StartPan();
-        }
+        StartPan();
     }
-
-    private bool HasAlreadyPlayed()
-    {
-        return PlayerDataHandler.Singleton.IsTriggered(RevealKey);
-    }
-
     public void StartPan()
     {
         GameManager.Singleton.SetGameState(GameManager.GameState.Cutscene);
@@ -145,6 +125,7 @@ public class MapRevealCameraPan : MonoBehaviour
     public void EndPan()
     {
         GameManager.Singleton.SetGameState(GameManager.GameState.Roaming);
+        OnFinish?.Invoke();
     }
          
 }
