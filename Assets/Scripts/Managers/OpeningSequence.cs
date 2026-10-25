@@ -1,9 +1,10 @@
+using SaveSystem;
 using System.Collections;
 using UnityEngine;
 
 public class OpeningSequence : MonoBehaviour
 {
-    private const string OpeningSequencePlayedKey = "OpeningSequencePlayed";
+    private const string OpeningSequencePlayedKey = "OpeningSequence";
     
     [Header("Screen")]
     [SerializeField] private CanvasGroup blackScreen;
@@ -21,16 +22,17 @@ public class OpeningSequence : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.GetInt(OpeningSequencePlayedKey, 0) == 1)
+        if (PlayerDataHandler.Singleton.IsTriggered(OpeningSequencePlayedKey))
         {
-            if (blackScreen != null)
-            {
-                blackScreen.gameObject.SetActive(false);
-            }
 
+            blackScreen.gameObject.SetActive(false);
+            blackScreen.alpha = 0f;
+            blackScreen.blocksRaycasts = false;
+            blackScreen.interactable = false;
             return;
         }
-
+        PlayerDataHandler.Singleton.AddToTriggeredFlag(OpeningSequencePlayedKey);
+        ResetDialogue();
         openingCoroutine = StartCoroutine(PlayOpeningSequence());
     }
 
@@ -45,7 +47,7 @@ public class OpeningSequence : MonoBehaviour
 
             yield break;
         }
-        GameManager.instance.SetGameState(GameManager.GameState.Cutscene);
+        GameManager.Singleton.SetGameState(GameManager.GameState.Cutscene);
 
         blackScreen.alpha = 1f;
         blackScreen.blocksRaycasts = true;
@@ -57,12 +59,6 @@ public class OpeningSequence : MonoBehaviour
         }
 
         float waitTime = blackScreenDuration;
-
-        // this is what's making the fade long
-        // if (explosionSound != null)
-        //{
-        //    waitTime = Mathf.Max(waitTime, explosionSound.length);
-        //}
 
         yield return new WaitForSecondsRealtime(waitTime);
 
@@ -111,9 +107,6 @@ public class OpeningSequence : MonoBehaviour
 
     public void ResetDialogue()
     {
-        PlayerPrefs.DeleteKey(OpeningSequencePlayedKey);
-        PlayerPrefs.Save();
-
         if (openingCoroutine != null)
         {
             StopCoroutine(openingCoroutine);

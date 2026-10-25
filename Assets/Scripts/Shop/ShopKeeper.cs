@@ -8,7 +8,7 @@ public class ShopKeeper : MonoBehaviour
 {
     private bool canOpenShop;
 
-    [SerializeField] List<ItemsManager> shopKeepersItemsForSale;
+    [SerializeField] List<ItemData> shopKeepersItemsForSale;
     [SerializeField] GameObject shopMenu, talkPanel;
 
     void Start()

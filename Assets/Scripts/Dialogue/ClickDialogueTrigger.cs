@@ -105,7 +105,7 @@ public class ClickDialogueTrigger : MonoBehaviour
         if (QuestManager.instance == null)
         {
             Debug.LogError(
-                "ClickDialogueTrigger: QuestManager instance is missing.",
+                "ClickDialogueTrigger: QuestManager Singleton is missing.",
                 this
             );
 

@@ -52,389 +52,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   showGizmos: 1
---- !u!1 &3531638988668802163
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 329517426970754686}
-  - component: {fileID: 4320973247429513415}
-  - component: {fileID: 8714750893319820589}
-  - component: {fileID: 4962710322523938890}
-  m_Layer: 0
-  m_Name: TriggerConversation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &329517426970754686
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3531638988668802163}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1647494310855884349}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &4320973247429513415
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3531638988668802163}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.07098675, y: -1.2308226}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 17.582506, y: 4.7290277}
-  m_EdgeRadius: 0
---- !u!114 &8714750893319820589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3531638988668802163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb36200979016d44e95cfa4a765ce9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerOnEnter: 1
-  dialogue:
-    dialogueLines:
-    - character:
-        name: ???
-        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
-      line: RB-02, what's the status over there?
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: RB-02
-        icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
-      line: Good so far, Boss. We're almost done with Operation Red Grass!
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: ???
-        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
-      line: Keep up the good work. Finally, this land will be mine.
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: Lyka
-        icon: {fileID: 21300000, guid: 9a38fb5b7381f5d499bcee62d2d03e8b, type: 3}
-      line: (What are they talking about?)
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: RB-02
-        icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
-      line: Are there tasks left you'd like to remind, Boss? Before I disconnect?
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: ???
-        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
-      line: Make sure...
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: ???
-        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
-      line: To burn everything into crisps!
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: Lyka
-        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
-      line: (What?! How could he say that?!)
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: RB-02
-        icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
-      line: If we do, should we evacuate the residents?
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: ???
-        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
-      line: HAHAHA... Funny robot
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: ???
-        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
-      line: I couldn't care less about the residents, burn them as well!
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: Lyka
-        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
-      line: Hey clanker!
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 2968849010343016926}
-            m_TargetAssemblyTypeName: EnemyNoticeEffect, Assembly-CSharp
-            m_MethodName: ShowNotice
-            m_Mode: 1
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: RB-02
-        icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
-      line: Who goes here?!
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: Lyka
-        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
-      line: I won't let you destroy the legacy our ancestors worked so hard for over
-        some petty cash!
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: ???
-        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
-      line: RB-02, it's just a brat, get her!
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    - character:
-        name: Lyka
-        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
-      line: I'll destroy you!
-      onLineStarted:
-        m_PersistentCalls:
-          m_Calls: []
-      textEffect: 0
-      effectStrength: 1
-      effectSpeed: 5
-      useCustomTypingSpeed: 0
-      typingSpeed: 0.03
-      itemRewardName: 
-      itemRewardAmount: 1
-    onDialogueStarted:
-      m_PersistentCalls:
-        m_Calls: []
-    onDialogueEnded:
-      m_PersistentCalls:
-        m_Calls: []
-    questToCompleteOnEnd: 
-  followUpDialogue:
-    dialogueLines: []
-    onDialogueStarted:
-      m_PersistentCalls:
-        m_Calls: []
-    onDialogueEnded:
-      m_PersistentCalls:
-        m_Calls: []
-    questToCompleteOnEnd: 
-  followUpQuestToCheck: 
---- !u!114 &4962710322523938890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3531638988668802163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51c007226d51c034b9bcd2162a48b4ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  oneShot: 1
-  collisionTag: Player
-  destroyAfterTrigger: 1
-  rememberDestroyedState: 0
-  triggerId: 
-  onTriggerEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8714750893319820589}
-        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
-        m_MethodName: TriggerDialogue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onTriggerExit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4724498646723132559
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +197,7 @@ GameObject:
   - component: {fileID: 5536963819000332735}
   - component: {fileID: 6762651762555859714}
   - component: {fileID: 6599951232873752345}
+  - component: {fileID: 361773047101532115}
   m_Layer: 8
   m_Name: NPC_Robbie
   m_TagString: Untagged
@@ -600,7 +218,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 329517426970754686}
   - {fileID: 7461973523635899305}
   - {fileID: 6941972558752943528}
   - {fileID: 2628982662451533500}
@@ -839,6 +456,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showGizmos: 1
+--- !u!114 &361773047101532115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4829015032231721720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddee4d352f13134b911fbfd81274d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveID: FirstEnemy
+  checkOnAwake: 1
+  checkOnStart: 0
+  checkOnEnable: 0
+  OnAlreadyTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4829015032231721720}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnNotYetTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRuntimeTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4829015032231721720}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4955614968791513909
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,7 +564,7 @@ GameObject:
   - component: {fileID: 6950921848870932604}
   - component: {fileID: 7857546637586724463}
   m_Layer: 8
-  m_Name: TriggerBattleZone
+  m_Name: BattleTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -967,15 +633,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyId: RobotTutorialEnemy
-  tutorialRewardItem: {fileID: 183402318249301568, guid: 9d269b9d55e33f64c9369acc635d6a1c, type: 3}
-  battleTutorialManager: {fileID: 0}
-  startTutorialOnFirstBattle: 1
-  availableBattles:
-  - enemies:
-    - Robbie
-    rewardXP: 20
-    rewardItems: []
-    scrapsReward: 0
+  enemyDatas:
+  - Enemy: {fileID: 11400000, guid: 34bfc9a205fe56a4f8f2f7563f084d0c, type: 2}
+    rewards:
+      rewardXP: 10
+      rewardItems:
+      - {fileID: 11400000, guid: 91bed03c488e35b4eb2409e3341ebc1f, type: 2}
+      scrapsReward: 10
   canRunAway: 0
   runAwayDistance: 3
   battleTriggerCooldown: 4
@@ -983,6 +647,21 @@ MonoBehaviour:
   deactivateAfterStarting: 0
   battleMusicIndex: 0
   questToComplete: 
+  OnDefeat:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 361773047101532115}
+        m_TargetAssemblyTypeName: SaveFlagHandler, Assembly-CSharp
+        m_MethodName: TriggerSaveFlag
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7857546637586724463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -995,22 +674,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c007226d51c034b9bcd2162a48b4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oneShot: 0
+  oneShot: 1
+  disableAfterTrigger: 1
   collisionTag: Player
-  destroyAfterTrigger: 0
-  rememberDestroyedState: 0
-  triggerId: 
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
-        m_MethodName: SwitchCamera
-        m_Mode: 2
+      - m_Target: {fileID: 6950921848870932604}
+        m_TargetAssemblyTypeName: BattleInstantiator, Assembly-CSharp
+        m_MethodName: StartBattle
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Cinemachine.CinemachineVirtualCamera,
-            Cinemachine
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1018,20 +694,7 @@ MonoBehaviour:
         m_CallState: 2
   onTriggerExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CameraManager, Assembly-CSharp
-        m_MethodName: SwitchCamera
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: Cinemachine.CinemachineVirtualCamera,
-            Cinemachine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7235459384490247337
 GameObject:
   m_ObjectHideFlags: 0

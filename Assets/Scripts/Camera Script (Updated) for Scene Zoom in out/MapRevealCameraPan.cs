@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.SceneManagement;
+using SaveSystem;
 
 public class MapRevealCameraPan : MonoBehaviour
 {
@@ -9,8 +10,7 @@ public class MapRevealCameraPan : MonoBehaviour
     [SerializeField]
     private string revealId = "VillageMapReveal";
 
-    private string RevealKey =>
-        "MapRevealShown_" + revealId;
+    private string RevealKey => "MapRevealShown_" + revealId;
 
     [Header("Cameras")]
     [SerializeField]
@@ -46,22 +46,19 @@ public class MapRevealCameraPan : MonoBehaviour
 
         if (playOnStart)
         {
+            PlayerDataHandler.Singleton.AddToTriggeredFlag(RevealKey);
             StartPan();
         }
     }
 
     private bool HasAlreadyPlayed()
     {
-        return PlayerPrefs.GetInt(RevealKey, 0) == 1;
+        return PlayerDataHandler.Singleton.IsTriggered(RevealKey);
     }
 
     public void StartPan()
     {
-        if (Player.instance != null)
-        {
-            Player.instance.StopMovement();
-        }
-        GameManager.instance.SetGameState(GameManager.GameState.Cutscene);
+        GameManager.Singleton.SetGameState(GameManager.GameState.Cutscene);
         StartCoroutine(PanAcrossMap());
     }
 
@@ -122,8 +119,6 @@ public class MapRevealCameraPan : MonoBehaviour
 
         panCamera.transform.position = endPosition;
 
-        PlayerPrefs.SetInt(RevealKey, 1);
-        PlayerPrefs.Save();
 
         panCamera.Priority = 10;
         playerCamera.Priority = 20;
@@ -147,26 +142,9 @@ public class MapRevealCameraPan : MonoBehaviour
         panCamera.transform.position = endPosition;
         EndPan();
     }
-
-    [ContextMenu("Reset Map Reveal")]
-    private void ResetMapReveal()
-    {
-        PlayerPrefs.DeleteKey(RevealKey);
-        PlayerPrefs.Save();
-
-        Debug.Log(
-            "Reset map reveal: " +
-            RevealKey
-        );
-    }
-
     public void EndPan()
     {
-        if (Player.instance != null)
-        {
-            Player.instance.ResumeMovement();
-        }
-        GameManager.instance.SetGameState(GameManager.GameState.Roaming);
+        GameManager.Singleton.SetGameState(GameManager.GameState.Roaming);
     }
          
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AgentAnimations : MonoBehaviour
@@ -16,6 +17,7 @@ public class AgentAnimations : MonoBehaviour
 
     private Animator animator;  
     private bool hasNoticedPlayer;
+    private Transform target;
 
     private void Awake()
     {
@@ -28,19 +30,25 @@ public class AgentAnimations : MonoBehaviour
 
         SetVisualYRotation(initialYRotation);
     }
-
+    private void Start()
+    {
+        if (target == null)
+        {
+            StartCoroutine(WaitForPlayer());
+        }
+    }
+    private IEnumerator WaitForPlayer()
+    {
+        while (GameManager.Singleton.currentPlayer == null)
+            yield return null;
+        yield return new WaitForEndOfFrame();
+        target = GameManager.Singleton.currentPlayer.transform;
+    }
     public void FacePlayer()
     {
         hasNoticedPlayer = true;
 
-        if (Player.instance == null)
-        {
-            return;
-        }
-
-        Vector2 directionToPlayer =
-            Player.instance.transform.position -
-            transform.position;
+        Vector2 directionToPlayer = target.position - transform.position;
 
         RotateToPointer(directionToPlayer);
     }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Player instance;
-
     [SerializeField] int moveSpeed = 1;
 
     [SerializeField] Rigidbody2D playerRigidBody;
@@ -13,30 +11,15 @@ public class Player : MonoBehaviour
 
     public string transitionName;
 
-    private bool _movementDisabled => GameManager.instance.CurrentPlayingState != GameManager.PlayState.Gameplay || GameManager.instance.CurrentGameState != GameManager.GameState.Roaming;
+    private bool _movementDisabled => GameManager.Singleton.CurrentPlayingState != GameManager.PlayState.Gameplay || GameManager.Singleton.CurrentGameState != GameManager.GameState.Roaming;
     private bool deactivateMovement;
     private Vector3 bottomLeftEdge;
     private Vector3 topRightEdge;
 
     private bool transitionMovementLocked;
 
-    // new flag to avoid clamping until limits are provided
     private bool limitsSet = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        if(instance != null && instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            instance = this;
-        }
-
-        DontDestroyOnLoad(gameObject);
-    }
 
     private void Awake()
     {
@@ -157,14 +140,6 @@ public class Player : MonoBehaviour
         {
             playerRigidBody.velocity = Vector2.zero;
             playerRigidBody.angularVelocity = 0f;
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (instance == this)
-        {
-            instance = null;
         }
     }
 }

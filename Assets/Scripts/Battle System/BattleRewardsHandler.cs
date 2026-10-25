@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using SaveSystem;
+using BattleUtils;
 
 public class BattleRewardsHandler : MonoBehaviour
 {
@@ -30,38 +32,38 @@ public class BattleRewardsHandler : MonoBehaviour
     private int currentMessageIndex;
     private Coroutine typingCoroutine;
     private bool isTyping;
-
-    private int xpReward;
-    private ItemsManager[] rewardItems;
-    private int scrapsReward;
+    private List<BattleRewardData> rewards;
+    private Dictionary<string, int> _newItemMaps = new Dictionary<string, int>();
 
     private void Awake()
     {
+        if (instance != null)
+            return;
         instance = this;
     }
-
-    public void PrepareRewardScreen(
-        int xpEarned,
-        ItemsManager[] itemsEarned,
-        int scrapsEarned
-    )
+    private void Update()
     {
-        xpReward = xpEarned;
-        rewardItems = itemsEarned;
-        scrapsReward = scrapsEarned;
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            DisplayNextMessage();
+        }
+    }
+
+    public void PrepareRewardScreen(List<BattleRewardData> rewards)
+    {
+        this.rewards = rewards;
 
         ApplyRewards();
-        BuildRewardMessages();
 
         currentMessageIndex = 0;
 
+    }
+    public void DisplayMessags()
+    {
         rewardPanel.SetActive(true);
-
         DisplayCurrentMessage();
-
         PlayRewardSFX();
     }
-
     public void DisplayNextMessage()
     {
         if (!rewardPanel.activeInHierarchy)
@@ -99,9 +101,7 @@ public class BattleRewardsHandler : MonoBehaviour
             StopCoroutine(typingCoroutine);
         }
 
-        typingCoroutine = StartCoroutine(
-            TypeMessage(messages[currentMessageIndex])
-        );
+        typingCoroutine = StartCoroutine(TypeMessage(messages[currentMessageIndex]));
     }
 
     private IEnumerator TypeMessage(string message)
@@ -133,146 +133,56 @@ public class BattleRewardsHandler : MonoBehaviour
 
     private void ApplyRewards()
     {
-        if (GameManager.instance == null)
+        int totalXP = 0;
+        int totalScraps = 0;
+        List<ItemData> items = new();
+        foreach(BattleRewardData rewardPool in rewards)
         {
-            Debug.LogError(
-                "BattleRewardsHandler: GameManager is missing."
-            );
-
-            return;
+            items.AddRange(rewardPool.rewardItems);
+            totalXP += rewardPool.rewardXP;
+            totalScraps += rewardPool.scrapsReward;
         }
 
-        PlayerStats[] playerStats =
-            GameManager.instance.GetPlayerStats();
+        Inventory.Singleton.AddItems(items);
+        PlayerDataHandler.Singleton.AddXPToPresentCharacters(totalXP);
+        PlayerDataHandler.Singleton.ModifyMoney(totalScraps);
 
-        if (playerStats != null)
-        {
-            foreach (PlayerStats player in playerStats)
-            {
-                if (player != null &&
-                    player.gameObject.activeInHierarchy)
-                {
-                    player.AddXP(xpReward);
-                }
-            }
-        }
-
-        if (rewardItems != null)
-        {
-            if (Inventory.instance == null)
-            {
-                Debug.LogError(
-                    "BattleRewardsHandler: Inventory is missing."
-                );
-            }
-            else
-            {
-                foreach (ItemsManager item in rewardItems)
-                {
-                    if (item == null)
-                    {
-                        continue;
-                    }
-
-                    Inventory.instance.AddItems(item);
-
-                    Debug.Log(
-                        "BattleRewardsHandler: Added reward item: " +
-                        item.itemName
-                    );
-                }
-            }
-        }
-
-        GameManager.instance.currentMoney += scrapsReward;
-
-        if (MenuManager.instance != null)
-        {
-            MenuManager.instance.UpdateItemsInventory();
-        }
+        BuildRewardMessages(totalXP, totalScraps, items);
     }
-
-    private void BuildRewardMessages()
+    private void BuildRewardMessages(int xp, int scraps, List<ItemData> items)
     {
         messages.Clear();
-
-        PlayerStats[] playerStats =
-            GameManager.instance.GetPlayerStats();
-
-        foreach (PlayerStats player in playerStats)
+        foreach( var character in PlayerDataHandler.Singleton.currentPlayerData.characters)
         {
-            if (!player.gameObject.activeInHierarchy)
-            {
-                continue;
-            }
-
-            if (player.playerLevel > 1)
-            {
-                AddMessage(
-                    player.playerName +
-                    " has gained " +
-                    xpReward +
-                    " XP and reached Level " +
-                    player.playerLevel +
-                    "!"
-                );
-            }
-            else
-            {
-                AddMessage(
-                    player.playerName +
-                    " has gained " +
-                    xpReward +
-                    " XP."
-                );
-            }
+            if (xp != 0)
+            AddMessage(character.characterName + " has gained " + xp + " XP.");
         }
-
-        AddMessage(BuildLootMessage());
-
-        AddMessage(
-            "You picked up " +
-            scrapsReward +
-            " scraps."
-        );
+        AddMessage(BuildLootMessage(items));
+        if (scraps != 0)
+            AddMessage("You picked up " + scraps + " scraps.");
     }
 
-    private string BuildLootMessage()
+    private string BuildLootMessage(List<ItemData> items )
     {
-        if (rewardItems == null || rewardItems.Length == 0)
-        {
+        if (items == null || items.Count == 0)
             return "You did not receive any items.";
-        }
 
-        Dictionary<string, int> itemCounts =
-            new Dictionary<string, int>();
+        _newItemMaps.Clear();
 
-        foreach (ItemsManager item in rewardItems)
+        foreach (ItemData item in items)
         {
-            if (item == null)
+            if (!_newItemMaps.ContainsKey(item.itemName))
             {
-                continue;
+                _newItemMaps[item.itemName] = 0;
             }
-
-            if (!itemCounts.ContainsKey(item.itemName))
-            {
-                itemCounts[item.itemName] = 0;
-            }
-
-            itemCounts[item.itemName]++;
+            _newItemMaps[item.itemName]++;
         }
 
         List<string> itemMessages = new List<string>();
 
-        foreach (KeyValuePair<string, int> item in itemCounts)
+        foreach (KeyValuePair<string, int> item in _newItemMaps)
         {
-            itemMessages.Add(
-                "You got " +
-                item.Value +
-                " " +
-                item.Key +
-                "."
-            );
+            itemMessages.Add("You got " + item.Value + " " + item.Key + "." );
         }
 
         return string.Join("\n", itemMessages);

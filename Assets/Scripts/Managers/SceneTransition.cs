@@ -1,5 +1,7 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -11,7 +13,6 @@ public class SceneTransition : MonoBehaviour
     [SerializeField] float fadeDuration = 0.25f;
     [SerializeField] float cameraSettleDelay = 0.2f;
 
-    private bool isTransitioning;
 
     private void Awake()
     {
@@ -28,74 +29,40 @@ public class SceneTransition : MonoBehaviour
         fadeImage.gameObject.SetActive(false);
     }
 
-    public void TransitionToScene(string sceneName)
+    public void TransitionToScene(SceneAsset sceneAsset, int position)
     {
-        if (!isTransitioning)
-        {
-            StartCoroutine(TransitionCoroutine(sceneName));
-        }
+        StartCoroutine(TransitionCoroutine(sceneAsset, position));
     }
 
-    private IEnumerator TransitionCoroutine(string sceneName)
+    private IEnumerator TransitionCoroutine(SceneAsset sceneAsset, int position)
     {
-        isTransitioning = true;
-
-        if (Player.instance != null)
-        {
-            Player.instance.StopMovement();
-        }
-
-        // Fade completely to black before loading.
+        GameManager.Singleton.SetPlayState(GameManager.PlayState.Loading);
         fadeImage.gameObject.SetActive(true);
-        yield return StartCoroutine(Fade(0f, 1f));
 
-        // Load the new scene while the screen is fully black.
-        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneName);
+        yield return Fade(0f, 1f);
+
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneAsset.name);
 
         while (!loadOperation.isDone)
         {
             yield return null;
         }
-
-        // Wait for the destination scene to initialize and place the persistent player.
-        yield return StartCoroutine(PlacePlayerAtAreaEnter());
-
-        CamController cameraController = FindObjectOfType<CamController>();
-
-        if (cameraController != null)
-        {
-            cameraController.SnapToPlayer();
-        }
-
-        // Give Cinemachine time to apply the snapped position.
-        yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
         yield return new WaitForSecondsRealtime(cameraSettleDelay);
+        yield return SetupScene(position);
 
-        // Only reveal the scene after the camera is stable.
-        yield return StartCoroutine(Fade(1f, 0f));
+        yield return Fade(1f, 0f);
 
+        GameManager.Singleton.SetPlayState(GameManager.PlayState.Gameplay);
         fadeImage.gameObject.SetActive(false);
-
-        if (Player.instance != null)
-        {
-            Player.instance.ResumeMovement();
-        }
-
-        isTransitioning = false;
     }
 
-    private IEnumerator PlacePlayerAtAreaEnter()
+    private IEnumerator SetupScene(int spawnPosIndex)
     {
-        for (int frame = 0; frame < 120; frame++)
-        {
-            if (AreaEnter.TryPlacePlayerAtMatchingArea())
-                yield break;
-
-            yield return null;
-        }
-
-        Debug.LogWarning("SceneTransition: No matching AreaEnter was found for the player transition.");
+        yield return null;
+     
+        SceneBootupHandler handler = FindAnyObjectByType<SceneBootupHandler>();
+        handler.SpawnPlayerOnPoint(GameManager.Singleton.playerPrefab.gameObject, spawnPosIndex);
     }
 
     private IEnumerator Fade(float startAlpha, float targetAlpha)
@@ -114,7 +81,6 @@ public class SceneTransition : MonoBehaviour
             yield return null;
         }
 
-        // Guarantee the exact final alpha.
         SetAlpha(targetAlpha);
     }
 
@@ -125,10 +91,11 @@ public class SceneTransition : MonoBehaviour
         fadeImage.color = color;
     }
 
-    public IEnumerator FadeToBlack()
+    public IEnumerator FadeToBlack( UnityAction OnEnd = null)
     {
         fadeImage.gameObject.SetActive(true);
-        yield return StartCoroutine(Fade(0f, 1f));
+        yield return Fade(0f, 1f);
+        OnEnd?.Invoke();
     }
 
     public IEnumerator FadeFromBlack()
@@ -141,7 +108,7 @@ public class SceneTransition : MonoBehaviour
 
         fadeImage.gameObject.SetActive(true);
 
-        yield return StartCoroutine(Fade(1f, 0f));
+        yield return Fade(1f, 0f);
 
         fadeImage.gameObject.SetActive(false);
     }

@@ -1,110 +1,108 @@
+using SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class BattleCharacters : MonoBehaviour
 {
-    [SerializeField] bool isPlayer;
-    [SerializeField] string[] attacksAvailable;
+    public Sprite deathSprite;
+    public Character CharacterData  => _characterData;
+    private Character _characterData; 
+    public List<string> AttackMovesAvailable()
+    {
+        return CharacterData.moveSets;
+    }
 
-    public string characterName;
-    public int currentHP, maxHP, currentSP, maxSP, dexterity, defence, wpnPower, armorDefence;
-    public bool isDead;
-
-    public Sprite deadSprites;
+    [Header("VFX")]
     public GameObject deathParticles;
-
-    [Header("Quest Completion")]
-    [SerializeField] private string questToCompleteOnDeath;
 
     [Header("Death VFX (enemy)")]
     [SerializeField] float preDeathDelay = 0.5f;
     [SerializeField] float jitterDuration = 0.6f;
     [SerializeField] float jitterFrequency = 20f;
     [SerializeField] float jitterMagnitudeX = 0.2f;
-    [SerializeField] float jitterMagnitudeY = 0.12f; // vertical magnitude for diagonal jitter
-    [SerializeField] float colorFlashFrequency = 10f; // how fast color flashes between white/black
+    [SerializeField] float jitterMagnitudeY = 0.12f; 
+    [SerializeField] float colorFlashFrequency = 10f; 
     [SerializeField] float fadeDuration = 0.8f;
-    [SerializeField] float fallDistance = 0.5f; // how far down the sprite moves while fading
+    [SerializeField] float fallDistance = 0.5f;
 
-    SpriteRenderer spriteRenderer;
-    Vector3 initialLocalPosition;
+    [Header("Custom")]
+    public Slider customSlider;
 
-    //private void Update()
-    //{
-    //    if(!isPlayer && isDead)
-    //    {
-    //        FadeOutEnemy();
-    //    }
-    //}
+    public bool isPlayer;
+    public bool isDead;
+    [SerializeReference] private SpriteRenderer _spriteRenderer;
+    private Vector3 _initialLocalPosition;
+    private UnityAction _onDeathAction;
 
-    private void Awake() //if you want a simpler approach to the death sequence, you can use this method instead of the coroutine
+    private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        initialLocalPosition = transform.localPosition;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _initialLocalPosition = transform.localPosition;
+    }
+    public void SetupCharacter(Character characterData, bool isPlayer, Sprite battleSprite, Sprite deadSprite) 
+    {
+        ClearData();
+        if (deadSprite)
+        {
+            this.deathSprite = deadSprite;
+        }
+        this.isPlayer = isPlayer;
+        this._characterData = characterData;
+        _spriteRenderer.sprite = battleSprite;
+        isDead = false;
+
+        gameObject.SetActive(true);
+        RefreshSlider();
+    }
+    public void SetupDeathAction(UnityAction OnDeath = null)
+    {
+        _onDeathAction = OnDeath;
+    }
+    public void ClearData()
+    {
+        _onDeathAction = null;
+        _spriteRenderer.sprite = null;
+        _characterData = null;
+        deathSprite = null;
     }
 
-    //private void FadeOutEnemy()
-    //{
-    //    GetComponent<SpriteRenderer>().color = new Color(
-    //        Mathf.MoveTowards(GetComponent<SpriteRenderer>().color.r, 1f, 0.3f *Time.deltaTime),
-    //        Mathf.MoveTowards(GetComponent<SpriteRenderer>().color.g, 0f, 0.3f *Time.deltaTime),
-    //        Mathf.MoveTowards(GetComponent<SpriteRenderer>().color.b, 0f, 0.3f *Time.deltaTime),
-    //        Mathf.MoveTowards(GetComponent<SpriteRenderer>().color.a, 0f, 0.3f *Time.deltaTime)
-    //        );
-
-    //    if(GetComponent<SpriteRenderer>().color.a == 0f)
-    //    {
-    //        gameObject.SetActive(false);
-    //    }
-    //}
-
-    IEnumerator EnemyDeathSequence()
+    private IEnumerator EnemyDeathSequence()
     {
-        // store starting color (preserve alpha)
-        Color startColor = spriteRenderer != null ? spriteRenderer.color : Color.white;
+        Color startColor = _spriteRenderer != null ? _spriteRenderer.color : Color.white;
 
-        // wait before starting death animation/effects
         if (preDeathDelay > 0f)
             yield return new WaitForSeconds(preDeathDelay);
 
-        // instantiate any death particles immediately after the delay
         if (deathParticles)
             Instantiate(deathParticles, transform.position, transform.rotation);
 
-        // jitter diagonally: top-left <-> top-right repeatedly, while flashing color white<->black
         float elapsed = 0f;
         while (elapsed < jitterDuration)
         {
-            // phase increases linearly, convert to full cycles
             float phase = elapsed * jitterFrequency * Mathf.PI * 2f;
-
-            // horizontal oscillation: left <-> right
             float offsetX = Mathf.Sin(phase) * jitterMagnitudeX;
-
-            // vertical stays positive to produce top-left / top-right pattern.
             float offsetY = Mathf.Abs(Mathf.Sin(phase)) * jitterMagnitudeY;
 
-            transform.localPosition = initialLocalPosition + new Vector3(offsetX, offsetY, 0f);
-
-            // color flash between white and black (preserve original alpha)
+            transform.localPosition = _initialLocalPosition + new Vector3(offsetX, offsetY, 0f);
+            
             float flash = Mathf.PingPong(elapsed * colorFlashFrequency, 1f); // 0..1..0
             Color flashColor = Color.Lerp(Color.white, Color.black, flash);
             flashColor.a = startColor.a;
-            if (spriteRenderer != null)
-                spriteRenderer.color = flashColor;
+            if (_spriteRenderer != null)
+                _spriteRenderer.color = flashColor;
 
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        // reset position
-        transform.localPosition = initialLocalPosition;
+        transform.localPosition = _initialLocalPosition;
 
-        // fade out sprite alpha while moving down
-        if (spriteRenderer != null)
+        if (_spriteRenderer != null)
         {
-            Color fadeStart = spriteRenderer.color;
+            Color fadeStart = _spriteRenderer.color;
             elapsed = 0f;
 
             Vector3 startPos = transform.localPosition;
@@ -114,106 +112,84 @@ public class BattleCharacters : MonoBehaviour
             {
                 float t = elapsed / fadeDuration;
                 float a = Mathf.Lerp(fadeStart.a, 0f, t);
-                spriteRenderer.color = new Color(fadeStart.r, fadeStart.g, fadeStart.b, a);
+                _spriteRenderer.color = new Color(fadeStart.r, fadeStart.g, fadeStart.b, a);
 
-                // move down over the same duration
                 transform.localPosition = Vector3.Lerp(startPos, targetPos, t);
 
                 elapsed += Time.deltaTime;
                 yield return null;
             }
 
-            // ensure fully transparent and position set
-            spriteRenderer.color = new Color(fadeStart.r, fadeStart.g, fadeStart.b, 0f);
+            _spriteRenderer.color = new Color(fadeStart.r, fadeStart.g, fadeStart.b, 0f);
             transform.localPosition = targetPos;
         }
-
         gameObject.SetActive(false);
+        _spriteRenderer.color = Color.white;
     }
 
-
-    public void KillEnemy()
+    public void TakeDamage()
     {
-        //isDead = true;
 
-        if (!isDead)
+        StartCoroutine(TakeDamageRoutine());
+        RefreshSlider();
+    }
+    private void RefreshSlider()
+    {
+        if (customSlider == null)
+            return;
+        customSlider.minValue = 0;
+        customSlider.maxValue = CharacterData.stats.maxHP;
+        customSlider.value = CharacterData.stats.currentHP;
+    }
+    public IEnumerator TakeDamageRoutine()
+    {
+        Color startColor = _spriteRenderer != null ? _spriteRenderer.color : Color.white;
+
+        float elapsed = 0f;
+        while (elapsed < 0.25f)
         {
-            isDead = true;
+            float phase = elapsed * jitterFrequency * Mathf.PI * 2f;
+            float offsetX = Mathf.Sin(phase) * jitterMagnitudeX;
+            float offsetY = Mathf.Abs(Mathf.Sin(phase)) * jitterMagnitudeY;
 
-            if (!string.IsNullOrWhiteSpace(questToCompleteOnDeath))
-            {
-                if (QuestManager.instance != null)
-                {
-                    QuestManager.instance.MarkQuestComplete(
-                        questToCompleteOnDeath
-                    );
-                }
-                else
-                {
-                    Debug.LogError(
-                        "BattleCharacters: QuestManager instance is missing.",
-                        this
-                    );
-                }
-            }
+            transform.localPosition = _initialLocalPosition + new Vector3(offsetX, offsetY, 0f);
 
-            StartCoroutine(EnemyDeathSequence());
+            float flash = Mathf.PingPong(elapsed * colorFlashFrequency, 1f); // 0..1..0
+            Color flashColor = Color.Lerp(Color.white, Color.red, flash);
+            flashColor.a = startColor.a;
+            if (_spriteRenderer != null)
+                _spriteRenderer.color = flashColor;
+
+            elapsed += Time.deltaTime;
+            yield return null;
         }
+        _spriteRenderer.color = Color.white;
     }
-
-    public bool IsPlayer()
+    public void KillCharacter()
     {
-        return isPlayer;
-    }
-
-    public string[] AttackMovesAvailable()
-    {
-        return attacksAvailable;
-    }
-
-    public void TakeHPDamage(int damageToReceive)
-    {
-        currentHP -= damageToReceive;
-
-        if(currentHP < 0)
+        if (isDead)
         {
-            currentHP = 0;
+            return;
         }
-    }
 
-    public void UseItemInBattle(ItemsManager itemToUse)
-    {
-        if(itemToUse.affectType == ItemsManager.AffectType.HP)
+        if (isPlayer)
         {
-            AddHP(itemToUse.amountOfAffect);
+            KillPlayer();
+            return;
         }
-        else if (itemToUse.affectType == ItemsManager.AffectType.SP)
+        isDead = true;
+        _onDeathAction?.Invoke();
+        StartCoroutine(EnemyDeathSequence());
+    }
+
+    private void KillPlayer()
+    {
+        if (deathSprite)
         {
-            AddSP(itemToUse.amountOfAffect);
-        }
-    }
-
-    private void AddHP(int amountOfAffect)
-    {
-        currentHP += amountOfAffect;
-    }
-
-    private void AddSP(int amountOfAffect)
-    {
-        currentSP += amountOfAffect;
-    }
-
-    public void KillPlayer()
-    {
-        if (deadSprites)
-        {
-            //GetComponent<SpriteRenderer>().sprite = deadSprites;
-            //Instantiate(deathParticles, transform.position, transform.rotation);
-            //isDead = true;
-
-            if (spriteRenderer) spriteRenderer.sprite = deadSprites;
+            if (_spriteRenderer) _spriteRenderer.sprite = deathSprite;
             if (deathParticles) Instantiate(deathParticles, transform.position, transform.rotation);
             isDead = true;
         }
     }
+
 }

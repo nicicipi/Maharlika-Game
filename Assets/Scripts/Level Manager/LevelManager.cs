@@ -11,18 +11,23 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        if (mapRenderer != null)
+        if (mapRenderer == null)
         {
-
-            // SpriteRenderer.bounds gives the world-space bounding box
-            bottomLeftEdge = mapRenderer.bounds.min + new Vector3(0.5f, 1f, 0f);
-            topRightEdge = mapRenderer.bounds.max + new Vector3(-0.5f, -1f, 0f);
-
-            Player.instance.SetLimit(bottomLeftEdge, topRightEdge);
+            Debug.LogError("LevelManager: mapRenderer is not assigned!" + gameObject.GetInstanceID());
+            return;
         }
-        else
-        {
-            Debug.LogWarning("LevelManager: mapRenderer is not assigned!");
-        }
+
+        StartCoroutine(WaitForPlayerSpawn());
+    }
+
+    IEnumerator WaitForPlayerSpawn()
+    {
+        while (GameManager.Singleton.currentPlayer == null)
+            yield return null;
+
+        bottomLeftEdge = mapRenderer.bounds.min + new Vector3(0.5f, 1f, 0f);
+        topRightEdge = mapRenderer.bounds.max + new Vector3(-0.5f, -1f, 0f);
+
+        GameManager.Singleton.currentPlayer.SetLimit(bottomLeftEdge, topRightEdge);
     }
 }

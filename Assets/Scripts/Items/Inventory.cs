@@ -1,132 +1,98 @@
-using System.Collections;
+using SaveSystem;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour
 {
-    public static Inventory instance;
-    private List<ItemsManager> itemsList;
-
-    // Add this line to define the newGameScene variable
-    [SerializeField]
-    private string newGameScene = "Scene 0 Lyka Interior"; // Set this to your actual new game scene name
-
+    public static Inventory Singleton;
+    public List<ItemDataWrapper> itemsList = new();
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (Singleton != null && Singleton != this)
         {
             Destroy(gameObject);
             return;
         }
-
-        instance = this;
-        itemsList = new List<ItemsManager>();
+        Singleton = this;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void AddItem(ItemData item, int count = 1)
     {
-        
-    }
+        if (item == null || count <= 0) return;
 
-    public void AddItems(ItemsManager item)
-    {
-        //print(item.itemName + " added to inventory"); --just shows in logs that it works
-        //print(itemsList.Count);
+        ItemDataWrapper existingItem = itemsList.Find(x => x.itemData == item);
 
-        if (item.isStackable)
+        if (existingItem != null)
         {
-            bool itemAlreadyInInventory = false;
-
-            foreach(ItemsManager itemInInventory in itemsList)
-            {
-                if(itemInInventory.itemName == item.itemName)
-                {
-                    itemInInventory.amount += item.amount;
-                    itemAlreadyInInventory = true; 
-                }
-            }
-
-            if (!itemAlreadyInInventory)
-            {
-                itemsList.Add(item);
-            }
+            if(existingItem.itemData.isStackable)
+                existingItem.amount += count;
         }
         else
         {
-            itemsList.Add(item);
+            itemsList.Add(new ItemDataWrapper { itemData = item, amount = count });
         }
+    }
+    public void AddItems(List<ItemData> items)
+    {
+        foreach (var item in items)
+            AddItem(item, 1);
+    }
+
+    public void RemoveItem(ItemData item, int count = 1)
+    {
+        if (item == null) 
+            return;
         
+        ItemDataWrapper existingItem = itemsList.Find(x => x.itemData == item);
+        
+        if (existingItem == null) 
+            return;
+        
+        existingItem.amount -= count;
+        
+        if (existingItem.amount <= 0) 
+            itemsList.Remove(existingItem);
     }
-
-    public void RemoveItem(ItemsManager item)
+    public bool HasItem(ItemData item)
     {
-        if (item.isStackable)
+        if (item == null ) 
+            return false;
+
+        ItemDataWrapper existingItem = itemsList.Find(x => x.itemData == item);
+
+        if (existingItem == null)
+            return false;
+
+        return true;
+
+
+    }
+    public List<ItemData> GetItemsList()
+    {
+        return itemsList.ConvertAll(x => x.itemData);
+    }
+    public void SaveData(PlayerData data)
+    {
+        data.items.Clear();
+        foreach (var item in itemsList)
+            if (item.itemData != null && item.amount > 0)
+                data.items.Add(new Item { itemName = item.itemData.itemName, itemCount = item.amount });
+    }
+    public void LoadData(PlayerData data)
+    {
+        itemsList.Clear();
+        foreach (var item in data.items)
         {
-            ItemsManager inventoryItem = null;
-
-            foreach(ItemsManager itemInInventory in itemsList)
-            {
-                if(itemInInventory.itemName == item.itemName)
-                {
-                    itemInInventory.amount--;
-                    inventoryItem = itemInInventory;
-                }
-            }
-
-            if(inventoryItem != null && inventoryItem.amount <= 0)
-            {
-                itemsList.Remove(inventoryItem);
-            }
-        }
-
-        else
-        {
-            itemsList.Remove(item);
+            ItemData itemData = ItemsAssets.Singleton.GetItemData(item.itemName);
+            if (itemData != null && item.itemCount > 0)
+                itemsList.Add(new ItemDataWrapper { itemData = itemData, amount = item.itemCount });
         }
     }
 
-    public List<ItemsManager> GetItemsList()
+    [Serializable]
+    public class ItemDataWrapper
     {
-        return itemsList;
-    }
-
-    public void NewGameButton()
-    {
-        StartCoroutine(StartNewGame());
-    }
-
-    private IEnumerator StartNewGame()
-    {
-        DestroyPersistentGameObjects();
-
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-
-        // Allow Destroy() to finish before loading the new-game scene.
-        yield return null;
-
-        SceneManager.LoadScene(newGameScene);
-    }
-
-    private void OnDestroy()
-    {
-    if (instance == this)
-    {
-        instance = null;
-    }
-    }
-
-    // Add this method to the Inventory class
-    private void DestroyPersistentGameObjects()
-    {
-        // Example: Destroy all GameObjects tagged as "Persistent"
-        GameObject[] persistentObjects = GameObject.FindGameObjectsWithTag("Persistent");
-        foreach (GameObject obj in persistentObjects)
-        {
-            Destroy(obj);
-        }
+        public ItemData itemData;
+        public int amount;
     }
 }

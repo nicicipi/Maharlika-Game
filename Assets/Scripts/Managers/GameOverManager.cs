@@ -14,14 +14,9 @@ public class GameOverManager : MonoBehaviour
             AudioManager.instance.PlayBackgroundMusic(4);
         }
 
-        if (Player.instance != null)
+        if (GameMenuManager.instance != null)
         {
-            Player.instance.gameObject.SetActive(false);
-        }
-
-        if (MenuManager.instance != null)
-        {
-            MenuManager.instance.gameObject.SetActive(false);
+            GameMenuManager.instance.gameObject.SetActive(false);
         }
 
         if (BattleManager.instance != null)
@@ -44,24 +39,16 @@ public class GameOverManager : MonoBehaviour
 
     private static void DestroyGameSession()
     {
-        if (GameManager.instance != null)
+        if (GameManager.Singleton != null)
         {
-            GameManager manager = GameManager.instance;
-            GameManager.instance = null;
+            GameManager manager = GameManager.Singleton;
+            GameManager.Singleton = null;
             Destroy(manager.gameObject);
         }
-
-        if (Player.instance != null)
+        if (GameMenuManager.instance != null)
         {
-            Player player = Player.instance;
-            Player.instance = null;
-            Destroy(player.gameObject);
-        }
-
-        if (MenuManager.instance != null)
-        {
-            MenuManager menuManager = MenuManager.instance;
-            MenuManager.instance = null;
+            GameMenuManager menuManager = GameMenuManager.instance;
+            GameMenuManager.instance = null;
             Destroy(menuManager.gameObject);
         }
 

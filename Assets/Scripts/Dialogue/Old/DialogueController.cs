@@ -47,7 +47,7 @@ public class DialogueController : MonoBehaviour
     //                if (currentSentence >= dialogueSentences.Length)
     //                {
     //                    dialogueBox.SetActive(false);
-    //                    GameManager.instance.dialogueBoxOpened = false;
+    //                    GameManager.Singleton.dialogueBoxOpened = false;
     //                }
     //                else
     //                {
@@ -145,7 +145,7 @@ public class DialogueController : MonoBehaviour
         dialogueBox.SetActive(true);
 
         dialogueJustStarted = true;
-        GameManager.instance.SetGameState(GameManager.GameState.Dialogue);
+        GameManager.Singleton.SetGameState(GameManager.GameState.Dialogue);
     }
 
     void CheckForName()

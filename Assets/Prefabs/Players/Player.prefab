@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7626834204263761784}
   - component: {fileID: 464732113490101555}
   - component: {fileID: 5395504096457030464}
-  - component: {fileID: 246087941310310446}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -178,7 +177,6 @@ MonoBehaviour:
   playerRigidBody: {fileID: 7626834204263761784}
   playerAnimator: {fileID: 5395504096457030464}
   transitionName: 
-  deactivateMovement: 0
 --- !u!95 &5395504096457030464
 Animator:
   serializedVersion: 5
@@ -200,40 +198,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &246087941310310446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2850272812942404914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd0a5f6a27c6434479a3fdbb9a83d25d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerName: Lyka
-  characterImage: {fileID: 85620453, guid: b3d3cb35da0832149b123bb00ba7b42c, type: 3}
-  maxLevel: 20
-  playerLevel: 1
-  currentXP: 0
-  xpForNextLevel: 000000003200000078000000d2000000400100001c0200005802000002030000c003000092040000780500007206000080070000a2080000d8090000220b0000800c0000f20d0000780f000012110000
-  baseLevelXP: 50
-  maxHP: 100
-  currentHP: 100
-  maxStamina: 30
-  currentStamina: 30
-  attack: 10
-  defence: 9
-  special: 3
-  specialDefence: 5
-  dexterity: 3
-  equippedWeaponName: 
-  equippedArmorName: 
-  weaponPower: 0
-  armorDefence: 0
-  equippedWeapon: {fileID: 0}
-  equippedArmor: {fileID: 0}
 --- !u!1 &4246517846259467808
 GameObject:
   m_ObjectHideFlags: 0

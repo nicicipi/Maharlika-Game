@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
+using UnityEngine;
+
+namespace Utilities
+{
+    public class SceneConfigs : MonoBehaviour
+    {
+        public static SceneConfigs Singleton;
+        public List<SceneReference> scenes = new();
+        private void Awake()
+        {
+            Singleton = this;
+        }
+    }
+    public static class SceneConfigExtensions
+    {
+        public static SceneAsset GetReference(this SceneEnum sceneID)
+        {
+            return SceneConfigs.Singleton.scenes.Find(x => x.sceneId == sceneID).target;
+        }
+
+        public static SceneAsset GetSceneAsset(this string givenName)
+        {
+            return SceneConfigs.Singleton.scenes.Find(x => x.target.name == givenName).target;
+        }
+    }
+
+    [Serializable]
+    public class SceneReference
+    {
+        public SceneEnum sceneId;
+        public SceneAsset target;
+    }
+    public enum SceneEnum
+    {
+        Scene1_Interior,
+        Scene1_Outside,
+        Scene2,
+        Scene3,
+        Scene4,
+        Scene5,
+        Scene6,
+        Scene7,
+        Scene8,
+        Scene9,
+    }
+}

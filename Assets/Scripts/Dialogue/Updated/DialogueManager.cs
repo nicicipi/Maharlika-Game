@@ -64,7 +64,7 @@ public class DialogueManager : MonoBehaviour
         }
         _onDialogueEnd = OnDialogueEnd;
         _onEndGameState = onEndState;
-        GameManager.instance.SetGameState(GameState.Dialogue);
+        GameManager.Singleton.SetGameState(GameState.Dialogue);
 
         isDialogueActive = true;
         currentDialogue = dialogue;
@@ -143,24 +143,24 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        if (ItemsAssets.instance == null)
+        if (ItemsAssets.Singleton == null)
         {
             Debug.LogError(
-                "DialogueManager: ItemsAssets instance is missing; cannot give item reward."
+                "DialogueManager: ItemsAssets Singleton is missing; cannot give item reward."
             );
             return;
         }
 
-        if (Inventory.instance == null)
+        if (Inventory.Singleton == null)
         {
             Debug.LogError(
-                "DialogueManager: Inventory instance is missing; cannot give item reward."
+                "DialogueManager: Inventory Singleton is missing; cannot give item reward."
             );
             return;
         }
 
-        ItemsManager item =
-            ItemsAssets.instance.GetItemAsset(dialogueLine.itemRewardName);
+        ItemData item =
+            ItemsAssets.Singleton.GetItemData(dialogueLine.itemRewardName);
 
         if (item == null)
         {
@@ -173,7 +173,7 @@ public class DialogueManager : MonoBehaviour
 
         for (int i = 0; i < dialogueLine.itemRewardAmount; i++)
         {
-            Inventory.instance.AddItems(item);
+            Inventory.Singleton.AddItem(item);
         }
 
         Debug.Log(
@@ -246,6 +246,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         _onDialogueEnd?.Invoke();
-        GameManager.instance.SetGameState(_onEndGameState);
+        GameManager.Singleton.SetGameState(_onEndGameState);
     }
 }

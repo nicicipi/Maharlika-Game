@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using SaveSystem;
 
 public class ShopManager : MonoBehaviour
 {
@@ -11,13 +12,13 @@ public class ShopManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI currentMoneyText;
 
-    public List<ItemsManager> itemsForSale;
+    public List<ItemData> itemsForSale;
 
     [SerializeField] GameObject itemSlotContainer;
     [SerializeField] Transform itemSlotBuyContainerParent;
     [SerializeField] Transform itemSlotSellContainerParent;
 
-    [SerializeField] ItemsManager selectedItem;
+    [SerializeField] ItemData selectedItem;
     [SerializeField] TextMeshProUGUI buyItemName, buyItemDescription, buyItemValue;
     [SerializeField] TextMeshProUGUI sellItemName, sellItemDescription, sellItemValue;
 
@@ -73,7 +74,7 @@ public class ShopManager : MonoBehaviour
                 break;
             case ShopStates.Sell:
                 sellPanel.SetActive(true);
-                UpdateItemsInShop(itemSlotSellContainerParent, Inventory.instance.GetItemsList());
+                UpdateItemsInShop(itemSlotSellContainerParent, Inventory.Singleton.GetItemsList());
                 break;
             case ShopStates.Quit:
                 quitPanel.SetActive(true);
@@ -82,25 +83,25 @@ public class ShopManager : MonoBehaviour
     }
     public void OpenShopMenu()
     {
-        GameManager.instance.SetGameState(GameManager.GameState.Shop);
-        currentMoneyText.text = "" + GameManager.instance.currentMoney;
+        GameManager.Singleton.SetGameState(GameManager.GameState.Shop);
+        currentMoneyText.text = "" + PlayerDataHandler.Singleton.currentPlayerData.money;
         
         shopMenu.SetActive(true);
         SetShopState(ShopStates.Talk);
     }
     public void CloseShopMenu()
     {
-        GameManager.instance.SetGameState(GameManager.GameState.Roaming);
+        GameManager.Singleton.SetGameState(GameManager.GameState.Roaming);
     }
 
-    private void UpdateItemsInShop(Transform itemSlotContainerParent, List<ItemsManager> itemsToLookThrough)
+    private void UpdateItemsInShop(Transform itemSlotContainerParent, List<ItemData> itemsToLookThrough)
     {
         foreach (Transform itemSlot in itemSlotContainerParent)
         {
             Destroy(itemSlot.gameObject);
         }
 
-        foreach (ItemsManager item in itemsToLookThrough)
+        foreach (ItemData item in itemsToLookThrough)
         {
             RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
 
@@ -122,14 +123,14 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    public void SelectedBuyItem(ItemsManager itemToBuy)
+    public void SelectedBuyItem(ItemData itemToBuy)
     {
         selectedItem = itemToBuy;
         buyItemName.text = selectedItem.itemName;
         buyItemDescription.text = selectedItem.itemDescription;
         buyItemValue.text = "" + selectedItem.valueInCoins;
     }
-    public void SelectedSellItem(ItemsManager itemToSell)
+    public void SelectedSellItem(ItemData itemToSell)
     {
         selectedItem = itemToSell;
         sellItemName.text = selectedItem.itemName;
@@ -140,12 +141,12 @@ public class ShopManager : MonoBehaviour
 
     public void BuyItem()
     {
-        if(GameManager.instance.currentMoney >= selectedItem.valueInCoins)
+        if(PlayerDataHandler.Singleton.currentPlayerData.money >= selectedItem.valueInCoins)
         {
-            GameManager.instance.currentMoney -= selectedItem.valueInCoins;
-            Inventory.instance.AddItems(selectedItem);
+            PlayerDataHandler.Singleton.currentPlayerData.money -= selectedItem.valueInCoins;
+            Inventory.Singleton.AddItem(selectedItem);
 
-            currentMoneyText.text = "" + GameManager.instance.currentMoney;
+            currentMoneyText.text = "" + PlayerDataHandler.Singleton.currentPlayerData.money;
         }
     }
 
@@ -153,16 +154,16 @@ public class ShopManager : MonoBehaviour
     {
         if (selectedItem != null)
         {
-            GameManager.instance.currentMoney += (int)(selectedItem.valueInCoins * 0.75f);
-            Inventory.instance.RemoveItem(selectedItem);
+            PlayerDataHandler.Singleton.currentPlayerData.money += (int)(selectedItem.valueInCoins * 0.75f);
+            Inventory.Singleton.RemoveItem(selectedItem);
 
-            currentMoneyText.text = "" + GameManager.instance.currentMoney;
+            currentMoneyText.text = "" + PlayerDataHandler.Singleton.currentPlayerData.money;
 
             // Check if the item is still present in the player's inventory
-            if (Inventory.instance.GetItemsList().Contains(selectedItem))
+            if (Inventory.Singleton.GetItemsList().Contains(selectedItem))
             {
                 // Refresh the item slots while keeping this item highlighted
-                UpdateItemsInShop(itemSlotSellContainerParent, Inventory.instance.GetItemsList());
+                UpdateItemsInShop(itemSlotSellContainerParent, Inventory.Singleton.GetItemsList());
                 SelectedSellItem(selectedItem);
             }
             else

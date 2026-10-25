@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour
             if(Time.frameCount % 60 == 0)
                 PerformDetection();
 
-            if (GameManager.instance.CurrentGameState != GameManager.GameState.Roaming)
+            if (GameManager.Singleton.CurrentGameState != GameManager.GameState.Roaming)
             {
                 StopAIBehavior();
                 continue;
