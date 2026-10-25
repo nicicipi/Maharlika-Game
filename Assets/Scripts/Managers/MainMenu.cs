@@ -7,7 +7,7 @@ using Utilities;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] GameObject continueButton;
+    [SerializeField] GameObject LoadGameScreen;
     [SerializeField] float waitToLoadTime;
 
     public void NewGameButton()
@@ -23,6 +23,8 @@ public class MainMenu : MonoBehaviour
 
     public void ContinueButton()
     {
+        // Open LoadGameScreen
+        LoadGameScreen.SetActive(true);
         GameManager.Singleton.LoadLastSave();
     }
 }

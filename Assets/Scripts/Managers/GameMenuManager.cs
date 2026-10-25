@@ -58,10 +58,11 @@ public class GameMenuManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Singleton.CurrentPlayingState == GameManager.PlayState.MainMenu || GameManager.Singleton.CurrentPlayingState == GameManager.PlayState.GameOver)
+        if (GameManager.Singleton.CurrentPlayingState != GameManager.PlayState.Gameplay )
             return;
-
-        if (Input.GetKeyDown(KeyCode.M))
+        if (GameManager.Singleton.CurrentGameState != GameManager.GameState.Roaming)
+            return;
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameManager.Singleton.CurrentPlayingState == (GameManager.PlayState.Menus))
             {
@@ -423,6 +424,9 @@ public class GameMenuManager : MonoBehaviour
         //Application.Quit();
         SceneManager.LoadScene("MainMenu");
         CloseMenu();
+
+        GameManager.Singleton.SetGameState(GameManager.GameState.Roaming);
+        GameManager.Singleton.SetPlayState(GameManager.PlayState.MainMenu);
         Debug.Log("Quit Game");
     }
     public void CloseMenu()

@@ -12,4 +12,11 @@ public class SceneBootupHandler : MonoBehaviour
 
         GameManager.Singleton.SetAsCurrentPlayer(player);
     }
+    public void SpawnPlayerOnPoint(GameObject playerPrefab, Vector2 position)
+    {
+        Debug.Log($"Spawning player on pos: {position}");
+        GameObject player = Instantiate(playerPrefab, position, Quaternion.identity);
+
+        GameManager.Singleton.SetAsCurrentPlayer(player);
+    }
 }

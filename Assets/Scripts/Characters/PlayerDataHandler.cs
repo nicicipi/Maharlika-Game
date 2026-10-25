@@ -15,8 +15,6 @@ namespace SaveSystem
                 return;
             }
             Singleton = this;
-
-            LoadGame("save1");
         }
         public PlayerData cachedPlayerData = new();
         public PlayerData currentPlayerData = new();
@@ -37,29 +35,41 @@ namespace SaveSystem
         #region File Saving
         private string GetSavePath(string fileName) => Path.Combine(Application.persistentDataPath, fileName + ".json");
         public void SaveGame(PlayerData data) => File.WriteAllText(GetSavePath(data.playerSaveName), JsonUtility.ToJson(data, true));
-        public void LoadGame(string fileName)
+        public PlayerData LoadGame(string fileName)
         {
             string path = GetSavePath(fileName);
             if (!File.Exists(path)) 
             { 
                 Debug.LogWarning($"Save file not found: {fileName}"); 
-                return; 
+                return null; 
             }
             PlayerData loadedData = JsonUtility.FromJson<PlayerData>(File.ReadAllText(path));
-            if (loadedData != null)
-                LoadData(loadedData);
 
+            return loadedData;
+
+        }
+        public void DeleteGame(string fileName)
+        {
+            string path = GetSavePath(fileName);
+            if (File.Exists(path)) File.Delete(path);
         }
         #endregion
 
         #endregion
 
         #region  Player Data Updates
-
-        public void SavePosition(string asset, int position)
+        public void FullRefresh()
+        {
+            foreach(var character in currentPlayerData.characters)
+            {
+                character.stats.currentHP = character.stats.maxHP;
+                character.stats.currentStamina = character.stats.maxStamina;
+            }
+        }
+        public void SavePosition(string asset, Vector2 position)
         {
             currentPlayerData.lastSceneName = asset;
-            currentPlayerData.lastPositionIndex = position;
+            currentPlayerData.lastPosition = position;
         }
         public void AddDefeatedEnemies(string enemyId)
         {

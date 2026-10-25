@@ -10,7 +10,7 @@ namespace SaveSystem
     {
         public string playerSaveName;
         public string lastSceneName;
-        public int lastPositionIndex;
+        public Vector2 lastPosition;
         public int defeatedEnemies = 0;
         public int money = 0;
         public List<string> triggeredFlags = new();
@@ -22,7 +22,7 @@ namespace SaveSystem
 
             this.playerSaveName = toCopy.playerSaveName;
             this.lastSceneName = toCopy.lastSceneName;
-            this.lastPositionIndex = toCopy.lastPositionIndex;
+            this.lastPosition = toCopy.lastPosition;
             this.defeatedEnemies = toCopy.defeatedEnemies;
             this.money = toCopy.money;
 
@@ -46,7 +46,7 @@ namespace SaveSystem
         {
             playerSaveName = "save1";
             lastSceneName = "Scene 1 Lyka Interior";
-            lastPositionIndex = 0;
+            lastPosition = Vector2.zero;
             defeatedEnemies = 0;
             money = 0;
             characters = new()

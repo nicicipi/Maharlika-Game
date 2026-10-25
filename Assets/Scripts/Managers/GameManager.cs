@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     {
         MainMenu,
         Loading,
+        Saving,
         Menus,
         GameOver,
         Gameplay,
@@ -82,11 +83,11 @@ public class GameManager : MonoBehaviour
     #region SaveSystem
     public void DebugSave()
     {
-        SaveGame(SceneManager.GetActiveScene().name, 0);
+        SaveGame(SceneManager.GetActiveScene().name, currentPlayer.transform.position);
     }
-    public void SaveGame(string SceneName, int BootupHandlerIndexPosition)
+    public void SaveGame(string SceneName, Vector2 position)
     {
-        PlayerDataHandler.Singleton.SavePosition(SceneName, BootupHandlerIndexPosition);
+        PlayerDataHandler.Singleton.SavePosition(SceneName, position);
         Inventory.Singleton.SaveData(PlayerDataHandler.Singleton.currentPlayerData);
         PlayerDataHandler.Singleton.SaveData();
     }
@@ -110,7 +111,14 @@ public class GameManager : MonoBehaviour
         PlayerDataHandler.Singleton.LoadData(data);
 
         yield return new WaitForEndOfFrame();
-        SceneTransition.instance.TransitionToScene(data.lastSceneName.GetSceneAsset(), data.lastPositionIndex);
+        if(data.lastPosition != Vector2.zero)
+        {
+            SceneTransition.instance.TransitionToScene(data.lastSceneName.GetSceneAsset(), 0, data.lastPosition);
+        }
+        else
+        {
+            SceneTransition.instance.TransitionToScene(data.lastSceneName.GetSceneAsset(), 0);
+        }
     }
     #endregion
 }

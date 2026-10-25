@@ -29,12 +29,12 @@ public class SceneTransition : MonoBehaviour
         fadeImage.gameObject.SetActive(false);
     }
 
-    public void TransitionToScene(SceneAsset sceneAsset, int position)
+    public void TransitionToScene(SceneAsset sceneAsset, int position, Vector2? customPosition = null)
     {
-        StartCoroutine(TransitionCoroutine(sceneAsset, position));
+        StartCoroutine(TransitionCoroutine(sceneAsset, position, customPosition));
     }
 
-    private IEnumerator TransitionCoroutine(SceneAsset sceneAsset, int position)
+    private IEnumerator TransitionCoroutine(SceneAsset sceneAsset, int position, Vector2? customPosition = null)
     {
         GameManager.Singleton.SetPlayState(GameManager.PlayState.Loading);
         fadeImage.gameObject.SetActive(true);
@@ -49,7 +49,10 @@ public class SceneTransition : MonoBehaviour
         }
         yield return new WaitForEndOfFrame();
         yield return new WaitForSecondsRealtime(cameraSettleDelay);
-        yield return SetupScene(position);
+        if(customPosition != null)
+            yield return SetupScene(customPosition.Value);
+        else
+            yield return SetupScene(position);
 
         yield return Fade(1f, 0f);
 
@@ -60,9 +63,16 @@ public class SceneTransition : MonoBehaviour
     private IEnumerator SetupScene(int spawnPosIndex)
     {
         yield return null;
-     
+
         SceneBootupHandler handler = FindAnyObjectByType<SceneBootupHandler>();
         handler.SpawnPlayerOnPoint(GameManager.Singleton.playerPrefab.gameObject, spawnPosIndex);
+    }
+    private IEnumerator SetupScene(Vector2 position)
+    {
+        yield return null;
+
+        SceneBootupHandler handler = FindAnyObjectByType<SceneBootupHandler>();
+        handler.SpawnPlayerOnPoint(GameManager.Singleton.playerPrefab.gameObject, position);
     }
 
     private IEnumerator Fade(float startAlpha, float targetAlpha)
