@@ -1,10 +1,10 @@
 using SaveSystem;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Items/Item Data")]
+[CreateAssetMenu(fileName = "New Consumable", menuName = "Items/Consumable Data")]
 public class ItemData : ScriptableObject
 {
-    public enum ItemType { Item, Weapon, Armor }
+    public enum ItemType { Consumable, Weapon, Armor }
     public ItemType itemType;
 
     public string itemName, itemDescription;

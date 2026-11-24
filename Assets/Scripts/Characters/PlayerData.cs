@@ -1,3 +1,4 @@
+using BattleSystem;
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -89,10 +90,12 @@ namespace SaveSystem
             stats = new();
             moveSets = new()
             {
-                "Slash 2",
-                "Slash 3",
-                "Impact"
+                "Hit"
             };
+        }
+        public void AddNewMove(BattleSkills move)
+        {
+            moveSets.Add(move.skillName);
         }
     }
     [Serializable]

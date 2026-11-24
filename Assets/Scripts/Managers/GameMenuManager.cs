@@ -131,7 +131,7 @@ public class GameMenuManager : MonoBehaviour
         if (itemSlotContainerParent == null)
         {
             Debug.LogError(
-                "GameMenuManager: Item slot content parent is not assigned."
+                "GameMenuManager: Consumable slot content parent is not assigned."
             );
 
             return;
@@ -206,7 +206,7 @@ public class GameMenuManager : MonoBehaviour
     }
     public void UseItem(int selectedCharacter)
     {
-        if(activeItem.itemType == ItemData.ItemType.Item)
+        if(activeItem.itemType == ItemData.ItemType.Consumable)
             Inventory.Singleton.RemoveItem(activeItem);
         switch (selectedCharacter)
         {
