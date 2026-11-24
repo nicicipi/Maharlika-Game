@@ -33,9 +33,9 @@ MonoBehaviour:
       equippedArmorName: None
       weaponPower: 0
       armorDefence: 0
-    moveSets:
-    - Hit
-    - MinorHeal
-  battleMoves: []
+    moveSets: []
+  battleMoves:
+  - {fileID: 11400000, guid: c8588a414ead06645b2bb41f72168b18, type: 2}
+  - {fileID: 11400000, guid: ac5489ae9366464468fa441ee641ecd9, type: 2}
   normalSprite: {fileID: 21300000, guid: e575e7bd6d803b7408be347a3fc88ec4, type: 3}
   deathSprite: {fileID: 21300000, guid: e575e7bd6d803b7408be347a3fc88ec4, type: 3}

@@ -13,11 +13,10 @@ using static GameManager;
 
 public class BattleManager : MonoBehaviour
 {
-    private static WaitForSeconds _waitForSeconds3 = new WaitForSeconds(3f);
     public static BattleManager instance;
     private BattleInstantiator _currentBattleTrigger;
     private PlayerData _playerData => PlayerDataHandler.Singleton.currentPlayerData;
-    private BattleMoves _currentBattleMove;
+    private BattleSkills _currentBattleMove;
     [SerializeReference] private CameraShaker _cameraShaker;
 
 
@@ -157,6 +156,7 @@ public class BattleManager : MonoBehaviour
     }
     private void TryTriggerTutorial()
     {
+
         if (PlayerDataHandler.Singleton.IsTriggered("BattleTutorial"))
         {
             tutorial.gameObject.SetActive(false);
@@ -248,7 +248,7 @@ public class BattleManager : MonoBehaviour
         _waitingForPlayerInput = false;
     }
 
-    private void OnPlayerSelectSkill(BattleMoves move, List<BattleCharacters> targets)
+    private void OnPlayerSelectSkill(BattleSkills move, List<BattleCharacters> targets)
     {
         if(_currentPlayerRoutine != null)
         {
@@ -257,7 +257,7 @@ public class BattleManager : MonoBehaviour
         }    
         _currentPlayerRoutine = StartCoroutine(PlayerSkillRoutine(move, targets));
     }
-    private IEnumerator PlayerSkillRoutine(BattleMoves move, List<BattleCharacters> targets)
+    private IEnumerator PlayerSkillRoutine(BattleSkills move, List<BattleCharacters> targets)
     {
         SetUIState(UIState.None);
         yield return ExecuteMove(_currentPlayerCharacter, move, targets);
@@ -302,12 +302,11 @@ public class BattleManager : MonoBehaviour
     }
     private IEnumerator ExecuteSimpleEnemyAI(BattleCharacters enemy)
     {
-        var availableSkills = enemy.CharacterData.moveSets;
-        if (enemy.CharacterData.moveSets.Count == 0)
+        var availableSkills = enemy.battleMovesList;
+        if (enemy.battleMovesList.Count == 0)
             Debug.LogError("Enemy Movesets missing");
 
-        var selectedSkillName = availableSkills[Random.Range(0, availableSkills.Count)];
-        var selectedSkill = battleMoveLibrary.GetBattleMoveByName(selectedSkillName);
+        var selectedSkill = availableSkills[Random.Range(0, availableSkills.Count)];
         if (selectedSkill == null)
             Debug.LogError("skill missing");
 
@@ -343,10 +342,10 @@ public class BattleManager : MonoBehaviour
                 break;
         }
     }
-    public IEnumerator ExecuteMove(BattleCharacters source, BattleMoves battleMove, BattleCharacters target)
+    public IEnumerator ExecuteMove(BattleCharacters source, BattleSkills battleMove, BattleCharacters target)
     {
         _currentBattleMove = battleMove;
-        Debug.Log($"Executing Move {battleMove.moveName}, source: {source.CharacterData.characterName}, target: {target.CharacterData.characterName}" );
+        Debug.Log($"Executing Move {battleMove.skillName}, source: {source.CharacterData.characterName}, target: {target.CharacterData.characterName}" );
         foreach (var battleAction in battleMove.actions)
         {
             // Stats
@@ -357,14 +356,14 @@ public class BattleManager : MonoBehaviour
             _characterStatsPanel.UpdateValues();
             yield return new WaitForSeconds(battleAction.action.actionDuration);
         }
-        yield return new WaitForSeconds(battleMove.moveDuration);
+        yield return new WaitForSeconds(battleMove.skillDuration);
     }
-    public IEnumerator ExecuteMove(BattleCharacters source, BattleMoves battleMove, List<BattleCharacters> targets)
+    public IEnumerator ExecuteMove(BattleCharacters source, BattleSkills battleMove, List<BattleCharacters> targets)
     {
         _currentBattleMove = battleMove;
         foreach (var target in targets)
         {
-            Debug.Log($"Executing Move {battleMove.moveName}, attacker: {source.CharacterData.characterName}, defender: {target.CharacterData.characterName}");
+            Debug.Log($"Executing Move {battleMove.skillName}, attacker: {source.CharacterData.characterName}, defender: {target.CharacterData.characterName}");
             foreach (var battleAction in battleMove.actions) 
             {
                 // Stats
@@ -376,7 +375,7 @@ public class BattleManager : MonoBehaviour
                 yield return new WaitForSeconds(battleAction.action.actionDuration);
             }
         }
-        yield return new WaitForSeconds(battleMove.moveDuration);
+        yield return new WaitForSeconds(battleMove.skillDuration);
     }
     private bool GameEndCheck()
     {
@@ -535,26 +534,30 @@ public class BattleManager : MonoBehaviour
 [System.Serializable]
 public class BattleMoveLibrary
 {
-    public BattleMoves defaultMove;
-    public BattleMoves[] battleMovesList;
-    public BattleMoves GetBattleMoveByName(string moveName)
+    public BattleSkills defaultMove;
+    public BattleSkills[] battleMovesList;
+    public BattleSkills GetBattleMoveByName(string moveName)
     {
         foreach (var move in battleMovesList)
         {
-            if (move.moveName == moveName)
+            if (move.skillName == moveName)
                 return move;
         }
         return null;
     }
-    public List<BattleMoves> GetBattleMoves(List<string> names)
+    public List<BattleSkills> GetBattleMoves(List<string> names)
     {
-        List<BattleMoves> moves = new();
+        List<BattleSkills> moves = new();
+
         foreach (var moveName in names)
         {
-            var move = GetBattleMoveByName(moveName);
+            Debug.Log($"Searching for move: {moveName}");
+            BattleSkills move = GetBattleMoveByName(moveName);
+
             if (move != null)
                 moves.Add(move);
         }
+
         return moves;
     }
 }

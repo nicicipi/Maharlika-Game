@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9415d833b3fd33d4694aaef4293042d8, type: 3}
   m_Name: MultiHit
   m_EditorClassIdentifier: 
-  moveName: MultiHit
-  moveDescription: Hit the enemy with your weapon 3 times.
+  skillName: MultiHit
+  skillDescription: Hit an enemy 3 times for 5 damage.
   staminaCost: 10
-  moveDuration: 2
+  skillDuration: 1
   targetSelection: 1
   actions:
   - action:

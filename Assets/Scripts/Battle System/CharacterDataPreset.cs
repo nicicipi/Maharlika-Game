@@ -7,7 +7,7 @@ using UnityEngine;
 public class CharacterDataPreset : ScriptableObject
 {
     [SerializeField] private Character characterPreset;
-    public List<BattleMoves> battleMoves;
+    public List<BattleSkills> battleMoves;
     public Sprite normalSprite;
     public Sprite deathSprite;
     public Character GetCopyOfPreset()

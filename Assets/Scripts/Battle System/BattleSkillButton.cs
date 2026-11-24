@@ -8,11 +8,11 @@ using UnityEngine.UI;
 
 public class BattleSkillButton : MonoBehaviour
 {
-    private BattleMoves _battleMove;
+    private BattleSkills _battleMove;
     private Button _button;
     public TextMeshProUGUI skillNameText, skillDescText, skillCostText;
-    private UnityAction<BattleMoves> _onMoveSelection;
-    public void SetupBattleMove(BattleMoves move, UnityAction<BattleMoves> onMoveSelection, bool isUsable)
+    private UnityAction<BattleSkills> _onMoveSelection;
+    public void SetupBattleMove(BattleSkills move, UnityAction<BattleSkills> onMoveSelection, bool isUsable)
     {
         if (_button == null)
             _button = GetComponent<Button>();
@@ -21,8 +21,8 @@ public class BattleSkillButton : MonoBehaviour
         _battleMove = move;
 
         _onMoveSelection = onMoveSelection;
-        skillNameText.text = _battleMove.moveName;
-        skillDescText.text = _battleMove.moveDescription;
+        skillNameText.text = _battleMove.skillName;
+        skillDescText.text = _battleMove.skillDescription;
         skillCostText.text = _battleMove.staminaCost.ToString();
 
         gameObject.SetActive(true);

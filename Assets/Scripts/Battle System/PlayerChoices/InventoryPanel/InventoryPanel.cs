@@ -54,19 +54,30 @@ public class InventoryPanel : MonoBehaviour
             Debug.Log($"No item selected");
             return;
         }
-        _selectedItem = null;
         _characterTargetPanel.gameObject.SetActive(false);
         character.CharacterData.stats.UseItemOnCharacter(_selectedItem);
         if(_selectedItem.itemType == ItemData.ItemType.Consumable)
         {
             Inventory.Singleton.RemoveItem(_selectedItem);
-            BattleManager.instance.TriggerPlayerInputEnd();
+            if (_selectedItem.affectType == ItemData.AffectType.HP)
+            {
+                character.TakeHealing();
+                character.DisplayHealText(_selectedItem.amountOfAffect);
+            }
         }
         else
         {
             BattleManager.instance.battleNotice.SetText("Equipped " + _selectedItem.itemName + " on " + character.CharacterData.characterName);
             BattleManager.instance.battleNotice.Activate();
-            BattleManager.instance.TriggerPlayerInputEnd();
         }
+        gameObject.SetActive(false);
+        BattleManager.instance.StartCoroutine(EndInput());
+        _selectedItem = null;
+    }
+
+    IEnumerator EndInput()
+    {
+        yield return new WaitForSeconds(1f);
+        BattleManager.instance.TriggerPlayerInputEnd();
     }
 }

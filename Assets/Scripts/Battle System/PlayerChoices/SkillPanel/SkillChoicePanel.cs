@@ -12,8 +12,8 @@ public class SkillChoicePanel : MonoBehaviour
     [SerializeField] private Transform skillButtonParent;
     
     private BattleCharacters _currentSource;
-    private UnityAction<BattleMoves, List<BattleCharacters>> _onSelectCallback;
-    public void SetupChoices(BattleCharacters source, UnityAction<BattleMoves, List<BattleCharacters>> onSelectCallback)
+    private UnityAction<BattleSkills, List<BattleCharacters>> _onSelectCallback;
+    public void SetupChoices(BattleCharacters source, UnityAction<BattleSkills, List<BattleCharacters>> onSelectCallback)
     {
         _onSelectCallback = onSelectCallback;
         _currentSource = source;
@@ -21,7 +21,7 @@ public class SkillChoicePanel : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void PopulateMoveList(List<BattleMoves> moves)
+    private void PopulateMoveList(List<BattleSkills> moves)
     {
         foreach (var buttons in skillButtonList)
             buttons.gameObject.SetActive(false);
@@ -33,7 +33,7 @@ public class SkillChoicePanel : MonoBehaviour
             skillButton.SetupBattleMove(move, OnSelectMove, isUsable);
         }
     }
-    private void OnSelectMove(BattleMoves move)
+    private void OnSelectMove(BattleSkills move)
     {
         List<BattleCharacters> targettableCharacters = BattleManager.instance.GetTargettableCharacters(_currentSource, move.targetSelection);
         switch (move.targetSelection)

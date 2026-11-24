@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9415d833b3fd33d4694aaef4293042d8, type: 3}
   m_Name: Hit
   m_EditorClassIdentifier: 
-  moveName: Hit
-  moveDescription: Hit the enemy with your weapon.
+  skillName: Hit
+  skillDescription: Hit your enemy for 10 damage.
   staminaCost: 0
-  moveDuration: 0.25
+  skillDuration: 1
   targetSelection: 1
   actions:
   - action:

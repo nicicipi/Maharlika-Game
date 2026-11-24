@@ -11,7 +11,7 @@ public class BattleCharacters : MonoBehaviour
     public Sprite deathSprite;
     public Character CharacterData  => _characterData;
     private Character _characterData;
-    public List<BattleMoves> battleMovesList = new();
+    public List<BattleSkills> battleMovesList = new();
     [Header("VFX")]
     public GameObject deathParticles;
 
@@ -40,7 +40,7 @@ public class BattleCharacters : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _initialLocalPosition = transform.localPosition;
     }
-    public void SetupCharacter(Character characterData, List<BattleMoves> moves, bool isPlayer, Sprite battleSprite, Sprite deadSprite) 
+    public void SetupCharacter(Character characterData, List<BattleSkills> moves, bool isPlayer, Sprite battleSprite, Sprite deadSprite) 
     {
         ClearData();
         if (deadSprite)
@@ -55,7 +55,7 @@ public class BattleCharacters : MonoBehaviour
         gameObject.SetActive(true);
         RefreshSlider();
     }
-    public void PopulateBattleMoves(List<BattleMoves> newMoves)
+    public void PopulateBattleMoves(List<BattleSkills> newMoves)
     {
         battleMovesList.Clear();
 
@@ -145,6 +145,10 @@ public class BattleCharacters : MonoBehaviour
         if (CharacterData.stats.currentHP <= 0f)
             KillCharacter();
     }
+    public void TakeHealing()
+    {
+        StartCoroutine(HealRoutine(0.5f));
+    }
     public void DisplayDamageText(int amount)
     {
         CharacterDamageGUI characterDamageText = Instantiate(BattleManager.instance.characterDamageText, transform.position, Quaternion.identity);
@@ -167,6 +171,37 @@ public class BattleCharacters : MonoBehaviour
         customSlider.minValue = 0;
         customSlider.maxValue = CharacterData.stats.maxHP;
         customSlider.value = CharacterData.stats.currentHP;
+    }
+    private IEnumerator HealRoutine(float duration)
+    {
+        Vector3 originalScale = transform.localScale;
+        Color originalColor = transform.GetComponent<SpriteRenderer>().color;
+        Color healColor = Color.green;
+
+        SpriteRenderer spriteRenderer = transform.GetComponent<SpriteRenderer>();
+
+        Vector3 squishScale = new(originalScale.x * 1.5f, originalScale.y * 0.8f, originalScale.z);
+        Vector3 stretchScale = new(originalScale.x * 0.8f, originalScale.y * 1.2f, originalScale.z);
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+
+            if (t < 0.5f)
+                transform.localScale = Vector3.Lerp(squishScale, stretchScale, t * 2f);
+            else
+                transform.localScale = Vector3.Lerp(stretchScale, originalScale, (t - 0.5f) * 2f);
+
+            spriteRenderer.color = Color.Lerp(healColor, originalColor, t);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localScale = originalScale;
+        spriteRenderer.color = originalColor;
     }
     public IEnumerator TakeDamageRoutine()
     {
