@@ -12,18 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9415d833b3fd33d4694aaef4293042d8, type: 3}
   m_Name: MultiHit
   m_EditorClassIdentifier: 
-  moveName: Hit
+  moveName: MultiHit
   moveDescription: Hit the enemy with your weapon 3 times.
   staminaCost: 10
+  moveDuration: 2
+  targetSelection: 1
   actions:
-  - targetSelection: 1
-    action:
+  - action:
       rid: 228220455653736468
-  - targetSelection: 1
-    action:
+  - action:
       rid: 228220455653736469
-  - targetSelection: 1
-    action:
+  - action:
       rid: 228220455653736470
   references:
     version: 2
@@ -31,12 +30,18 @@ MonoBehaviour:
     - rid: 228220455653736468
       type: {class: DamageAction, ns: BattleSystem, asm: Assembly-CSharp}
       data:
+        actionDuration: 0.25
+        actionVFX: {fileID: 4270754231669352451, guid: 01e786d9d765006489b5346fe6fc8f29, type: 3}
         damageValue: 5
     - rid: 228220455653736469
       type: {class: DamageAction, ns: BattleSystem, asm: Assembly-CSharp}
       data:
+        actionDuration: 0.25
+        actionVFX: {fileID: 4270754231669352451, guid: 01e786d9d765006489b5346fe6fc8f29, type: 3}
         damageValue: 5
     - rid: 228220455653736470
       type: {class: DamageAction, ns: BattleSystem, asm: Assembly-CSharp}
       data:
+        actionDuration: 0.25
+        actionVFX: {fileID: 4270754231669352451, guid: 01e786d9d765006489b5346fe6fc8f29, type: 3}
         damageValue: 5

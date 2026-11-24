@@ -34,7 +34,6 @@ public class BattleRewardsHandler : MonoBehaviour
     private bool isTyping;
     private List<BattleRewardData> rewards;
     private Dictionary<string, int> _newItemMaps = new Dictionary<string, int>();
-
     private void Awake()
     {
         if (instance != null)
@@ -58,7 +57,7 @@ public class BattleRewardsHandler : MonoBehaviour
         currentMessageIndex = 0;
 
     }
-    public void DisplayMessags()
+    public void DisplayMessages()
     {
         rewardPanel.SetActive(true);
         DisplayCurrentMessage();

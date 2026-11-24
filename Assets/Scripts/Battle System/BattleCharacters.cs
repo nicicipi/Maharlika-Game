@@ -33,6 +33,7 @@ public class BattleCharacters : MonoBehaviour
     [SerializeReference] private SpriteRenderer _spriteRenderer;
     private Vector3 _initialLocalPosition;
     private UnityAction _onDeathAction;
+    private UnityAction _onTakeDamageAction;
 
     private void Awake()
     {
@@ -61,7 +62,11 @@ public class BattleCharacters : MonoBehaviour
         foreach (var move in newMoves)
             battleMovesList.Add(move);
     }
-
+    public void SetupOnTakeDamageAction(UnityAction OnTakeDamage = null)
+    {
+        _onTakeDamageAction = null;
+        _onTakeDamageAction = OnTakeDamage;
+    }
     public void SetupDeathAction(UnityAction OnDeath = null)
     {
         _onDeathAction = OnDeath;
@@ -136,12 +141,26 @@ public class BattleCharacters : MonoBehaviour
     {
         StartCoroutine(TakeDamageRoutine());
         RefreshSlider();
+        _onTakeDamageAction?.Invoke();
+        if (CharacterData.stats.currentHP <= 0f)
+            KillCharacter();
+    }
+    public void DisplayDamageText(int amount)
+    {
+        CharacterDamageGUI characterDamageText = Instantiate(BattleManager.instance.characterDamageText, transform.position, Quaternion.identity);
+        characterDamageText.SetText(amount);
+    }
+    public void DisplayHealText(int amount)
+    {
+        CharacterDamageGUI characterDamageText = Instantiate(BattleManager.instance.characterHealText, transform.position, Quaternion.identity);
+        characterDamageText.SetText(amount);
     }
     public void ApplyVFX(GameObject vfxObject)
     {
-        Instantiate(vfxObject, transform.position, transform.rotation);
+        GameObject newObject = Instantiate(vfxObject, transform.position, transform.rotation);
+        Debug.Log("Applying impact effect: " + newObject.name);
     }
-    private void RefreshSlider()
+    public void RefreshSlider()
     {
         if (customSlider == null)
             return;

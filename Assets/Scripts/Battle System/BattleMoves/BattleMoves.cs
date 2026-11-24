@@ -57,6 +57,8 @@ namespace BattleSystem
             }
             target.CharacterData.stats.ModifyHP(-finalDamage);
             target.TakeDamage();
+            target.DisplayDamageText(finalDamage);
+            Debug.Log($"{source.CharacterData.characterName} attacks {target.CharacterData.characterName} for {finalDamage} damage");
         }
     }
     [Serializable]
@@ -68,11 +70,46 @@ namespace BattleSystem
         {
             // if source has multiplier, apply it to healValue
             int finalHeal = healValue;
-            if (source != null && percentageBased)
+            if (target != null && percentageBased)
             {
-                finalHeal = (int)(finalHeal * source.CharacterData.stats.currentXP);
+                finalHeal = (int)( target.CharacterData.stats.maxHP / healValue);
             }
             target.CharacterData.stats.ModifyHP(finalHeal);
+            target.StartCoroutine(HealAnimation(target.transform, 0.5f));
+            target.DisplayHealText(finalHeal);
+            target.RefreshSlider();
+        }
+
+        private IEnumerator HealAnimation(Transform transform, float duration)
+        {
+            Vector3 originalScale = transform.localScale;
+            Color originalColor = transform.GetComponent<SpriteRenderer>().color;
+            Color healColor = Color.green;
+
+            SpriteRenderer spriteRenderer = transform.GetComponent<SpriteRenderer>();
+
+            Vector3 squishScale = new(originalScale.x * 1.5f, originalScale.y * 0.8f, originalScale.z);
+            Vector3 stretchScale = new(originalScale.x * 0.8f, originalScale.y * 1.2f, originalScale.z);
+
+            float elapsed = 0f;
+
+            while (elapsed < duration)
+            {
+                float t = elapsed / duration;
+
+                if (t < 0.5f)
+                    transform.localScale = Vector3.Lerp(squishScale, stretchScale, t * 2f);
+                else
+                    transform.localScale = Vector3.Lerp(stretchScale, originalScale, (t - 0.5f) * 2f);
+
+                spriteRenderer.color = Color.Lerp(healColor, originalColor, t);
+
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.localScale = originalScale;
+            spriteRenderer.color = originalColor;
         }
     }
 

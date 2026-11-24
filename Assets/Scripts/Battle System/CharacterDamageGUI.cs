@@ -22,7 +22,7 @@ public class CharacterDamageGUI : MonoBehaviour
         transform.position += new Vector3(0f, moveSpeed * Time.deltaTime);
     }
 
-    public void SetDamage(int damageAmount)
+    public void SetText(int damageAmount)
     {
         damageText.text = damageAmount.ToString();
         float jitterAmount = Random.Range(-textVibration, +textVibration);
