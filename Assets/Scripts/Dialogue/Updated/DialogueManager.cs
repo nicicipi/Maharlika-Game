@@ -178,7 +178,7 @@ public class DialogueManager : MonoBehaviour
         if (item == null)
         {
             Debug.LogError(
-                "DialogueManager: Item reward was not found: " +
+                "DialogueManager: Consumable reward was not found: " +
                 dialogueLine.itemRewardName
             );
             return;

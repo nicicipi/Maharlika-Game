@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9415d833b3fd33d4694aaef4293042d8, type: 3}
+  m_Name: Hit
+  m_EditorClassIdentifier: 
+  skillName: Hit
+  skillDescription: Hit your enemy for 10 damage.
+  staminaCost: 0
+  skillDuration: 1
+  targetSelection: 1
+  actions:
+  - action:
+      rid: 228220455653736468
+  references:
+    version: 2
+    RefIds:
+    - rid: 228220455653736468
+      type: {class: DamageAction, ns: BattleSystem, asm: Assembly-CSharp}
+      data:
+        actionDuration: 0.25
+        actionVFX: {fileID: 6961955469419642770, guid: 31b0291da3973b54980452706ae34a51, type: 3}
+        damageValue: 10
