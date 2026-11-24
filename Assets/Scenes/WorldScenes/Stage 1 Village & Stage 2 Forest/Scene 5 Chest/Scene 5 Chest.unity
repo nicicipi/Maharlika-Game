@@ -2509,6 +2509,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3609750148815852341, guid: faf28edf1ac32504088ea02d62fc4153, type: 3}
   m_PrefabInstance: {fileID: 1500339727}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &1500339729 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1487053029402496338, guid: faf28edf1ac32504088ea02d62fc4153, type: 3}
+  m_PrefabInstance: {fileID: 1500339727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1887485808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2577,6 +2582,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3551588217510995013, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.8703661
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551588217510995013, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.2360691
+      objectReference: {fileID: 0}
+    - target: {fileID: 7557348518492399784, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 1500339729}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

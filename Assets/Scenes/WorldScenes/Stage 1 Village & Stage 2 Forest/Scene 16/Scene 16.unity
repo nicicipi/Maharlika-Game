@@ -268,7 +268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6677736320142349433, guid: ccb112769da0318458a823f6301a8bb2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.8
+      value: -15.57
       objectReference: {fileID: 0}
     - target: {fileID: 6677736320142349433, guid: ccb112769da0318458a823f6301a8bb2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -431,7 +431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &469906278
 Transform:
   m_ObjectHideFlags: 0
@@ -1847,7 +1847,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1501888300603259459, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: transitionAreaName
-      value: Scene 17 to Scene 16
+      value: Scene 16 to Scene 17
       objectReference: {fileID: 0}
     - target: {fileID: 2107134002363665545, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: m_Name
@@ -1855,7 +1855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2107134002363665545, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2411058584435117294, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: m_LocalPosition.x

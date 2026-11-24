@@ -718,74 +718,6 @@ Transform:
   - {fileID: 912056304653408808}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &441746659
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 441746662}
-  - component: {fileID: 441746661}
-  - component: {fileID: 441746660}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &441746660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441746659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &441746661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441746659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &441746662
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441746659}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &445903937
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,7 +1364,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-    questToCompleteOnEnd: 
   followUpDialogue:
     dialogueLines: []
     onDialogueStarted:
@@ -1441,7 +1372,6 @@ MonoBehaviour:
     onDialogueEnded:
       m_PersistentCalls:
         m_Calls: []
-    questToCompleteOnEnd: 
   followUpQuestToCheck: 
 --- !u!61 &730551377
 BoxCollider2D:
@@ -2468,11 +2398,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccb112769da0318458a823f6301a8bb2, type: 3}
---- !u!1 &1116949348 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 542718552951195536, guid: ccb112769da0318458a823f6301a8bb2, type: 3}
-  m_PrefabInstance: {fileID: 1116949347}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1130222084
 GameObject:
   m_ObjectHideFlags: 0
@@ -3986,7 +3911,7 @@ PrefabInstance:
     - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: OnAlreadyTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1116949348}
+      objectReference: {fileID: 0}
     - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: OnAlreadyTriggered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -4119,7 +4044,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 944141155}
   - {fileID: 928235253}
-  - {fileID: 441746662}
   - {fileID: 1024529680}
   - {fileID: 18721021}
   - {fileID: 322716763}
