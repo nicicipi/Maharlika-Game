@@ -149,7 +149,7 @@ namespace SaveSystem
 
         public void UseItemOnCharacter(ItemData item)
         {
-            if (item.itemType == ItemType.Item)
+            if (item.itemType == ItemType.Consumable)
             {
                 if (item.affectType == AffectType.HP)
                 {

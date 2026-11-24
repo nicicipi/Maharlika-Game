@@ -1,6 +1,7 @@
 using BattleUtils;
 using SaveSystem;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -40,11 +41,10 @@ public class BattleInstantiator : MonoBehaviour
     public void SetupBattle()
     {
         int selectedBattle = Random.Range(0, enemyDatas.Length);
-        BattleManager.instance.SetBattleTrigger(this);
-        BattleManager.instance.StartBattle(enemyDatas, canRunAway);
+        BattleManager.instance.SetupBattle(enemyDatas.ToList(), canRunAway, null, this);
 
-        BattleRewardsHandler.instance.markQuestComplete = shouldCompleteQuest;
-        BattleRewardsHandler.instance.questToComplete = questToComplete;
+        //BattleRewardsHandler.instance.markQuestComplete = shouldCompleteQuest;
+        //BattleRewardsHandler.instance.questToComplete = questToComplete;
     }
     public void MoveEnemyAwayFromPlayer()
     {

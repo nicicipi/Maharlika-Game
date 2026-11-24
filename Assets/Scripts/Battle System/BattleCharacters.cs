@@ -1,3 +1,4 @@
+using BattleSystem;
 using SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,12 +10,8 @@ public class BattleCharacters : MonoBehaviour
 {
     public Sprite deathSprite;
     public Character CharacterData  => _characterData;
-    private Character _characterData; 
-    public List<string> AttackMovesAvailable()
-    {
-        return CharacterData.moveSets;
-    }
-
+    private Character _characterData;
+    public List<BattleMoves> battleMovesList = new();
     [Header("VFX")]
     public GameObject deathParticles;
 
@@ -42,7 +39,7 @@ public class BattleCharacters : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _initialLocalPosition = transform.localPosition;
     }
-    public void SetupCharacter(Character characterData, bool isPlayer, Sprite battleSprite, Sprite deadSprite) 
+    public void SetupCharacter(Character characterData, List<BattleMoves> moves, bool isPlayer, Sprite battleSprite, Sprite deadSprite) 
     {
         ClearData();
         if (deadSprite)
@@ -53,10 +50,18 @@ public class BattleCharacters : MonoBehaviour
         this._characterData = characterData;
         _spriteRenderer.sprite = battleSprite;
         isDead = false;
-
+        PopulateBattleMoves(moves);
         gameObject.SetActive(true);
         RefreshSlider();
     }
+    public void PopulateBattleMoves(List<BattleMoves> newMoves)
+    {
+        battleMovesList.Clear();
+
+        foreach (var move in newMoves)
+            battleMovesList.Add(move);
+    }
+
     public void SetupDeathAction(UnityAction OnDeath = null)
     {
         _onDeathAction = OnDeath;
@@ -129,9 +134,12 @@ public class BattleCharacters : MonoBehaviour
 
     public void TakeDamage()
     {
-
         StartCoroutine(TakeDamageRoutine());
         RefreshSlider();
+    }
+    public void ApplyVFX(GameObject vfxObject)
+    {
+        Instantiate(vfxObject, transform.position, transform.rotation);
     }
     private void RefreshSlider()
     {

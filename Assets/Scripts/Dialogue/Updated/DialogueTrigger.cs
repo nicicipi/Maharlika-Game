@@ -35,7 +35,7 @@ public class DialogueLine
     [Min(0f)]
     public float typingSpeed = 0.03f;
 
-    [Header("Item Reward")]
+    [Header("Consumable Reward")]
     public string itemRewardName;
 
     [Min(1)]

@@ -131,7 +131,7 @@ public class GameMenuManager : MonoBehaviour
         if (itemSlotContainerParent == null)
         {
             Debug.LogError(
-                "GameMenuManager: Item slot content parent is not assigned."
+                "GameMenuManager: Consumable slot content parent is not assigned."
             );
 
             return;
@@ -160,7 +160,7 @@ public class GameMenuManager : MonoBehaviour
 
             RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
 
-            Image itemImage = itemSlot.Find("Item Image").GetComponent<Image>(); //item image remember this when checking for the sprite of your items in inventory, if you change it, it wont work here
+            Image itemImage = itemSlot.Find("Consumable Image").GetComponent<Image>(); //item image remember this when checking for the sprite of your items in inventory, if you change it, it wont work here
             itemImage.sprite = item.itemData.itemsImage;
 
             TextMeshProUGUI itemsAmountText = itemSlot.Find("Amount Text").GetComponent<TextMeshProUGUI>();
@@ -206,7 +206,7 @@ public class GameMenuManager : MonoBehaviour
     }
     public void UseItem(int selectedCharacter)
     {
-        if(activeItem.itemType == ItemData.ItemType.Item)
+        if(activeItem.itemType == ItemData.ItemType.Consumable)
             Inventory.Singleton.RemoveItem(activeItem);
         switch (selectedCharacter)
         {
