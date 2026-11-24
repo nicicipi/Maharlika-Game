@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Scene4_Junkyard_Route3__Trash_Piles_0
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 336
+        width: 94
+        height: 58
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dfa0e12d29cfac48bd6ab0bb44b32c1
+      internalID: 597628958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene4_Junkyard_Route3__Trash_Piles_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 94
+        height: 58
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31e034ef5f8118e45950987bd494186e
+      internalID: 1273878798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene4_Junkyard_Route3__Trash_Piles_2
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 64
+        width: 134
+        height: 58
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29371299a1cac6146a2db814cdccbf36
+      internalID: 1517572802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene4_Junkyard_Route3__Trash_Piles_3
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 64
+        width: 120
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d8e5ae6136fb3a4781b38d5630c5f6f
+      internalID: 773534178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene4_Junkyard_Route3__Trash_Piles_4
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 64
+        width: 186
+        height: 201
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4411e897871f2894c9198918bc477d9a
+      internalID: 891300043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +237,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scene4_Junkyard_Route3__Trash_Piles_0: 597628958
+      Scene4_Junkyard_Route3__Trash_Piles_1: 1273878798
+      Scene4_Junkyard_Route3__Trash_Piles_2: 1517572802
+      Scene4_Junkyard_Route3__Trash_Piles_3: 773534178
+      Scene4_Junkyard_Route3__Trash_Piles_4: 891300043
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

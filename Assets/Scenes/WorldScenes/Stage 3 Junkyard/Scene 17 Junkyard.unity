@@ -1721,7 +1721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3502358794204116150, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: sceneToLoad
-      value: 9
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3502358794204116150, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: transitionAreaName
@@ -1907,7 +1907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3502358794204116150, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: sceneToLoad
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3502358794204116150, guid: 2ff129dd4e251bd4186406ae06c11a4f, type: 3}
       propertyPath: positionIndex

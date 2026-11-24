@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Scene6_Junkyard_ShopArea2__Trash_Piles_0
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 336
+        width: 94
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b4840cbfa72a094db506dffc8c0dc68
+      internalID: -1546879699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene6_Junkyard_ShopArea2__Trash_Piles_1
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 352
+        width: 42
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5b3bed8ae286e74891feb7bb08f0317
+      internalID: -1302043544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene6_Junkyard_ShopArea2__Trash_Piles_2
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 320
+        width: 43
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d25b94b67bfd9854ab0e9eb72573d266
+      internalID: 754621054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene6_Junkyard_ShopArea2__Trash_Piles_3
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 304
+        width: 42
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f05fb05031dc3b74aa93f4f5acdba8d0
+      internalID: -1724536392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene6_Junkyard_ShopArea2__Trash_Piles_4
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 80
+        width: 46
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02630699d1e63fa4a97a8aaad0118373
+      internalID: -215167702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene6_Junkyard_ShopArea2__Trash_Piles_5
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 96
+        width: 185
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52e28d13128d4e44d9479dd487c447b1
+      internalID: 1404699841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +258,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scene6_Junkyard_ShopArea2__Trash_Piles_0: -1546879699
+      Scene6_Junkyard_ShopArea2__Trash_Piles_1: -1302043544
+      Scene6_Junkyard_ShopArea2__Trash_Piles_2: 754621054
+      Scene6_Junkyard_ShopArea2__Trash_Piles_3: -1724536392
+      Scene6_Junkyard_ShopArea2__Trash_Piles_4: -215167702
+      Scene6_Junkyard_ShopArea2__Trash_Piles_5: 1404699841
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

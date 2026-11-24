@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Piles_Front1_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 416
+        width: 43
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29840e43ad52fee4a9228fc36730a824
+      internalID: 544686612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Piles_Front1_1
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 432
+        width: 46
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95fdebe7c6c6e7d4cbee0a1d5c0c7a26
+      internalID: 960372496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Piles_Front1_2
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 416
+        width: 29
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8195101dd1539cc4d89b555089bfe09b
+      internalID: 13280612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Piles_Front1_3
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 336
+        width: 43
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2c556d3fe2dcdd4b96c993d6612076b
+      internalID: -788246612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Piles_Front1_4
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 368
+        width: 61
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a119356d56c49c4392f62791efad107
+      internalID: 41292844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Piles_Front1_5
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 256
+        width: 43
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e75850394b84d54689872ea3b57a63b
+      internalID: -707740100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Piles_Front1_6
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 128
+        width: 22
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6de0760d2acfa984eaca31a9a4763bb7
+      internalID: 140994608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Piles_Front1_7
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 96
+        width: 40
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13e87c8e7f72ef14284daf44ceeef745
+      internalID: 1868430316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +300,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scene2_Junkyard_ShopArea__Trash_Piles_Front1_0: 544686612
+      Scene2_Junkyard_ShopArea__Trash_Piles_Front1_1: 960372496
+      Scene2_Junkyard_ShopArea__Trash_Piles_Front1_2: 13280612
+      Scene2_Junkyard_ShopArea__Trash_Piles_Front1_3: -788246612
+      Scene2_Junkyard_ShopArea__Trash_Piles_Front1_4: 41292844
+      Scene2_Junkyard_ShopArea__Trash_Piles_Front1_5: -707740100
+      Scene2_Junkyard_ShopArea__Trash_Piles_Front1_6: 140994608
+      Scene2_Junkyard_ShopArea__Trash_Piles_Front1_7: 1868430316
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

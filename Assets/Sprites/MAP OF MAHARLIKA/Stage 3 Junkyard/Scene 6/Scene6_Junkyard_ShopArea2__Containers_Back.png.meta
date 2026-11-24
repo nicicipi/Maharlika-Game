@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Scene6_Junkyard_ShopArea2__Containers_Back_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 16
+        width: 124
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98038a50e8f3abc4091bf04af638205b
+      internalID: -917667060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene6_Junkyard_ShopArea2__Containers_Back_1
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 16
+        width: 124
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a150ad3ce5bcd054f85d099f38e8d0aa
+      internalID: 1151560948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene6_Junkyard_ShopArea2__Containers_Back_2
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 16
+        width: 60
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9d658c33445bb24fb5b921e6117ce68
+      internalID: 106950892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene6_Junkyard_ShopArea2__Containers_Back_3
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 16
+        width: 60
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5abcfa0c5f2d3f143ba19e1c99c7b695
+      internalID: 737248338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene6_Junkyard_ShopArea2__Containers_Back_4
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 16
+        width: 124
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e85e23cf555ca046a601f54201204be
+      internalID: -1713922645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +237,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scene6_Junkyard_ShopArea2__Containers_Back_0: -917667060
+      Scene6_Junkyard_ShopArea2__Containers_Back_1: 1151560948
+      Scene6_Junkyard_ShopArea2__Containers_Back_2: 106950892
+      Scene6_Junkyard_ShopArea2__Containers_Back_3: 737248338
+      Scene6_Junkyard_ShopArea2__Containers_Back_4: -1713922645
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

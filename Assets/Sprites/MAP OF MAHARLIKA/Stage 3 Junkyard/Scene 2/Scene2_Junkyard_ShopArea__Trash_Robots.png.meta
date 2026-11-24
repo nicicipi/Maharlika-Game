@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Robots_0
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 432
+        width: 47
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 179d632e9ac610b4b95329f06564e8f1
+      internalID: -1838924219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Robots_1
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 432
+        width: 42
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c303d04bd98c93447af5a5752e672bd1
+      internalID: 677959120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Robots_2
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 320
+        width: 42
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f49f8d81f106d2c4494a8ae2b6c20cce
+      internalID: 1748850291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Robots_3
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 112
+        width: 44
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adfd312189687634a9e12ad07fda9bf2
+      internalID: -1680752817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Robots_4
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 112
+        width: 43
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a540e4bb3f643c44482a751992ea1c7b
+      internalID: -1327267716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Robots_5
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 48
+        width: 43
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e58d3f13982705468557c2fd9032d21
+      internalID: 188115598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Trash_Robots_6
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 48
+        width: 44
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf19abde642a8f440b54a280d5bb6a21
+      internalID: -790628009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +279,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scene2_Junkyard_ShopArea__Trash_Robots_0: -1838924219
+      Scene2_Junkyard_ShopArea__Trash_Robots_1: 677959120
+      Scene2_Junkyard_ShopArea__Trash_Robots_2: 1748850291
+      Scene2_Junkyard_ShopArea__Trash_Robots_3: -1680752817
+      Scene2_Junkyard_ShopArea__Trash_Robots_4: -1327267716
+      Scene2_Junkyard_ShopArea__Trash_Robots_5: 188115598
+      Scene2_Junkyard_ShopArea__Trash_Robots_6: -790628009
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

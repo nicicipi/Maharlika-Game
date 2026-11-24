@@ -1495,7 +1495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4244304153565597372, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.dialogueLines.Array.size
@@ -1514,9 +1514,17 @@ PrefabInstance:
       value: I have to get out.
       objectReference: {fileID: 0}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].character.icon
       value: 
-      objectReference: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+      objectReference: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].character.name
       value: Lyka

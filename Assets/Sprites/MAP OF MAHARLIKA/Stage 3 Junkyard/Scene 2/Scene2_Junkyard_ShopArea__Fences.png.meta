@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Fences_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 448
+        width: 554
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a9fbbe097e4ecb4cabc0f9d51ace34d
+      internalID: -1753616725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Fences_1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1
+        width: 554
+        height: 27
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8d75927db7aaa94bbf241b0dfa47498
+      internalID: -204452075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Fences_2
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 27
+        width: 9
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71f0c40cbcd515498d2403dbe88cb95
+      internalID: 1504703971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Fences_3
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 192
+        width: 33
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73d857316201a6b4a943ca622b9717a1
+      internalID: -669840571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Fences_4
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 27
+        width: 9
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f3cbcbc826c4874eb24f3c9e231801b
+      internalID: 1304590552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Fences_5
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 272
+        width: 9
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3e8de5fce591c940b8ecc2d4902a256
+      internalID: -688853543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Fences_6
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 272
+        width: 9
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59eb5a0313e4b2744aff4fd1418cbf5e
+      internalID: 1968638240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene2_Junkyard_ShopArea__Fences_7
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 272
+        width: 33
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e0dae622fa57e34bb6801bdfc347b96
+      internalID: 2063664890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +300,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scene2_Junkyard_ShopArea__Fences_0: -1753616725
+      Scene2_Junkyard_ShopArea__Fences_1: -204452075
+      Scene2_Junkyard_ShopArea__Fences_2: 1504703971
+      Scene2_Junkyard_ShopArea__Fences_3: -669840571
+      Scene2_Junkyard_ShopArea__Fences_4: 1304590552
+      Scene2_Junkyard_ShopArea__Fences_5: -688853543
+      Scene2_Junkyard_ShopArea__Fences_6: 1968638240
+      Scene2_Junkyard_ShopArea__Fences_7: 2063664890
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

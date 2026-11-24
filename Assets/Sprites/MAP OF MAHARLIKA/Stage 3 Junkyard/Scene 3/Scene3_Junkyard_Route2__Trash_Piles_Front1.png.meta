@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,385 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_0
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 336
+        width: 40
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 158b1a82bc81f4048a2381971d1910ab
+      internalID: 172669103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 94
+        height: 74
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b3ca6e9df1bc8044a8de3f1ef3565ad
+      internalID: 2026803667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_2
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 240
+        width: 43
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80b202cd8535c0146a6793c80632294d
+      internalID: 1277525182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_3
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 256
+        width: 42
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bbf40c0368a32f41b1cd397d287c2ad
+      internalID: 52119459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_4
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 176
+        width: 22
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8384588e77881445826dab3fbe60769
+      internalID: 762150006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_5
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 176
+        width: 22
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 450d1937ffd19d54696a1cbad7b118db
+      internalID: -1787271256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_6
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 176
+        width: 22
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe70f6acfd267e945be3e683ac1a41cb
+      internalID: -1710007569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_7
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 176
+        width: 22
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d3bd567b9f07c14583b8ce04b87cc38
+      internalID: -972391149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_8
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 192
+        width: 29
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ab9d9adba90dd84a82475bc40747c7d
+      internalID: 1109171653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_9
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 160
+        width: 29
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37e063caf020c254cb960e245fbe030e
+      internalID: 46710017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 62
+        height: 73
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4807dcb6ce00ac0488d4d88e92c29215
+      internalID: -1594125031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_11
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 112
+        width: 43
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 020403c4bcb1f3340a4fdb8dc8d9c9ee
+      internalID: 2038025231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_12
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 112
+        width: 22
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2434be18437054b4dbae6be8e32888d0
+      internalID: 758616721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_13
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 80
+        width: 40
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e03bdca663f48da4082b84d100eef282
+      internalID: -1724048128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_14
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 16
+        width: 42
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48a5cf4b18f89ce4c9db2b960f663881
+      internalID: 1606340793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_15
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 16
+        width: 29
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0be6c8d82b14b1d44881876facecd289
+      internalID: 1462760332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_16
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 16
+        width: 43
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23e05d18d364212459687a8c4cbe74b6
+      internalID: -1620670462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Trash_Piles_Front1_17
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 16
+        width: 42
+        height: 40
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 380a716c9e702ee469a236d1af7d0e63
+      internalID: -1064407142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +510,25 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_0: 172669103
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_1: 2026803667
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_10: -1594125031
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_11: 2038025231
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_12: 758616721
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_13: -1724048128
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_14: 1606340793
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_15: 1462760332
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_16: -1620670462
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_17: -1064407142
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_2: 1277525182
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_3: 52119459
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_4: 762150006
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_5: -1787271256
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_6: -1710007569
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_7: -972391149
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_8: 1109171653
+      Scene3_Junkyard_Route2__Trash_Piles_Front1_9: 46710017
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

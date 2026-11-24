@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Containers_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 46
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcd388f7e32c3eb4ab270591822f1653
+      internalID: 1036703987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Containers_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 128
+        width: 60
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9158595b5f544f44a99a3bd331c66508
+      internalID: -1095835663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Containers_2
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 128
+        width: 60
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85f9a61a92b50db4f84ce0d84ecd02d8
+      internalID: -575071218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Containers_3
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 128
+        width: 60
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de4b1e4593f69364eb0b0bc585bfefda
+      internalID: -1592782930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Containers_4
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 124
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d79a4bf0640f0774ca09117c17a888c4
+      internalID: -1989619774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Containers_5
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 0
+        width: 60
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dda607140f4c5a4d9386c4cbd97508c
+      internalID: -1809696373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene3_Junkyard_Route2__Containers_6
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 0
+        width: 124
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2f02809b44d3364ab170a1f966ecb92
+      internalID: -104365111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +279,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scene3_Junkyard_Route2__Containers_0: 1036703987
+      Scene3_Junkyard_Route2__Containers_1: -1095835663
+      Scene3_Junkyard_Route2__Containers_2: -575071218
+      Scene3_Junkyard_Route2__Containers_3: -1592782930
+      Scene3_Junkyard_Route2__Containers_4: -1989619774
+      Scene3_Junkyard_Route2__Containers_5: -1809696373
+      Scene3_Junkyard_Route2__Containers_6: -104365111
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1113,7 +1113,7 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: RB-02
-        icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
+        icon: {fileID: 739409480, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
       line: Good so far, Boss. We're almost done with Operation Red Grass!
       onLineStarted:
         m_PersistentCalls:
@@ -1141,7 +1141,7 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: Lyka
-        icon: {fileID: 21300000, guid: 9a38fb5b7381f5d499bcee62d2d03e8b, type: 3}
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: (What are they talking about?)
       onLineStarted:
         m_PersistentCalls:
@@ -1155,7 +1155,7 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: RB-02
-        icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
+        icon: {fileID: 739409480, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
       line: Are there tasks left you'd like to remind, Boss? Before I disconnect?
       onLineStarted:
         m_PersistentCalls:
@@ -1197,7 +1197,7 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: Lyka
-        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: (What?! How could he say that?!)
       onLineStarted:
         m_PersistentCalls:
@@ -1211,7 +1211,7 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: RB-02
-        icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
+        icon: {fileID: 739409480, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
       line: If we do, should we evacuate the residents?
       onLineStarted:
         m_PersistentCalls:
@@ -1253,7 +1253,7 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: Lyka
-        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: Hey clanker!
       onLineStarted:
         m_PersistentCalls:
@@ -1279,7 +1279,7 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: RB-02
-        icon: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
+        icon: {fileID: 739409480, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
       line: Who goes here?!
       onLineStarted:
         m_PersistentCalls:
@@ -1293,7 +1293,7 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: Lyka
-        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: I won't let you destroy the legacy our ancestors worked so hard for over
         some petty cash!
       onLineStarted:
@@ -1322,7 +1322,7 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: Lyka
-        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: I'll destroy you!
       onLineStarted:
         m_PersistentCalls:
@@ -2075,13 +2075,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 194825187408983072, guid: db08289c6a7d3fb4a98b26a79d981810, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 194825187408983072, guid: db08289c6a7d3fb4a98b26a79d981810, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 194825187408983072, guid: db08289c6a7d3fb4a98b26a79d981810, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.89
+      objectReference: {fileID: 0}
     - target: {fileID: 6397804945350127365, guid: db08289c6a7d3fb4a98b26a79d981810, type: 3}
       propertyPath: m_Name
       value: SavePoint
       objectReference: {fileID: 0}
     - target: {fileID: 9129982963945585954, guid: db08289c6a7d3fb4a98b26a79d981810, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.61
+      value: 6.93
       objectReference: {fileID: 0}
     - target: {fileID: 9129982963945585954, guid: db08289c6a7d3fb4a98b26a79d981810, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3388,7 +3400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7872733703216788565, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0600375
+      value: 0.67725796
       objectReference: {fileID: 0}
     - target: {fileID: 7872733703216788565, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: m_LocalScale.y
@@ -3396,7 +3408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7872733703216788565, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.504327
+      value: -12.1861
       objectReference: {fileID: 0}
     - target: {fileID: 7872733703216788565, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3966,7 +3978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1647494310855884349, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.98
+      value: -3.84
       objectReference: {fileID: 0}
     - target: {fileID: 1647494310855884349, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: m_LocalPosition.y
