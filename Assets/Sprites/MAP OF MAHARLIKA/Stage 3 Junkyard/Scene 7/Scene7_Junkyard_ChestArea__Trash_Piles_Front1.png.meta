@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Scene7_Junkyard_ChestArea__Trash_Piles_Front1_0
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 224
+        width: 43
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db8636ed3dcc44a2abee97b64c9f92be
+      internalID: -216657572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene7_Junkyard_ChestArea__Trash_Piles_Front1_1
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 224
+        width: 43
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3708ffd18f7664935b9774328574c04e
+      internalID: -367667322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene7_Junkyard_ChestArea__Trash_Piles_Front1_2
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 208
+        width: 29
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ddfc6be099244fa4b261f88faf580bf
+      internalID: 326280736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene7_Junkyard_ChestArea__Trash_Piles_Front1_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 112
+        width: 40
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5c66d9f687ce46fbaede09dd4f6ad89
+      internalID: 1989076315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene7_Junkyard_ChestArea__Trash_Piles_Front1_4
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 96
+        width: 22
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162e72448fe414d838ab17596310d458
+      internalID: 518622300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene7_Junkyard_ChestArea__Trash_Piles_Front1_5
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 64
+        width: 22
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1021dc4cf838e4a69b682512fc2f6b33
+      internalID: -1131604216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene7_Junkyard_ChestArea__Trash_Piles_Front1_6
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 32
+        width: 29
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 882524e94947e4d78890a33a2dcc9238
+      internalID: 1204228134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +279,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scene7_Junkyard_ChestArea__Trash_Piles_Front1_0: -216657572
+      Scene7_Junkyard_ChestArea__Trash_Piles_Front1_1: -367667322
+      Scene7_Junkyard_ChestArea__Trash_Piles_Front1_2: 326280736
+      Scene7_Junkyard_ChestArea__Trash_Piles_Front1_3: 1989076315
+      Scene7_Junkyard_ChestArea__Trash_Piles_Front1_4: 518622300
+      Scene7_Junkyard_ChestArea__Trash_Piles_Front1_5: -1131604216
+      Scene7_Junkyard_ChestArea__Trash_Piles_Front1_6: 1204228134
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
