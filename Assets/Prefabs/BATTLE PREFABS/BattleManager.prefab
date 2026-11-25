@@ -1465,12 +1465,7 @@ MonoBehaviour:
   _cameraShaker: {fileID: 7734895897765780476}
   tutorial: {fileID: 1195197142901331589}
   tutorialItem: {fileID: 11400000, guid: 91bed03c488e35b4eb2409e3341ebc1f, type: 2}
-  battleMoveLibrary:
-    defaultMove: {fileID: 11400000, guid: c8588a414ead06645b2bb41f72168b18, type: 2}
-    battleMovesList:
-    - {fileID: 11400000, guid: 1a59b3b018b118a4db8fd7729f9d1708, type: 2}
-    - {fileID: 11400000, guid: c8588a414ead06645b2bb41f72168b18, type: 2}
-    - {fileID: 11400000, guid: ac5489ae9366464468fa441ee641ecd9, type: 2}
+  battleMoveLibrary: {fileID: 11400000, guid: 73a06901c5dd213438de776493862aad, type: 2}
   characterDamageText: {fileID: 587502001441309299, guid: 1595859342ecb9148b0056b8b5a381a8, type: 3}
   characterHealText: {fileID: 587502001441309299, guid: 1285eb21d36d1314cbdb77c8501f2ca6, type: 3}
   battleScene: {fileID: 3672982183760676639}

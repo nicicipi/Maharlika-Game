@@ -164,6 +164,10 @@ public class BattleCharacters : MonoBehaviour
         GameObject newObject = Instantiate(vfxObject, transform.position, transform.rotation);
         Debug.Log("Applying impact effect: " + newObject.name);
     }
+    public void ApplyStun()
+    {
+        // stuns the character, skipping the turn.
+    }
     public void RefreshSlider()
     {
         if (customSlider == null)
