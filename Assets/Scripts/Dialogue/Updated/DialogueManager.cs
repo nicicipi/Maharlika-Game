@@ -10,11 +10,15 @@ using static GameManager;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
-
+    
+    [Header("References")]
     public Image characterIcon;
     public TextMeshProUGUI characterName;
     public TextMeshProUGUI dialogueArea;
+    [SerializeField] private DialogueTextAnimator textAnimator;
+    [SerializeField] private AudioSource _voiceLineAudioSource;
 
+    [Header("Settings")]
     private Queue<DialogueLine> lines;
     private DialogueLine currentLine;
     private Dialogue currentDialogue;
@@ -23,8 +27,6 @@ public class DialogueManager : MonoBehaviour
     public float typingSpeed = 0.2f;
     public Animator animator;
 
-    [SerializeField]
-    private DialogueTextAnimator textAnimator;
 
     private UnityAction _onDialogueEnd;
     private GameState _onEndGameState;
@@ -112,7 +114,13 @@ public class DialogueManager : MonoBehaviour
             {
                 StopCoroutine(typingCoroutine);
             }
+            _voiceLineAudioSource.Stop();
+            if (currentLine.voiceLine != null)
+            {
+                _voiceLineAudioSource.clip = currentLine.voiceLine;
+                _voiceLineAudioSource.Play();
 
+            }
             dialogueArea.text = currentLine.line;
             isTyping = false;
             typingCoroutine = null;

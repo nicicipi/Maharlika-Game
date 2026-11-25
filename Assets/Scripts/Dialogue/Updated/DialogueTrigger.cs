@@ -17,6 +17,7 @@ public class DialogueLine
 
     [TextArea(3, 10)]
     public string line;
+    public AudioClip voiceLine;
 
     public UnityEvent onLineStarted;
 
