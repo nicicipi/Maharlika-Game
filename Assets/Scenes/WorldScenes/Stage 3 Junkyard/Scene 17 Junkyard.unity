@@ -807,7 +807,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1067345859
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: e8f9aae2aac70fc469281f1f8075db1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1671,10 +1671,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -12, y: 10.5}
-      - {x: -12, y: -10.5}
-      - {x: 12, y: -10.5}
-      - {x: 12, y: 10.5}
+    - - {x: -15, y: 10}
+      - {x: -15, y: -10}
+      - {x: 15, y: -10}
+      - {x: 15, y: 10}
   m_UseDelaunayMesh: 0
 --- !u!4 &1142520673
 Transform:
@@ -1865,7 +1865,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1067345859
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 651a0b741cd34bf4a9932725fcccfc9b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Maharlika Turn Based RPG.sln"
+    "dotnet.defaultSolution": "Maharlika-Game.sln"
 }

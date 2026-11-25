@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace BattleSystem
 {
-    [CreateAssetMenu(fileName = "New Battle Move", menuName = "Battle Move")]
+    [CreateAssetMenu(fileName = "New Battle Move", menuName = "Battle System/Battle Skill")]
     public class BattleSkills : ScriptableObject
     {
         public string skillName;
@@ -79,8 +79,16 @@ namespace BattleSystem
             target.DisplayHealText(finalHeal);
             target.RefreshSlider();
         }
-
-        
+    }
+    [Serializable]
+    public class StunAction : Action
+    {
+        public float chance = 0.5f;
+        public override void ApplyActionToTarget(BattleCharacters source, BattleCharacters target)
+        {
+           // target.applystun();
+           //
+        }
     }
 
 }

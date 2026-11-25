@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Scene9_Junkyard_ToCity__Containers_Back_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 240
+        width: 124
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8dbd2340aa344aad8b6003e98e5727d
+      internalID: 127008516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene9_Junkyard_ToCity__Containers_Back_1
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 240
+        width: 60
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 643ea261a69ee4ff29e459f5e983009f
+      internalID: -314123568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene9_Junkyard_ToCity__Containers_Back_2
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 240
+        width: 60
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c23aa8cf7c3e4a168190f09d0347450
+      internalID: -639301188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene9_Junkyard_ToCity__Containers_Back_3
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 240
+        width: 60
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5ce21e644bcc47c989a01aa63031dd4
+      internalID: -517590207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene9_Junkyard_ToCity__Containers_Back_4
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 240
+        width: 124
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4261051e6f2b54b8c9e1e8e051c69ddf
+      internalID: -1552212997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene9_Junkyard_ToCity__Containers_Back_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 80
+        width: 14
+        height: 134
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0af16c344292d4f81b7e0bdcc15c8243
+      internalID: 555453533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene9_Junkyard_ToCity__Containers_Back_6
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 0
+        width: 14
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5668e158ec274457fb8bd76e168834d4
+      internalID: 2098861453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene9_Junkyard_ToCity__Containers_Back_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 14
+        height: 70
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48a5ac5683ee8427492132ed02abea92
+      internalID: 2140064712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +300,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scene9_Junkyard_ToCity__Containers_Back_0: 127008516
+      Scene9_Junkyard_ToCity__Containers_Back_1: -314123568
+      Scene9_Junkyard_ToCity__Containers_Back_2: -639301188
+      Scene9_Junkyard_ToCity__Containers_Back_3: -517590207
+      Scene9_Junkyard_ToCity__Containers_Back_4: -1552212997
+      Scene9_Junkyard_ToCity__Containers_Back_5: 555453533
+      Scene9_Junkyard_ToCity__Containers_Back_6: 2098861453
+      Scene9_Junkyard_ToCity__Containers_Back_7: 2140064712
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

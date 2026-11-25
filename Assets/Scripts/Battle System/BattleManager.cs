@@ -27,7 +27,7 @@ public class BattleManager : MonoBehaviour
 
 
     [Header("Battle Moves")]
-    public BattleMoveLibrary battleMoveLibrary;
+    public BattleSkillLibrary battleMoveLibrary;
     public CharacterDamageGUI characterDamageText;
     public CharacterDamageGUI characterHealText;
     [Header("Battle UI")]
@@ -529,35 +529,5 @@ public class BattleManager : MonoBehaviour
     {
         PlayerTurn,
         EnemyTurn,
-    }
-}
-[System.Serializable]
-public class BattleMoveLibrary
-{
-    public BattleSkills defaultMove;
-    public BattleSkills[] battleMovesList;
-    public BattleSkills GetBattleMoveByName(string moveName)
-    {
-        foreach (var move in battleMovesList)
-        {
-            if (move.skillName == moveName)
-                return move;
-        }
-        return null;
-    }
-    public List<BattleSkills> GetBattleMoves(List<string> names)
-    {
-        List<BattleSkills> moves = new();
-
-        foreach (var moveName in names)
-        {
-            Debug.Log($"Searching for move: {moveName}");
-            BattleSkills move = GetBattleMoveByName(moveName);
-
-            if (move != null)
-                moves.Add(move);
-        }
-
-        return moves;
     }
 }

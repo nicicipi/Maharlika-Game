@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,7 +121,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Scene8_Junkyard_AD4M__Containers_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 288
+        width: 60
+        height: 182
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25183f69d1f23483faa8441dfb0e1fc9
+      internalID: -318562517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene8_Junkyard_AD4M__Containers_1
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 384
+        width: 124
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc95ca5df400146d69bd54e7f9a43fce
+      internalID: 480973682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene8_Junkyard_AD4M__Containers_2
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 383
+        width: 124
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baff12c7aa7f34a0099a249a584b1822
+      internalID: 941759640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene8_Junkyard_AD4M__Containers_3
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 384
+        width: 60
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1174d8c2f77a42e0b172c22b7bcb21d
+      internalID: -1595925205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene8_Junkyard_AD4M__Containers_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 192
+        width: 60
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83921e00008a64bb19daafacfc8bb802
+      internalID: 610460186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene8_Junkyard_AD4M__Containers_5
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 192
+        width: 124
+        height: 86
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85cd8144a30ab4486868644107a74532
+      internalID: -754308260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene8_Junkyard_AD4M__Containers_6
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 192
+        width: 60
+        height: 182
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1b441c80c1504b3bbd19ea944d348e6
+      internalID: 447857100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +279,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Scene8_Junkyard_AD4M__Containers_0: -318562517
+      Scene8_Junkyard_AD4M__Containers_1: 480973682
+      Scene8_Junkyard_AD4M__Containers_2: 941759640
+      Scene8_Junkyard_AD4M__Containers_3: -1595925205
+      Scene8_Junkyard_AD4M__Containers_4: 610460186
+      Scene8_Junkyard_AD4M__Containers_5: -754308260
+      Scene8_Junkyard_AD4M__Containers_6: 447857100
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
