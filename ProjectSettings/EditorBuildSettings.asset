@@ -120,4 +120,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorldScenes/Stage 3 Junkyard/Scene 21 Junkyard.unity
     guid: a5e8ec82cb34e1b4d8d0e5908722dee2
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 3 Junkyard/Scene 22 Junkyard.unity
+    guid: a846c4f7223e6344fa435ce975221f93
   m_configObjects: {}
