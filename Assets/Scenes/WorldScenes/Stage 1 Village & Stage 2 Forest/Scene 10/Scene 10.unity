@@ -890,6 +890,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 527314692}
+  - component: {fileID: 527314694}
+  - component: {fileID: 527314693}
   m_Layer: 0
   m_Name: Dialogue 1
   m_TagString: Untagged
@@ -906,12 +908,101 @@ Transform:
   m_GameObject: {fileID: 527314691}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8987571, y: 1.3585024, z: 0.031927794}
+  m_LocalPosition: {x: 0.42, y: -11.29, z: 0.031927794}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &527314693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527314691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb36200979016d44e95cfa4a765ce9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerOnEnter: 1
+  dialogue:
+    dialogueLines:
+    - character:
+        name: ???
+        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
+      line: Help!
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    onDialogueStarted:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueEnded:
+      m_PersistentCalls:
+        m_Calls: []
+  followUpDialogue:
+    dialogueLines: []
+    onDialogueStarted:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueEnded:
+      m_PersistentCalls:
+        m_Calls: []
+  followUpQuestToCheck: 
+--- !u!61 &527314694
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527314691}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.020020425, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.003069, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &538029363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3211,12 +3302,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2641537235915668120, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2125580932}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
 --- !u!1 &1458960606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1975241522543346550, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
+  m_PrefabInstance: {fileID: 1458960605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1458960607 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2641537235915668120, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
   m_PrefabInstance: {fileID: 1458960605}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1575740592
@@ -3787,6 +3886,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125580932}
+  - component: {fileID: 2125580933}
+  - component: {fileID: 2125580934}
   m_Layer: 0
   m_Name: Dialogue 2 Thank you!
   m_TagString: Untagged
@@ -3802,13 +3903,539 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125580931}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8987571, y: 1.3585024, z: 0.031927794}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.26000002, y: -4.18, z: 0.031927794}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1458960607}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2125580933
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125580931}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.14014244, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 16.495834, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &2125580934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125580931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb36200979016d44e95cfa4a765ce9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerOnEnter: 1
+  dialogue:
+    dialogueLines:
+    - character:
+        name: ???
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: "They\u2019re gone\u2026\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: ???
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: "Who are you\u2026?\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: "I\u2019m Lyka. What\u2019s your name?\r\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: "I heard you scream for help. I couldn\u2019t just leave you behind.\r\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: I'm Briar...
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: "You didn\u2019t hesitate in defeating the robots, that\u2019s very brave
+        of you.\r\n"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: "I\u2019m just doing what I can. "
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: "My village is about to be destroyed.\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: "Our land will be taken from us, I can\u2019t just stand by.\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: Especially when CARE CO. is the one involved.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 2
+      effectStrength: 1
+      effectSpeed: 1
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: I see.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: "I\u2026was in the same situation as you.\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: "What do you mean?\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: "Long ago\u2026my village was destroyed, our land taken. Everyone gone...
+        except me.\r\n"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: "Those robots. They were the ones who took everything from me.\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: "I never stopped running since but the robots\u2026they\u2019ve been
+        coming more to the forest. \r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: "But I don\u2019t want to be scared anymore. Thanks to what you did."
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: "To be honest, I\u2019m terrified. "
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: "I\u2019m scared of what they\u2019ll do to my village, I\u2019m scared
+        of what they\u2019ll do to our home. \r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: "But I can\u2019t just let that happen, I have to be brave because I
+        need to be.\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: ...
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: "You have a very strong will, Lyka\u2026\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: "...?\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: "I\u2019ll help you. "
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: Briar, you don't have to.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: No. I want to.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: "I don\u2019t want the same thing to happen to you too."
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: "I- don\u2019t know much about fighting but I know I can support you.\r"
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Briar
+        icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
+      line: I can make potions that will help you.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: Well then...
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    - character:
+        name: Lyka
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+      line: I look forward to it.
+      onLineStarted:
+        m_PersistentCalls:
+          m_Calls: []
+      textEffect: 0
+      effectStrength: 0
+      effectSpeed: 0
+      useCustomTypingSpeed: 0
+      typingSpeed: 0
+      itemRewardName: 
+      itemRewardAmount: 0
+    onDialogueStarted:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueEnded:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2125580931}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  followUpDialogue:
+    dialogueLines: []
+    onDialogueStarted:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueEnded:
+      m_PersistentCalls:
+        m_Calls: []
+  followUpQuestToCheck: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3820,4 +4447,3 @@ SceneRoots:
   - {fileID: 1650848364}
   - {fileID: 1458960605}
   - {fileID: 527314692}
-  - {fileID: 2125580932}
