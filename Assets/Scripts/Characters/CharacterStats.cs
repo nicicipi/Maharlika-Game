@@ -132,11 +132,12 @@ namespace SaveSystem
         {
             currentHP = Mathf.Clamp(currentHP + amountHPtoAdd, 0, maxHP);
         }
-        public void TakeDamageWithMitigation(int amountHPtoReduce)
+        public int TakeDamageWithMitigation(int amountHPtoReduce)
         {
             amountHPtoReduce -= armorDefence;
-
-            currentHP = Mathf.Clamp(currentHP - amountHPtoReduce, 0, maxHP);
+            int finalDamage = currentHP - amountHPtoReduce;
+            currentHP = Mathf.Clamp(finalDamage, 0, maxHP);
+            return amountHPtoReduce;
         }
 
         public void AddSP(int amountSPtoAdd)

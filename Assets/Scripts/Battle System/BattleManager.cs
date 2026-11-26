@@ -434,7 +434,7 @@ public class BattleManager : MonoBehaviour
         }
 
         yield return SceneTransition.instance.FadeFromBlack();
-
+        yield return new WaitForSeconds(1f);
         GameManager.Singleton.SetGameState(GameState.Roaming);
     }
     public void RunAway(float chance)
@@ -484,7 +484,7 @@ public class BattleManager : MonoBehaviour
             case TargetSelection.SingleEnemy:
                 var aliveEnemies = enemytargets.Where(e => !e.isDead).ToList();
                 if (aliveEnemies.Count > 0)
-                    targets.Add(aliveEnemies[Random.Range(0, aliveEnemies.Count)]);
+                    targets.AddRange(aliveEnemies);
                 break;
             case TargetSelection.RandomEnemy:
                 var aliveEnemiesRandom = enemytargets.Where(e => !e.isDead).ToList();
@@ -496,8 +496,7 @@ public class BattleManager : MonoBehaviour
                 break;
             case TargetSelection.SingleAlly:
                 var aliveAllies = allytargets.Where(p => !p.isDead).ToList();
-                if (aliveAllies.Count > 0)
-                    targets.Add(aliveAllies[Random.Range(0, aliveAllies.Count)]);
+                targets.AddRange(aliveAllies);
                 break;
             case TargetSelection.RandomAlly:
                 var aliveAlliesRandom = allytargets.Where(p => !p.isDead).ToList();

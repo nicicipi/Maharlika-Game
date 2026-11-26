@@ -55,9 +55,8 @@ namespace BattleSystem
             { 
                 finalDamage += source.CharacterData.stats.weaponPower + source.CharacterData.stats.attack;
             }
-            target.CharacterData.stats.TakeDamageWithMitigation(finalDamage);
             target.TakeDamage();
-            target.DisplayDamageText(finalDamage);
+            target.DisplayDamageText(target.CharacterData.stats.TakeDamageWithMitigation(finalDamage));
             Debug.Log($"{source.CharacterData.characterName} attacks {target.CharacterData.characterName} for {finalDamage} damage");
         }
     }
