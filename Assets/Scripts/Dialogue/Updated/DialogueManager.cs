@@ -244,6 +244,7 @@ public class DialogueManager : MonoBehaviour
         {
             currentDialogue.onDialogueEnded?.Invoke();
             currentDialogue = null;
+            _voiceLineAudioSource?.Stop();
         }
 
         if (animator != null)

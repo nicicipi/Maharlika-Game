@@ -27,7 +27,11 @@ public class ItemsAssets : MonoBehaviour
             _itemMap[item.itemName] = item; 
         }
     }
-
+    [ContextMenu("Load All Items")]
+    private void GetAllItemData()
+    {
+        itemsAvailable = Resources.LoadAll<ItemData>("ScriptableObjects/Items");
+    }
     public ItemData GetItemData(string itemID)
     {
         if (string.IsNullOrWhiteSpace(itemID))
