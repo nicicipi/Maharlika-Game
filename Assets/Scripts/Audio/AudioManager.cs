@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UIElements;
 
 public class AudioManager : MonoBehaviour
 {
+    public AudioMixerGroup MasterMixer;
+    public AudioMixerGroup SFXMixer;
+    public AudioMixerGroup MusicMixer;
+    public AudioMixerGroup CharacterMixer;
     [SerializeField] AudioSource[] SFX, backgroundMusic;
 
     public static AudioManager instance;
@@ -34,7 +39,6 @@ public class AudioManager : MonoBehaviour
             SFX[soundToPlay].Play();
         }
     }
-
     public void PlayBackgroundMusic(int musicToPlay)
     {
         if (musicToPlay < 0 || musicToPlay >= backgroundMusic.Length)
@@ -107,5 +111,9 @@ public class AudioManager : MonoBehaviour
             pausedExplorationMusic.UnPause();
             pausedExplorationMusic = null;
         }
+    }
+    public void ChangeVolume(AudioMixerGroup mixerGroup, float Volume)
+    {
+        mixerGroup.audioMixer.SetFloat("Volume", Mathf.Log(Volume) * 20);
     }
 }

@@ -127,16 +127,17 @@ public class GameMenuManager : MonoBehaviour
         itemSlotContainerParent = ResolveItemContentParent(
             itemSlotContainerParent
         );
-
+        Debug.Log("Updating Items");
         if (itemSlotContainerParent == null)
         {
             Debug.LogError(
-                "GameMenuManager: Consumable slot content parent is not assigned."
+                "GameMenuManager: Item slot content parent is not assigned."
             );
 
             return;
         }
 
+        Debug.Log("Destroying existing Items");
         foreach (Transform itemSlot in itemSlotContainerParent)
         {
             if (itemSlot.GetComponent<ItemButton>() != null)
@@ -151,12 +152,15 @@ public class GameMenuManager : MonoBehaviour
             return;
         }
 
+        Debug.Log("Getting Items");
         foreach (var item in Inventory.Singleton.GetItemsList())
         {
             if (item == null)
             {
+                Debug.Log("Item Null");
                 continue;
             }
+            Debug.Log("Adding " + item.itemData.name);
 
             RectTransform itemSlot = Instantiate(itemSlotContainer, itemSlotContainerParent).GetComponent<RectTransform>();
 
@@ -168,7 +172,6 @@ public class GameMenuManager : MonoBehaviour
             //    itemsAmountText.text = item.amount.ToString();
             //else
                 itemsAmountText.text = "";
-
             itemSlot.GetComponent<ItemButton>().SetupItem(item.itemData, item.amount);
         }
     }

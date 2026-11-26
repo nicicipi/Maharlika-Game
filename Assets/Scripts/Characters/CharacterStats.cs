@@ -146,11 +146,33 @@ namespace SaveSystem
             equippedArmorName = armorName;
             this.armorDefence = armorDefence;
         }
+        public void UnequipWeapon()
+        {
+            if (equippedWeaponName == "None")
+            {
+                return;
+            }
+            Inventory.Singleton.AddItem(equippedArmorName, 1);
+
+            equippedWeaponName = "None";
+            this.weaponPower = 0;
+        }
+        public void UnequipArmor()
+        {
+            if (equippedArmorName == "None")
+            {
+                return;
+            }
+            Inventory.Singleton.AddItem(equippedArmorName,1);
+            equippedArmorName = "None";
+            this.armorDefence = 0;
+        }
 
         public void UseItemOnCharacter(ItemData item)
         {
             if (item.itemType == ItemType.Consumable)
             {
+                AudioManager.instance.PlaySFX(16);
                 if (item.affectType == AffectType.HP)
                 {
                     ModifyHP(item.amountOfAffect);
@@ -160,14 +182,19 @@ namespace SaveSystem
                     AddSP(item.amountOfAffect);
                 }
             }
-
             else if (item.itemType == ItemType.Weapon)
             {
+                AudioManager.instance.PlaySFX(4);
+                UnequipWeapon();
                 EquipWeapon(item.itemName, item.weaponPower);
+                Inventory.Singleton.RemoveItem(item,1);
             }
             else if (item.itemType == ItemType.Armor)
             {
+                AudioManager.instance.PlaySFX(4);
+                UnequipArmor();
                 EquipArmor(item.itemName, item.armorDefence);
+                Inventory.Singleton.RemoveItem(item,1);
             }
         }
     }

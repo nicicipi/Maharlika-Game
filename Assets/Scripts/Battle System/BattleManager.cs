@@ -39,7 +39,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private CharacterStatsPanel _characterStatsPanel;
     [SerializeField] private List<BattleCharacters> _battleCharacterViewPlayers = new();
     [SerializeField] private List<BattleCharacters> _battleCharacterViewEnemies = new();
-    public BattleNotification battleNotice;
+    public NotificationPanel battleNotice => NotificationPanel.Singleton;
 
     [Header("Battle Settings")]
     private UIState _currentUIState;
@@ -146,6 +146,8 @@ public class BattleManager : MonoBehaviour
         if (_battleRoutine != null)
             Debug.LogError("Battle is stil active");
 
+
+        _runningAway = false;
         _rewardsPool.Clear();
         GameManager.Singleton.SetGameState(GameState.Battle);
         _currentBattleTrigger = currentBattleTrigger; ;
@@ -360,6 +362,7 @@ public class BattleManager : MonoBehaviour
     }
     public IEnumerator ExecuteMove(BattleCharacters source, BattleSkills battleMove, List<BattleCharacters> targets)
     {
+        source.CharacterData.stats.currentStamina -= battleMove.staminaCost;
         _currentBattleMove = battleMove;
         foreach (var target in targets)
         {
@@ -417,12 +420,16 @@ public class BattleManager : MonoBehaviour
                 break;
             case BattleResult.Defeat:
                 GameManager.Singleton.SetPlayState(PlayState.GameOver);
-                battleNotice.SetText("Game Over!");
-                battleNotice.Activate();
+                battleNotice.ShowNotification("Game Over!");
                 yield return new WaitForSeconds(3f);
                 SceneManager.LoadScene("GameOverScene");
                 yield break;
             case BattleResult.PlayerRun:
+                if (_currentBattleTrigger != null)
+                {
+                    _currentBattleTrigger.PlayerRun();
+                    _currentBattleTrigger = null;
+                }
                 break;
         }
 
@@ -435,13 +442,11 @@ public class BattleManager : MonoBehaviour
         if (Random.value > chance)
         {
             _runningAway = true;
-            battleNotice.SetText("Succesfully ran away!");
-            battleNotice.Activate();
+            battleNotice.ShowNotification("Succesfully ran away!");
         }
         else
         {
-            battleNotice.SetText("You failed to run away!");
-            battleNotice.Activate();
+            battleNotice.ShowNotification("You failed to run away!");
         }
         TriggerPlayerInputEnd();
     }

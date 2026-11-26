@@ -1067,12 +1067,12 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 730551376}
-        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
-        m_MethodName: SwitchCamera
+      - m_Target: {fileID: 730551378}
+        m_TargetAssemblyTypeName: SaveFlagHandler, Assembly-CSharp
+        m_MethodName: TriggerSaveFlag
         m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 2094113639}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1101,6 +1101,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: RB-02, what's the status over there?
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1115,6 +1116,7 @@ MonoBehaviour:
         name: RB-02
         icon: {fileID: 739409480, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
       line: Good so far, Boss. We're almost done with Operation Red Grass!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1129,6 +1131,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: Keep up the good work. Finally, this land will be mine.
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1143,6 +1146,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: (What are they talking about?)
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1157,6 +1161,7 @@ MonoBehaviour:
         name: RB-02
         icon: {fileID: 739409480, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
       line: Are there tasks left you'd like to remind, Boss? Before I disconnect?
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1171,6 +1176,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: Make sure...
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1185,6 +1191,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: To burn everything into crisps!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1199,6 +1206,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: (What?! How could he say that?!)
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1213,6 +1221,7 @@ MonoBehaviour:
         name: RB-02
         icon: {fileID: 739409480, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
       line: If we do, should we evacuate the residents?
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1227,6 +1236,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: HAHAHA... Funny robot
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1241,6 +1251,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: I couldn't care less about the residents, burn them as well!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1255,6 +1266,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: Hey clanker!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls:
@@ -1281,6 +1293,7 @@ MonoBehaviour:
         name: RB-02
         icon: {fileID: 739409480, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
       line: Who goes here?!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1296,6 +1309,7 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: I won't let you destroy the legacy our ancestors worked so hard for over
         some petty cash!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1310,6 +1324,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: RB-02, it's just a brat, get her!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1324,6 +1339,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: I'll destroy you!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1897,19 +1913,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0
+      value: 0.12154697
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.043165468
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 1
+      value: 0.7513812
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.91321945
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1608576437782023635, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1957,15 +1973,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2303353305871963011, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0001586318
+      value: 0.00015863198
       objectReference: {fileID: 0}
     - target: {fileID: 2303353305871963011, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000005841357
+      value: -0.00000013123292
       objectReference: {fileID: 0}
     - target: {fileID: 2303353305871963011, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -9.2662246e-11
+      value: 2.0777694e-11
       objectReference: {fileID: 0}
     - target: {fileID: 3224683150074499699, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_Follow
@@ -2087,6 +2103,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.89
       objectReference: {fileID: 0}
+    - target: {fileID: 1446995937419452648, guid: db08289c6a7d3fb4a98b26a79d981810, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6397804945350127365, guid: db08289c6a7d3fb4a98b26a79d981810, type: 3}
       propertyPath: m_Name
       value: SavePoint
@@ -3660,7 +3680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -3679,6 +3699,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 67817095}
@@ -3695,6 +3719,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2045146957}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1261685105877389358}
+    - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -3704,6 +3732,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
@@ -3723,6 +3755,10 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: TriggerSaveFlag
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: CameraManager, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -3739,7 +3775,15 @@ PrefabInstance:
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: SaveFlagHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
@@ -3772,6 +3816,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7165273521590129521, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}

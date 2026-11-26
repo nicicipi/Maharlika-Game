@@ -188,7 +188,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1647494310855884349}
   - component: {fileID: 3688965971562171685}
-  - component: {fileID: 7912274518502058770}
   - component: {fileID: 6162297419115876842}
   - component: {fileID: 7437911899674319545}
   - component: {fileID: 8668770695232593382}
@@ -277,41 +276,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!70 &7912274518502058770
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4829015032231721720}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.058149338, y: -0.27732736}
-  m_Size: {x: 0.6136074, y: 1.6762298}
-  m_Direction: 0
 --- !u!50 &6162297419115876842
 Rigidbody2D:
   serializedVersion: 4
@@ -384,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab882bffeb5f46e44a0603a5b56ac73d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 5
 --- !u!114 &9119732411906864853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,6 +407,7 @@ MonoBehaviour:
   OnPointerInput:
     m_PersistentCalls:
       m_Calls: []
+  startMovementDelay: 1
 --- !u!114 &6599951232873752345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,7 +584,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1.3558764}
   serializedVersion: 2
-  m_Radius: 2.1966414
+  m_Radius: 2
 --- !u!114 &6950921848870932604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,7 +597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df38b6aa6c8d6494a9c2731dd973b091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyId: RobotTutorialEnemy
   enemyDatas:
   - Enemy: {fileID: 11400000, guid: 34bfc9a205fe56a4f8f2f7563f084d0c, type: 2}
     rewards:
@@ -662,6 +626,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnPlayerRun:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7857546637586724463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,8 +641,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c007226d51c034b9bcd2162a48b4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oneShot: 1
-  disableAfterTrigger: 1
+  oneShot: 0
+  disableAfterTrigger: 0
   collisionTag: Player
   onTriggerEnter:
     m_PersistentCalls:

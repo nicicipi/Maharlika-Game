@@ -10,9 +10,13 @@ public class CharacterDamageGUI : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        transform.position += new Vector3(RandomRange(), RandomRange(),0);
+    }
+    private float RandomRange()
+    {
+        return UnityEngine.Random.Range(-3f, 3f);
     }
 
     // Update is called once per frame

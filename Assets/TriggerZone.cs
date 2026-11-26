@@ -19,6 +19,9 @@ public class TriggerZone : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (GameManager.Singleton.CurrentGameState != GameManager.GameState.Roaming)
+            return;
+
         if (!IsCorrectCollision(collision))
         {
             return;
@@ -40,6 +43,9 @@ public class TriggerZone : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (GameManager.Singleton.CurrentGameState != GameManager.GameState.Roaming)
+            return;
+
         if (!IsCorrectCollision(collision))
         {
             return;

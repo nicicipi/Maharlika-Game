@@ -90,7 +90,8 @@ namespace SaveSystem
             stats = new();
             moveSets = new()
             {
-                "Hit"
+                "Hit",
+                "Slash 3"
             };
         }
         public void AddNewMove(BattleSkills move)

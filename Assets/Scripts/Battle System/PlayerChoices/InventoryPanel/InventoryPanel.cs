@@ -67,8 +67,7 @@ public class InventoryPanel : MonoBehaviour
         }
         else
         {
-            BattleManager.instance.battleNotice.SetText("Equipped " + _selectedItem.itemName + " on " + character.CharacterData.characterName);
-            BattleManager.instance.battleNotice.Activate();
+            BattleManager.instance.battleNotice.ShowNotification("Equipped " + _selectedItem.itemName + " on " + character.CharacterData.characterName);
         }
         gameObject.SetActive(false);
         BattleManager.instance.StartCoroutine(EndInput());

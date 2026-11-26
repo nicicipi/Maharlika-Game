@@ -16,6 +16,10 @@ public class Inventory : MonoBehaviour
         }
         Singleton = this;
     }
+    public void AddItem(string name, int count)
+    {
+        AddItem(ItemsAssets.Singleton.GetItemData(name), count);
+    }
     public void AddItem(ItemData item, int count = 1)
     {
         if (item == null || count <= 0) return;
@@ -38,20 +42,27 @@ public class Inventory : MonoBehaviour
             AddItem(item, 1);
     }
 
-    public void RemoveItem(ItemData item, int count = 1)
+    public bool RemoveItem(ItemData item, int count = 1)
     {
-        if (item == null) 
-            return;
-        
-        ItemDataWrapper existingItem = itemsList.Find(x => x.itemData == item);
+        if (item == null)
+        {
+            Debug.LogError("Item does not exist");
+            return false;
+        }
+
+            ItemDataWrapper existingItem = itemsList.Find(x => x.itemData == item);
         
         if (existingItem == null) 
-            return;
+            return false;
+
+        if (existingItem.amount <= 0)
+            return false;
         
         existingItem.amount -= count;
         
         if (existingItem.amount <= 0) 
             itemsList.Remove(existingItem);
+        return true;
     }
     public bool HasItem(ItemData item)
     {

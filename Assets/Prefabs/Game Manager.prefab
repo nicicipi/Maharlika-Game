@@ -741,6 +741,34 @@ MonoBehaviour:
     target: {fileID: 102900000, guid: e77c1c4f56cc506498bb551903c31950, type: 3}
   - sceneId: 18
     target: {fileID: 102900000, guid: d80abe1482c41f146a137f37fbfd778b, type: 3}
+  - sceneId: 19
+    target: {fileID: 102900000, guid: 7058677bfe6d60243913749e646f1ef2, type: 3}
+  - sceneId: 20
+    target: {fileID: 102900000, guid: 361daf13cbcfdbb4bbabcb905b7c9a09, type: 3}
+  - sceneId: 21
+    target: {fileID: 102900000, guid: 2343c8f383898b544b2f4dd5e571087a, type: 3}
+  - sceneId: 22
+    target: {fileID: 102900000, guid: 382acf6abf409274194899ba80ff2361, type: 3}
+  - sceneId: 23
+    target: {fileID: 102900000, guid: a5e8ec82cb34e1b4d8d0e5908722dee2, type: 3}
+  - sceneId: 24
+    target: {fileID: 102900000, guid: a846c4f7223e6344fa435ce975221f93, type: 3}
+  - sceneId: 25
+    target: {fileID: 102900000, guid: 6f1a26e1738ee4e9ba236730bef2a48c, type: 3}
+  - sceneId: 26
+    target: {fileID: 102900000, guid: 607557c1401b7428e923d2667d82d4c3, type: 3}
+  - sceneId: 27
+    target: {fileID: 102900000, guid: cddea27c52570452fa0a49486f5aecb1, type: 3}
+  - sceneId: 28
+    target: {fileID: 102900000, guid: 9f539cf0ccd62824880fc806bf7b0edb, type: 3}
+  - sceneId: 29
+    target: {fileID: 102900000, guid: 6eaa07e1796cd104085638fe312a1b44, type: 3}
+  - sceneId: 30
+    target: {fileID: 102900000, guid: f5f247e3889258a46a11dcade8cdf972, type: 3}
+  - sceneId: 31
+    target: {fileID: 102900000, guid: 7058677bfe6d60243913749e646f1ef2, type: 3}
+  - sceneId: 32
+    target: {fileID: 102900000, guid: 7058677bfe6d60243913749e646f1ef2, type: 3}
 --- !u!1 &6939704286160997414
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +893,7 @@ MonoBehaviour:
   - characterName: Briar
     battleSprite: {fileID: 21300000, guid: b428e835f980fdc4aaf1c862c5d26ecc, type: 3}
     downedSprite: {fileID: 21300000, guid: e727c037f076fab4f9ad3658c17c3b4e, type: 3}
-    dialogueSprite: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
+    dialogueSprite: {fileID: 21300000, guid: b98fdb822f042f445a00cee772eb88d7, type: 3}
   - characterName: Adam
     battleSprite: {fileID: 21300000, guid: a08897b718864954d860cbe834f55436, type: 3}
     downedSprite: {fileID: 21300000, guid: d88a57e43b8bab04b8cd39ff18c4208c, type: 3}

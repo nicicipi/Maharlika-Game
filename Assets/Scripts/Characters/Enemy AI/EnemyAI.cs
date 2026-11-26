@@ -23,6 +23,7 @@ public class EnemyAI : MonoBehaviour
     public UnityEvent<Vector2> OnMovementInput = new();
     public UnityEvent<Vector2> OnPointerInput = new();
 
+    [SerializeField] private float startMovementDelay = 1f;
    
     private void OnEnable()
     {
@@ -79,6 +80,7 @@ public class EnemyAI : MonoBehaviour
             {
                 if (TryGetTarget(out Transform target))
                     aiData.currentTarget = target;
+                yield return new WaitForSeconds(startMovementDelay);
             }
 
             Vector2 movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aiData);

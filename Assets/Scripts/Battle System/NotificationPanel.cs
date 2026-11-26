@@ -1,95 +1,124 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class BattleNotification : MonoBehaviour
+public class NotificationPanel : MonoBehaviour
 {
+    public static NotificationPanel Singleton;
+
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI textNotice;
     [SerializeField] private RectTransform rectTransform;
     [SerializeField] private CanvasGroup canvasGroup;
 
     [Header("Animation Settings")]
-    [SerializeField] private float slideDuration = 0.5f;  // Time to slide into place
-    [SerializeField] private float displayDuration = 1.3f;  // Time it stays on screen
-    [SerializeField] private float fadeDuration = 0.35f;   // Time to fade out
-    [SerializeField] private float slideInOffset = 300f;   // Starting distance to the left
+    [SerializeField] private float slideDuration = 0.5f;
+    [SerializeField] private float displayDuration = 1.3f;
+    [SerializeField] private float fadeDuration = 0.35f;
+    [SerializeField] private float slideInOffset = 300f;
 
     private Vector2 targetPosition;
+    private Queue<string> notificationQueue = new();
     private Coroutine currentNoticeRoutine;
 
     private void Awake()
     {
+        if (Singleton != null)
+        {
+            Destroy(this);
+            return;
+        }
+
+        Singleton = this;
+
         if (rectTransform == null)
             rectTransform = GetComponent<RectTransform>();
 
         if (canvasGroup == null)
             canvasGroup = GetComponent<CanvasGroup>();
 
-        // Cache the resting anchored position
         targetPosition = rectTransform.anchoredPosition;
+
+        canvasGroup.alpha = 0f;
     }
 
-    public void SetText(string text)
+    public void ShowNotification(string text)
     {
-        textNotice.text = text;
+        notificationQueue.Enqueue(text);
+
+        if (currentNoticeRoutine == null)
+        {
+            gameObject.SetActive(true);
+            currentNoticeRoutine = StartCoroutine(ProcessNotificationQueue());
+        }
     }
 
-    public void Activate()
+    private IEnumerator ProcessNotificationQueue()
     {
-        // Stop any currently running animation so rapid calls reset cleanly
-        if (currentNoticeRoutine != null)
-            StopCoroutine(currentNoticeRoutine);
+        while (notificationQueue.Count > 0)
+        {
+            string notification = notificationQueue.Dequeue();
 
-        gameObject.SetActive(true);
-        currentNoticeRoutine = StartCoroutine(SlideAndFadeRoutine());
+            textNotice.text = notification;
+
+            yield return StartCoroutine(SlideAndFadeRoutine());
+        }
+
+        currentNoticeRoutine = null;
+        gameObject.SetActive(false);
     }
 
     private IEnumerator SlideAndFadeRoutine()
     {
-        // 1. Setup starting state (off-screen left and fully visible)
+        // 1. Setup starting state
         Vector2 startPosition = targetPosition - new Vector2(slideInOffset, 0);
+
         rectTransform.anchoredPosition = startPosition;
         canvasGroup.alpha = 1f;
 
-        // 2. Slide from left to right into final position
+        // 2. Slide into position
         float elapsed = 0f;
+
         while (elapsed < slideDuration)
         {
             elapsed += Time.deltaTime;
+
             float t = elapsed / slideDuration;
-            // Smooth ease-out curve
             t = Mathf.Sin(t * Mathf.PI * 0.5f);
 
-            rectTransform.anchoredPosition = Vector2.Lerp(startPosition, targetPosition, t);
+            rectTransform.anchoredPosition =
+                Vector2.Lerp(startPosition, targetPosition, t);
+
             yield return null;
         }
 
         rectTransform.anchoredPosition = targetPosition;
 
-        // 3. Pause so the player can read the notice
+        // 3. Display notification
         yield return new WaitForSeconds(displayDuration);
 
         // 4. Fade out
         elapsed = 0f;
+
         while (elapsed < fadeDuration)
         {
             elapsed += Time.deltaTime;
+
             canvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
+
             yield return null;
         }
 
         // 5. Cleanup
         canvasGroup.alpha = 0f;
-        gameObject.SetActive(false);
-        currentNoticeRoutine = null;
     }
 
     public IEnumerator WaitUntilFinished()
     {
-        while (currentNoticeRoutine != null)
+        while (currentNoticeRoutine != null || notificationQueue.Count > 0)
         {
             yield return null;
         }

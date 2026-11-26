@@ -933,6 +933,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: Help!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1702,7 +1703,7 @@ Transform:
   m_GameObject: {fileID: 917094800}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.86, y: 3.15, z: 0}
+  m_LocalPosition: {x: 10.21, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2717,7 +2718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0
+      value: 0.12578616
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
@@ -2725,7 +2726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 1
+      value: 0.7505241
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
@@ -3234,11 +3235,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2641537235915668120, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.6
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 2641537235915668120, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.06
+      value: 4.18
       objectReference: {fileID: 0}
     - target: {fileID: 2641537235915668120, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3281,7 +3282,15 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5566659115986087663, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566659115986087663, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1458960606}
+    - target: {fileID: 5566659115986087663, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1458960606}
     - target: {fileID: 5566659115986087663, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
@@ -3289,7 +3298,15 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5566659115986087663, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566659115986087663, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566659115986087663, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 5566659115986087663, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
@@ -3297,7 +3314,15 @@ PrefabInstance:
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5566659115986087663, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566659115986087663, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566659115986087663, guid: 3d770484e27e46e4597bd711c2d8bdc7, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3732,7 +3757,19 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnAlreadyTriggered.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: OnRuntimeTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnRuntimeTrigger.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnAlreadyTriggered.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
@@ -3744,11 +3781,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1650848363}
     - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnRuntimeTrigger.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1650848363}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: OnAlreadyTriggered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1650848363}
     - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnAlreadyTriggered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1865765796}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: OnRuntimeTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnRuntimeTrigger.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
@@ -3756,7 +3805,27 @@ PrefabInstance:
       value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnRuntimeTrigger.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnAlreadyTriggered.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnAlreadyTriggered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: OnRuntimeTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnRuntimeTrigger.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnAlreadyTriggered.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
@@ -3769,6 +3838,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: OnRuntimeTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnRuntimeTrigger.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 361773047101532115, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: OnAlreadyTriggered.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1647494310855884349, guid: dc03846df944e484a905edd5de556715, type: 3}
@@ -3821,7 +3898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: enemyDatas.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: enemyDatas.Array.data[1].Enemy
@@ -3852,12 +3929,16 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: enemyDatas.Array.data[0].rewards.rewardItems.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: enemyDatas.Array.data[1].rewards.rewardItems.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: enemyDatas.Array.data[2].rewards.rewardItems.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6950921848870932604, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: enemyDatas.Array.data[1].rewards.rewardItems.Array.data[0]
@@ -3974,6 +4055,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: "They\u2019re gone\u2026\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -3988,6 +4070,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: "Who are you\u2026?\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4002,6 +4085,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: "I\u2019m Lyka. What\u2019s your name?\r\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4016,6 +4100,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: "I heard you scream for help. I couldn\u2019t just leave you behind.\r\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4030,6 +4115,7 @@ MonoBehaviour:
         name: Briar
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: I'm Briar...
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4045,6 +4131,7 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: "You didn\u2019t hesitate in defeating the robots, that\u2019s very brave
         of you.\r\n"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4059,6 +4146,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: "I\u2019m just doing what I can. "
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4073,6 +4161,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: "My village is about to be destroyed.\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4087,6 +4176,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: "Our land will be taken from us, I can\u2019t just stand by.\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4101,6 +4191,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: Especially when CARE CO. is the one involved.
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4115,6 +4206,7 @@ MonoBehaviour:
         name: Briar
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: I see.
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4129,6 +4221,7 @@ MonoBehaviour:
         name: Briar
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: "I\u2026was in the same situation as you.\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4143,6 +4236,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: "What do you mean?\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4158,6 +4252,7 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: "Long ago\u2026my village was destroyed, our land taken. Everyone gone...
         except me.\r\n"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4172,6 +4267,7 @@ MonoBehaviour:
         name: Briar
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: "Those robots. They were the ones who took everything from me.\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4187,6 +4283,7 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: "I never stopped running since but the robots\u2026they\u2019ve been
         coming more to the forest. \r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4201,6 +4298,7 @@ MonoBehaviour:
         name: Briar
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: "But I don\u2019t want to be scared anymore. Thanks to what you did."
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4215,6 +4313,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: "To be honest, I\u2019m terrified. "
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4230,6 +4329,7 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: "I\u2019m scared of what they\u2019ll do to my village, I\u2019m scared
         of what they\u2019ll do to our home. \r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4245,6 +4345,7 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: "But I can\u2019t just let that happen, I have to be brave because I
         need to be.\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4259,6 +4360,7 @@ MonoBehaviour:
         name: Briar
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: ...
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4273,6 +4375,7 @@ MonoBehaviour:
         name: Briar
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: "You have a very strong will, Lyka\u2026\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4287,6 +4390,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: "...?\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4301,6 +4405,7 @@ MonoBehaviour:
         name: Briar
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: "I\u2019ll help you. "
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4315,6 +4420,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: Briar, you don't have to.
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4329,6 +4435,7 @@ MonoBehaviour:
         name: Briar
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: No. I want to.
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4343,6 +4450,7 @@ MonoBehaviour:
         name: Briar
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: "I don\u2019t want the same thing to happen to you too."
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4357,6 +4465,7 @@ MonoBehaviour:
         name: Briar
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: "I- don\u2019t know much about fighting but I know I can support you.\r"
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4371,6 +4480,7 @@ MonoBehaviour:
         name: Briar
         icon: {fileID: 21300000, guid: a63c2aecada68834ab06e5ce7823ac06, type: 3}
       line: I can make potions that will help you.
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4385,6 +4495,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: Well then...
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -4399,6 +4510,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: I look forward to it.
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []

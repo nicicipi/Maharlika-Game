@@ -162,7 +162,12 @@ public class BattleCharacters : MonoBehaviour
     public void ApplyVFX(GameObject vfxObject)
     {
         GameObject newObject = Instantiate(vfxObject, transform.position, transform.rotation);
+        newObject.transform.position += new Vector3(RandomRange(), RandomRange(), 0);
         Debug.Log("Applying impact effect: " + newObject.name);
+    }
+    private float RandomRange()
+    {
+        return UnityEngine.Random.Range(-3f, 3f);
     }
     public void ApplyStun()
     {

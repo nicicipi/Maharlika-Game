@@ -22,6 +22,7 @@ public class BattleInstantiator : MonoBehaviour
     public string questToComplete;
 
     public UnityEvent OnDefeat;
+    public UnityEvent OnPlayerRun;
 
     private void Awake()
     {
@@ -99,6 +100,10 @@ public class BattleInstantiator : MonoBehaviour
     public void MarkEnemyDefeated()
     {
         OnDefeat?.Invoke();
+    }
+    public void PlayerRun()
+    {
+        OnPlayerRun?.Invoke();
     }
 
 }

@@ -25,4 +25,13 @@ public class ClickTrigger : MonoBehaviour
     {
         return Physics2D.OverlapBoxAll(boxCollider.bounds.center, boxCollider.bounds.size, 0f).Any(c => c.CompareTag("Player"));
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (boxCollider == null)
+            return;
+        Gizmos.color = new Color(Color.blue.r, Color.blue.g, Color.blue.b, 0.5f);
+        Gizmos.DrawCube(boxCollider.bounds.center, boxCollider.bounds.size);
+        
+    }
 }
