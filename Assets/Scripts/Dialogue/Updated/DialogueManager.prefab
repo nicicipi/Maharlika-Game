@@ -602,7 +602,7 @@ MonoBehaviour:
   characterName: {fileID: 7879603591871855018}
   dialogueArea: {fileID: 9140870325469150808}
   textAnimator: {fileID: 0}
-  _voiceLineAudioSource: {fileID: 0}
+  _voiceLineAudioSource: {fileID: 5278260962150027386}
   typingSpeed: 0.02
   animator: {fileID: 5418802153615064974}
 --- !u!225 &986722784686275522

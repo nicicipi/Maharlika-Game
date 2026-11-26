@@ -114,7 +114,7 @@ public class DialogueManager : MonoBehaviour
             {
                 StopCoroutine(typingCoroutine);
             }
-            _voiceLineAudioSource.Stop();
+            _voiceLineAudioSource?.Stop();
             if (currentLine.voiceLine != null)
             {
                 _voiceLineAudioSource.clip = currentLine.voiceLine;
