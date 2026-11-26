@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -7,24 +6,29 @@ public class AudioSlider : MonoBehaviour
 {
     [SerializeField] private AudioMixerGroup mixerGroup;
     [SerializeField] private Slider slider;
-    public string parameter;
+    [SerializeField] private string parameter;
+
     private void OnEnable()
     {
-        slider.SetValueWithoutNotify(GetVolume());
+        if (mixerGroup.audioMixer.GetFloat(parameter, out float volumeDB))
+        {
+            slider.SetValueWithoutNotify(VolumeToPercent(volumeDB));
+        }
     }
 
-    public float GetVolume()
+    private void Start()
     {
-        mixerGroup.audioMixer.GetFloat(parameter, out float volumeDB);
-        return VolumeToPercent(volumeDB);
+        slider.onValueChanged.AddListener(SetVolume);
     }
-    private void Update()
+
+    private void OnDestroy()
     {
-        SetVolume(slider.value);
+        slider.onValueChanged.RemoveListener(SetVolume);
     }
+
     public void SetVolume(float percent)
     {
-        mixerGroup.audioMixer.SetFloat(parameter, PercentToVolume(percent * 100));
+        mixerGroup.audioMixer.SetFloat(parameter, PercentToVolume(percent));
     }
 
     private float PercentToVolume(float percent)
@@ -32,11 +36,14 @@ public class AudioSlider : MonoBehaviour
         if (percent <= 0f)
             return -80f;
 
-        return Mathf.Log10(percent / 100f) * 20f;
+        return Mathf.Log10(percent) * 20f;
     }
 
     private float VolumeToPercent(float volumeDB)
     {
-        return Mathf.Pow(10f, volumeDB / 20f) * 100f;
+        if (volumeDB <= -80f)
+            return 0f;
+
+        return Mathf.Pow(10f, volumeDB / 20f);
     }
 }

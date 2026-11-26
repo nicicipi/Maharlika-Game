@@ -1352,7 +1352,19 @@ MonoBehaviour:
       itemRewardAmount: 1
     onDialogueStarted:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 730551373}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onDialogueEnded:
       m_PersistentCalls:
         m_Calls:
@@ -1913,7 +1925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.12154697
+      value: 0.12516645
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
@@ -1921,7 +1933,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.7513812
+      value: 0.74922323
       objectReference: {fileID: 0}
     - target: {fileID: 391318700928512082, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
@@ -1973,15 +1985,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2303353305871963011, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00015863198
+      value: 0.00015863178
       objectReference: {fileID: 0}
     - target: {fileID: 2303353305871963011, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000013123292
+      value: 0.0000005364709
       objectReference: {fileID: 0}
     - target: {fileID: 2303353305871963011, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 2.0777694e-11
+      value: -8.509988e-11
       objectReference: {fileID: 0}
     - target: {fileID: 3224683150074499699, guid: cf179ded0eee6e14d8737f6b8e4b6a2c, type: 3}
       propertyPath: m_Follow
@@ -3631,6 +3643,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: followUpDialogue.onDialogueEnded.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.onDialogueEnded.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -3647,11 +3663,35 @@ PrefabInstance:
       value: TriggerSaveFlag
       objectReference: {fileID: 0}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: followUpDialogue.onDialogueEnded.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: followUpDialogue.onDialogueEnded.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1261685105877389357}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: followUpDialogue.onDialogueEnded.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: followUpDialogue.onDialogueEnded.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.onDialogueEnded.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SaveFlagHandler, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: followUpDialogue.onDialogueEnded.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.onDialogueEnded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: followUpDialogue.onDialogueEnded.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5590900378746271522, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
@@ -3832,7 +3872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7872733703216788565, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.57
+      value: -11.09
       objectReference: {fileID: 0}
     - target: {fileID: 7872733703216788565, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4024,6 +4064,10 @@ PrefabInstance:
       propertyPath: OnAlreadyTriggered.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 981925441148269812, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1647494310855884349, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.84
@@ -4071,6 +4115,10 @@ PrefabInstance:
     - target: {fileID: 4829015032231721720, guid: dc03846df944e484a905edd5de556715, type: 3}
       propertyPath: m_Name
       value: NPC_Robbie
+      objectReference: {fileID: 0}
+    - target: {fileID: 7148085646188165763, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: targetDetectionRange
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
