@@ -1,3 +1,4 @@
+using BattleSystem;
 using System;
 using UnityEngine;
 using static ItemData;
@@ -96,14 +97,16 @@ namespace SaveSystem
             }
         }
 
-        public void AddXP(int amountOfXP)
+        public bool AddXP(int amountOfXP)
         {
+            bool leveledUp = false;
             currentXP += amountOfXP;
 
             while (playerLevel < maxLevel && currentXP >= xpForNextLevel[playerLevel])
             {
                 currentXP -= xpForNextLevel[playerLevel];
                 playerLevel++;
+                leveledUp = true;
 
                 if (playerLevel % 2 == 0)
                 {
@@ -123,11 +126,17 @@ namespace SaveSystem
                 maxStamina += 4;
                 currentStamina = maxStamina;
             }
+            return leveledUp;
         }
-
         public void ModifyHP(int amountHPtoAdd)
         {
             currentHP = Mathf.Clamp(currentHP + amountHPtoAdd, 0, maxHP);
+        }
+        public void TakeDamageWithMitigation(int amountHPtoReduce)
+        {
+            amountHPtoReduce -= armorDefence;
+
+            currentHP = Mathf.Clamp(currentHP - amountHPtoReduce, 0, maxHP);
         }
 
         public void AddSP(int amountSPtoAdd)

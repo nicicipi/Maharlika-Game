@@ -1,3 +1,4 @@
+using BattleSystem;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -81,19 +82,26 @@ namespace SaveSystem
             currentPlayerData.defeatedEnemies++;
         }
 
-        public void AddXPToCharacter(string character, int xp)
+        private void AddXPToCharacter(string character, int xp)
         {
             Character foundCharacter = currentPlayerData.characters.Find(x => x.characterName == character);
             if (foundCharacter == null)
                 return;
 
-            foundCharacter.stats.AddXP(xp);
+            if(foundCharacter.stats.AddXP(xp))
+            {
+                BattleSkills skill = CharacterReferenceConfig.Singleton.GetReference(foundCharacter.characterName).GetLevelUpSkill(foundCharacter.stats.playerLevel);
+                if (skill == null)
+                    return;
+                foundCharacter.AddNewMove(skill);
+            }
+
         }
         public void AddXPToPresentCharacters(int xp)
         {
             foreach (var character in currentPlayerData.characters)
             {
-                character.stats.AddXP(xp);
+                AddXPToCharacter(character.characterName, xp);
             }
         }
         public void ModifyMoney(int amount)

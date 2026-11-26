@@ -193,9 +193,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsAvailable:
+  - {fileID: 11400000, guid: 91bed03c488e35b4eb2409e3341ebc1f, type: 2}
   - {fileID: 11400000, guid: 47f947dc93044c842b59cf45521d471b, type: 2}
   - {fileID: 11400000, guid: 4170cd7e4c473a64ab8b3a7675c6cee5, type: 2}
-  - {fileID: 11400000, guid: 91bed03c488e35b4eb2409e3341ebc1f, type: 2}
   - {fileID: 11400000, guid: 6dfec6893b324c447a763b8b60a5e6f6, type: 2}
   - {fileID: 11400000, guid: bde2f769e5b6827438b52b21a70ba174, type: 2}
 --- !u!1 &2865065823724306914
@@ -890,11 +890,38 @@ MonoBehaviour:
     battleSprite: {fileID: 21300000, guid: 6b94285f083ab4044a5ce774f4ecfc24, type: 3}
     downedSprite: {fileID: 21300000, guid: 32832c75b9d0eee4c9dbebd2434dce55, type: 3}
     dialogueSprite: {fileID: 21300000, guid: b98fdb822f042f445a00cee772eb88d7, type: 3}
+    unlockableSkills:
+    - skill: {fileID: 11400000, guid: 1a59b3b018b118a4db8fd7729f9d1708, type: 2}
+      level: 5
+    - skill: {fileID: 0}
+      level: 10
+    - skill: {fileID: 0}
+      level: 15
+    - skill: {fileID: 0}
+      level: 20
   - characterName: Briar
     battleSprite: {fileID: 21300000, guid: b428e835f980fdc4aaf1c862c5d26ecc, type: 3}
     downedSprite: {fileID: 21300000, guid: e727c037f076fab4f9ad3658c17c3b4e, type: 3}
     dialogueSprite: {fileID: 21300000, guid: b98fdb822f042f445a00cee772eb88d7, type: 3}
+    unlockableSkills:
+    - skill: {fileID: 0}
+      level: 5
+    - skill: {fileID: 0}
+      level: 10
+    - skill: {fileID: 0}
+      level: 15
+    - skill: {fileID: 0}
+      level: 20
   - characterName: Adam
     battleSprite: {fileID: 21300000, guid: a08897b718864954d860cbe834f55436, type: 3}
     downedSprite: {fileID: 21300000, guid: d88a57e43b8bab04b8cd39ff18c4208c, type: 3}
     dialogueSprite: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}
+    unlockableSkills:
+    - skill: {fileID: 0}
+      level: 5
+    - skill: {fileID: 0}
+      level: 10
+    - skill: {fileID: 0}
+      level: 15
+    - skill: {fileID: 0}
+      level: 20

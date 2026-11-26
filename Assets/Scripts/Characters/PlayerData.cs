@@ -96,8 +96,11 @@ namespace SaveSystem
         }
         public void AddNewMove(BattleSkills move)
         {
+            if (moveSets.Contains(move.skillName))
+                Debug.Log($"Move {move.skillName} already exists");
             moveSets.Add(move.skillName);
         }
+
     }
     [Serializable]
     public class Item
@@ -115,4 +118,5 @@ namespace SaveSystem
             itemCount = toCopy.itemCount;
         }
     }
+
 }

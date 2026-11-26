@@ -1,3 +1,4 @@
+using BattleSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -31,5 +32,23 @@ namespace SaveSystem
         public Sprite battleSprite;
         public Sprite downedSprite;
         public Sprite dialogueSprite;
+        public List<UnlockableSkills> unlockableSkills = new();
+
+        public BattleSkills GetLevelUpSkill(int level)
+        {
+            foreach (var skill in unlockableSkills)
+            {
+                if (level == skill.level)
+                    return skill.skill;
+            }
+            return null;
+        }
+    }
+
+    [Serializable]
+    public class UnlockableSkills
+    {
+        public BattleSkills skill;
+        public int level;
     }
 }
