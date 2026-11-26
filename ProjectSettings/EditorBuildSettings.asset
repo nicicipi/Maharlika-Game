@@ -132,4 +132,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorldScenes/Stage 3 Junkyard/Scene 24 Junkyard.unity
     guid: cddea27c52570452fa0a49486f5aecb1
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 4 City/Scene 25 City.unity
+    guid: 9f539cf0ccd62824880fc806bf7b0edb
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 4 City/Scene 25 Chest 1.unity
+    guid: 6eaa07e1796cd104085638fe312a1b44
+  - enabled: 1
+    path: Assets/Scenes/WorldScenes/Stage 4 City/Scene 25 Chest 2.unity
+    guid: f5f247e3889258a46a11dcade8cdf972
   m_configObjects: {}

@@ -65,6 +65,8 @@ namespace Utilities
         Scene23,
         Scene24,
         Scene25,
+        Scene25_Chest1,
+        Scene25_Chest2,
         Scene26,
         Scene27,
         Scene28,
