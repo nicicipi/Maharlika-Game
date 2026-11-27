@@ -11,7 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioMixerGroup SFXMixer;
     public AudioMixerGroup MusicMixer;
     public AudioMixerGroup CharacterMixer;
-    [SerializeField] AudioSource[] SFX, backgroundMusic;
+    [SerializeField] AudioSource[] SFX, backgroundMusic, voiceLines;
 
     public static AudioManager instance;
 

@@ -211,6 +211,13 @@ public class DialogueManager : MonoBehaviour
         isTyping = true;
         dialogueArea.text = string.Empty;
 
+        // Play voiceline audio when typing starts
+        if (_voiceLineAudioSource != null && dialogueLine.voiceLine != null)
+        {
+            _voiceLineAudioSource.clip = dialogueLine.voiceLine;
+            _voiceLineAudioSource.Play();
+        }
+
         float currentTypingSpeed = typingSpeed;
 
         if (dialogueLine.useCustomTypingSpeed)
@@ -268,3 +275,6 @@ public class DialogueManager : MonoBehaviour
 
     }
 }
+
+//the audio for the voice line is only played when the typing starts, instead of sabay sa dialogue
+// i hav no idea what to do so this is what i got -> added audio playback to the TypeSentence coroutine right after isTyping = true

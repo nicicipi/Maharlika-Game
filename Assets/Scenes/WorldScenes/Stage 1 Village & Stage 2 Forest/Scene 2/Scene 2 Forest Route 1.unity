@@ -1101,7 +1101,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: RB-02, what's the status over there?
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: 4c923bab65a2d6f48a4b6b4f99bcf5ee, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1116,7 +1116,7 @@ MonoBehaviour:
         name: RB-02
         icon: {fileID: 739409480, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
       line: Good so far, Boss. We're almost done with Operation Red Grass!
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: d243bc0d1f63a4f4ea7ebae01bf7c96a, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1131,7 +1131,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: Keep up the good work. Finally, this land will be mine.
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: b2b213cfa3106e14b991e4fe14cb5769, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1146,7 +1146,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: (What are they talking about?)
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: 185776c14dbae054b8d013ae8d1e0cb4, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1161,7 +1161,7 @@ MonoBehaviour:
         name: RB-02
         icon: {fileID: 739409480, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
       line: Are there tasks left you'd like to remind, Boss? Before I disconnect?
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: 9fbfbf29a4d61c648bece6a118b9d768, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1176,7 +1176,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: Make sure...
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: 79377f2191aaeae43ae2e2be22d0957f, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1191,7 +1191,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: To burn everything into crisps!
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: 8cf45b67a8b36274db6556a4e381b586, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1206,7 +1206,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: (What?! How could he say that?!)
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: ea093ab25470d8a45aafef54757a8667, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1221,7 +1221,7 @@ MonoBehaviour:
         name: RB-02
         icon: {fileID: 739409480, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
       line: If we do, should we evacuate the residents?
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: ea3efbddfb6222e4f811cee31c03413f, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1236,7 +1236,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: HAHAHA... Funny robot
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: c2cf4404e07802f44a3d2b1e456cf14c, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1251,7 +1251,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: I couldn't care less about the residents, burn them as well!
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: 3d34820bab7b8a047884a6776943d7dd, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1266,7 +1266,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: Hey clanker!
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: 2493ff1a5869048488c14e85d9c9f7ce, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls:
@@ -1293,7 +1293,7 @@ MonoBehaviour:
         name: RB-02
         icon: {fileID: 739409480, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
       line: Who goes here?!
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: d4f59295405ddcd4b91baf2f9a64d8c7, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1309,7 +1309,7 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: I won't let you destroy the legacy our ancestors worked so hard for over
         some petty cash!
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: 6f4dd2421d4a25f4aa5bebf8fe96f9d5, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1324,7 +1324,7 @@ MonoBehaviour:
         name: ???
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: RB-02, it's just a brat, get her!
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: 240ec9e5ea5565b4a975969708a379fd, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1339,7 +1339,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: I'll destroy you!
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: 72ac8d12c68cf1c4a96add8252436c04, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -3638,6 +3638,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: TriggerBox
       objectReference: {fileID: 0}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].voiceLine
+      value: 
+      objectReference: {fileID: 8300000, guid: 9fac8dea4c4336d4cb6303934a9a0693, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].voiceLine
+      value: 
+      objectReference: {fileID: 8300000, guid: 206892e1e0d1c6a409c9f4dd967fdb48, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.onDialogueEnded.m_PersistentCalls.m_Calls.Array.size
       value: 1

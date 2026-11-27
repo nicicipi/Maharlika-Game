@@ -514,6 +514,10 @@ PrefabInstance:
       value: Oh no
       objectReference: {fileID: 0}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].voiceLine
+      value: 
+      objectReference: {fileID: 8300000, guid: 671f79966d8b82947a2f70a1b396a622, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
       value: 
       objectReference: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}

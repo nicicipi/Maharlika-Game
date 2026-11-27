@@ -582,6 +582,7 @@ MonoBehaviour:
         name: Toto
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: They burned everything, Lyka...
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -596,6 +597,7 @@ MonoBehaviour:
         name: Toto
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: What did we do to deserve this?
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -608,8 +610,9 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: Lyka
-        icon: {fileID: 21300000, guid: 9a38fb5b7381f5d499bcee62d2d03e8b, type: 3}
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: Toto...
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -633,6 +636,7 @@ MonoBehaviour:
         name: Toto
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: I'm glad the robots have stopped pursuing... but they'll be back...
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -647,6 +651,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
       line: Don't worry, I'll do something about this!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -3904,6 +3909,7 @@ MonoBehaviour:
         name: Mari
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: My father worked so hard to build this house...
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -3918,6 +3924,7 @@ MonoBehaviour:
         name: Mari
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: Is it really our time to be wiped away...
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -3932,6 +3939,7 @@ MonoBehaviour:
         name: Mari
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: To be replaced by robots?
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -3944,8 +3952,9 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: Lyka
-        icon: {fileID: 21300000, guid: 9a38fb5b7381f5d499bcee62d2d03e8b, type: 3}
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: I swear I will avenge us, Mari!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -3969,6 +3978,7 @@ MonoBehaviour:
         name: Mari
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: I hope this will all be over soon...
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -7918,6 +7928,7 @@ MonoBehaviour:
         name: Johanna
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: Please go help the chief right now! He's in danger, Lyka!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -7930,8 +7941,9 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: Lyka
-        icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: On it!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -7955,6 +7967,7 @@ MonoBehaviour:
         name: Johanna
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: I'm glad you were on time to save our Chief, Lyka!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -7970,6 +7983,7 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: But they will be relentless now that you alerted them, please be careful,
         Lyka.
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -7984,6 +7998,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: Of course, Johanna. Please defend the village while I'm out!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -11023,9 +11038,29 @@ PrefabInstance:
       value: W-what have they done...?
       objectReference: {fileID: 0}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].voiceLine
+      value: 
+      objectReference: {fileID: 8300000, guid: 60bb0eec7c4de0a4c9b4045cd70b5f36, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].voiceLine
+      value: 
+      objectReference: {fileID: 8300000, guid: f6195ee4ebed70741b2fb41249578f08, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].voiceLine
+      value: 
+      objectReference: {fileID: 8300000, guid: d4bd06febb7937844922e1240433a44f, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].character.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].character.icon
       value: 
-      objectReference: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+      objectReference: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].character.name
       value: Lyka
@@ -17836,6 +17871,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC_Robbie
       objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2125031079}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2125031079}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7857546637586724463, guid: dc03846df944e484a905edd5de556715, type: 3}
+      propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18882,6 +18977,7 @@ MonoBehaviour:
         name: Dondon
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: It hurts, Lyka...
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -18894,8 +18990,9 @@ MonoBehaviour:
       itemRewardAmount: 1
     - character:
         name: Lyka
-        icon: {fileID: 21300000, guid: 9a38fb5b7381f5d499bcee62d2d03e8b, type: 3}
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: I'll get the chief to help you!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -18919,6 +19016,7 @@ MonoBehaviour:
         name: Dondon
         icon: {fileID: 21300000, guid: c886c5c023c8918428700d1409b7adf6, type: 3}
       line: Thank you for saving the chief, Ate Lyka!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -18933,6 +19031,7 @@ MonoBehaviour:
         name: Lyka
         icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
       line: Heal up soon, Dondon!
+      voiceLine: {fileID: 0}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -19025,7 +19124,7 @@ AudioSource:
   m_GameObject: {fileID: 2125031079}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3123050804422286727, guid: ae0542f371a423a418244c4272e0959d, type: 2}
   m_audioClip: {fileID: 8300000, guid: 2f8e280e0f0b8fa4db0ede6bfa1f1389, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -19136,7 +19235,7 @@ AudioSource:
   m_GameObject: {fileID: 2125031079}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3123050804422286727, guid: ae0542f371a423a418244c4272e0959d, type: 2}
   m_audioClip: {fileID: 8300000, guid: dff763b0310395c4bbcb4005b7c657c1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -19232,7 +19331,7 @@ AudioSource:
   m_GameObject: {fileID: 2125031079}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 3975885544143132297, guid: ae0542f371a423a418244c4272e0959d, type: 2}
   m_audioClip: {fileID: 8300000, guid: e7bfa4eef944b5b44b367e11cadd4b8a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1

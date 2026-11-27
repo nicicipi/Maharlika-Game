@@ -1416,9 +1416,9 @@ MonoBehaviour:
     dialogueLines:
     - character:
         name: Lyka
-        icon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+        icon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
       line: What was that?!
-      voiceLine: {fileID: 0}
+      voiceLine: {fileID: 8300000, guid: 05bca02e24e2bd44d8fe63941621dd60, type: 3}
       onLineStarted:
         m_PersistentCalls:
           m_Calls: []
@@ -1514,6 +1514,18 @@ PrefabInstance:
       propertyPath: dialogue.dialogueLines.Array.data[2].line
       value: I have to get out.
       objectReference: {fileID: 0}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[0].voiceLine
+      value: 
+      objectReference: {fileID: 8300000, guid: 899a7e95821445a48a56be870d7b76d5, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[1].voiceLine
+      value: 
+      objectReference: {fileID: 8300000, guid: ba7b6870b5f87c44da12a28c96b7b5be, type: 3}
+    - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
+      propertyPath: dialogue.dialogueLines.Array.data[2].voiceLine
+      value: 
+      objectReference: {fileID: 8300000, guid: f593ed96b10a29140acdfa140763bbc4, type: 3}
     - target: {fileID: 5469018493871744654, guid: cd9a9c94c7bcb524fb41fddf747a36a3, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].character.icon
       value: 
