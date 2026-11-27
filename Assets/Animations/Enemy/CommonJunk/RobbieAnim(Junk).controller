@@ -46,7 +46,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ec1ca9b621f3d9e4e861d92f7cef1734, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1d99a436420d1ee409f1d84be579932d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -73,7 +73,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 4b4ebe7d50c16a9439dec472ecfa4afb, type: 2}
+  m_Motion: {fileID: 7400000, guid: 51014be32e0e8a34487220ed1fbb1f4c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -85,7 +85,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: _RobbieAnim
+  m_Name: RobbieAnim(Junk)
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isWalking

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RobbieIdle
+  m_Name: RobbieIdle(City)
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1691469257, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
+      value: {fileID: 226740654, guid: 8b5080724a0965f4f90bf1603b527c8c, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,7 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1691469257, guid: b695a2e45af4d4a49856d2422d22da16, type: 3}
+    - {fileID: 226740654, guid: 8b5080724a0965f4f90bf1603b527c8c, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

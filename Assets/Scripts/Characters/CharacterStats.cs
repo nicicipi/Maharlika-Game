@@ -134,7 +134,7 @@ namespace SaveSystem
         }
         public int TakeDamageWithMitigation(int amountHPtoReduce)
         {
-            amountHPtoReduce -= armorDefence;
+            amountHPtoReduce -= armorDefence - defence;
             int finalDamage = currentHP - amountHPtoReduce;
             currentHP = Mathf.Clamp(finalDamage, 0, maxHP);
             return amountHPtoReduce;

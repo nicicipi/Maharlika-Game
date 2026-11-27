@@ -16,12 +16,8 @@ MonoBehaviour:
   skillDescription: Hit an enemy 3 times for 5 damage.
   staminaCost: 10
   skillDuration: 1
-  targetSelection: 2
+  targetSelection: 3
   actions:
-  - action:
-      rid: 228220455653736468
-  - action:
-      rid: 228220455653736468
   - action:
       rid: 228220455653736468
   references:
