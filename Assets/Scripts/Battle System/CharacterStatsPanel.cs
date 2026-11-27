@@ -26,4 +26,18 @@ public class CharacterStatsPanel : MonoBehaviour
             statView.UpdateValues();
         }
     }
+    public void UpdateSPValues()
+    {
+        foreach (var statView in characterStatViews)
+        {
+            statView.UpdateSPValues();
+        }
+    }
+    public void UpdateHPValues()
+    {
+        foreach (var statView in characterStatViews)
+        {
+            statView.UpdateHPValues();
+        }
+    }
 }

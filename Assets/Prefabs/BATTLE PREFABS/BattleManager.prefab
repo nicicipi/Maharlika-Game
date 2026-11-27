@@ -863,7 +863,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathSprite: {fileID: 0}
   battleMovesList: []
+  isPlayer: 1
+  isDead: 0
+  _spriteRenderer: {fileID: 6466877834454112740}
   deathParticles: {fileID: 0}
+  selectedMaterial: {fileID: 2100000, guid: 6c8ffea2e4d80e7488bd2a75517356c5, type: 2}
+  normalMaterial: {fileID: 2100000, guid: 9b53b775f1c0bd14baa5390056d4139b, type: 2}
   preDeathDelay: 0.5
   jitterDuration: 0.6
   jitterFrequency: 20
@@ -872,10 +877,8 @@ MonoBehaviour:
   colorFlashFrequency: 10
   fadeDuration: 0.8
   fallDistance: 0.5
-  customSlider: {fileID: 0}
-  isPlayer: 1
-  isDead: 0
-  _spriteRenderer: {fileID: 6466877834454112740}
+  customSlider: {fileID: 2088440160373674721}
+  _activeStatusEffects: []
 --- !u!212 &6466877834454112740
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -896,7 +899,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9b53b775f1c0bd14baa5390056d4139b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1072,7 +1075,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathSprite: {fileID: 0}
   battleMovesList: []
+  isPlayer: 1
+  isDead: 0
+  _spriteRenderer: {fileID: 3306793241083098302}
   deathParticles: {fileID: 0}
+  selectedMaterial: {fileID: 2100000, guid: 6c8ffea2e4d80e7488bd2a75517356c5, type: 2}
+  normalMaterial: {fileID: 2100000, guid: 9b53b775f1c0bd14baa5390056d4139b, type: 2}
   preDeathDelay: 0.5
   jitterDuration: 0.6
   jitterFrequency: 20
@@ -1081,10 +1089,8 @@ MonoBehaviour:
   colorFlashFrequency: 10
   fadeDuration: 0.8
   fallDistance: 0.5
-  customSlider: {fileID: 0}
-  isPlayer: 1
-  isDead: 0
-  _spriteRenderer: {fileID: 3306793241083098302}
+  customSlider: {fileID: 6321009098373341130}
+  _activeStatusEffects: []
 --- !u!212 &3306793241083098302
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1105,7 +1111,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9b53b775f1c0bd14baa5390056d4139b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1482,7 +1488,6 @@ MonoBehaviour:
   - {fileID: 3252223879580591933}
   - {fileID: 2222616459529144546}
   - {fileID: 7094878487424735576}
-  battleNotice: {fileID: 3457111654129904663}
   _rewardsPool: []
 --- !u!1 &1283871140942154356
 GameObject:
@@ -1714,7 +1719,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathSprite: {fileID: 0}
   battleMovesList: []
+  isPlayer: 0
+  isDead: 0
+  _spriteRenderer: {fileID: 2801659843122628244}
   deathParticles: {fileID: 0}
+  selectedMaterial: {fileID: 2100000, guid: 6c8ffea2e4d80e7488bd2a75517356c5, type: 2}
+  normalMaterial: {fileID: 2100000, guid: 9b53b775f1c0bd14baa5390056d4139b, type: 2}
   preDeathDelay: 0.5
   jitterDuration: 0.6
   jitterFrequency: 20
@@ -1724,9 +1734,7 @@ MonoBehaviour:
   fadeDuration: 0.8
   fallDistance: 0.5
   customSlider: {fileID: 9093850935042035938}
-  isPlayer: 0
-  isDead: 0
-  _spriteRenderer: {fileID: 2801659843122628244}
+  _activeStatusEffects: []
 --- !u!212 &2801659843122628244
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1747,7 +1755,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9b53b775f1c0bd14baa5390056d4139b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1901,7 +1909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.1, y: 121.2}
+  m_AnchoredPosition: {x: -2.1, y: 115.9588}
   m_SizeDelta: {x: 483.665, y: 568.563}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1798560712663664471
@@ -2111,7 +2119,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathSprite: {fileID: 0}
   battleMovesList: []
+  isPlayer: 0
+  isDead: 0
+  _spriteRenderer: {fileID: 731480392597001256}
   deathParticles: {fileID: 0}
+  selectedMaterial: {fileID: 2100000, guid: 6c8ffea2e4d80e7488bd2a75517356c5, type: 2}
+  normalMaterial: {fileID: 2100000, guid: 9b53b775f1c0bd14baa5390056d4139b, type: 2}
   preDeathDelay: 0.5
   jitterDuration: 0.6
   jitterFrequency: 20
@@ -2121,9 +2134,7 @@ MonoBehaviour:
   fadeDuration: 0.8
   fallDistance: 0.5
   customSlider: {fileID: 4615537936574804607}
-  isPlayer: 0
-  isDead: 0
-  _spriteRenderer: {fileID: 731480392597001256}
+  _activeStatusEffects: []
 --- !u!212 &731480392597001256
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2144,7 +2155,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9b53b775f1c0bd14baa5390056d4139b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3646,7 +3657,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathSprite: {fileID: 0}
   battleMovesList: []
+  isPlayer: 1
+  isDead: 0
+  _spriteRenderer: {fileID: 1796997294290810413}
   deathParticles: {fileID: 0}
+  selectedMaterial: {fileID: 2100000, guid: 6c8ffea2e4d80e7488bd2a75517356c5, type: 2}
+  normalMaterial: {fileID: 2100000, guid: 9b53b775f1c0bd14baa5390056d4139b, type: 2}
   preDeathDelay: 0.5
   jitterDuration: 0.6
   jitterFrequency: 20
@@ -3655,10 +3671,8 @@ MonoBehaviour:
   colorFlashFrequency: 10
   fadeDuration: 0.8
   fallDistance: 0.5
-  customSlider: {fileID: 0}
-  isPlayer: 1
-  isDead: 0
-  _spriteRenderer: {fileID: 1796997294290810413}
+  customSlider: {fileID: 7562442881893411847}
+  _activeStatusEffects: []
 --- !u!212 &1796997294290810413
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3679,7 +3693,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9b53b775f1c0bd14baa5390056d4139b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4368,7 +4382,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathSprite: {fileID: 0}
   battleMovesList: []
+  isPlayer: 0
+  isDead: 0
+  _spriteRenderer: {fileID: 995974755852035915}
   deathParticles: {fileID: 0}
+  selectedMaterial: {fileID: 2100000, guid: 6c8ffea2e4d80e7488bd2a75517356c5, type: 2}
+  normalMaterial: {fileID: 2100000, guid: 9b53b775f1c0bd14baa5390056d4139b, type: 2}
   preDeathDelay: 0.5
   jitterDuration: 0.6
   jitterFrequency: 20
@@ -4378,9 +4397,7 @@ MonoBehaviour:
   fadeDuration: 0.8
   fallDistance: 0.5
   customSlider: {fileID: 4846603388166253896}
-  isPlayer: 0
-  isDead: 0
-  _spriteRenderer: {fileID: 995974755852035915}
+  _activeStatusEffects: []
 --- !u!212 &995974755852035915
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4401,7 +4418,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9b53b775f1c0bd14baa5390056d4139b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6799,7 +6816,7 @@ MonoBehaviour:
   dialogueText: {fileID: 3467760147178674103}
   nextButton: {fileID: 4403273187921609503}
   tutorialSteps:
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: It's been a long time since I fought again.
     objectsToShow: []
     objectsToHide: []
@@ -6812,7 +6829,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: Let me remember again, so...
     objectsToShow: []
     objectsToHide: []
@@ -6825,7 +6842,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: I can fight!
     objectsToShow:
     - {fileID: 1200649769360867031}
@@ -6851,7 +6868,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: I can do my special moves with enough stamina!
     objectsToShow:
     - {fileID: 256443086257508472}
@@ -6878,7 +6895,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: I can use items!
     objectsToShow:
     - {fileID: 3272949993175534064}
@@ -6905,7 +6922,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: And when the enemy is too strong...
     objectsToShow: []
     objectsToHide: []
@@ -6930,7 +6947,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: I can run!
     objectsToShow:
     - {fileID: 4526146422206235487}
@@ -6957,7 +6974,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: This is where I can see my health and stamina!
     objectsToShow:
     - {fileID: 411189982875512643}
@@ -6972,7 +6989,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: Now I'll try fighting!
     objectsToShow: []
     objectsToHide:
@@ -6986,7 +7003,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: Select the fight button!
     objectsToShow:
     - {fileID: 1200649769360867031}
@@ -7025,7 +7042,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 1
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: Since there's only one enemy, let's pick Robbie!
     objectsToShow: []
     objectsToHide:
@@ -7087,7 +7104,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     waitForAction: 1
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: Great, we attacked the enemy!
     objectsToShow: []
     objectsToHide: []
@@ -7184,7 +7201,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: Great, we attacked the enemy!
     objectsToShow: []
     objectsToHide: []
@@ -7233,7 +7250,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: And the enemy attacked us back!
     objectsToShow: []
     objectsToHide:
@@ -7271,7 +7288,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: We lost health so let's open up our items!
     objectsToShow:
     - {fileID: 3272949993175534064}
@@ -7321,7 +7338,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 1
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: Let's heal! Using items skips our turn, so use it wisely!
     objectsToShow:
     - {fileID: 0}
@@ -7408,7 +7425,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
     waitForAction: 1
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: That's it for the tutorial! It's up to you to experiment now!
     objectsToShow: []
     objectsToHide: []
@@ -7457,7 +7474,7 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: That's it for the tutorial! It's up to you to experiment now!
     objectsToShow:
     - {fileID: 0}
@@ -7496,7 +7513,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     waitForAction: 0
-  - characterIcon: {fileID: 21300000, guid: 990c6f90ab95c7c4d85cb7881e550219, type: 3}
+  - characterIcon: {fileID: 21300000, guid: 13fb3cf19d03d4844b8df11071955c1b, type: 3}
     dialogueText: Goodluck!
     objectsToShow: []
     objectsToHide: []
@@ -9237,6 +9254,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c4faec17b0ce445b7efe8664f23a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6321009098373341130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5320388939635726665, guid: f645540becbf3fb44a31523704b84bd4, type: 3}
+  m_PrefabInstance: {fileID: 2192529289283995267}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8823077326504993168 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7213838414834804499, guid: f645540becbf3fb44a31523704b84bd4, type: 3}
@@ -9483,6 +9511,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7213838414834804499, guid: f645540becbf3fb44a31523704b84bd4, type: 3}
   m_PrefabInstance: {fileID: 2388843177124017486}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7562442881893411847 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5320388939635726665, guid: f645540becbf3fb44a31523704b84bd4, type: 3}
+  m_PrefabInstance: {fileID: 2388843177124017486}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3537858797665468952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10262,6 +10301,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f645540becbf3fb44a31523704b84bd4, type: 3}
+--- !u!114 &2088440160373674721 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5320388939635726665, guid: f645540becbf3fb44a31523704b84bd4, type: 3}
+  m_PrefabInstance: {fileID: 6137967378800839592}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &3545110394053307579 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7213838414834804499, guid: f645540becbf3fb44a31523704b84bd4, type: 3}

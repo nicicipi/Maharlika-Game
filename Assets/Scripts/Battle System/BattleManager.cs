@@ -127,7 +127,7 @@ public class BattleManager : MonoBehaviour
 
     private void SetTurnState(TurnState state)
     {
-        _characterStatsPanel.UpdateValues();
+        _characterStatsPanel.UpdateSPValues();
         _currentTurnState = state;
         switch (state)
         {
@@ -146,6 +146,7 @@ public class BattleManager : MonoBehaviour
         if (_battleRoutine != null)
             Debug.LogError("Battle is stil active");
 
+        _runawayChance = canRunAway ? 0.3f : 0f;
 
         _runningAway = false;
         _rewardsPool.Clear();
@@ -210,9 +211,10 @@ public class BattleManager : MonoBehaviour
     #region Actions
     private IEnumerator BattleRoutine()
     {
+        yield return SceneTransition.instance.FadeToBlack();
         battleScene.SetActive(true);
         yield return SceneTransition.instance.FadeFromBlack();
-
+        yield return new WaitForSeconds(1f);
         while (true)
         {
             
@@ -234,13 +236,29 @@ public class BattleManager : MonoBehaviour
         SetTurnState(TurnState.PlayerTurn);
         foreach(var player in _activeBattleCharacters)
         {
-            if (!player.isPlayer || _runningAway)
+            if (!player.isPlayer || _runningAway || player.isDead)
                 continue;
+
+            if (GameEndCheck())
+                break;
+
+            yield return player.ProcessStatusEffects(true);
+             
+            if (player.isDead)
+                continue;
+
             SetUIState(UIState.ChoiceSelection);
             _waitingForPlayerInput = true;
             _currentPlayerCharacter = player;
+            player.SelectCharacter(true);
             yield return new WaitUntil(() => !_waitingForPlayerInput);
+            player.SelectCharacter(false);
 
+            if (GameEndCheck())
+                break;
+
+            yield return player.ProcessStatusEffects(false);
+            
             if (GameEndCheck())
                 break;
         }
@@ -299,7 +317,19 @@ public class BattleManager : MonoBehaviour
             if (GameEndCheck())
                 break;
             // Execute AI for this enemy
+            enemy.SelectCharacter(true);
+            yield return enemy.ProcessStatusEffects(true);
+
+            if (enemy.isDead)
+            {
+                enemy.SelectCharacter(false);
+                continue;
+            }
+
             yield return ExecuteSimpleEnemyAI(enemy);
+
+            yield return enemy.ProcessStatusEffects(false);
+            enemy.SelectCharacter(false);
         }
     }
     private IEnumerator ExecuteSimpleEnemyAI(BattleCharacters enemy)
@@ -346,17 +376,18 @@ public class BattleManager : MonoBehaviour
     }
     public IEnumerator ExecuteMove(BattleCharacters source, BattleSkills battleMove, BattleCharacters target)
     {
+        source.CharacterData.stats.currentStamina -= battleMove.staminaCost;
         _currentBattleMove = battleMove;
+        _characterStatsPanel.UpdateSPValues();
+        _characterStatsPanel.UpdateHPValues();
         Debug.Log($"Executing Move {battleMove.skillName}, source: {source.CharacterData.characterName}, target: {target.CharacterData.characterName}" );
         foreach (var battleAction in battleMove.actions)
         {
-            // Stats
-            battleAction.action.ApplyActionToTarget(source, target);
-
             // VFX
             target.ApplyVFX(battleAction.action.actionVFX);
-            _characterStatsPanel.UpdateValues();
-            yield return new WaitForSeconds(battleAction.action.actionDuration);
+            // Stats
+            yield return battleAction.action.ApplyActionToTarget(source, target);
+            _characterStatsPanel.UpdateHPValues();
         }
         yield return new WaitForSeconds(battleMove.skillDuration);
     }
@@ -364,18 +395,19 @@ public class BattleManager : MonoBehaviour
     {
         source.CharacterData.stats.currentStamina -= battleMove.staminaCost;
         _currentBattleMove = battleMove;
+        _characterStatsPanel.UpdateSPValues();
+        _characterStatsPanel.UpdateHPValues();
         foreach (var target in targets)
         {
             Debug.Log($"Executing Move {battleMove.skillName}, attacker: {source.CharacterData.characterName}, defender: {target.CharacterData.characterName}");
-            foreach (var battleAction in battleMove.actions) 
+            foreach (var battleAction in battleMove.actions)
             {
-                // Stats
-                battleAction.action.ApplyActionToTarget(source, target);
-                
                 // VFX
                 target.ApplyVFX(battleAction.action.actionVFX);
-                _characterStatsPanel.UpdateValues();
-                yield return new WaitForSeconds(battleAction.action.actionDuration);
+                // Stats
+                yield return battleAction.action.ApplyActionToTarget(source, target);
+                _characterStatsPanel.UpdateHPValues();
+
             }
         }
         yield return new WaitForSeconds(battleMove.skillDuration);

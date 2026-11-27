@@ -25,11 +25,7 @@ public class MapRevealCameraPan : MonoBehaviour
     [SerializeField]
     private float panDuration = 5f;
 
-    [SerializeField]
-    private AnimationCurve panCurve =
-        AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
-
-    [SerializeField]private bool playOnStart = true;
+    [SerializeField] private AnimationCurve panCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
     public UnityEvent OnFinish;
     private void Start()

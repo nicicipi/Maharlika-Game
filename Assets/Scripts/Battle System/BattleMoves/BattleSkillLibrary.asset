@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BattleSkillLibrary
   defaultMove: {fileID: 11400000, guid: c8588a414ead06645b2bb41f72168b18, type: 2}
   battleSkillList:
+  - {fileID: 11400000, guid: 92a52060d4b6f184daa373879b7b63ed, type: 2}
   - {fileID: 11400000, guid: c8588a414ead06645b2bb41f72168b18, type: 2}
   - {fileID: 11400000, guid: ac5489ae9366464468fa441ee641ecd9, type: 2}
   - {fileID: 11400000, guid: 1a59b3b018b118a4db8fd7729f9d1708, type: 2}

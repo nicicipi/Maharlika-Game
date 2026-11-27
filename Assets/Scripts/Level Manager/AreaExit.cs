@@ -15,9 +15,6 @@ public class AreaExit : MonoBehaviour
     [Header("Blocked Exit Dialogue")]
     [SerializeField] Dialogue blockedExitDialogue;
 
-    [Header("Scene Transition")]
-    [SerializeField] float fadeToBlackDelay = 0.35f;
-
     private bool isLoading;
     private bool hasTriggered;
     private bool blockedDialogueShown;

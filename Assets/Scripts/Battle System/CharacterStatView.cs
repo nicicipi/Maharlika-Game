@@ -27,9 +27,27 @@ public class CharacterStatView : MonoBehaviour
         HPText.SetText($"HP: {GetStatValue(_character.stats.currentHP, _character.stats.maxHP)}");
         HPSlider.maxValue = _character.stats.maxHP;
         HPSlider.value = _character.stats.currentHP;
-        SPText.SetText($"HP: {GetStatValue(_character.stats.currentStamina, _character.stats.maxStamina)}");
+        SPText.SetText($"SP: {GetStatValue(_character.stats.currentStamina, _character.stats.maxStamina)}");
         SPSlider.maxValue = _character.stats.maxStamina;
         SPSlider.value = _character.stats.currentStamina;
+    }
+    public void UpdateSPValues()
+    {
+        if (_character == null || !gameObject.activeSelf)
+        {
+            return;
+        }
+        SPText.SetText($"SP: {GetStatValue(_character.stats.currentStamina, _character.stats.maxStamina)}");
+        SPSlider.maxValue = _character.stats.maxStamina;
+        SPSlider.value = _character.stats.currentStamina;
+    }
+    public void UpdateHPValues()
+    {
+        if (_character == null || !gameObject.activeSelf)
+        {
+            return;
+        }
+        HPText.SetText($"HP: {GetStatValue(_character.stats.currentHP, _character.stats.maxHP)}");
     }
     public void ClearReferences()
     {

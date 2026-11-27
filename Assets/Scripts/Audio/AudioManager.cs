@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -30,8 +31,16 @@ public class AudioManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
-    }
 
+    }
+    private void Start()
+    {
+
+        MasterMixer.audioMixer.SetFloat("Master", PercentToVolume(0.1f));
+        SFXMixer.audioMixer.SetFloat("SFX", PercentToVolume(0.1f));
+        MusicMixer.audioMixer.SetFloat("Music", PercentToVolume(0.1f));
+        CharacterMixer.audioMixer.SetFloat("Characters", PercentToVolume(1f));
+    }
     public void PlaySFX(int soundToPlay)
     {
         if (soundToPlay >= 0 && soundToPlay < SFX.Length)
@@ -112,8 +121,19 @@ public class AudioManager : MonoBehaviour
             pausedExplorationMusic = null;
         }
     }
-    public void ChangeVolume(AudioMixerGroup mixerGroup, float Volume)
+    private float PercentToVolume(float percent)
     {
-        mixerGroup.audioMixer.SetFloat("Volume", Mathf.Log(Volume) * 20);
+        if (percent <= 0f)
+            return -80f;
+
+        return Mathf.Log10(percent) * 20f;
+    }
+
+    private float VolumeToPercent(float volumeDB)
+    {
+        if (volumeDB <= -80f)
+            return 0f;
+
+        return Mathf.Pow(10f, volumeDB / 20f);
     }
 }

@@ -38,16 +38,17 @@ namespace BattleSystem
     {
         public float actionDuration = 1f;
         public GameObject actionVFX;
-        public virtual void ApplyActionToTarget(BattleCharacters source,  BattleCharacters target)
+        public virtual IEnumerator ApplyActionToTarget(BattleCharacters source,  BattleCharacters target)
         {
             Debug.LogError("ApplyActionToTarget not implemented in derived class");
+            yield return new WaitForSeconds(actionDuration);
         }
     }
     [Serializable]
     public class DamageAction : Action
     {
         public int damageValue;
-        public override void ApplyActionToTarget(BattleCharacters source, BattleCharacters target)
+        public override IEnumerator ApplyActionToTarget(BattleCharacters source, BattleCharacters target)
         {
             // if source has multiplier, apply it to damageValue
             int finalDamage = damageValue;
@@ -55,9 +56,10 @@ namespace BattleSystem
             { 
                 finalDamage += source.CharacterData.stats.weaponPower + source.CharacterData.stats.attack;
             }
-            target.TakeDamage();
             target.DisplayDamageText(target.CharacterData.stats.TakeDamageWithMitigation(finalDamage));
+            target.TakeDamage();
             Debug.Log($"{source.CharacterData.characterName} attacks {target.CharacterData.characterName} for {finalDamage} damage");
+            yield return new WaitForSeconds(actionDuration);
         }
     }
     [Serializable]
@@ -65,7 +67,7 @@ namespace BattleSystem
     {
         public bool percentageBased;
         public int healValue;
-        public override void ApplyActionToTarget(BattleCharacters source, BattleCharacters target)
+        public override IEnumerator ApplyActionToTarget(BattleCharacters source, BattleCharacters target)
         {
             // if source has multiplier, apply it to healValue
             int finalHeal = healValue;
@@ -76,18 +78,18 @@ namespace BattleSystem
             target.CharacterData.stats.ModifyHP(finalHeal);
             target.TakeHealing();
             target.DisplayHealText(finalHeal);
-            target.RefreshSlider();
+            yield return new WaitForSeconds(actionDuration);
         }
     }
     [Serializable]
-    public class StunAction : Action
+    public class StatusEffectAction : Action
     {
-        public float chance = 0.5f;
-        public override void ApplyActionToTarget(BattleCharacters source, BattleCharacters target)
+        public int turnCount;
+        public StatusEffectData statusEffect;
+        public override IEnumerator ApplyActionToTarget(BattleCharacters source, BattleCharacters target)
         {
-           // target.applystun();
-           //
+            target.AddStatusEffect(statusEffect,turnCount);
+            yield return new WaitForSeconds(actionDuration);
         }
     }
-
 }

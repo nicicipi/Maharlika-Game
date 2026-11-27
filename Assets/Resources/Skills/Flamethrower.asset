@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9415d833b3fd33d4694aaef4293042d8, type: 3}
+  m_Name: Flamethrower
+  m_EditorClassIdentifier: 
+  skillName: Flamethrower
+  skillDescription: Apply Burn to your enemy for 3 turns.
+  staminaCost: 20
+  skillDuration: 1
+  targetSelection: 1
+  actions:
+  - action:
+      rid: 228220455653736468
+  - action:
+      rid: 228220759206789120
+  references:
+    version: 2
+    RefIds:
+    - rid: 228220455653736468
+      type: {class: DamageAction, ns: BattleSystem, asm: Assembly-CSharp}
+      data:
+        actionDuration: 0.25
+        actionVFX: {fileID: 4270754231669352451, guid: 205986ea687d6d74f8998c1be32f38f4, type: 3}
+        damageValue: 5
+    - rid: 228220759206789120
+      type: {class: StatusEffectAction, ns: BattleSystem, asm: Assembly-CSharp}
+      data:
+        actionDuration: 0.25
+        actionVFX: {fileID: 4270754231669352451, guid: 205986ea687d6d74f8998c1be32f38f4, type: 3}
+        turnCount: 3
+        statusEffect: {fileID: 11400000, guid: 696c3fff48316a84e941279a56cf643c, type: 2}

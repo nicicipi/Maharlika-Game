@@ -35,7 +35,6 @@ MonoBehaviour:
       armorDefence: 0
     moveSets: []
   battleMoves:
-  - {fileID: 11400000, guid: c8588a414ead06645b2bb41f72168b18, type: 2}
-  - {fileID: 11400000, guid: ac5489ae9366464468fa441ee641ecd9, type: 2}
+  - {fileID: 11400000, guid: 92a52060d4b6f184daa373879b7b63ed, type: 2}
   normalSprite: {fileID: 21300000, guid: e35d9844ba380694393523a30da25702, type: 3}
   deathSprite: {fileID: 21300000, guid: e35d9844ba380694393523a30da25702, type: 3}
