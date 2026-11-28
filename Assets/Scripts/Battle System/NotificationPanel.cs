@@ -15,9 +15,9 @@ public class NotificationPanel : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
 
     [Header("Animation Settings")]
-    [SerializeField] private float slideDuration = 0.5f;
-    [SerializeField] private float displayDuration = 1.3f;
-    [SerializeField] private float fadeDuration = 0.35f;
+    [SerializeField] private float fadeInDuration = 0.5f;
+    [SerializeField] private float displayDuration = 2f;
+    [SerializeField] private float fadeOutDuration = 0.5f;
     [SerializeField] private float slideInOffset = 300f;
 
     private Vector2 targetPosition;
@@ -77,20 +77,15 @@ public class NotificationPanel : MonoBehaviour
         Vector2 startPosition = targetPosition - new Vector2(slideInOffset, 0);
 
         rectTransform.anchoredPosition = startPosition;
-        canvasGroup.alpha = 1f;
+        canvasGroup.alpha = 0f;
 
         // 2. Slide into position
         float elapsed = 0f;
 
-        while (elapsed < slideDuration)
+        while (elapsed < fadeInDuration)
         {
             elapsed += Time.deltaTime;
-
-            float t = elapsed / slideDuration;
-            t = Mathf.Sin(t * Mathf.PI * 0.5f);
-
-            rectTransform.anchoredPosition =
-                Vector2.Lerp(startPosition, targetPosition, t);
+            canvasGroup.alpha = Mathf.Lerp(0f, 1f, elapsed / fadeInDuration);
 
             yield return null;
         }
@@ -103,11 +98,10 @@ public class NotificationPanel : MonoBehaviour
         // 4. Fade out
         elapsed = 0f;
 
-        while (elapsed < fadeDuration)
+        while (elapsed < fadeOutDuration)
         {
             elapsed += Time.deltaTime;
-
-            canvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
+            canvasGroup.alpha = Mathf.Lerp(1f, 0f, elapsed / fadeOutDuration);
 
             yield return null;
         }

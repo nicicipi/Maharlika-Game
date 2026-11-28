@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 894129832176676829}
   - component: {fileID: 7146633980802111865}
   - component: {fileID: 3439985949134104337}
+  - component: {fileID: 928383591637064181}
   m_Layer: 5
   m_Name: Item Return Button
   m_TagString: Untagged
@@ -133,6 +134,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 928383591637064181}
+        m_TargetAssemblyTypeName: SFXHandler, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 18
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &928383591637064181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765112651905559903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35230c4a65c717249a4eac92e097acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1273871832173461043
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,6 +171,7 @@ GameObject:
   - component: {fileID: 5769775581794363817}
   - component: {fileID: 3315575388038674595}
   - component: {fileID: 4538883886911769037}
+  - component: {fileID: 7017564422295274307}
   m_Layer: 0
   m_Name: Enemy Button
   m_TagString: Untagged
@@ -267,6 +293,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 928383591637064181}
+        m_TargetAssemblyTypeName: SFXHandler, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 18
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4538883886911769037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,6 +319,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeBattleTarget: {fileID: 0}
   targetName: {fileID: 2797987272252190093}
+--- !u!114 &7017564422295274307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273871832173461043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35230c4a65c717249a4eac92e097acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3154407838585436277
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +344,7 @@ GameObject:
   - component: {fileID: 1145003323126399844}
   - component: {fileID: 9163542828561538679}
   - component: {fileID: 3396179028501473140}
+  - component: {fileID: 5591072925120649413}
   m_Layer: 0
   m_Name: Enemy Button (1)
   m_TagString: Untagged
@@ -415,6 +466,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 928383591637064181}
+        m_TargetAssemblyTypeName: SFXHandler, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 18
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3396179028501473140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +492,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeBattleTarget: {fileID: 0}
   targetName: {fileID: 1952800944179534938}
+--- !u!114 &5591072925120649413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3154407838585436277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35230c4a65c717249a4eac92e097acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4137195276395452939
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +823,7 @@ GameObject:
   - component: {fileID: 4743489037340724702}
   - component: {fileID: 8883640451033279759}
   - component: {fileID: 421737351728283769}
+  - component: {fileID: 2714158346647482639}
   m_Layer: 0
   m_Name: Enemy Button (2)
   m_TagString: Untagged
@@ -869,6 +945,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 928383591637064181}
+        m_TargetAssemblyTypeName: SFXHandler, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 18
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &421737351728283769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -883,6 +971,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeBattleTarget: {fileID: 0}
   targetName: {fileID: 536510990727627415}
+--- !u!114 &2714158346647482639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4582620212057103557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35230c4a65c717249a4eac92e097acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6712913050421642988
 GameObject:
   m_ObjectHideFlags: 0

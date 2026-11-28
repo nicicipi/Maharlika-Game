@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9415d833b3fd33d4694aaef4293042d8, type: 3}
+  m_Name: Guard
+  m_EditorClassIdentifier: 
+  moveType: 4
+  skillName: Guard
+  skillDescription: Block 20 damage and recover stamina.
+  staminaCost: 0
+  skillDuration: 1
+  targetSelection: 0
+  actions:
+  - action:
+      rid: 228220759206789123
+  - action:
+      rid: 228220759206789130
+  references:
+    version: 2
+    RefIds:
+    - rid: 228220759206789123
+      type: {class: AddBlock, ns: BattleSystem, asm: Assembly-CSharp}
+      data:
+        actionDuration: 0.5
+        actionVFX: {fileID: 4270754231669352451, guid: 8928fdcc7cb7fb14f85fa6b3fa1805ec, type: 3}
+        blockAmount: 20
+    - rid: 228220759206789130
+      type: {class: RecoverStamina, ns: BattleSystem, asm: Assembly-CSharp}
+      data:
+        actionDuration: 0
+        actionVFX: {fileID: 0}
+        value: 10

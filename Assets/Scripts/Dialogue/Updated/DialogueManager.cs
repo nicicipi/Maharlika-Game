@@ -114,13 +114,6 @@ public class DialogueManager : MonoBehaviour
             {
                 StopCoroutine(typingCoroutine);
             }
-            _voiceLineAudioSource?.Stop();
-            if (currentLine.voiceLine != null)
-            {
-                _voiceLineAudioSource.clip = currentLine.voiceLine;
-                _voiceLineAudioSource.Play();
-
-            }
             dialogueArea.text = currentLine.line;
             isTyping = false;
             typingCoroutine = null;
@@ -210,6 +203,7 @@ public class DialogueManager : MonoBehaviour
     {
         isTyping = true;
         dialogueArea.text = string.Empty;
+        _voiceLineAudioSource?.Stop();
 
         // Play voiceline audio when typing starts
         if (_voiceLineAudioSource != null && dialogueLine.voiceLine != null)

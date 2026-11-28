@@ -36,5 +36,7 @@ MonoBehaviour:
     moveSets: []
   battleMoves:
   - {fileID: 11400000, guid: 92a52060d4b6f184daa373879b7b63ed, type: 2}
+  - {fileID: 11400000, guid: a939ab69d16d96346a6dec73023d5ed5, type: 2}
+  - {fileID: 11400000, guid: a939ab69d16d96346a6dec73023d5ed5, type: 2}
   normalSprite: {fileID: 21300000, guid: e35d9844ba380694393523a30da25702, type: 3}
   deathSprite: {fileID: 21300000, guid: e35d9844ba380694393523a30da25702, type: 3}

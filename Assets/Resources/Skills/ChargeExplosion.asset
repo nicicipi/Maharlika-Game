@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9415d833b3fd33d4694aaef4293042d8, type: 3}
+  m_Name: ChargeExplosion
+  m_EditorClassIdentifier: 
+  moveType: 1
+  skillName: ChargeExplosion
+  skillDescription: Block 5 damage.
+  staminaCost: 0
+  skillDuration: 0
+  targetSelection: 0
+  actions:
+  - action:
+      rid: 228220759206789129
+  - action:
+      rid: 228220759206789131
+  references:
+    version: 2
+    RefIds:
+    - rid: 228220759206789129
+      type: {class: NotificationAction, ns: BattleSystem, asm: Assembly-CSharp}
+      data:
+        actionDuration: 0
+        actionVFX: {fileID: 0}
+        notificationText: Enemy is charging  up...
+        color: {r: 0.77254903, g: 0.35061368, b: 0.29411766, a: 1}
+    - rid: 228220759206789131
+      type: {class: ScaleFlicker, ns: BattleSystem, asm: Assembly-CSharp}
+      data:
+        actionDuration: 2
+        actionVFX: {fileID: 0}
+        targetScaleMultiplier: 1.1
+        source: 1

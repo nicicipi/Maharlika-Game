@@ -11,7 +11,7 @@ public class StatusEffect_Burn : StatusEffectData
 
     public override void ApplyStatusEffect(BattleCharacters target)
     {
-        NotificationPanel.Singleton.ShowNotification($"{target.CharacterData.characterName} is burning!");
+        NotificationPanel.Singleton.ShowNotification($"{target.CharacterName} is burning!");
         AudioManager.instance.PlaySFX(38);
         target.SpawnVFX(statusEffectVFX);
         target.FlickerColor(new Color(1f, 0.5f, 0f, 1f), duration, 3);
@@ -24,7 +24,7 @@ public class StatusEffect_Burn : StatusEffectData
 
     private void ApplyBurn(BattleCharacters target)
     {
-        NotificationPanel.Singleton.ShowNotification($"{target.CharacterData.characterName} got burnt!");
+        NotificationPanel.Singleton.ShowNotification($"{target.CharacterName} got burnt!");
         AudioManager.instance.PlaySFX(38);
         if (statusEffectVFX)
         {

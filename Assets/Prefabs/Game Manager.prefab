@@ -918,7 +918,7 @@ MonoBehaviour:
       level: 15
     - skill: {fileID: 0}
       level: 20
-  - characterName: Adam
+  - characterName: AD4M
     battleSprite: {fileID: 21300000, guid: a08897b718864954d860cbe834f55436, type: 3}
     downedSprite: {fileID: 21300000, guid: d88a57e43b8bab04b8cd39ff18c4208c, type: 3}
     dialogueSprite: {fileID: 21300000, guid: 5e651398769878449b7a70c7aade6494, type: 3}

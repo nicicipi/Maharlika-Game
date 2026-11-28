@@ -79,6 +79,10 @@ public class BattleManager : MonoBehaviour
             instance = null;
         }
     }
+    private void Start()
+    {
+        AudioManager.instance.PlayBackgroundMusic(5);
+    }
     #region StateUpdates
 
     public void SetUIState(int index)
@@ -133,6 +137,13 @@ public class BattleManager : MonoBehaviour
         {
             case TurnState.PlayerTurn:
                 SetUIState(UIState.ChoiceSelection);
+
+                foreach(var enemy in _activeBattleCharacters)
+                {
+                    if (enemy.isPlayer || enemy.isDead) 
+                        continue;
+                    enemy.DisplayCurrentMove();
+                }
                 break;
             case TurnState.EnemyTurn:
                 SetUIState(UIState.None);
@@ -170,6 +181,11 @@ public class BattleManager : MonoBehaviour
         Inventory.Singleton.AddItem(tutorialItem);
 
         tutorial.gameObject.SetActive(true);
+        StartCoroutine(WaitForTutorial());
+    }
+    IEnumerator WaitForTutorial()
+    {
+        yield return new WaitUntil(() => { return tutorial.gameObject.activeSelf; });
         tutorial.StartTutorial();
     }
     private void SetupBattleCharacters(List<Character> PlayerCharacters, List<EnemyData> Enemies)
@@ -309,7 +325,7 @@ public class BattleManager : MonoBehaviour
 
         void DefaultAttack(BattleCharacters selectedTarget)
         {
-            Debug.Log("Default attack target selected: " + selectedTarget.CharacterData.characterName);
+            Debug.Log("Default attack target selected: " + selectedTarget.CharacterName);
             target = selectedTarget;
             selected = true;
         }
@@ -342,6 +358,12 @@ public class BattleManager : MonoBehaviour
 
             enemy.skipTurn = false;
 
+            if (enemy.isDead || GameEndCheck())
+            {
+                enemy.SelectCharacter(false);
+                continue;
+            }
+
             yield return enemy.ProcessStatusEffects(false);
             enemy.SelectCharacter(false);
 
@@ -351,15 +373,7 @@ public class BattleManager : MonoBehaviour
     }
     private IEnumerator ExecuteSimpleEnemyAI(BattleCharacters enemy)
     {
-        List<BattleSkills> availableSkills = enemy.battleMovesList;
-
-        if (availableSkills.Count == 0)
-        {
-            Debug.LogError($"Enemy {enemy.CharacterData.characterName} has no available skills.");
-            yield break;
-        }
-
-        BattleSkills selectedSkill = availableSkills[Random.Range(0, availableSkills.Count)];
+        BattleSkills selectedSkill = enemy.GetCurrentMove();
         List<BattleCharacters> targets = GetTargettableCharacters(enemy, selectedSkill.targetSelection );
 
         if (targets.Count == 0)
@@ -376,21 +390,21 @@ public class BattleManager : MonoBehaviour
             targets.Clear();
             targets.Add(target);
         }
+
         yield return ExecuteMove(enemy, selectedSkill, targets);
 
+        enemy.CycleToNextMove();
+        enemy.HideCurrentMove();
     }
     public IEnumerator ExecuteMove(BattleCharacters source, BattleSkills battleMove, BattleCharacters target)
     {
-        source.CharacterData.stats.AddSP(-battleMove.staminaCost);
+        source.ModifySP(-battleMove.staminaCost);
         _currentBattleMove = battleMove;
         _characterStatsPanel.UpdateSPValues();
         _characterStatsPanel.UpdateHPValues();
-        Debug.Log($"Executing Move {battleMove.skillName}, source: {source.CharacterData.characterName}, target: {target.CharacterData.characterName}" );
+        Debug.Log($"Executing Move {battleMove.skillName}, source: {source.CharacterName}, target: {target.CharacterName}" );
         foreach (var battleAction in battleMove.actions)
         {
-            // VFX
-            target.SpawnVFX(battleAction.action.actionVFX);
-            // Stats
             yield return battleAction.action.ApplyActionToTarget(source, target);
             _characterStatsPanel.UpdateHPValues();
         }
@@ -398,18 +412,15 @@ public class BattleManager : MonoBehaviour
     }
     public IEnumerator ExecuteMove(BattleCharacters source, BattleSkills battleMove, List<BattleCharacters> targets)
     {
-        source.CharacterData.stats.AddSP(-battleMove.staminaCost);
+        source.ModifySP(-battleMove.staminaCost);
         _currentBattleMove = battleMove;
         _characterStatsPanel.UpdateSPValues();
         _characterStatsPanel.UpdateHPValues();
         foreach (var target in targets)
         {
-            Debug.Log($"Executing Move {battleMove.skillName}, attacker: {source.CharacterData.characterName}, defender: {target.CharacterData.characterName}");
+            Debug.Log($"Executing Move {battleMove.skillName}, attacker: {source.CharacterName}, defender: {target.CharacterName}");
             foreach (var battleAction in battleMove.actions)
             {
-                // VFX
-                target.SpawnVFX(battleAction.action.actionVFX);
-                // Stats
                 yield return battleAction.action.ApplyActionToTarget(source, target);
                 _characterStatsPanel.UpdateHPValues();
 
@@ -447,8 +458,11 @@ public class BattleManager : MonoBehaviour
         switch (result)
         {
             case BattleResult.Victory:
-                BattleRewardsHandler.instance.PrepareRewardScreen(_rewardsPool);
-                BattleRewardsHandler.instance.DisplayMessages();
+                if(_rewardsPool.Count > 0)
+                {
+                    BattleRewardsHandler.instance.PrepareRewardScreen(_rewardsPool);
+                    BattleRewardsHandler.instance.DisplayMessages();
+                }
                 if (_currentBattleTrigger != null)
                 {
                     _currentBattleTrigger.MarkEnemyDefeated();
@@ -473,7 +487,8 @@ public class BattleManager : MonoBehaviour
         yield return SceneTransition.instance.FadeFromBlack();
         yield return new WaitForSeconds(1f);
         GameManager.Singleton.SetGameState(GameState.Roaming);
-        _currentBattleTrigger.OnBattleEnd?.Invoke();
+        if (_currentBattleTrigger != null)
+            _currentBattleTrigger.OnBattleEnd?.Invoke();
     }
     public void RunAway(float chance)
     {

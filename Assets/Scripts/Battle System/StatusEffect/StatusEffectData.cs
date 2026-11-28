@@ -1,3 +1,4 @@
+using SaveSystem;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace BattleSystem
         public string effectName;
         public string description;
         public Sprite icon;
-        public float duration = 1f;
+        public float duration = 0.5f;
         public GameObject statusEffectVFX;
         public virtual void ApplyStatusEffect(BattleCharacters target)
         {
@@ -27,7 +28,6 @@ namespace BattleSystem
             return false;
         }
     }
-
     [System.Serializable]
     public class ActiveStatusEffect
     {

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9415d833b3fd33d4694aaef4293042d8, type: 3}
   m_Name: Bonk
   m_EditorClassIdentifier: 
+  moveType: 3
   skillName: Bonk
   skillDescription: Stun your enemy for 1 turn.
   staminaCost: 30

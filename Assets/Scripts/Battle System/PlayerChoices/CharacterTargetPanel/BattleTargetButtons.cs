@@ -23,7 +23,7 @@ public class BattleTargetButtons : MonoBehaviour
             _button = GetComponent<Button>();
         }
         activeBattleTarget = character;
-        targetName.text = character.CharacterData.characterName;
+        targetName.text = character.CharacterName;
         _onClickAction = OnClickAction;
     }
     public void Press()

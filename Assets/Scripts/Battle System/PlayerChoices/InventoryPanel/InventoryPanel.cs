@@ -64,13 +64,13 @@ public class InventoryPanel : MonoBehaviour
             }
             else
             {
-                character.CharacterData.stats.AddSP(_selectedItem.amountOfAffect);
+                character.ModifySP(_selectedItem.amountOfAffect);
             }
         }
         else
         {
-            character.CharacterData.stats.UseItemOnCharacter(_selectedItem);
-            BattleManager.instance.battleNotice.ShowNotification("Equipped " + _selectedItem.itemName + " on " + character.CharacterData.characterName);
+            character.UseItem(_selectedItem);
+            BattleManager.instance.battleNotice.ShowNotification("Equipped " + _selectedItem.itemName + " on " + character.CharacterName);
         }
         gameObject.SetActive(false);
         BattleManager.instance.StartCoroutine(EndInput());

@@ -1815,6 +1815,7 @@ GameObject:
   - component: {fileID: 8197761573051535517}
   - component: {fileID: 2999815826689686010}
   - component: {fileID: 1629375166032269090}
+  - component: {fileID: 3848711742403703096}
   m_Layer: 5
   m_Name: StatButton
   m_TagString: Untagged
@@ -1972,6 +1973,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7538327651149778029}
+        m_TargetAssemblyTypeName: SFXHandler, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 19
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3848711742403703096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161281155970660851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35230c4a65c717249a4eac92e097acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1184160652323100389
 GameObject:
   m_ObjectHideFlags: 0
@@ -8400,6 +8425,7 @@ GameObject:
   - component: {fileID: 4772155150383254972}
   - component: {fileID: 7668533011591679439}
   - component: {fileID: 7647437163248095104}
+  - component: {fileID: 5558487345773236046}
   m_Layer: 5
   m_Name: ItemButton
   m_TagString: Untagged
@@ -8557,6 +8583,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7538327651149778029}
+        m_TargetAssemblyTypeName: SFXHandler, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 19
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 5354373177587065731}
         m_TargetAssemblyTypeName: GameMenuManager, Assembly-CSharp
         m_MethodName: UpdateItemsInventory
@@ -8569,6 +8607,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5558487345773236046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5129921988503008942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35230c4a65c717249a4eac92e097acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5161488933807801415
 GameObject:
   m_ObjectHideFlags: 0
@@ -11460,6 +11510,7 @@ GameObject:
   - component: {fileID: 6802237335884688821}
   - component: {fileID: 4094153319327950043}
   - component: {fileID: 7150250783195865379}
+  - component: {fileID: 7538327651149778029}
   m_Layer: 5
   m_Name: ConfigButton
   m_TagString: Untagged
@@ -11617,6 +11668,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 7538327651149778029}
+        m_TargetAssemblyTypeName: SFXHandler, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 19
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &7538327651149778029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7435425373748084093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35230c4a65c717249a4eac92e097acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7496863613987852892
 GameObject:
   m_ObjectHideFlags: 0
@@ -14161,6 +14236,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NotificationPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 4807793911368348333, guid: 79b6baded8d409747bbee1101f275466, type: 3}
+      propertyPath: slideInOffset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4885214816039219266, guid: 79b6baded8d409747bbee1101f275466, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -14240,6 +14319,22 @@ PrefabInstance:
     - target: {fileID: 4885214816039219266, guid: 79b6baded8d409747bbee1101f275466, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537354125316513014, guid: 79b6baded8d409747bbee1101f275466, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6537354125316513014, guid: 79b6baded8d409747bbee1101f275466, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7556428717829984923, guid: 79b6baded8d409747bbee1101f275466, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 33.3455
+      objectReference: {fileID: 0}
+    - target: {fileID: 7556428717829984923, guid: 79b6baded8d409747bbee1101f275466, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 215.32724
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -90,7 +90,7 @@ namespace SaveSystem
             stats = new();
             moveSets = new()
             {
-                "Hit",
+                "Guard",
                 "Slash 3"
             };
         }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9415d833b3fd33d4694aaef4293042d8, type: 3}
   m_Name: MinorHeal
   m_EditorClassIdentifier: 
+  moveType: 1
   skillName: MinorHeal
   skillDescription: Heal an ally for 10 health.
   staminaCost: 0

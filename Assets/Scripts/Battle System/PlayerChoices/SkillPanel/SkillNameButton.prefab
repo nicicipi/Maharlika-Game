@@ -415,6 +415,7 @@ GameObject:
   - component: {fileID: 3209002854020388761}
   - component: {fileID: 3847196205494952830}
   - component: {fileID: 5906972292674242549}
+  - component: {fileID: 4488045101839328979}
   m_Layer: 0
   m_Name: SkillNameButton
   m_TagString: Untagged
@@ -539,6 +540,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4488045101839328979}
+        m_TargetAssemblyTypeName: SFXHandler, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 19
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5906972292674242549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -551,12 +564,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689c885c661cba34bb8df37fbd1f397b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: 
-  skillDesc: 
-  skillCost: 0
   skillNameText: {fileID: 8846954189081780131}
   skillDescText: {fileID: 268263393195994639}
   skillCostText: {fileID: 7428931885575899023}
+--- !u!114 &4488045101839328979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6295758101079384046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35230c4a65c717249a4eac92e097acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7668147188666036698
 GameObject:
   m_ObjectHideFlags: 0

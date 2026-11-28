@@ -20,8 +20,8 @@ MonoBehaviour:
       currentXP: 0
       xpForNextLevel: 0000000064000000a0000000f000000054010000cc01000058020000f8020000ac030000740400005005000040060000440700005c08000088090000c80a00001c0c0000840d0000000f00009010000034120000
       baseLevelXP: 100
-      currentHP: 1000
-      maxHP: 1000
+      currentHP: 300
+      maxHP: 300
       currentStamina: 100
       maxStamina: 100
       attack: 5

@@ -1,8 +1,12 @@
 using BattleSystem;
 using SaveSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using Unity.IO.Archive;
+using UnityEditor.U2D.Animation;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -10,8 +14,9 @@ using UnityEngine.UI;
 public class BattleCharacters : MonoBehaviour
 {
     public Sprite deathSprite;
-    public Character CharacterData  => _characterData;
     private Character _characterData;
+    public BattleStatModifiers temporaryFlatStats = new();
+    public BattleStatModifiers temporaryPercentageStats = new();
     public List<BattleSkills> battleMovesList = new();
     public bool isPlayer;
     public bool isDead;
@@ -22,6 +27,9 @@ public class BattleCharacters : MonoBehaviour
     public GameObject deathParticles;
     public Material selectedMaterial;
     public Material normalMaterial;
+    public TextMeshProUGUI blockAmountText;
+    public TextMeshProUGUI nextMoveText;
+    public GameObject nextMoveGO;
 
     [Header("Death VFX (enemy)")]
     [SerializeField] float preDeathDelay = 0.5f;
@@ -40,10 +48,14 @@ public class BattleCharacters : MonoBehaviour
     [Header("Status Effects")]
     [SerializeField] private List<ActiveStatusEffect> _activeStatusEffects = new();
 
+    [Header("AI")]
+    public List<BattleSkills> aiMoveCycle = new();
+    public int currentMoveCycleIndex = 0;
     private Vector3 _initialLocalPosition;
     private UnityAction _onDeathAction;
     private UnityAction _onTakeDamageAction;
     private Coroutine _flickerColorRoutine;
+    private Coroutine _blockRoutine;
 
     private void Awake()
     {
@@ -58,15 +70,27 @@ public class BattleCharacters : MonoBehaviour
         {
             this.deathSprite = deadSprite;
         }
-        _activeStatusEffects.Clear();
+
+        isDead = false;
         this.isPlayer = isPlayer;
         this._characterData = characterData;
         _spriteRenderer.sprite = battleSprite;
-        isDead = false;
+
         PopulateBattleMoves(moves);
+
+        if (!isPlayer)
+        {
+            SetupMoveCycle(moves);
+            HideCurrentMove();
+        }
+
         gameObject.SetActive(true);
         SetupSlider();
-        _spriteRenderer.color = Color.white;
+    }
+    public void SetupMoveCycle(List<BattleSkills> moves)
+    {
+        currentMoveCycleIndex = 0;
+        aiMoveCycle = moves;
     }
     public void PopulateBattleMoves(List<BattleSkills> newMoves)
     {
@@ -75,17 +99,16 @@ public class BattleCharacters : MonoBehaviour
         foreach (var move in newMoves)
             battleMovesList.Add(move);
     }
-    public void SetupOnTakeDamageAction(UnityAction OnTakeDamage = null)
-    {
-        _onTakeDamageAction = null;
-        _onTakeDamageAction = OnTakeDamage;
-    }
     public void SetupDeathAction(UnityAction OnDeath = null)
     {
         _onDeathAction = OnDeath;
     }
     public void ClearData()
     {
+        _spriteRenderer.color = Color.white;
+        temporaryFlatStats = new();
+        temporaryPercentageStats = new();
+        _activeStatusEffects.Clear();
         _onDeathAction = null;
         _spriteRenderer.sprite = null;
         _characterData = null;
@@ -96,8 +119,8 @@ public class BattleCharacters : MonoBehaviour
         if (customSlider == null)
             return;
         customSlider.minValue = 0;
-        customSlider.maxValue = CharacterData.stats.maxHP;
-        customSlider.value = CharacterData.stats.currentHP;
+        customSlider.maxValue = GetHPValues().max;
+        customSlider.value = GetHPValues().current;
     }
     public void RefreshSlider()
     {
@@ -168,10 +191,38 @@ public class BattleCharacters : MonoBehaviour
         gameObject.SetActive(false);
         _spriteRenderer.color = Color.white;
     }
+    public IEnumerator UpdateBlockRoutine(int current, int target)
+    {
+        float duration = 0.5f;
+        float elapsed = 0f;
+
+        Vector3 originalScale = Vector3.one;
+        Vector3 enlargedScale = originalScale * 1.3f;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+
+            blockAmount = Mathf.RoundToInt(Mathf.Lerp(current, target, t));
+            blockAmountText.text = blockAmount.ToString();
+
+            float scaleT = t < 0.5f ? t * 2f : (1f - t) * 2f;
+            blockAmountText.transform.localScale = Vector3.Lerp(originalScale, enlargedScale, scaleT);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        blockAmount = target;
+        blockAmountText.text = blockAmount.ToString();
+        blockAmountText.transform.localScale = Vector3.one;
+
+        _blockRoutine = null;
+    }
     private IEnumerator AnimateSlider()
     {
         float currentValue = customSlider.value;
-        float newValue = (float)CharacterData.stats.currentHP;
+        float newValue = (float)GetHPValues().current;
 
         float duration = 0.25f;
         float elapsedTime = 0f;
@@ -283,7 +334,7 @@ public class BattleCharacters : MonoBehaviour
     }
     public void TakeDamage(int damage, Color color, bool flicker = true)
     {
-        int finalDamage = CharacterData.stats.TakeDamageWithMitigation(damage);
+        int finalDamage = TakeDamageWithMitigation(damage);
         DisplayNumberText(finalDamage, Color.red);
         if (isPlayer)
             BattleManager.instance.ShakeCamera();
@@ -291,14 +342,14 @@ public class BattleCharacters : MonoBehaviour
             FlickerColor(color, 0.25f, 1);
         StartCoroutine(ShakeCharacter());
         _onTakeDamageAction?.Invoke();
-        if (CharacterData.stats.currentHP <= 0f)
+        if (GetHPValues().current <= 0f)
             KillCharacter();
         RefreshSlider();
     }
     public void TakeHealing(int amount)
     {
         DisplayNumberText(amount, new Color(0.65f, 1f, 0f, 1f));
-        CharacterData.stats.ModifyHP(amount);
+        ModifyHP(amount);
 
         RefreshSlider();
         StartCoroutine(HealRoutine(0.5f));
@@ -338,15 +389,28 @@ public class BattleCharacters : MonoBehaviour
         if (_activeStatusEffects.Exists(x => x.data == effect))
             return;
 
-        ActiveStatusEffect newEffect = new(effect, duration);
-        _activeStatusEffects.Add(newEffect);
+        ActiveStatusEffect newEffect = _activeStatusEffects.FirstOrDefault(x => x.data.effectName == effect.effectName);
+
+        if(newEffect == null)
+        {
+            newEffect = new(effect, duration);
+            _activeStatusEffects.Add(newEffect);
+        }
+        else
+        {
+            newEffect.remainingDuration += duration;
+        }
 
         effect.ApplyStatusEffect(this);
-
     }
 
     public IEnumerator ProcessStatusEffects(bool turnStart)
     {
+        if (turnStart)
+        {
+            ModifyBlock(-99999);
+        }
+
         foreach (var effect in _activeStatusEffects.ToList())
         {
             if (turnStart)
@@ -372,8 +436,97 @@ public class BattleCharacters : MonoBehaviour
     }
     #endregion
 
+    #region StatChecks
+    public string CharacterName => _characterData.characterName;
+    public int Attack => CalculateStat(_characterData.stats.attack, temporaryFlatStats.attack, temporaryPercentageStats.attack);
+    public int Defence => CalculateStat(_characterData.stats.defence, temporaryFlatStats.defence, temporaryPercentageStats.defence);
+    public int Special => CalculateStat(_characterData.stats.special, temporaryFlatStats.special, temporaryPercentageStats.special);
+    public int SpecialDefence => CalculateStat(_characterData.stats.specialDefence, temporaryFlatStats.specialDefence, temporaryPercentageStats.specialDefence);
+    public int Dexterity => CalculateStat(_characterData.stats.dexterity, temporaryFlatStats.dexterity, temporaryPercentageStats.dexterity);
+    public int WeaponPower => CalculateStat(_characterData.stats.weaponPower, temporaryFlatStats.weaponPower, temporaryPercentageStats.weaponPower);
+    public int ArmorDefence => CalculateStat(_characterData.stats.armorDefence, temporaryFlatStats.armorDefence, temporaryPercentageStats.armorDefence);
+    public int blockAmount = 0;
+    public void ModifyBlock(int amount)
+    {
+        int originalNumber = blockAmount;
+        blockAmount += amount;
+        blockAmount = ClampToPositives(blockAmount);
+        int newAmount = blockAmount;
+
+        if (_blockRoutine != null)
+            StopCoroutine(_blockRoutine);
+
+        _blockRoutine = StartCoroutine(UpdateBlockRoutine(originalNumber, newAmount));
+    }
+    public (int current, int max) GetHPValues()
+    {
+        return (_characterData.stats.currentHP, _characterData.stats.maxHP);
+    }
+    public (int current, int max) GetSPValues()
+    {
+        return (_characterData.stats.currentStamina, _characterData.stats.maxStamina);
+    }
+    public int TakeDamageWithMitigation(int damage) 
+    {
+        int blockedDamage = blockAmount - damage;
+        ModifyBlock(-damage);
+        int finalDamage = Defence - ArmorDefence - blockedDamage; 
+        finalDamage = ClampToPositives(finalDamage);
+        ModifyHP(-finalDamage);
+
+        return finalDamage;
+    } 
+    public void ModifyHP(int amount) => _characterData.stats.ModifyHP(amount);
+    public void ModifySP(int sp) => _characterData.stats.AddSP(sp);
+    public void UseItem(ItemData data) => _characterData.stats.UseItemOnCharacter(data);
+    public BattleSkills GetCurrentMove()
+    {
+        return aiMoveCycle[currentMoveCycleIndex];
+    }
+    public void CycleToNextMove()
+    {
+        currentMoveCycleIndex++;
+        if (currentMoveCycleIndex >= aiMoveCycle.Count)
+            currentMoveCycleIndex = 0;
+
+    }
+    public void DisplayCurrentMove()
+    {
+        nextMoveGO.SetActive(true);
+        nextMoveText.text = aiMoveCycle[currentMoveCycleIndex].moveType.ToString();
+    }
+    public void HideCurrentMove()
+    {
+        nextMoveGO.SetActive(false);
+        nextMoveText.text = "";
+    }
+    #endregion
+
+    private int CalculateStat(int baseStat, float flatModifier, float percentageModifier)
+    {
+        float modifiedStat = baseStat + flatModifier;
+        modifiedStat *= 1f + (percentageModifier / 100f);
+
+        return Mathf.Clamp(Mathf.RoundToInt(modifiedStat), 0, 999);
+    }
     private float RandomRange()
     {
         return UnityEngine.Random.Range(-3f, 3f);
     }
+    private int ClampToPositives(int toClamp)
+    {
+        return Mathf.Clamp(toClamp, 0, 9999);
+    }
+}
+
+[Serializable]
+public class BattleStatModifiers
+{
+    public float attack;
+    public float defence;
+    public float special;
+    public float specialDefence;
+    public float dexterity;
+    public float weaponPower;
+    public float armorDefence;
 }

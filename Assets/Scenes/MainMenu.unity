@@ -1373,6 +1373,7 @@ GameObject:
   - component: {fileID: 328030468}
   - component: {fileID: 328030467}
   - component: {fileID: 328030466}
+  - component: {fileID: 328030469}
   m_Layer: 5
   m_Name: optionsbutton
   m_TagString: Untagged
@@ -1456,6 +1457,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 328030469}
+        m_TargetAssemblyTypeName: SFXHandler, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 19
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &328030467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1494,6 +1507,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328030464}
   m_CullTransparentMesh: 1
+--- !u!114 &328030469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328030464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35230c4a65c717249a4eac92e097acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &330066200
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4087,6 +4112,7 @@ GameObject:
   - component: {fileID: 1092362648}
   - component: {fileID: 1092362647}
   - component: {fileID: 1092362646}
+  - component: {fileID: 1092362649}
   m_Layer: 5
   m_Name: quitbutton
   m_TagString: Untagged
@@ -4170,6 +4196,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 328030469}
+        m_TargetAssemblyTypeName: SFXHandler, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 19
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1092362647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4208,6 +4246,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092362644}
   m_CullTransparentMesh: 1
+--- !u!114 &1092362649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092362644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35230c4a65c717249a4eac92e097acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1191864088
 GameObject:
   m_ObjectHideFlags: 0
@@ -4326,6 +4376,7 @@ GameObject:
   - component: {fileID: 1226416165}
   - component: {fileID: 1226416164}
   - component: {fileID: 1226416163}
+  - component: {fileID: 1226416166}
   m_Layer: 5
   m_Name: playGameButton
   m_TagString: Untagged
@@ -4409,6 +4460,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 328030469}
+        m_TargetAssemblyTypeName: SFXHandler, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 19
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1226416164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4447,6 +4510,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226416161}
   m_CullTransparentMesh: 1
+--- !u!114 &1226416166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226416161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35230c4a65c717249a4eac92e097acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1251351099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5570,10 +5645,6 @@ PrefabInstance:
     - target: {fileID: 7109942295321668814, guid: 01bcd3f79a94370448758df58a5606ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7883291253211757905, guid: 01bcd3f79a94370448758df58a5606ca, type: 3}
-      propertyPath: _characterReferences.Array.data[2].characterName
-      value: AD4M
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2704,17 +2704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDatas:
-  - Enemy: {fileID: 11400000, guid: 9654fc86fedbd364da160c2150baff3c, type: 2}
-    rewards:
-      rewardXP: 0
-      rewardItems: []
-      scrapsReward: 0
-  - Enemy: {fileID: 11400000, guid: efd9f25934fef954aa61681505fad8c1, type: 2}
-    rewards:
-      rewardXP: 0
-      rewardItems: []
-      scrapsReward: 0
-  - Enemy: {fileID: 11400000, guid: e4cca720c8c15e54a8949e4447a3c59c, type: 2}
+  - Enemy: {fileID: 11400000, guid: 6743f25679f629c45ae86ea7c6cf24de, type: 2}
     rewards:
       rewardXP: 0
       rewardItems: []

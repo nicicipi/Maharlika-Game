@@ -29,7 +29,7 @@ public class SkillChoicePanel : MonoBehaviour
         foreach (var move in moves)
         {
             BattleSkillButton skillButton = GetSkillButton();
-            bool isUsable = _currentSource.CharacterData.stats.currentStamina >= move.staminaCost;
+            bool isUsable = _currentSource.GetSPValues().current >= move.staminaCost;
             skillButton.SetupBattleMove(move, OnSelectMove, isUsable);
         }
     }
