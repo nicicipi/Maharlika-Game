@@ -8,17 +8,17 @@ public class CamController : MonoBehaviour
 {
     private CinemachineVirtualCamera virtualCamera;
     public bool snapToPlayer = false;
-    [SerializeField] int musicToPlay;
-    private bool musicAlreadyPlayed;
+    //[SerializeField] int musicToPlay;
+    //private bool musicAlreadyPlayed;
 
     private void Awake()
     {
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        if (AudioManager.instance != null && !musicAlreadyPlayed)
-        {
-            musicAlreadyPlayed = true;
-            AudioManager.instance.PlayBackgroundMusic(musicToPlay);
-        }
+        //if (AudioManager.instance != null && !musicAlreadyPlayed)
+        //{
+        //    musicAlreadyPlayed = true;
+        //    AudioManager.instance.PlayBackgroundMusic(musicToPlay);
+        //}
     }
     private void Start()
     {

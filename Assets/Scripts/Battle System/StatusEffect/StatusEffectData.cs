@@ -22,7 +22,10 @@ namespace BattleSystem
         {
             return false;
         }
-        public virtual void RemoveStatusEffect(BattleCharacters target) { }
+        public virtual bool RemoveStatusEffect(BattleCharacters target) 
+        {
+            return false;
+        }
     }
 
     [System.Serializable]

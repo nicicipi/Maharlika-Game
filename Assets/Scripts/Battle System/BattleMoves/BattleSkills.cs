@@ -45,6 +45,17 @@ namespace BattleSystem
         }
     }
     [Serializable]
+    public class RecoverStamina : Action
+    {
+        public int value;
+        public override IEnumerator ApplyActionToTarget(BattleCharacters source, BattleCharacters target)
+        {
+            source.CharacterData.stats.AddSP(value);
+            BattleManager.instance._characterStatsPanel.UpdateSPValues();
+            yield return null;
+        }
+    }
+    [Serializable]
     public class DamageAction : Action
     {
         public int damageValue;
@@ -56,8 +67,7 @@ namespace BattleSystem
             { 
                 finalDamage += source.CharacterData.stats.weaponPower + source.CharacterData.stats.attack;
             }
-            target.DisplayDamageText(target.CharacterData.stats.TakeDamageWithMitigation(finalDamage));
-            target.TakeDamage();
+            target.TakeDamage(finalDamage, Color.red);
             Debug.Log($"{source.CharacterData.characterName} attacks {target.CharacterData.characterName} for {finalDamage} damage");
             yield return new WaitForSeconds(actionDuration);
         }
@@ -75,9 +85,7 @@ namespace BattleSystem
             {
                 finalHeal = (int)( target.CharacterData.stats.maxHP / healValue);
             }
-            target.CharacterData.stats.ModifyHP(finalHeal);
-            target.TakeHealing();
-            target.DisplayHealText(finalHeal);
+            target.TakeHealing(finalHeal);
             yield return new WaitForSeconds(actionDuration);
         }
     }

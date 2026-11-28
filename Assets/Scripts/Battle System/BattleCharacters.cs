@@ -15,6 +15,7 @@ public class BattleCharacters : MonoBehaviour
     public List<BattleSkills> battleMovesList = new();
     public bool isPlayer;
     public bool isDead;
+    public bool skipTurn;
     [SerializeReference] private SpriteRenderer _spriteRenderer;
 
     [Header("VFX")]
@@ -42,16 +43,14 @@ public class BattleCharacters : MonoBehaviour
     private Vector3 _initialLocalPosition;
     private UnityAction _onDeathAction;
     private UnityAction _onTakeDamageAction;
+    private Coroutine _flickerColorRoutine;
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _initialLocalPosition = transform.localPosition;
     }
-    public  void SelectCharacter(bool triggerSelect)
-    {
-        _spriteRenderer.material = triggerSelect ? selectedMaterial : normalMaterial;
-    }
+    #region Setup
     public void SetupCharacter(Character characterData, List<BattleSkills> moves, bool isPlayer, Sprite battleSprite, Sprite deadSprite) 
     {
         ClearData();
@@ -59,6 +58,7 @@ public class BattleCharacters : MonoBehaviour
         {
             this.deathSprite = deadSprite;
         }
+        _activeStatusEffects.Clear();
         this.isPlayer = isPlayer;
         this._characterData = characterData;
         _spriteRenderer.sprite = battleSprite;
@@ -91,7 +91,26 @@ public class BattleCharacters : MonoBehaviour
         _characterData = null;
         deathSprite = null;
     }
+    public void SetupSlider()
+    {
+        if (customSlider == null)
+            return;
+        customSlider.minValue = 0;
+        customSlider.maxValue = CharacterData.stats.maxHP;
+        customSlider.value = CharacterData.stats.currentHP;
+    }
+    public void RefreshSlider()
+    {
+        if (customSlider == null) return;
 
+        if (_sliderCoroutine != null)
+            StopCoroutine(_sliderCoroutine);
+
+        _sliderCoroutine = StartCoroutine(AnimateSlider());
+    }
+    #endregion
+
+    #region VFX
     private IEnumerator EnemyDeathSequence()
     {
         Color startColor = _spriteRenderer != null ? _spriteRenderer.color : Color.white;
@@ -149,54 +168,6 @@ public class BattleCharacters : MonoBehaviour
         gameObject.SetActive(false);
         _spriteRenderer.color = Color.white;
     }
-
-    public void TakeDamage()
-    {
-        StartCoroutine(TakeDamageRoutine());
-        _onTakeDamageAction?.Invoke();
-        if (CharacterData.stats.currentHP <= 0f)
-            KillCharacter();
-        RefreshSlider();
-    }
-    public void TakeHealing()
-    {
-        RefreshSlider();
-        StartCoroutine(HealRoutine(0.5f));
-    }
-    public void DisplayDamageText(int amount)
-    {
-        CharacterDamageGUI characterDamageText = Instantiate(BattleManager.instance.characterDamageText, transform.position, Quaternion.identity);
-        characterDamageText.SetText(amount);
-    }
-    public void DisplayHealText(int amount)
-    {
-        CharacterDamageGUI characterDamageText = Instantiate(BattleManager.instance.characterHealText, transform.position, Quaternion.identity);
-        characterDamageText.SetText(amount);
-    }
-    public void ApplyVFX(GameObject vfxObject,float randomMultiplier = 1f)
-    {
-        GameObject newObject = Instantiate(vfxObject, transform.position, transform.rotation);
-        newObject.transform.position += new Vector3(RandomRange() * randomMultiplier, RandomRange() * randomMultiplier, 0);
-        Debug.Log("Applying impact effect: " + newObject.name);
-    }
-
-    public void SetupSlider()
-    {
-        if (customSlider == null)
-            return;
-        customSlider.minValue = 0;
-        customSlider.maxValue = CharacterData.stats.maxHP;
-        customSlider.value = CharacterData.stats.currentHP;
-    }
-    public void RefreshSlider()
-    {
-        if (customSlider == null) return;
-
-        if (_sliderCoroutine != null)
-            StopCoroutine(_sliderCoroutine);
-
-        _sliderCoroutine = StartCoroutine(AnimateSlider());
-    }
     private IEnumerator AnimateSlider()
     {
         float currentValue = customSlider.value;
@@ -216,17 +187,24 @@ public class BattleCharacters : MonoBehaviour
         customSlider.value = newValue;
         _sliderCoroutine = null;
     }
-    private float RandomRange()
+
+    private IEnumerator ShakeCharacter()
     {
-        return UnityEngine.Random.Range(-3f, 3f);
-    }
-    public void ForceEndTurn()
-    {
-        // stuns the character, skipping the turn.
+        float elapsed = 0f;
+        while (elapsed < 0.5f)
+        {
+            float phase = elapsed * jitterFrequency * Mathf.PI * 2f;
+            float offsetX = Mathf.Sin(phase) * jitterMagnitudeX;
+            float offsetY = Mathf.Abs(Mathf.Sin(phase)) * jitterMagnitudeY;
+
+            transform.localPosition = _initialLocalPosition + new Vector3(offsetX, offsetY, 0f);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
     }
     private IEnumerator HealRoutine(float duration)
     {
-        Vector3 originalScale = transform.localScale;
+        Vector3 originalScale = isPlayer ? Vector3.one * 2f : Vector3.one;
         Color originalColor = transform.GetComponent<SpriteRenderer>().color;
         Color healColor = Color.green;
 
@@ -255,68 +233,6 @@ public class BattleCharacters : MonoBehaviour
         transform.localScale = originalScale;
         spriteRenderer.color = originalColor;
     }
-    public IEnumerator TakeDamageRoutine()
-    {
-        Color startColor = _spriteRenderer != null ? _spriteRenderer.color : Color.white;
-
-        float elapsed = 0f;
-        while (elapsed < 0.25f)
-        {
-            float phase = elapsed * jitterFrequency * Mathf.PI * 2f;
-            float offsetX = Mathf.Sin(phase) * jitterMagnitudeX;
-            float offsetY = Mathf.Abs(Mathf.Sin(phase)) * jitterMagnitudeY;
-
-            transform.localPosition = _initialLocalPosition + new Vector3(offsetX, offsetY, 0f);
-
-            float flash = Mathf.PingPong(elapsed * colorFlashFrequency, 1f); // 0..1..0
-            Color flashColor = Color.Lerp(Color.white, Color.red, flash);
-            flashColor.a = startColor.a;
-            if (_spriteRenderer != null)
-                _spriteRenderer.color = flashColor;
-
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-        _spriteRenderer.color = Color.white;
-    }
-    public void KillCharacter()
-    {
-        if (isDead)
-        {
-            return;
-        }
-
-        if (isPlayer)
-        {
-            KillPlayer();
-            return;
-        }
-        isDead = true;
-        _onDeathAction?.Invoke();
-        StartCoroutine(EnemyDeathSequence());
-    }
-
-    private void KillPlayer()
-    {
-        if (deathSprite)
-        {
-            if (_spriteRenderer) _spriteRenderer.sprite = deathSprite;
-            if (deathParticles) Instantiate(deathParticles, transform.position, transform.rotation);
-            isDead = true;
-        }
-    }
-
-    private Coroutine _flickerColorRoutine;
-    public void FlickerColor(Color color, float duration, int pingpong)
-    {
-        if(_flickerColorRoutine != null)
-        {
-            StopCoroutine(_flickerColorRoutine);
-            _flickerColorRoutine = null;
-        }
-        _spriteRenderer.color = Color.white;
-        _flickerColorRoutine = StartCoroutine(FlickerColorRoutine(color, duration, pingpong));
-    }
     private IEnumerator FlickerColorRoutine(Color color, float duration, int pingpong)
     {
         if (_spriteRenderer == null)
@@ -336,6 +252,87 @@ public class BattleCharacters : MonoBehaviour
         _spriteRenderer.color = startColor;
         _flickerColorRoutine = null;
     }
+    public void SelectCharacter(bool triggerSelect)
+    {
+        _spriteRenderer.material = triggerSelect ? selectedMaterial : normalMaterial;
+    }
+    private void DisplayNumberText(int amount, Color color)
+    {
+        CharacterDamageGUI characterDamageText = Instantiate(BattleManager.instance.characterDamageText, transform.position, Quaternion.identity);
+        characterDamageText.SetText(amount);
+        characterDamageText.SetColor(color);
+        characterDamageText.SetRandomPosition();
+    }
+    public void SpawnVFX(GameObject vfxObject, float randomOffsetMultiplier = 1f)
+    {
+        if (vfxObject == null)
+            return;
+        GameObject newObject = Instantiate(vfxObject, transform.position, transform.rotation);
+        newObject.transform.position += new Vector3(RandomRange() * randomOffsetMultiplier, RandomRange() * randomOffsetMultiplier, 0);
+        Debug.Log("Applying impact effect: " + newObject.name);
+    }
+    public void FlickerColor(Color color, float duration, int pingpong)
+    {
+        if (_flickerColorRoutine != null)
+        {
+            StopCoroutine(_flickerColorRoutine);
+            _flickerColorRoutine = null;
+        }
+        _spriteRenderer.color = Color.white;
+        _flickerColorRoutine = StartCoroutine(FlickerColorRoutine(color, duration, pingpong));
+    }
+    public void TakeDamage(int damage, Color color, bool flicker = true)
+    {
+        int finalDamage = CharacterData.stats.TakeDamageWithMitigation(damage);
+        DisplayNumberText(finalDamage, Color.red);
+        if (isPlayer)
+            BattleManager.instance.ShakeCamera();
+        if (flicker)
+            FlickerColor(color, 0.25f, 1);
+        StartCoroutine(ShakeCharacter());
+        _onTakeDamageAction?.Invoke();
+        if (CharacterData.stats.currentHP <= 0f)
+            KillCharacter();
+        RefreshSlider();
+    }
+    public void TakeHealing(int amount)
+    {
+        DisplayNumberText(amount, new Color(0.65f, 1f, 0f, 1f));
+        CharacterData.stats.ModifyHP(amount);
+
+        RefreshSlider();
+        StartCoroutine(HealRoutine(0.5f));
+    }
+    #endregion
+
+    #region Events
+    public void ForceEndTurn()
+    {
+        skipTurn = true;
+        // stuns the character, skipping the turn.
+    }
+    public void KillCharacter()
+    {
+        if (isDead)
+        {
+            return;
+        }
+
+        if (isPlayer)
+        {
+            _spriteRenderer.sprite = deathSprite;
+            if (deathParticles)
+                Instantiate(deathParticles, transform.position, transform.rotation);
+        }
+        else
+        {
+            StartCoroutine(EnemyDeathSequence());
+
+        }
+        isDead = true;
+        _onDeathAction?.Invoke();
+    }
+
     public void AddStatusEffect(StatusEffectData effect, int duration)
     {
         if (_activeStatusEffects.Exists(x => x.data == effect))
@@ -346,8 +343,6 @@ public class BattleCharacters : MonoBehaviour
 
         effect.ApplyStatusEffect(this);
 
-        if (effect.statusEffectVFX)
-            ApplyVFX(effect.statusEffectVFX);
     }
 
     public IEnumerator ProcessStatusEffects(bool turnStart)
@@ -356,22 +351,29 @@ public class BattleCharacters : MonoBehaviour
         {
             if (turnStart)
             {
-                if(effect.data.OnTurnStart(this))
+                if (effect.data.OnTurnStart(this))
                     yield return new WaitForSeconds(effect.data.duration);
                 effect.ReduceDuration();
             }
             else
             {
-                if(effect.data.OnTurnEnd(this))
+                if (effect.data.OnTurnEnd(this))
                     yield return new WaitForSeconds(effect.data.duration);
             }
 
             if (effect.remainingDuration <= 0)
             {
-                effect.data.RemoveStatusEffect(this);
+                if (effect.data.RemoveStatusEffect(this))
+                    yield return new WaitForSeconds(effect.data.duration);
                 _activeStatusEffects.Remove(effect);
             }
             yield return null;
         }
+    }
+    #endregion
+
+    private float RandomRange()
+    {
+        return UnityEngine.Random.Range(-3f, 3f);
     }
 }

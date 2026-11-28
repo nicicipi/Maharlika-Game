@@ -689,6 +689,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4890121832841339920}
     m_Modifications:
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.69411767
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.509434
+      objectReference: {fileID: 0}
     - target: {fileID: 6295758101079384046, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
       propertyPath: m_Name
       value: SkillNameButton (1)
@@ -923,6 +943,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4890121832841339920}
     m_Modifications:
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.69411767
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.509434
+      objectReference: {fileID: 0}
     - target: {fileID: 6295758101079384046, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
       propertyPath: m_Name
       value: SkillNameButton
@@ -1040,6 +1080,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4890121832841339920}
     m_Modifications:
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Transition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.a
+      value: 0.69411767
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 3847196205494952830, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.509434
+      objectReference: {fileID: 0}
     - target: {fileID: 6295758101079384046, guid: 620ef3a7aba7acf428ba5329cc1c0728, type: 3}
       propertyPath: m_Name
       value: SkillNameButton (2)

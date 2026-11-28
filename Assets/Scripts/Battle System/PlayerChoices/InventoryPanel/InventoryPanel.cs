@@ -55,18 +55,21 @@ public class InventoryPanel : MonoBehaviour
             return;
         }
         _characterTargetPanel.gameObject.SetActive(false);
-        character.CharacterData.stats.UseItemOnCharacter(_selectedItem);
         if(_selectedItem.itemType == ItemData.ItemType.Consumable)
         {
             Inventory.Singleton.RemoveItem(_selectedItem);
             if (_selectedItem.affectType == ItemData.AffectType.HP)
             {
-                character.TakeHealing();
-                character.DisplayHealText(_selectedItem.amountOfAffect);
+                character.TakeHealing(_selectedItem.amountOfAffect);
+            }
+            else
+            {
+                character.CharacterData.stats.AddSP(_selectedItem.amountOfAffect);
             }
         }
         else
         {
+            character.CharacterData.stats.UseItemOnCharacter(_selectedItem);
             BattleManager.instance.battleNotice.ShowNotification("Equipped " + _selectedItem.itemName + " on " + character.CharacterData.characterName);
         }
         gameObject.SetActive(false);

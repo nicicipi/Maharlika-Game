@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ccee83c13b9055498ca205c1f8b4815, type: 3}
   m_Name: Stun
   m_EditorClassIdentifier: Assembly-CSharp:BattleSystem:StunStatusEffect
-  effectName: 
-  description: 
+  effectName: Stun
+  description: Skips a turn.
   icon: {fileID: 0}
   duration: 1
-  statusEffectVFX: {fileID: 0}
+  statusEffectVFX: {fileID: 4270754231669352451, guid: 6d74a742a54d9c74eb9d785c7ac63eb2, type: 3}

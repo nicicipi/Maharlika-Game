@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(SaveFlagHandler))]
 public class BattleInstantiator : MonoBehaviour
 {
     [SerializeField] private EnemyData[] enemyDatas;
@@ -23,12 +24,14 @@ public class BattleInstantiator : MonoBehaviour
 
     public UnityEvent OnDefeat;
     public UnityEvent OnPlayerRun;
+    public UnityEvent OnBattleEnd;
 
     private void Awake()
     {
         battleTrigger = GetComponent<Collider2D>();
     }
 
+    [ContextMenu("DebugBattle")]
     public void StartBattle()
     {
         if (GameManager.Singleton.CurrentGameState == GameManager.GameState.Battle)

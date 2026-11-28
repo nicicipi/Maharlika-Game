@@ -865,6 +865,7 @@ MonoBehaviour:
   battleMovesList: []
   isPlayer: 1
   isDead: 0
+  skipTurn: 0
   _spriteRenderer: {fileID: 6466877834454112740}
   deathParticles: {fileID: 0}
   selectedMaterial: {fileID: 2100000, guid: 6c8ffea2e4d80e7488bd2a75517356c5, type: 2}
@@ -1077,6 +1078,7 @@ MonoBehaviour:
   battleMovesList: []
   isPlayer: 1
   isDead: 0
+  skipTurn: 0
   _spriteRenderer: {fileID: 3306793241083098302}
   deathParticles: {fileID: 0}
   selectedMaterial: {fileID: 2100000, guid: 6c8ffea2e4d80e7488bd2a75517356c5, type: 2}
@@ -1433,6 +1435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1063054708354507279}
   - component: {fileID: 7862617357823663156}
+  - component: {fileID: 6725207821704206254}
   m_Layer: 0
   m_Name: BattleManager
   m_TagString: Untagged
@@ -1489,6 +1492,37 @@ MonoBehaviour:
   - {fileID: 2222616459529144546}
   - {fileID: 7094878487424735576}
   _rewardsPool: []
+--- !u!114 &6725207821704206254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220536264367515277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df38b6aa6c8d6494a9c2731dd973b091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDatas:
+  - Enemy: {fileID: 11400000, guid: 41ccf58d57e03c44f8455e55f4fff9e9, type: 2}
+    rewards:
+      rewardXP: 0
+      rewardItems: []
+      scrapsReward: 0
+  canRunAway: 0
+  runAwayDistance: 2
+  battleTriggerCooldown: 2
+  shouldCompleteQuest: 0
+  deactivateAfterStarting: 0
+  battleMusicIndex: 0
+  questToComplete: 
+  OnDefeat:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerRun:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1283871140942154356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,6 +1755,7 @@ MonoBehaviour:
   battleMovesList: []
   isPlayer: 0
   isDead: 0
+  skipTurn: 0
   _spriteRenderer: {fileID: 2801659843122628244}
   deathParticles: {fileID: 0}
   selectedMaterial: {fileID: 2100000, guid: 6c8ffea2e4d80e7488bd2a75517356c5, type: 2}
@@ -2121,6 +2156,7 @@ MonoBehaviour:
   battleMovesList: []
   isPlayer: 0
   isDead: 0
+  skipTurn: 0
   _spriteRenderer: {fileID: 731480392597001256}
   deathParticles: {fileID: 0}
   selectedMaterial: {fileID: 2100000, guid: 6c8ffea2e4d80e7488bd2a75517356c5, type: 2}
@@ -3659,6 +3695,7 @@ MonoBehaviour:
   battleMovesList: []
   isPlayer: 1
   isDead: 0
+  skipTurn: 0
   _spriteRenderer: {fileID: 1796997294290810413}
   deathParticles: {fileID: 0}
   selectedMaterial: {fileID: 2100000, guid: 6c8ffea2e4d80e7488bd2a75517356c5, type: 2}
@@ -4384,6 +4421,7 @@ MonoBehaviour:
   battleMovesList: []
   isPlayer: 0
   isDead: 0
+  skipTurn: 0
   _spriteRenderer: {fileID: 995974755852035915}
   deathParticles: {fileID: 0}
   selectedMaterial: {fileID: 2100000, guid: 6c8ffea2e4d80e7488bd2a75517356c5, type: 2}

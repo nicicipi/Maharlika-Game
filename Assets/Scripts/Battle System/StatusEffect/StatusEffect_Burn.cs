@@ -13,6 +13,8 @@ public class StatusEffect_Burn : StatusEffectData
     {
         NotificationPanel.Singleton.ShowNotification($"{target.CharacterData.characterName} is burning!");
         AudioManager.instance.PlaySFX(38);
+        target.SpawnVFX(statusEffectVFX);
+        target.FlickerColor(new Color(1f, 0.5f, 0f, 1f), duration, 3);
     }
     public override bool OnTurnEnd(BattleCharacters target)
     {
@@ -26,12 +28,11 @@ public class StatusEffect_Burn : StatusEffectData
         AudioManager.instance.PlaySFX(38);
         if (statusEffectVFX)
         {
-            target.ApplyVFX(statusEffectVFX, 1.1f);
-            target.ApplyVFX(statusEffectVFX, 1.1f);
-            target.ApplyVFX(statusEffectVFX, 1.1f);
+            target.SpawnVFX(statusEffectVFX, 1.1f);
+            target.SpawnVFX(statusEffectVFX, 1.1f);
+            target.SpawnVFX(statusEffectVFX, 1.1f);
         }
-        target.DisplayDamageText(target.CharacterData.stats.TakeDamageWithMitigation(damagePerTurn));
-        target.RefreshSlider();
+        target.TakeDamage(damagePerTurn, new Color(1f, 0.5f, 0f, 1f), false);
         target.FlickerColor(new Color(1f, 0.5f, 0f, 1f), duration, 3);
 
     }

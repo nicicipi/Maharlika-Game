@@ -8,4 +8,8 @@ public class SFXHandler : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(number);
     }
+    public void PlayMusic(int number)
+    {
+        AudioManager.instance.PlayBackgroundMusic(number);
+    }
 }

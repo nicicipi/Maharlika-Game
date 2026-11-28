@@ -20,6 +20,8 @@ MonoBehaviour:
   actions:
   - action:
       rid: 228220455653736468
+  - action:
+      rid: 228220759206789121
   references:
     version: 2
     RefIds:
@@ -29,3 +31,9 @@ MonoBehaviour:
         actionDuration: 0.25
         actionVFX: {fileID: 6961955469419642770, guid: 31b0291da3973b54980452706ae34a51, type: 3}
         damageValue: 10
+    - rid: 228220759206789121
+      type: {class: RecoverStamina, ns: BattleSystem, asm: Assembly-CSharp}
+      data:
+        actionDuration: 0
+        actionVFX: {fileID: 6961955469419642770, guid: 31b0291da3973b54980452706ae34a51, type: 3}
+        value: 10

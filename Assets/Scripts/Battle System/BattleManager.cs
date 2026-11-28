@@ -36,7 +36,7 @@ public class BattleManager : MonoBehaviour
     public SkillChoicePanel UI_Skills;
     public InventoryPanel UI_Items;
     public CharacterTargetPanel UI_BasicAttackTargets;
-    [SerializeField] private CharacterStatsPanel _characterStatsPanel;
+    [SerializeField] public CharacterStatsPanel _characterStatsPanel;
     [SerializeField] private List<BattleCharacters> _battleCharacterViewPlayers = new();
     [SerializeField] private List<BattleCharacters> _battleCharacterViewEnemies = new();
     public NotificationPanel battleNotice => NotificationPanel.Singleton;
@@ -187,7 +187,6 @@ public class BattleManager : MonoBehaviour
             Sprite normalSprite = CharacterReferenceConfig.Singleton.GetReference(character.characterName).battleSprite;
             Sprite downedSprite = CharacterReferenceConfig.Singleton.GetReference(character.characterName).downedSprite;
             _battleCharacterViewPlayers[battlePlayerIndex].SetupCharacter(character, battleMoveLibrary.GetBattleMoves(character.moveSets), true, normalSprite, downedSprite);
-            _battleCharacterViewPlayers[battlePlayerIndex].SetupOnTakeDamageAction(ShakeCamera);
             _activeBattleCharacters.Add(_battleCharacterViewPlayers[battlePlayerIndex]);
             battlePlayerIndex++;
         }
@@ -234,6 +233,7 @@ public class BattleManager : MonoBehaviour
     private IEnumerator PlayerInputRoutine()
     {
         SetTurnState(TurnState.PlayerTurn);
+
         foreach(var player in _activeBattleCharacters)
         {
             if (!player.isPlayer || _runningAway || player.isDead)
@@ -242,16 +242,24 @@ public class BattleManager : MonoBehaviour
             if (GameEndCheck())
                 break;
 
+            player.SelectCharacter(true);
+
             yield return player.ProcessStatusEffects(true);
              
-            if (player.isDead)
+            if (player.isDead || GameEndCheck())
                 continue;
 
-            SetUIState(UIState.ChoiceSelection);
-            _waitingForPlayerInput = true;
-            _currentPlayerCharacter = player;
-            player.SelectCharacter(true);
-            yield return new WaitUntil(() => !_waitingForPlayerInput);
+            if (!player.skipTurn)
+            {
+                _currentPlayerCharacter = player;
+                _waitingForPlayerInput = true;
+
+                SetUIState(UIState.ChoiceSelection);
+
+                yield return new WaitUntil(() => !_waitingForPlayerInput);
+            }
+            player.skipTurn = false;
+
             player.SelectCharacter(false);
 
             if (GameEndCheck())
@@ -262,6 +270,7 @@ public class BattleManager : MonoBehaviour
             if (GameEndCheck())
                 break;
         }
+        _currentPlayerCharacter = null;
     }
     public void TriggerPlayerInputEnd()
     {
@@ -314,69 +323,65 @@ public class BattleManager : MonoBehaviour
         {
             if (enemy.isDead || enemy.isPlayer)
                 continue;
+
             if (GameEndCheck())
                 break;
-            // Execute AI for this enemy
+
             enemy.SelectCharacter(true);
+
             yield return enemy.ProcessStatusEffects(true);
 
-            if (enemy.isDead)
+            if (enemy.isDead || GameEndCheck())
             {
                 enemy.SelectCharacter(false);
                 continue;
             }
 
-            yield return ExecuteSimpleEnemyAI(enemy);
+            if (!enemy.skipTurn)
+                yield return ExecuteSimpleEnemyAI(enemy);
+
+            enemy.skipTurn = false;
 
             yield return enemy.ProcessStatusEffects(false);
             enemy.SelectCharacter(false);
+
+            if (GameEndCheck())
+                break;
         }
     }
     private IEnumerator ExecuteSimpleEnemyAI(BattleCharacters enemy)
     {
-        var availableSkills = enemy.battleMovesList;
-        if (enemy.battleMovesList.Count == 0)
-            Debug.LogError("Enemy Movesets missing");
+        List<BattleSkills> availableSkills = enemy.battleMovesList;
 
-        var selectedSkill = availableSkills[Random.Range(0, availableSkills.Count)];
-        if (selectedSkill == null)
-            Debug.LogError("skill missing");
-
-        var alivePlayers = _activeBattleCharacters.Where(p => !p.isDead && p.isPlayer).ToList();
-        var aliveEnemies = _activeBattleCharacters.Where(p => !p.isDead && !p.isPlayer).ToList();
-        BattleCharacters target = null;
-        switch (selectedSkill.targetSelection)
+        if (availableSkills.Count == 0)
         {
-            case TargetSelection.SingleEnemy:
-                target = alivePlayers[Random.Range(0, alivePlayers.Count)];
-                yield return ExecuteMove(enemy, selectedSkill, target);
-                break;
-            case TargetSelection.RandomEnemy:
-                target = alivePlayers[Random.Range(0, alivePlayers.Count)];
-                yield return ExecuteMove(enemy, selectedSkill, target);
-                break;
-            case TargetSelection.SingleAlly:
-                target = aliveEnemies[Random.Range(0, aliveEnemies.Count)];
-                yield return ExecuteMove(enemy, selectedSkill, target);
-                break;
-            case TargetSelection.RandomAlly:
-                target = aliveEnemies[Random.Range(0, aliveEnemies.Count)];
-                yield return ExecuteMove(enemy, selectedSkill, target);
-                break;
-            case TargetSelection.Self:
-                yield return ExecuteMove(enemy, selectedSkill, enemy);
-                break;
-            case TargetSelection.AllAllies:
-                yield return ExecuteMove(enemy, selectedSkill, aliveEnemies);
-                break;
-            case TargetSelection.AllEnemies:
-                yield return ExecuteMove(enemy, selectedSkill, alivePlayers);
-                break;
+            Debug.LogError($"Enemy {enemy.CharacterData.characterName} has no available skills.");
+            yield break;
         }
+
+        BattleSkills selectedSkill = availableSkills[Random.Range(0, availableSkills.Count)];
+        List<BattleCharacters> targets = GetTargettableCharacters(enemy, selectedSkill.targetSelection );
+
+        if (targets.Count == 0)
+        {
+            Debug.LogWarning($"No valid targets for {selectedSkill.skillName}.");
+            yield break;
+        }
+
+        // Pick one target for single-target actions.
+        if (selectedSkill.targetSelection == TargetSelection.SingleEnemy ||
+            selectedSkill.targetSelection == TargetSelection.SingleAlly)
+        {
+            BattleCharacters target = targets[Random.Range(0, targets.Count)];
+            targets.Clear();
+            targets.Add(target);
+        }
+        yield return ExecuteMove(enemy, selectedSkill, targets);
+
     }
     public IEnumerator ExecuteMove(BattleCharacters source, BattleSkills battleMove, BattleCharacters target)
     {
-        source.CharacterData.stats.currentStamina -= battleMove.staminaCost;
+        source.CharacterData.stats.AddSP(-battleMove.staminaCost);
         _currentBattleMove = battleMove;
         _characterStatsPanel.UpdateSPValues();
         _characterStatsPanel.UpdateHPValues();
@@ -384,7 +389,7 @@ public class BattleManager : MonoBehaviour
         foreach (var battleAction in battleMove.actions)
         {
             // VFX
-            target.ApplyVFX(battleAction.action.actionVFX);
+            target.SpawnVFX(battleAction.action.actionVFX);
             // Stats
             yield return battleAction.action.ApplyActionToTarget(source, target);
             _characterStatsPanel.UpdateHPValues();
@@ -393,7 +398,7 @@ public class BattleManager : MonoBehaviour
     }
     public IEnumerator ExecuteMove(BattleCharacters source, BattleSkills battleMove, List<BattleCharacters> targets)
     {
-        source.CharacterData.stats.currentStamina -= battleMove.staminaCost;
+        source.CharacterData.stats.AddSP(-battleMove.staminaCost);
         _currentBattleMove = battleMove;
         _characterStatsPanel.UpdateSPValues();
         _characterStatsPanel.UpdateHPValues();
@@ -403,7 +408,7 @@ public class BattleManager : MonoBehaviour
             foreach (var battleAction in battleMove.actions)
             {
                 // VFX
-                target.ApplyVFX(battleAction.action.actionVFX);
+                target.SpawnVFX(battleAction.action.actionVFX);
                 // Stats
                 yield return battleAction.action.ApplyActionToTarget(source, target);
                 _characterStatsPanel.UpdateHPValues();
@@ -468,10 +473,11 @@ public class BattleManager : MonoBehaviour
         yield return SceneTransition.instance.FadeFromBlack();
         yield return new WaitForSeconds(1f);
         GameManager.Singleton.SetGameState(GameState.Roaming);
+        _currentBattleTrigger.OnBattleEnd?.Invoke();
     }
     public void RunAway(float chance)
     {
-        if (Random.value > chance)
+        if (Random.value < chance)
         {
             _runningAway = true;
             battleNotice.ShowNotification("Succesfully ran away!");
@@ -486,9 +492,9 @@ public class BattleManager : MonoBehaviour
 
     #region Helpers
 
-    private void ShakeCamera()
+    public void ShakeCamera(float duration = 0.5f, float power = 3f)
     {
-        _cameraShaker.ShakeCamera(0.5f, 3f);
+        _cameraShaker.ShakeCamera(duration, power);
     }
     public List<BattleCharacters> GetAllAllies()
     {

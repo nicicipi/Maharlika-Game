@@ -63,6 +63,8 @@ public class SaveFlagHandler : MonoBehaviour
 
     private bool IsTriggered()
     {
+        if (PlayerDataHandler.Singleton == null)
+            return false;
         return PlayerDataHandler.Singleton.IsTriggered(saveID);
     }
     public void TriggerSaveFlag()

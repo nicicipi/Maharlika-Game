@@ -223,9 +223,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1340522733
-  m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingLayerID: 1067345859
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 266572138, guid: e9d4fb1efc0ebf84b8dffc1cf037dcdd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -317,7 +317,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975241522543346550}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 24c03f4d51d7a194497fb6f2909c4948, type: 2}
   m_CullingMode: 0

@@ -17,6 +17,9 @@ public class AgentMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb2d.velocity = MovementInput * moveSpeed;
+        if (GameManager.Singleton.CurrentGameState == GameManager.GameState.Roaming && GameManager.Singleton.CurrentPlayingState == GameManager.PlayState.Gameplay)
+            rb2d.velocity = MovementInput * moveSpeed;
+        else
+            rb2d.velocity = Vector2.zero;
     }
 }
